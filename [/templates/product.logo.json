@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product-logo",
+      "blocks": {
+        "37bf16d8-3470-4f94-b28f-eae51b0d55f7": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "ec267ef5-2877-4ddd-a3ae-07afd009eee6": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        }
+      },
+      "block_order": [
+        "37bf16d8-3470-4f94-b28f-eae51b0d55f7",
+        "ec267ef5-2877-4ddd-a3ae-07afd009eee6"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "enable_video_looping": false
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_vendor": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations"
+  ]
+}

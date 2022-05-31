@@ -1,0 +1,37 @@
+<script type="module">
+  import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
+</script>
+
+{% raw %}
+  <div id="html-signature">
+    <div>
+      <h1>HTML-SIGNATURE</h1>
+      <span v-html="counter">{{ counter }} ${ counter } {% counter %} {{% counter %}}</span>
+      	${ message }
+    	{{ message }}
+      <button @click="add">Добавить один</button>
+    </div>
+  </div>
+{% endraw %}
+
+<script>
+debugger;
+  console.log('POPALI VO VUE');
+var htmlSignature = new App({
+  el: '#html-signature',
+    data() {
+        return {
+            counter: 0,
+          message: 'hello, epta',
+        }
+    },
+  	delimiters: ['{{%', '%}}'],
+    methods: {
+        add() {
+                 debugger;
+                 console.log('POPALI V ADD FUNCTION');
+            this.counter++;
+        },
+    },
+  });
+</script>

@@ -1,0 +1,756 @@
+{
+  "sections": {
+    "163940853958f4e66f": {
+      "type": "home-banner2",
+      "blocks": {
+        "343b9bd0-7276-4d9a-a906-5397b6aa0b10": {
+          "type": "logo",
+          "settings": {
+            "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0594\/4639\/5086\/files\/sign_10_white.svg?v=1639410774"
+          }
+        },
+        "dfbc1b5b-d7f1-4e64-971a-5779b04462a0": {
+          "type": "logo",
+          "settings": {
+            "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0594\/4639\/5086\/files\/sign_15_white.svg?v=1639410774"
+          }
+        },
+        "fb0d33d6-2df7-4a9e-beda-ed9730fde3cd": {
+          "type": "logo",
+          "settings": {
+            "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0594\/4639\/5086\/files\/sign_17_white.svg?v=1639410774"
+          }
+        },
+        "7aec6bd0-691e-4130-823c-553077cd2e2c": {
+          "type": "logo",
+          "settings": {
+            "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0594\/4639\/5086\/files\/sign_13_white.svg?v=1639410774"
+          }
+        },
+        "d26610d7-9127-40cb-b8c3-138afd95b14c": {
+          "type": "logo",
+          "settings": {
+            "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0594\/4639\/5086\/files\/sign_16_white.svg?v=1639410774"
+          }
+        },
+        "434924f8-b230-49d2-b0c0-7f8db3f917c0": {
+          "type": "logo",
+          "settings": {
+            "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0594\/4639\/5086\/files\/sign_15_white-1.svg?v=1639410774"
+          }
+        },
+        "6bdbc4e2-6db0-42ac-ae69-597a32d36666": {
+          "type": "logo",
+          "settings": {
+            "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0594\/4639\/5086\/files\/sign_10_white-1.svg?v=1639410774"
+          }
+        }
+      },
+      "block_order": [
+        "343b9bd0-7276-4d9a-a906-5397b6aa0b10",
+        "dfbc1b5b-d7f1-4e64-971a-5779b04462a0",
+        "fb0d33d6-2df7-4a9e-beda-ed9730fde3cd",
+        "7aec6bd0-691e-4130-823c-553077cd2e2c",
+        "d26610d7-9127-40cb-b8c3-138afd95b14c",
+        "434924f8-b230-49d2-b0c0-7f8db3f917c0",
+        "6bdbc4e2-6db0-42ac-ae69-597a32d36666"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/adobespark_comp.png",
+        "insta_image": "shopify:\/\/shop_images\/iphon_comp.png",
+        "title": "Create your own unique logo, signature and watermark",
+        "text": "<p>Brand your content and name with the unique logo handwritten by a professional calligrapher<\/p>"
+      }
+    },
+    "16380883077a24e1e6": {
+      "type": "home-banner",
+      "disabled": true,
+      "blocks": {
+        "9b063a34-b9bd-42c9-8e28-c713212e2c44": {
+          "type": "logo",
+          "settings": {
+            "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0594\/4639\/5086\/files\/Vector_2.svg"
+          }
+        },
+        "2df8ed63-ab23-4726-bdf3-c5c73a63af20": {
+          "type": "logo",
+          "settings": {
+            "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0594\/4639\/5086\/files\/Vector.svg"
+          }
+        },
+        "548f5ada-dd54-487c-a9c9-6793727c03e2": {
+          "type": "logo",
+          "settings": {
+            "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0594\/4639\/5086\/files\/Vector_7.svg"
+          }
+        }
+      },
+      "block_order": [
+        "9b063a34-b9bd-42c9-8e28-c713212e2c44",
+        "2df8ed63-ab23-4726-bdf3-c5c73a63af20",
+        "548f5ada-dd54-487c-a9c9-6793727c03e2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/main.jpg",
+        "title": "Create your own unique logo, signature and watermark. <br> Brand your content and name.",
+        "text": "<p>Your exclusive logo signature will be handcrafted by an experienced calligrapher to reflect your style and professionalism.<\/p>",
+        "button_label": "Order My Artlogo",
+        "button_link": "shopify:\/\/products\/signature-logo"
+      }
+    },
+    "1638197973b2d423c4": {
+      "type": "tag-section",
+      "blocks": {
+        "7286d497-a425-4363-b490-d374677403bf": {
+          "type": "tag-block",
+          "settings": {
+            "tag-text_1": "real estate agent",
+            "tag-link_1": "",
+            "tag-text_2": "fitness trainer",
+            "tag-link_2": "",
+            "tag-text_3": "coach",
+            "tag-link_3": "",
+            "tag-text_4": "business consultant",
+            "tag-link_4": "",
+            "tag-text_5": "lawyer",
+            "tag-link_5": "",
+            "tag-text_6": "photographer",
+            "tag-link_6": "",
+            "tag-text_7": "youtube blogger",
+            "tag-link_7": "",
+            "tag-text_8": "teacher",
+            "tag-link_8": "",
+            "tag-text_9": "",
+            "tag-link_9": ""
+          }
+        },
+        "7352dc2f-f95c-4799-8ff2-7797555da489": {
+          "type": "tag-block",
+          "settings": {
+            "tag-text_1": "travel agent",
+            "tag-link_1": "",
+            "tag-text_2": "enterpreneur",
+            "tag-link_2": "",
+            "tag-text_3": "videographer",
+            "tag-link_3": "",
+            "tag-text_4": "film maker",
+            "tag-link_4": "",
+            "tag-text_5": "CEO",
+            "tag-link_5": "",
+            "tag-text_6": "interior designer",
+            "tag-link_6": "",
+            "tag-text_7": "accountant",
+            "tag-link_7": "",
+            "tag-text_8": "artist",
+            "tag-link_8": "",
+            "tag-text_9": "accountant",
+            "tag-link_9": ""
+          }
+        },
+        "a5ee073d-1a39-405a-9cea-b1b28b91e11f": {
+          "type": "tag-block",
+          "settings": {
+            "tag-text_1": "musician",
+            "tag-link_1": "",
+            "tag-text_2": "sommelier",
+            "tag-link_2": "",
+            "tag-text_3": "life coach",
+            "tag-link_3": "",
+            "tag-text_4": "and many others...",
+            "tag-link_4": "",
+            "tag-text_5": "",
+            "tag-link_5": "",
+            "tag-text_6": "",
+            "tag-link_6": "",
+            "tag-text_7": "",
+            "tag-link_7": "",
+            "tag-text_8": "",
+            "tag-link_8": "",
+            "tag-text_9": "",
+            "tag-link_9": ""
+          }
+        }
+      },
+      "block_order": [
+        "7286d497-a425-4363-b490-d374677403bf",
+        "7352dc2f-f95c-4799-8ff2-7797555da489",
+        "a5ee073d-1a39-405a-9cea-b1b28b91e11f"
+      ],
+      "settings": {
+        "title": "Artlogo is the choice of successful professionals",
+        "button_label": "Get My Artlogo",
+        "button_link": ""
+      }
+    },
+    "1639577947267e0168": {
+      "type": "rich-text",
+      "blocks": {
+        "163957794762c0f85d-0": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "medium"
+          }
+        },
+        "163957794762c0f85d-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "163957794762c0f85d-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Order My Artlogo",
+            "button_link": "shopify:\/\/products\/logo-signature",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "163957794762c0f85d-0",
+        "163957794762c0f85d-1",
+        "163957794762c0f85d-2"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true
+      }
+    },
+    "16380925127b030cf1": {
+      "type": "home-logos",
+      "blocks": {
+        "ffcccac7-5da8-4d03-811e-8a78a077951c": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/55A_Will_Jones.jpg"
+          }
+        },
+        "d20dc529-6370-41ba-9d0c-8b5b5bb46974": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/08K_Erika_Perry.jpg"
+          }
+        },
+        "f3a662b4-4e30-4266-abc5-aeeb6a43f72c": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/31A_Ron_Scott_Business.jpg"
+          }
+        },
+        "6d94d3b0-069c-4ea1-b041-95af124d46fd": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/07A_Mike_West_minimalist.jpg"
+          }
+        },
+        "13fcd88f-5df1-4935-9bc4-25668fc9de05": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/60F_Sarah_Barnes.png"
+          }
+        },
+        "f5df7a3e-12a8-446d-a299-cc135be3db37": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/13L_John_Ewing_Minimalist.jpg"
+          }
+        },
+        "199e6c34-417c-4a09-b799-4ec18ff55e79": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/58Q_Leonardo_Ferrari.jpg"
+          }
+        },
+        "c8fa6442-fca5-4f17-8aba-3905526fa92e": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/02F_Tom_Lindt_Abstract.jpg"
+          }
+        },
+        "e0a5332f-ae75-42b5-a235-c0423e333b8c": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/29L_John_abstract.jpg"
+          }
+        },
+        "f91b1ac6-35bc-426a-801e-da90942815d9": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/01Q_gregory_collins.jpg"
+          }
+        },
+        "7422c309-f92c-437b-85e5-2b82a345b1a8": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/18L_Don_Gordon.jpg"
+          }
+        },
+        "c23f495b-0dfb-4b6e-9178-112a8e283715": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/037E_Tom_Ward_Abstract.jpg"
+          }
+        },
+        "481f0af6-d19f-44ec-9998-b50e7e0b176e": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/04.jpg"
+          }
+        },
+        "03ac02d2-c70e-4952-b434-a004e5f2b333": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/56K_Kate_Zeller.jpg"
+          }
+        },
+        "97e1a211-b82c-4059-9215-11e5cd7a261a": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/27.jpg"
+          }
+        },
+        "8e655031-b202-402f-89ef-0974b3e17a1b": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/67Q_Bernardo_Alfano.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "ffcccac7-5da8-4d03-811e-8a78a077951c",
+        "d20dc529-6370-41ba-9d0c-8b5b5bb46974",
+        "f3a662b4-4e30-4266-abc5-aeeb6a43f72c",
+        "6d94d3b0-069c-4ea1-b041-95af124d46fd",
+        "13fcd88f-5df1-4935-9bc4-25668fc9de05",
+        "f5df7a3e-12a8-446d-a299-cc135be3db37",
+        "199e6c34-417c-4a09-b799-4ec18ff55e79",
+        "c8fa6442-fca5-4f17-8aba-3905526fa92e",
+        "e0a5332f-ae75-42b5-a235-c0423e333b8c",
+        "f91b1ac6-35bc-426a-801e-da90942815d9",
+        "7422c309-f92c-437b-85e5-2b82a345b1a8",
+        "c23f495b-0dfb-4b6e-9178-112a8e283715",
+        "481f0af6-d19f-44ec-9998-b50e7e0b176e",
+        "03ac02d2-c70e-4952-b434-a004e5f2b333",
+        "97e1a211-b82c-4059-9215-11e5cd7a261a",
+        "8e655031-b202-402f-89ef-0974b3e17a1b"
+      ],
+      "settings": {
+        "title": "Handcrafted by us, inspired by you and your business"
+      }
+    },
+    "16391597832875e29b": {
+      "type": "rich-text",
+      "disabled": true,
+      "blocks": {
+        "1639159783fe8d5796-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "medium"
+          }
+        },
+        "1639159783fe8d5796-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "1639159783fe8d5796-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Get My Artlogo",
+            "button_link": "shopify:\/\/products\/signature-logo",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "1639159783fe8d5796-0",
+        "1639159783fe8d5796-1",
+        "1639159783fe8d5796-2"
+      ],
+      "settings": {
+        "color_scheme": "background-2",
+        "full_width": false
+      }
+    },
+    "16380963414156d533": {
+      "type": "home-competition",
+      "blocks": {
+        "dc1f1bd4-e6ef-4552-b87f-47c9e48a1d33": {
+          "type": "text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1block_photo_03.jpg",
+            "title": "Get and stay at the forefront of your client's mind"
+          }
+        },
+        "ce05afc9-2e21-4fc9-8fd8-be3ded6d083f": {
+          "type": "text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1block_photo_01.jpg",
+            "title": "Boost your brand awareness and recognition"
+          }
+        },
+        "db2cae27-a0fa-4b21-be6e-7fc8e89f7568": {
+          "type": "text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1block_photo_02.png",
+            "title": "Watermark your photos and videos for social media"
+          }
+        },
+        "25ab26a8-e7b7-41ea-98d1-7c41a59ce8b0": {
+          "type": "text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1block_photo_04.jpg",
+            "title": "Build a sense of trust with your clients"
+          }
+        }
+      },
+      "block_order": [
+        "dc1f1bd4-e6ef-4552-b87f-47c9e48a1d33",
+        "ce05afc9-2e21-4fc9-8fd8-be3ded6d083f",
+        "db2cae27-a0fa-4b21-be6e-7fc8e89f7568",
+        "25ab26a8-e7b7-41ea-98d1-7c41a59ce8b0"
+      ],
+      "settings": {
+        "title": "Artlogo differentiates you from competition",
+        "text": "<p>What's one of the first things clients see before they even speak to you? Your name. Branded content that is directly linked to your name and logo allows consumers to make an immediate connection with you.<\/p>"
+      }
+    },
+    "16380940873f54cbb2": {
+      "type": "home-image-with-text",
+      "blocks": {
+        "8351868e-3c8a-4f6c-9727-0619fa3e5d8e": {
+          "type": "image-with-text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/usecase_photo_03_979e600d-5ebb-492d-93a6-c7bfa6335e95.png",
+            "layout": "right",
+            "title": "Social Media",
+            "text": "<p>Artlogo promotes your business quietly but in an extremely powerful way. Having a well-structured social media profile is only half of the story. By adding Artlogo to your products or portfolio you’ll automatically stand out from the competition, creating an impressive brand image and attracting more potential clients in the process. We offer a special Artlogo Social Media Edition pack specifically designed for Facebook, Instagram, Youtube and other social media network formats.<\/p>"
+          }
+        },
+        "6d1c2ff4-e5df-4c24-8c25-00d81a9eede8": {
+          "type": "image-with-text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/usecase_photo_02.jpg",
+            "layout": "left",
+            "title": "Your website",
+            "text": "<p>Have you ever left a web page you’ve been viewing simply because it looks unprofessional? Artlogo minimizes the possibility of this happening with your customers. Having a custom-made, personalized logo conveys attention to detail and quality of service. It also creates a positive association with you. This in turn leads to higher levels of customer trust, which increases your traffic into sales conversion.<\/p>"
+          }
+        },
+        "e597e5ec-953f-4472-860c-987d6468fecd": {
+          "type": "image-with-text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/usecase_photo_01.jpg",
+            "layout": "right",
+            "title": "Video Content",
+            "text": "<p>Are you taking full advantage of video content? According to Wordsteam, \"Social video generates 1200% more shares than text and image content combined,\" and \"Viewers retain 95% of a message when they watch it in a video, compared to 10% when reading it.'' This means that by placing your Artlogo in marketing videos you’ll increase brand awareness as well as long-term purchase conversion rates.<\/p>"
+          }
+        },
+        "f715d15a-1f94-46d7-ac8d-7bb6d8787dd0": {
+          "type": "highlight-block",
+          "settings": {
+            "title": "Get a multipurpose logo to represent you",
+            "button_label": "Only $39.95 - Order Now",
+            "button_link": "shopify:\/\/products\/logo-signature"
+          }
+        },
+        "fd0ea297-d7c8-427f-8759-f9458c06f543": {
+          "type": "image-with-text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/usecase_photo_04.jpg",
+            "layout": "left",
+            "title": "Business Cards",
+            "text": "<p>Have you noticed that most business cards look the same? You own a stack of cards but you don’t remember who’s who anymore? The purpose of a business card is that the recipient remembers you. Adding Artlogo to your card will ensure you’ll stand out from the others in a good way.<\/p>"
+          }
+        },
+        "8f06f3d4-735d-4b54-8694-cb078227e1cb": {
+          "type": "image-with-text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/usecase_photo_05.jpg",
+            "layout": "right",
+            "title": "Official Documents and Letterheads",
+            "text": "<p>No one wants their correspondence to be like everyone else's. Your documents should stand out so that your customers can easily recognize you and understand the message you’re trying to deliver. Most businesses receive a glut of mail, be it snail or email. So when your price guides, invoices and other documents are noticed, your message reaches your client faster.<\/p>"
+          }
+        },
+        "060bcde9-c0b3-49ed-b2a2-dcc60895d729": {
+          "type": "image-with-text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/usecase_photo_06.jpg",
+            "layout": "left",
+            "title": "Custom Tags and Labels",
+            "text": "<p>Have you noticed that most of the business cards just look the same? You have that pack of cards and you don’t remember who that person is anymore? Surely you do not want your card to be one of these. The whole point of the business card is for a person to use it and come back to you. By adding Artlogo to it, you will definitely stand out and make people remember you.<\/p>"
+          }
+        },
+        "ce3e36c4-26f3-4780-a12a-a8fdc8f1b3e4": {
+          "type": "image-with-text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/usecase_photo_07.jpg",
+            "layout": "right",
+            "title": "Branded Merchandise",
+            "text": "<p>Whether you’re a real estate agent, a photographer, a lawyer, an accountant or a business consultant—anyone, in fact, who provides a service—presenting your clients with branded merchandise increases customer loyalty and retention. It’s an easy and effective way to make your customers remember you. In the hands of your client, for example, even a simple pen adorned with your Artlogo now functions as an everyday reminder of your company. <\/p>"
+          }
+        },
+        "75d38d47-3fa3-4104-af86-827363640697": {
+          "type": "highlight-block",
+          "settings": {
+            "title": "Order your Artlogo now to boost your brand awareness and identity",
+            "button_label": "Get Yours Now",
+            "button_link": "shopify:\/\/products\/logo-signature"
+          }
+        }
+      },
+      "block_order": [
+        "8351868e-3c8a-4f6c-9727-0619fa3e5d8e",
+        "6d1c2ff4-e5df-4c24-8c25-00d81a9eede8",
+        "e597e5ec-953f-4472-860c-987d6468fecd",
+        "f715d15a-1f94-46d7-ac8d-7bb6d8787dd0",
+        "fd0ea297-d7c8-427f-8759-f9458c06f543",
+        "8f06f3d4-735d-4b54-8694-cb078227e1cb",
+        "060bcde9-c0b3-49ed-b2a2-dcc60895d729",
+        "ce3e36c4-26f3-4780-a12a-a8fdc8f1b3e4",
+        "75d38d47-3fa3-4104-af86-827363640697"
+      ],
+      "settings": {
+        "title": "How you can use your Artlogo"
+      }
+    },
+    "1638715423a284e2a5": {
+      "type": "home-benefits",
+      "blocks": {
+        "4d74fc58-4e33-4578-ac68-c3fb5c27b4b5": {
+          "type": "text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Handcrafted_icons_01.jpg",
+            "title": "Fast Delivery",
+            "text": "<p>We value your time. Our delivery options start from just three days.<\/p>"
+          }
+        },
+        "8277226c-77ef-43c4-b4b0-beef573f2e4f": {
+          "type": "text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Handcrafted_icons_02.jpg",
+            "title": "Created by professionals",
+            "text": "<p>Handmade by a team of professional calligraphers and artists.<\/p>"
+          }
+        },
+        "92de5ad3-e40e-4aba-b1d1-9970b46d5242": {
+          "type": "text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Handcrafted_icons_03.jpg",
+            "title": "Mobile & Computer Friendly",
+            "text": "<p>Your Artlogo will look amazing on any device.<\/p>"
+          }
+        },
+        "983df359-0afe-4bc9-b1d0-cb710fb43451": {
+          "type": "text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Handcrafted_icons_04.jpg",
+            "title": "Zero Risk: FREE Revisions",
+            "text": "<p>We want you to be happy. All of our logos come with 3 free revisions.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "4d74fc58-4e33-4578-ac68-c3fb5c27b4b5",
+        "8277226c-77ef-43c4-b4b0-beef573f2e4f",
+        "92de5ad3-e40e-4aba-b1d1-9970b46d5242",
+        "983df359-0afe-4bc9-b1d0-cb710fb43451"
+      ],
+      "settings": {
+      }
+    },
+    "1638091600790ad714": {
+      "type": "home-video",
+      "blocks": {
+        "0603ac9e-d657-461d-9a42-8bea7b09f8c5": {
+          "type": "text",
+          "settings": {
+            "signature_image": "shopify:\/\/shop_images\/1_f000fe4f-819c-4b67-b487-e19ff5a5f8cc.png",
+            "image": "shopify:\/\/shop_images\/video_01.jpg",
+            "title": "Edward Paul Reyes",
+            "text": "<p>It’s given me absolute confidence. I wouldn't be without it.<\/p>",
+            "url": "http:\/\/www.youtube.com\/watch?v=nULImlDXVrQ"
+          }
+        },
+        "16af381f-21cf-4f95-8db0-b94535c05ac1": {
+          "type": "text",
+          "settings": {
+            "signature_image": "shopify:\/\/shop_images\/Subtract.png",
+            "image": "shopify:\/\/shop_images\/video_02.jpg",
+            "title": "Erika Perry",
+            "text": "<p>I really love how it makes my simple land listing look classy!<\/p>",
+            "url": ""
+          }
+        },
+        "afdd79b6-6d9c-4f3a-a534-d72abe6e9775": {
+          "type": "text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/video_03.jpg",
+            "title": "Rodolfo Antonelli",
+            "text": "<p>It impressed my clients and colleagues. I’m so proud of it.<\/p>",
+            "url": "http:\/\/www.youtube.com\/watch?v=0wj7c3dmgtk"
+          }
+        }
+      },
+      "block_order": [
+        "0603ac9e-d657-461d-9a42-8bea7b09f8c5",
+        "16af381f-21cf-4f95-8db0-b94535c05ac1",
+        "afdd79b6-6d9c-4f3a-a534-d72abe6e9775"
+      ],
+      "settings": {
+        "title": "What do our clients say about Artlogo"
+      }
+    },
+    "16380896769bf4c1c7": {
+      "type": "home-hero",
+      "blocks": {
+        "2a752faa-89df-4871-b6f4-51a34aef3496": {
+          "type": "text",
+          "settings": {
+            "text": "You won’t settle for a lesser alternative"
+          }
+        },
+        "f3d03127-91ae-4f8c-b0ef-15764292b086": {
+          "type": "text",
+          "settings": {
+            "text": "You want to project a powerful trustworthy brand"
+          }
+        },
+        "4387887a-f8e3-42a8-ba16-d4fa1674bee0": {
+          "type": "text",
+          "settings": {
+            "text": "You need a unique carefully tailored logo just for you"
+          }
+        },
+        "f36710de-a26d-4f66-9657-ecfe95c77a21": {
+          "type": "text",
+          "settings": {
+            "text": "You want to stand out from the competition"
+          }
+        },
+        "55546d7f-e564-42af-bd59-9fb177c1e05e": {
+          "type": "text",
+          "settings": {
+            "text": "You prefer to make a strong, lasting impression on everyone, including clients and partners"
+          }
+        }
+      },
+      "block_order": [
+        "2a752faa-89df-4871-b6f4-51a34aef3496",
+        "f3d03127-91ae-4f8c-b0ef-15764292b086",
+        "4387887a-f8e3-42a8-ba16-d4fa1674bee0",
+        "f36710de-a26d-4f66-9657-ecfe95c77a21",
+        "55546d7f-e564-42af-bd59-9fb177c1e05e"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/logobackground.png",
+        "title": "Is Artlogo for you? Yes if",
+        "text": "",
+        "button_label": "Only $39.95 - Order Now",
+        "button_link": "shopify:\/\/products\/logo-signature"
+      }
+    },
+    "1638090550d4214709": {
+      "type": "home-review",
+      "blocks": {
+        "817d4d84-5ad6-44e3-a02f-9e0f61dc447b": {
+          "type": "text",
+          "settings": {
+            "author_image": "shopify:\/\/shop_images\/small-img-1.jpg",
+            "title": "AutoMessage",
+            "image": "shopify:\/\/shop_images\/instagram_photo_01.jpg",
+            "text": "<p>Impress your clients with branded car. Let them see what you do straight away.<\/p>"
+          }
+        },
+        "11347c14-5e8c-4a03-b0c9-dadc88fdadd5": {
+          "type": "text",
+          "settings": {
+            "author_image": "shopify:\/\/shop_images\/small-img-2.jpg",
+            "title": "CHEF_POINT",
+            "image": "shopify:\/\/shop_images\/instagram_photo_02.jpg",
+            "text": "<p>Branding is very important in restaurant business. Your brand clearly sells your what you cook.<\/p>"
+          }
+        },
+        "e10ff1f2-bb4a-4e8a-97e6-9e04350bdf56": {
+          "type": "text",
+          "settings": {
+            "author_image": "shopify:\/\/shop_images\/small-img-2.jpg",
+            "title": "Beauty Showroom",
+            "image": "shopify:\/\/shop_images\/instagram_photo_03.jpg",
+            "text": "<p>Let people see your brand straight away, that would include your own personality.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "817d4d84-5ad6-44e3-a02f-9e0f61dc447b",
+        "11347c14-5e8c-4a03-b0c9-dadc88fdadd5",
+        "e10ff1f2-bb4a-4e8a-97e6-9e04350bdf56"
+      ],
+      "settings": {
+        "title": "Great examples of Artlogo use by our clients"
+      }
+    },
+    "16380896922b5a89f7": {
+      "type": "home-hero",
+      "blocks": {
+        "80956a66-594d-485a-b790-1c3cae3401ab": {
+          "type": "text",
+          "settings": {
+            "text": "Delivery: 72 Hours"
+          }
+        },
+        "e6de6515-6ec8-4111-adb3-4a56415b90ab": {
+          "type": "text",
+          "settings": {
+            "text": "Handcrafted by professional calligraphers and designers"
+          }
+        },
+        "b64cc292-cf42-4dfc-9e09-059ac21c9e1a": {
+          "type": "text",
+          "settings": {
+            "text": "Included: 3 FREE revisions"
+          }
+        }
+      },
+      "block_order": [
+        "80956a66-594d-485a-b790-1c3cae3401ab",
+        "e6de6515-6ec8-4111-adb3-4a56415b90ab",
+        "b64cc292-cf42-4dfc-9e09-059ac21c9e1a"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/logobackground.png",
+        "title": "Are you ready for a career changing experience?",
+        "text": "<p>Take your logo to the next level now.<\/p>",
+        "button_label": "Get Yours Now",
+        "button_link": "shopify:\/\/products\/logo-signature"
+      }
+    },
+    "16388573083af6c8ea": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div class=\"title-wrapper block1 row-small\">\n        <h2>Choose the Artlogo Style that you would like<\/h2>\n<!--        <h4>Click on the style that you would prefer your logo to be inspired by<\/h4> -->\n      <\/div>\n      \n      <!-- Style Selector -->\n      <div class=\"style-selector row-small\">\n        <div class=\"styles-wrapper\">\n          {%- for i in (1..70) -%}\n          {% capture img %}image{{i}}{% endcapture %}\n          {%- if settings[img] != blank -%}\n          <div class=\"style-selector-item\">\n            <div class=\"style-selector-block\">\n              <input class=\"style-selector-input\" type=\"radio\" name=\"Chosen Style\" id=\"style-{{ forloop.index }}\" value=\"Style {{ forloop.index }}\">\n              <label class=\"style-selector-label\" for=\"style-{{ forloop.index }}\">\n                <img src=\"{{settings[img] | img_url: '500x'}}\" alt=\"{{settings[img].alt}}\" \/>\n              <\/label>\n            <\/div>\n          <\/div>\n          {%- endif -%}\n          {%- endfor -%}\n        <\/div>\n        <div class=\"styles-wrapper-dot\">\n          {%- for i in (1..70) -%}\n          <div class=\"style-dot-item\"><\/div>\n          {%- endfor -%}\n        <\/div>\n      <\/div>"
+      }
+    }
+  },
+  "order": [
+    "163940853958f4e66f",
+    "16380883077a24e1e6",
+    "1638197973b2d423c4",
+    "1639577947267e0168",
+    "16380925127b030cf1",
+    "16391597832875e29b",
+    "16380963414156d533",
+    "16380940873f54cbb2",
+    "1638715423a284e2a5",
+    "1638091600790ad714",
+    "16380896769bf4c1c7",
+    "1638090550d4214709",
+    "16380896922b5a89f7",
+    "16388573083af6c8ea"
+  ]
+}

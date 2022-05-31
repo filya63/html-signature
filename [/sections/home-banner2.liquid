@@ -1,0 +1,90 @@
+<section class="main-banner">
+  <div class="container">
+    {% if section.settings.title != blank or section.settings.text != blank %}
+    <div class="main-banner-head">
+      {% if section.settings.title != blank %}
+      <h1>{{ section.settings.title }}</h1>
+      {% endif %}
+      {% if section.settings.text != blank %}
+      <div class="rte">{{ section.settings.text }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+    <div class="main-banner-body">
+      <div class="insta-img">
+        {{ section.settings.insta_image | image_url: width: 366 | image_tag: width, loading: 'lazy' }} 
+<!--         <img loading="lazy" width="{{ section.settings.insta_image.width }}" height="{{ section.settings.insta_image.height }}" src="{{ section.settings.insta_image | img_url:'master' }}" alt="{{ section.settings.insta_image.alt }}" /> -->
+      </div>
+      {% if section.blocks.size > 0 %}
+      <div class="logos-list">
+        {%- for block in section.blocks -%}
+        {% if block.settings.image_url != blank %}
+        <img width="166" height="93" src="{{ block.settings.image_url }}" /> 
+        {% else %}
+        <img width="166" height="93" src="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}" /> 
+        {% endif %}
+        {%- endfor -%}
+      </div>
+      {% endif %}
+      <div class="man-img">
+        {{ section.settings.image | image_url: width: 720 | image_tag: widths: '720,1100', loading: 'lazy' }} 
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Home banner new",
+    "settings": [
+	  {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+	  {
+        "type": "image_picker",
+        "id": "insta_image",
+        "label": "Instagram image"
+      },
+	  {
+        "type": "text",
+        "id": "title",
+		"default": "Heading",
+        "label": "Title"
+      },
+	  {
+        "type": "richtext",
+        "id": "text",
+        "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+        "label": "Text"
+      }
+    ],
+	"blocks": [
+      {
+        "type": "logo",
+        "name": "Logo",
+		"limit": 7,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+			"info": "Optional"
+          },
+		  {
+            "type": "text",
+            "id": "image_url",
+            "label": "SVG File url",
+			"info": "Add SVG image file url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home banner new"
+      }
+    ]
+  }
+{% endschema %}

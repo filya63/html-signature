@@ -1,0 +1,74 @@
+<section class="secion-competition pt-5 mt-md-5">
+  <div class="container text-center">
+    {% if section.settings.title != blank or section.settings.text != blank %}
+    <div class="section-header">
+      <h2>{{ section.settings.title }}</h2>
+      {% if section.settings.text != blank %}
+      <div class="rte">
+        {{ section.settings.text }}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+    
+    {% if section.blocks.size > 0 %}
+    <div class="owl-carousel owl-1 owl-theme">
+      {%- for block in section.blocks -%}
+      <div class="col item">
+        <div class="first-section-carousel">
+          <img width="330" height="330" class="mb-4 owl-lazy" data-src="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}" />
+          {% if block.settings.title != blank %}
+          <h6>{{ block.settings.title }}</h6>
+          {% endif %}
+        </div>
+      </div>
+      {%- endfor -%}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Home competition",
+    "settings": [
+	  
+	  {
+        "type": "text",
+        "id": "title",
+		"default": "Heading",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+        "label": "Text"
+      }
+    ],
+	"blocks": [
+	  {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+		  {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+		  {
+            "type": "text",
+            "id": "title",
+            "default": "Heading",
+            "label": "Title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home competition"
+      }
+    ]
+  }
+{% endschema %}

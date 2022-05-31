@@ -1,0 +1,1057 @@
+{% comment %}theme-check-disable TemplateLength{% endcomment %}
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+{{ 'component-badge.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rte.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
+
+{%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
+{%- if first_3d_model -%}
+  {{ 'component-product-model.css' | asset_url | stylesheet_tag }}
+  <link id="ModelViewerStyle" rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css" media="print" onload="this.media='all'">
+  <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'component-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+
+<div class="checkout-banner-section" style="background-image: url(https://cdn.shopify.com/s/files/1/0594/4639/5086/files/artlogo-banner-image.jpg?v=1635098510);">
+  <div class="container">
+    <div class="banner-content">
+      <h1>Ordering YOUR Exclusive Logo</h1>
+      <h3 class="step-sub-title">It's super easy and quick with out three step process</h3>
+      <!-- Steps Number -->
+      <div class="step-numbers-wrapper">
+        <div class="step-number stepnumber1 active">1</div>
+        <div class="step-number stepnumber2">2</div>
+        <div class="step-number stepnumber3">3</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-section">
+   <div class="container">
+    <!-------- Step 1-------->
+    <div class="step step-1">
+      <h2 class="step-title">Step 1</h2>
+     
+     <!-- There was a style selection block -->
+      
+      <!-- Question Section -->
+      <div class="block2 question-wrapper main form-row row-small">
+        <div class="title-wrapper">
+          <h2>What is the purpose of your logo?</h2>
+        </div>
+        <div class="option-selector purpose">
+          <!-- 1 -->
+          <div class="option">
+            <input tabindex="0" type="radio" name="_purpose" id="purpose_business" value="business"> 
+            <label class="option-label" for="purpose_business">
+              <div class="content">
+                <div class="title">My business</div>
+              </div>
+            </label>
+          </div>
+          <!-- 2 -->
+          <div class="option">
+            <input tabindex="0" type="radio" name="_purpose" id="purpose_career" value="career"> 
+            <label class="option-label" for="purpose_career">
+              <div class="content">
+                <div class="title">My career</div>
+              </div>
+            </label>
+          </div>
+          <!-- 3 -->
+          <div class="option">
+            <input tabindex="0" type="radio" name="_purpose" id="purpose_personal" value="personal">
+            <label class="option-label" for="purpose_personal">
+              <div class="content">
+                <div class="title">Personal use</div>
+              </div>
+            </label>
+          </div>
+
+          <!-- 5 -->
+          <div class="option">
+            <input tabindex="0" type="radio" name="_purpose" id="purpose_gift" value="gift"> 
+            <label class="option-label" for="purpose_gift">
+              <div class="content">
+                <div class="title">Present for a friend</div>
+              </div>
+            </label>
+          </div>
+                    <!-- 4 -->
+          <div class="option">
+            <input tabindex="0" type="radio" name="_purpose" id="purpose_other" value="other"> 
+            <label class="option-label" for="purpose_other">
+              <div class="content">
+                <div class="title">Other</div>
+              </div>
+            </label>
+          </div>
+          
+        </div>
+      </div>
+      <!-- There was a Logo Row -->
+
+      <!-- Use Row -->
+      <div class="block4 question-wrapper form-row child-questions row-small">
+        <div class="title-wrapper">
+          <h2>Where are you planning to use your logo?</h2>
+          <h4>Choose one or more options</h4>
+        </div>
+        <div class="option-selector purpose">
+          <!-- 1 -->
+          <div class="option">
+            <input tabindex="0" type="checkbox" name="_whereWillBeUsed" id="whereWillBeUsed_website" value="website"> 
+            <label class="option-label" for="whereWillBeUsed_website">
+              <div class="content">
+                <div class="title">Website</div>
+              </div>
+            </label>
+          </div>
+          <!-- 2 -->
+          <div class="option">
+            <input tabindex="0" type="checkbox" name="_whereWillBeUsed" id="whereWillBeUsed_social-media" value="social-media"> 
+            <label class="option-label" for="whereWillBeUsed_social-media">
+              <div class="content">
+                <div class="title">Social Media</div>
+              </div>
+            </label>
+          </div>
+          <!-- 3 -->
+          <div class="option">
+            <input tabindex="0" type="checkbox" name="_whereWillBeUsed" id="whereWillBeUsed_printed-materials" value="printed-materials">
+            <label class="option-label" for="whereWillBeUsed_printed-materials">
+              <div class="content">
+                <div class="title">Printed Materials</div>
+              </div>
+            </label>
+          </div>
+          <!-- 4 -->
+          <div class="option">
+            <input tabindex="0" type="checkbox" name="_whereWillBeUsed" id="whereWillBeUsed_email-signature" value="email-signature"> 
+            <label class="option-label" for="whereWillBeUsed_email-signature">
+              <div class="content">
+                <div class="title">Email Signature</div>
+              </div>
+            </label>
+          </div>
+          <!-- 5 -->
+          <div class="option">
+            <input tabindex="0" type="checkbox" name="_whereWillBeUsed" id="whereWillBeUsed_storefront" value="storefront"> 
+            <label class="option-label" for="whereWillBeUsed_storefront">
+              <div class="content">
+                <div class="title">Storefront/Large Surfaces</div>
+              </div>
+            </label>
+          </div>
+          <!-- 6 -->
+          <div class="option">
+            <input tabindex="0" type="checkbox" name="_whereWillBeUsed" id="whereWillBeUsed_other" value="other"> 
+            <label class="option-label" for="whereWillBeUsed_other">
+              <div class="content">
+                <div class="title">Other</div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- Industry Row -->
+      <div class="block5 industry-option child-questions row-small">
+        <div class="title-wrapper">
+          <h2>Choose your business industry?</h2>
+        </div>
+        <div class="industry-select-wrapper">
+          <label for="Industry">Industry</label>
+          <select name="_industry" id="industry">
+            <option value="">Please select an industry</option>
+            <option value="Accounting">Accounting</option>
+            <option value="Administration & Office Support">Administration & Office Support</option>
+            <option value="Advertising, Arts & Media">Advertising, Arts & Media</option>
+            <option value="Banking & Financial Services">Banking & Financial Services</option>
+            <option value="Call Centre & Customer Service">Call Centre & Customer Service</option>
+            <option value="Community Services & Development">Community Services & Development</option>
+            <option value="Construction">Construction</option>
+            <option value="Consulting & Strategy">Consulting & Strategy</option>
+            <option value="Design & Architecture">Design & Architecture</option>
+            <option value="Education & Training">Education & Training</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Farming, Animals & Conservation">Farming, Animals & Conservation</option>
+            <option value="Government & Defence">Government & Defence</option>
+            <option value="Healthcare & Medical">Healthcare & Medical</option>
+            <option value="Human Resources & Recruitment">Human Resources & Recruitment</option>
+            <option value="Information & Communication Technology">Information & Communication Technology</option>
+            <option value="Insurance & Superannuation">Insurance & Superannuation</option>
+            <option value="Legal">Legal</option>
+            <option value="Manufacturing, Transport & Logistics">Manufacturing, Transport & Logistics</option>
+            <option value="Marketing & Communications">Marketing & Communications</option>
+            <option value="Mining, Resources & Energy">Mining, Resources & Energy</option>
+            <option value="Photography">Photography</option>
+            <option value="Real Estate & Property">Real Estate & Property</option>
+            <option value="Retail & Consumer Products">Retail & Consumer Products</option>
+            <option value="Sales">Sales</option>
+            <option value="Science & Technology">Science & Technology</option>
+            <option value="Sport & Recreation">Sport & Recreation</option>
+            <option value="Trades & Services">Trades & Services</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+        <div class="error hide">This is a required field</div>
+      </div>
+      <!-- Team Option -->
+      <div class="block6 team-option form-row child-questions row-small">
+        <div class="title-wrapper">
+          <h2>Do you have a team?</h2>
+          <h4>More than 5 people</h4>
+        </div>
+        <div class="radio-buttons">
+          <div class="team-option ">
+            <input type="radio" name="_team" id="team-yes" value="yes">
+            <label class="team-option-label" for="team-yes" id="label-team-yes">
+              <div class="team-option-radio"></div>
+              <div class="team-option-text">Yes</div>
+            </label>
+          </div>
+          <div class="team-option ">
+            <input type="radio" name="_team" id="team-no" value="no">
+            <label class="team-option-label" for="team-no" id="label-team-no">
+              <div class="team-option-radio"></div>
+              <div class="team-option-text">No</div>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="title-wrapper block1 row-small">
+        <h2>Choose the Artlogo Style that you would like</h2>
+        <h4>CLICK ON THE STYLE YOU SELECTED FOR YOUR LOGO</h4>
+      </div>
+      
+      <!-- Style Selector -->
+      <div class="style-selector row-small">
+        <div class="styles-wrapper">
+          {%- for i in (1..70) -%}
+          {% capture img %}image{{i}}{% endcapture %}
+          {%- if settings[img] != blank -%}
+          <div class="style-selector-item">
+            <div class="style-selector-block">
+              <input class="style-selector-input" type="radio" name="Chosen Style" id="style-{{ forloop.index }}" value="Style {{ forloop.index }}">
+              <label class="style-selector-label" for="style-{{ forloop.index }}">
+                <img src="{{settings[img] | img_url: '500x'}}" alt="{{settings[img].alt}}" />
+              </label>
+            </div>
+          </div>
+          {%- endif -%}
+          {%- endfor -%}
+        </div>
+        <div class="styles-wrapper-dot">
+          {%- for i in (1..70) -%}
+          <div class="style-dot-item"></div>
+          {%- endfor -%}
+        </div>
+      </div>
+      
+      
+      
+      
+      <!-- Step Button -->
+      <div class="step-buttons-wrapper row-small">
+        <button tabindex="0" type="button" class="step-btn"><span>Go to Step</span><span> 2</span></button>
+      </div>
+    </div>
+    
+    <!-- Step 2 -->
+    <div class="step step-2 hide">
+      <h2 class="step-title">Step 2</h2>
+      <!-- Input 1 -->
+      <div class="input-option form-row row-small">
+        <div class="title-wrapper">
+          <h2>What would you like your Artlogo® signature to say?</h2>
+          <h4>Double check the typos!</h4>
+        </div>
+        <div class="input">
+          <input class="input" name="_signature" type="text" placeholder="Your full name or company name">
+          <div class="Input__error hide">
+            <div class="error">You have to enter your signature</div>
+          </div>
+        </div>
+      </div>
+      <!-- Input 2 -->
+      <div class="input-option form-row row-small">
+        <div class="title-wrapper">
+          <h2>Add your tagline <span>(Optional)</span></h2>
+          <h4>This is a text added below your unique logo</h4>
+        </div>
+        <div class="input">
+          <input class="input" name="_signature-tagline" type="text" placeholder="Title (e.g. 'CEO') or Company business">
+          <div class="Input__error">
+            <div class="Error"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Input 3 -->
+      <div class="input-option form-row row-small">
+        <div class="title-wrapper">
+          <h2>Do you have any other specific requirements?<span>(Optional)</span></h2>
+        </div>
+        <div class="input">
+          <input class="input" name="_designer-tagline" type="text" placeholder='For example: "I love clear logos"'>
+          <div class="Input__error">
+            <div class="Error"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Step Buttons -->
+      <div class="step-buttons-wrapper row-small">
+        <button tabindex="0" type="button" class="step-btn"><span>Go to Step</span><span> 3</span></button>
+        <button tabindex="-1" type="button" class="step-btn-back">Back</button>
+      </div>
+    </div>
+    
+    <div class="step step-3 product__info-wrapper hide">
+      <h2 class="step-title">Step 3</h2>
+   
+      <!-- Input 1 --
+      <div class="input-option form-row has-border row-small">
+        <div class="title-wrapper">
+          <h2>Where should we email your new custom Artlogo® ?</h2>
+        </div>
+        <div class="input">
+          <input class="input" id="input_email" type="email" placeholder="Type Your Email Address Here" name="_email" value="">
+          <div class="Input__error hide">
+            <div class="error">You have not given a correct e-mail address</div>
+          </div>
+        </div>
+      </div>
+	  <!-->
+      <!-- Input 2 --
+      <div class="input-option foye crm-row has-border pt-40 row-small">
+        <div class="title-wrapper">
+          <h2>What's your Phone number</h2>
+          <h4>(Optional, used for SMS updates on your signature)</h4>
+        </div>
+        <div class="input">
+          <input class="input" id="input_phone" type="tel" placeholder="Type Your Phone Number Here" name="_phone" value="" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+          <div class="Input__error">
+            <div class="Error"></div>
+          </div>
+        </div>
+      </div>
+ 	  <!-->      
+
+      <div id="ProductInfo-{{ section.id }}" class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}">
+        {%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+          {%- when 'text' -%}
+            <p class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}">
+              {{- block.settings.text -}}
+            </p>
+          {%- when 'title' -%}
+            <h1 class="product__title">
+              {{ product.title | escape }}
+            </h1>
+          {%- when 'price' -%}
+            <div class="no-js-hidden" id="price-{{ section.id }}">
+              {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+            </div>
+            {%- form 'product', product, id: 'product-form-installment', class: 'installment caption-large' -%}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              {{ form | payment_terms }}
+            {%- endform -%}
+          {%- when 'description' -%}
+            {%- if product.description != blank -%}
+              <div class="product__description rte">
+                {{ product.description }}
+              </div>
+            {%- endif -%}
+          {%- when 'collapsible_tab' -%}
+            <div class="product__accordion accordion">
+              <details>
+                <summary>
+                  <div class="summary__title">
+                    {% render 'icon-accordion', icon: block.settings.icon %}
+                    <h2 class="h4 accordion__title">
+                      {{ block.settings.heading | default: block.settings.page.title }}
+                    </h2>
+                  </div>
+                  {% render 'icon-caret' %}
+                </summary>
+                <div class="accordion__content rte">
+                  {{ block.settings.content }}
+                  {{ block.settings.page.content }}
+                </div>
+              </details>
+            </div>
+          {%- when 'quantity_selector' -%}
+            <div class="product-form__input product-form__quantity">
+              <label class="form__label" for="Quantity-{{ section.id }}">
+                {{ 'products.product.quantity.label' | t }}
+              </label>
+              <quantity-input class="quantity">
+                <button class="quantity__button no-js-hidden" name="minus" type="button">
+                  <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                  {% render 'icon-minus' %}
+                </button>
+                <input class="quantity__input"
+                    type="number"
+                    name="quantity"
+                    id="Quantity-{{ section.id }}"
+                    min="1"
+                    value="1"
+                    form="product-form-{{ section.id }}"
+                  >
+                <button class="quantity__button no-js-hidden" name="plus" type="button">
+                  <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                  {% render 'icon-plus' %}
+                </button>
+              </quantity-input>
+            </div>
+          {%- when 'popup' -%}
+              <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-{{ block.id }}">
+                <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link" type="button" aria-haspopup="dialog">{{ block.settings.link_label | default: block.settings.page.title }}</button>
+              </modal-opener>
+              <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">{{ block.settings.link_label }}</a>
+          {%- when 'share' -%}
+            <share-button class="share-button">
+              <button class="share-button__button button button--tertiary hidden">
+                {% render 'icon-share' %}
+                {{ 'general.share.share' | t }}
+              </button>
+              <details>
+                <summary class="share-button__button button button--tertiary">
+                  {% render 'icon-share' %}
+                  {{ 'general.share.share' | t }}
+                </summary>
+                <div class="share-button__fallback">
+                  <div class="field">
+                    <input type="text"
+                          class="field__input"
+                          id="url"
+                          value="{{ shop.url | append: product.url }}"
+                          placeholder="{{ 'general.share.share_url' | t }}"
+                          onclick="this.select();"
+                          readonly
+                    >
+                    <label class="field__label" for="url">{{ 'general.share.share_url' | t }}</label>
+                  </div>
+                  <button class="button button--tertiary">
+                    {% render 'icon-clipboard' %}
+                    {{ 'general.share.copy_to_clipboard' | t }}
+                  </button>
+                  <span id="ShareMessage-{{ section.id }}" class="share-button__message hidden" role="status" aria-hidden="true">
+                    {{ 'general.share.success_message' | t }}
+                  </span>
+                </div>
+              </details>
+            </share-button>
+            <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
+          {%- when 'variant_picker' -%}
+            {%- unless product.has_only_default_variant -%}
+              {%- if block.settings.picker_type == 'button' -%}
+                <variant-radios class="form-row no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}">
+                  {%- for option in product.options_with_values -%}
+                      <fieldset class="membership-wrapper js product-form__input">
+                        <legend class="title-wrapper text-center"><h2>Choose your {{ option.name }}</h2></legend>
+						<div class="m-wrapper m-variants">
+                        {%- for value in option.values -%}
+                        
+                        <div class="membership-item">
+                          <div class="membership-block">
+                            <input type="radio" id="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}"
+                                name="{{ option.name }}"
+                                value="{{ value | escape }}"
+                                form="product-form-{{ section.id }}"
+                                {% if option.selected_value == value %}checked{% endif %}
+                          >
+                            <label class="delivery-selector-option-label" for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}">
+                              
+                              {% cycle '','<div class="delivery-selector-option-label-badge delivery-selector-option-label-badge-green">Most popular</div>',''%}
+                              
+                              <div class="delivery-selector-option-label-main">
+                                <div class="delivery-selector-option-label-main-title ">
+                                  {{ value }}
+                                </div>
+                                <div class="delivery-selector-option-label-main-price">
+                                  {% for variantss in product.variants %}
+                                  	{% assign valuedd = variantss.options[0] %}
+                                  	{% if valuedd == value %}
+                                  	{% if variantss.compare_at_price > variantss.price %}
+                                  	<s>{{variantss.compare_at_price  | money}}</s>
+                                  	{% endif %}
+                                  	{{variantss.price | money }}
+                                  	{% break %}
+                                  	{% endif %}
+                                  {% endfor %}
+                                </div>
+                              </div>
+                              <div class="delivery-selector-option-label-features">
+                                <div class="delivery-selector-option-label-features-feature">
+                                  <span class="text">
+                                    {% if value == 'Calligrapher' %}A seasoned professional will create the Artlogo, you will fall in love with
+                                    {% elsif value == 'Top level Calligrapher' %}This logo will be created by absolute best industry pro’s, who have vast calligraphy as well as design experience
+                                    {% elsif value == 'Head Calligrapher' %}Our head calligrapher, who has worked with TOP world brands and professionals
+                                    {% endif %}
+                                  </span>
+                                </div>
+                              </div>
+<!--
+                              <div class="delivery-selector-label-stock">
+                                <div class="delivery-selector-stock-text"><span class="number">{% cycle '18','7','11'%}</span> <span class="logo-left">Logos Left</span></div>
+                              </div>
+-->
+                            </label>
+                          </div>
+                        </div>
+                        {%- endfor -%}
+                        </div>
+                      </fieldset>
+                  {%- endfor -%}
+                  <script type="application/json">
+                    {{ product.variants | json }}
+                  </script>
+                </variant-radios>
+              {%- else -%}
+                <variant-selects class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}">
+                  {%- for option in product.options_with_values -%}
+                    <div class="product-form__input product-form__input--dropdown">
+                      <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                        Choose your {{ option.name }}
+                      </label>
+                      <div class="select">
+                        <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                          class="select__select"
+                          name="options[{{ option.name | escape }}]"
+                          form="product-form-{{ section.id }}"
+                        >
+                          {%- for value in option.values -%}
+                            <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                              {{ value }}
+                            </option>
+                          {%- endfor -%}
+                        </select>
+                        {% render 'icon-caret' %}
+                      </div>
+                    </div>
+                  {%- endfor -%}
+
+                  <script type="application/json">
+                    {{ product.variants | json }}
+                  </script>
+                </variant-selects>
+              {%- endif -%}
+            {%- endunless -%}
+
+            <noscript>
+              <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
+                <label class="form__label" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
+                <div class="select">
+                  <select name="id" id="Variants-{{ section.id }}" class="select__select" form="product-form">
+                    {%- for variant in product.variants -%}
+                      <option
+                        {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                        {% if variant.available == false %}disabled{% endif %}
+                        value="{{ variant.id }}"
+                      >
+                        {{ variant.title }}
+                        {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+                        - {{ variant.price | money | strip_html }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  {% render 'icon-caret' %}
+                </div>
+              </div>
+            </noscript>
+          {%- when 'buy_buttons' -%}
+            <product-form class="product-form">
+              {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              	<div class="customProperties"></div>
+                <div class="product-form__buttons">
+                  <div class="terms-condition-wrapper">
+                    <input type="checkbox" id="accept" name="accept" checked>
+                    <label>I accept and agree to the <a href="../policies/terms-of-service" target="_blank">Terms and Conditions</a></label>
+                    <div class="Input__error hide"><div class="error">You need to complete sections highlighted in red above to Continue ordering</div></div>
+                  </div>
+                  <button
+                    type="submit"
+                    name="add"
+                    class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                  {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+                  >
+                      {%- if product.selected_or_first_available_variant.available -%}
+                        {{ 'products.product.add_to_cart' | t }}
+                      {%- else -%}
+                        {{ 'products.product.sold_out' | t }}
+                      {%- endif -%}
+                  </button>
+                  <p class="all-price">All Prices Are in USD</p>
+                  <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/files/paymentLabel.png" class="paymentlabel d-md-block d-none" alt="Payment Methods" />
+                  <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/files/paymentLabelMobile.png" class="paymentlabel d-md-none d-sm-block" alt="Payment Methods" />
+                  <button tabindex="-1" type="button" class="step-btn-back">Back</button>
+                  {%- if block.settings.show_dynamic_checkout -%}
+                    {{ form | payment_button }}
+                  {%- endif -%}
+                </div>
+              {%- endform -%}
+            </product-form>
+
+            {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+
+            {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+
+            <pickup-availability class="product__pickup-availabilities no-js-hidden"
+              {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %} available{% endif %}
+              data-base-url="{{ shop.url }}{{ routes.root_url }}"
+              data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+              data-has-only-default-variant="{{ product.has_only_default_variant }}"
+            >
+              <template>
+                <pickup-availability-preview class="pickup-availability-preview">
+                  {% render 'icon-unavailable' %}
+                  <div class="pickup-availability-info">
+                    <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+                    <button class="pickup-availability-button link link--text underlined-link">{{ 'products.product.pickup_availability.refresh' | t }}</button>
+                  </div>
+                </div>
+              </template>
+            </pickup-availability>
+
+            <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+  {%- render 'cart-notification' -%}
+
+  <product-modal id="ProductModal-{{ section.id }}" class="product-media-modal">
+    <div role="dialog" aria-label="{{ 'products.modal.label' | t }}" aria-modal="true" tabindex="-1">
+      <button id="ModalClose-{{ section.id }}" type="button" class="product-media-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+
+      <div class="product-media-modal__content" role="document" aria-label="{{ 'products.modal.label' | t }}" tabindex="0">
+        {%- for media in product.media -%}
+          {%- if media.media_type == 'image' -%}
+            <img
+              srcset="{%- if media.preview_image.width >= 550 -%}{{ media.preview_image | img_url: '550x' }} 550w,{%- endif -%}
+                      {%- if media.preview_image.width >= 1100 -%}{{ media.preview_image | img_url: '1100x' }} 1100w,{%- endif -%}
+                      {%- if media.preview_image.width >= 1680 -%}{{ media.preview_image | img_url: '1680x' }} 1680w,{%- endif -%}
+                      {%- if media.preview_image.width >= 2048 -%}{{ media.preview_image | img_url: '2048x' }} 2048w,{%- endif -%}
+                      {%- if media.preview_image.width >= 4096 -%}{{ media.preview_image | img_url: '4096x' }} 4096w{%- endif -%}"
+              sizes="(min-width: 750px) calc(100vw - 12rem), 100vw"
+              src="{{ media.preview_image | img_url: '750x' }}"
+              alt="{{ media.alt | escape }}"
+              loading="lazy"
+              width="1100"
+              height="{{ 1100 | divided_by: media.preview_image.aspect_ratio | ceil }}"
+              data-media-id="{{ media.id }}"
+            >
+          {%- else -%}
+            {%- if media.media_type == 'model' -%}
+              <div class="product-media-modal__model" data-media-id="{{ media.id }}">
+                <product-model class="deferred-media media" style="padding-top: min(calc(100vh - 12rem), 100%)">
+            {%- else -%}
+              <deferred-media class="deferred-media media" style="padding-top: min(calc(100vh - 12rem), {{ 1 | divided_by: media.aspect_ratio | times: 100 }}%)" data-media-id="{{ media.id }}">
+            {%- endif -%}
+
+              <button id="Deferred-Poster-Modal-{{ media.id }}" class="deferred-media__poster" type="button">
+                <span class="deferred-media__poster-button motion-reduce">
+                  {%- if media.media_type == 'model' -%}
+                    {%- render 'icon-3d-model' -%}
+                  {%- else -%}
+                    {%- render 'icon-play' -%}
+                  {%- endif -%}
+                </span>
+                <img
+                  srcset="{% if media.preview_image.width >= 288 %}{{ media.preview_image | img_url: '288x' }} 288w,{% endif %}
+                          {% if media.preview_image.width >= 576 %}{{ media.preview_image | img_url: '576x' }} 576w,{% endif %}
+                          {% if media.preview_image.width >= 550 %}{{ media.preview_image | img_url: '550x' }} 550w,{% endif %}
+                          {% if media.preview_image.width >= 1100 %}{{ media.preview_image | img_url: '1100x' }} 1100w{% endif %}"
+                  src="{{ media | img_url: '550x550' }}"
+                  sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                  loading="lazy"
+                  width="576"
+                  height="{{ 576 | divided_by: media.preview_image.aspect_ratio }}"
+                  alt="{{ media.preview_image.alt | escape }}"
+                >
+              </button>
+              <template>
+                {%- case media.media_type -%}
+                {%- when 'external_video' -%}
+                  {%- assign video_class = 'js-' | append: media.host -%}
+                  {%- if media.host == 'youtube' -%}
+                    {{ media | external_video_url: autoplay: true, loop: section.settings.enable_video_looping, playlist: media.external_id | external_video_tag: class: video_class, loading: "lazy" }}
+                  {%- else -%}
+                    {{ media | external_video_url: autoplay: true, loop: section.settings.enable_video_looping | external_video_tag: class: video_class, loading: "lazy" }}
+                  {%- endif -%}
+                {%- when 'video' -%}
+                  {{ media | media_tag: image_size: "2048x", autoplay: true, loop: section.settings.enable_video_looping, controls: true, preload: "none", autoplay: true }}
+                {%- when 'model' -%}
+                  {{ media | media_tag: image_size: "2048x", toggleable: true }}
+                {%- endcase -%}
+              </template>
+
+            {%- if media.media_type == 'model' -%}
+                </product-model>
+                <button
+                  class="button button--full-width product__xr-button"
+                  type="button"
+                  aria-label="{{ 'products.product.xr_button_label' | t }}"
+                  data-shopify-xr
+                  data-shopify-model3d-id="{{ media.id }}"
+                  data-shopify-title="title"
+                  data-shopify-xr-hidden
+                  >
+                  {% render 'icon-3d-model' %}
+                  {{ 'products.product.xr_button' | t }}
+                </button>
+              </div>
+            {%- else -%}
+              </deferred-media>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </product-modal>
+
+  {% assign popups = section.blocks | where: "type", "popup" %}
+  {%- for block in popups -%}
+    <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal">
+      <div role="dialog" aria-label="{{ block.settings.link_label }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
+        <button id="ModalClose-{{ block.id }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+        <div class="product-popup-modal__content-info">
+          <h1 class="h2">{{ block.settings.page.title }}</h1>
+          {{ block.settings.page.content }}
+        </div>
+      </div>
+    </modal-dialog>
+  {%- endfor -%}
+</div>
+
+{% javascript %}
+  class ProductModal extends ModalDialog {
+    constructor() {
+      super();
+    }
+
+    hide() {
+      super.hide();
+      window.pauseAllMedia();
+    }
+
+    show(opener) {
+      super.show(opener);
+      this.showActiveMedia();
+    }
+
+    showActiveMedia() {
+      this.querySelectorAll(`[data-media-id]:not([data-media-id="${this.openedBy.getAttribute("data-media-id")}"])`).forEach((element) => {
+          element.classList.remove('active');
+        }
+      )
+      const activeMedia = this.querySelector(`[data-media-id="${this.openedBy.getAttribute("data-media-id")}"]`);
+      activeMedia.classList.add('active');
+      activeMedia.scrollIntoView();
+
+      if (activeMedia.nodeName == 'DEFERRED-MEDIA' && activeMedia.querySelector('template')?.content?.querySelector('.js-youtube'))
+        activeMedia.loadContent();
+    }
+  }
+
+  customElements.define('product-modal', ProductModal);
+{% endjavascript %}
+{% comment %}<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>{% endcomment %}
+{%- if first_3d_model -%}
+  <script type="application/json" id="ProductJSON-{{ product.id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
+
+  <script src="{{ 'product-model.js' | asset_url }}" defer></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-product.name",
+  "tag": "section",
+  "class": "product-section art-pdp",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "text",
+      "name": "t:sections.main-product.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Text block",
+          "label": "t:sections.main-product.blocks.text.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__1.label"
+            },
+            {
+              "value": "subtitle",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__2.label"
+            },
+            {
+              "value": "uppercase",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__3.label"
+            }
+          ],
+          "default": "body",
+          "label": "t:sections.main-product.blocks.text.settings.text_style.label"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "t:sections.main-product.blocks.title.name",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "t:sections.main-product.blocks.price.name",
+      "limit": 1
+    },
+    {
+      "type": "quantity_selector",
+      "name": "t:sections.main-product.blocks.quantity_selector.name",
+      "limit": 1
+    },
+    {
+      "type": "variant_picker",
+      "name": "t:sections.main-product.blocks.variant_picker.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "picker_type",
+          "options": [
+            {
+              "value": "dropdown",
+              "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__1.label"
+            },
+            {
+              "value": "button",
+              "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__2.label"
+            }
+          ],
+          "default": "button",
+          "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.label"
+        }
+      ]
+    },
+    {
+      "type": "buy_buttons",
+      "name": "t:sections.main-product.blocks.buy_buttons.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "default": true,
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "t:sections.main-product.blocks.description.name",
+      "limit": 1
+    },
+    {
+      "type": "share",
+      "name": "t:sections.main-product.blocks.share.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.main-product.blocks.share.settings.featured_image_info.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.main-product.blocks.share.settings.title_info.content"
+        }
+      ]
+    },
+    {
+      "type": "collapsible_tab",
+      "name": "t:sections.main-product.blocks.collapsible_tab.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Collapsible tab",
+          "info": "t:sections.main-product.blocks.collapsible_tab.settings.heading.info",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.content.label"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.page.label"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__1.label"
+            },
+            {
+              "value": "box",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__2.label"
+            },
+            {
+              "value": "chat_bubble",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__3.label"
+            },
+            {
+              "value": "check_mark",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__4.label"
+            },
+            {
+              "value": "dryer",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__5.label"
+            },
+            {
+              "value": "eye",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__6.label"
+            },
+            {
+              "value": "heart",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__7.label"
+            },
+            {
+              "value": "iron",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__8.label"
+            },
+            {
+              "value": "leaf",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__9.label"
+            },
+            {
+              "value": "leather",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__10.label"
+            },
+            {
+              "value": "lock",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__11.label"
+            },
+            {
+              "value": "map_pin",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__12.label"
+            },
+            {
+              "value": "pants",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__13.label"
+            },
+            {
+              "value": "plane",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__14.label"
+            },
+            {
+              "value": "price_tag",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__15.label"
+            },
+            {
+              "value": "question_mark",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__16.label"
+            },
+            {
+              "value": "return",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__17.label"
+            },
+            {
+              "value": "ruler",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__18.label"
+            },
+            {
+              "value": "shirt",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__19.label"
+            },
+            {
+              "value": "shoe",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__20.label"
+            },
+            {
+              "value": "silhouette",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__21.label"
+            },
+            {
+              "value": "star",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__22.label"
+            },
+            {
+              "value": "truck",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__23.label"
+            },
+            {
+              "value": "washing",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__24.label"
+            }
+          ],
+          "default": "check_mark",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.label"
+        }
+      ]
+    },
+    {
+      "type": "popup",
+      "name": "t:sections.main-product.blocks.popup.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_label",
+          "default": "Pop-up link text",
+          "label": "t:sections.main-product.blocks.popup.settings.link_label.label"
+        },
+        {
+          "id": "page",
+          "type": "page",
+          "label": "t:sections.main-product.blocks.popup.settings.page.label"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-product.settings.header.content",
+      "info": "t:sections.main-product.settings.header.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_info",
+      "default": true,
+      "label": "t:sections.main-product.settings.enable_sticky_info.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "default": false,
+      "label": "t:sections.main-product.settings.enable_video_looping.label"
+    }
+  ]
+}
+{% endschema %}

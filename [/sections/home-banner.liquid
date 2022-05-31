@@ -1,0 +1,94 @@
+<section class="artlogo-header" style="background-image:url({{ section.settings.image | img_url:'master' }});">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8" id="hea">
+        <div class="main-bg-box">
+          {% if section.settings.title != blank %}
+          <h1>{{ section.settings.title }}</h1>
+          {% endif %}
+          {% if section.settings.text != blank %}
+          <div class="rte">{{ section.settings.text }}</div>
+          {% endif %}
+          {% if section.blocks.size > 0 %}
+          <div class="banner-logos">
+            {%- for block in section.blocks -%}
+            {% if block.settings.image_url != blank %}
+            <img src="{{ block.settings.image_url }}" /> 
+            {% else %}
+            <img src="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}" /> 
+            {% endif %}
+            {%- endfor -%}
+          </div>
+          {% endif %}
+          {% if section.settings.button_link != blank %}
+          <a href="{% if section.settings.button_link == blank %}javascript:void(0);{% else %}{{ section.settings.button_link }}{% endif %}" class="button">
+            {{ section.settings.button_label }}
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Home banner",
+    "settings": [
+	  {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+	  {
+        "type": "text",
+        "id": "title",
+		"default": "Heading",
+        "label": "Title"
+      },
+	  {
+        "type": "richtext",
+        "id": "text",
+        "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+        "label": "Text"
+      },
+	  {
+          "type": "text",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+    ],
+	"blocks": [
+      {
+        "type": "logo",
+        "name": "Logo",
+		"limit": 3,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+			"info": "Optional"
+          },
+		  {
+            "type": "text",
+            "id": "image_url",
+            "label": "SVG File url",
+			"info": "Add SVG image file url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home banner"
+      }
+    ]
+  }
+{% endschema %}

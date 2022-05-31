@@ -1,0 +1,25 @@
+<div id="html-signature">
+    <h1>HTML-SIGNATURE</h1>
+    <span v-html="counter"></span>
+    <button @click="add">Добавить один</button>
+</div>
+
+<script type="module">
+import { createApp } from 'vue'
+
+const app = {
+    name: 'App',
+    data() {
+        return {
+            counter: 0,
+        }
+    },
+    methods: {
+        add() {
+            this.counter++;
+        }
+    },
+};
+
+createApp(app).mount('#html-signature');
+</script>

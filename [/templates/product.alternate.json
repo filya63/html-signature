@@ -1,0 +1,165 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "3177dbb7-6086-4505-8fbb-7137c4ad27a2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials",
+            "content": "<p>Crafted from smooth calf leather. Canvas lining. Brushed gold hardware. Two interior pockets. Detachable and adjustable shoulder strap.<\/p>",
+            "page": "",
+            "icon": "leather"
+          }
+        },
+        "2748f4e7-3ca2-4e13-9585-963f0b833fd5": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Dimensions",
+            "content": "<p>h:21 X w:28 cm (8 1\/2 X 11 1\/4 in.)<\/p>",
+            "page": "",
+            "icon": "ruler"
+          }
+        },
+        "7621509f-35e8-41d4-9ef8-366379a3cdf6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Care Instructions",
+            "content": "<p>Use a soft damp cloth and a drop of mild soap to remove any haze. Air dry.<\/p>",
+            "page": "",
+            "icon": "heart"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "3177dbb7-6086-4505-8fbb-7137c4ad27a2",
+        "2748f4e7-3ca2-4e13-9585-963f0b833fd5",
+        "7621509f-35e8-41d4-9ef8-366379a3cdf6",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "enable_video_looping": false
+      }
+    },
+    "16379467327a8375bc": {
+      "type": "image-with-text",
+      "blocks": {
+        "1637946732b0585e73-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "A new kind of bag."
+          }
+        },
+        "1637946732b0585e73-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Unexpected shapes with smart details, functionality, a new luxury feel with a contemporary price point.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1637946732b0585e73-0",
+        "1637946732b0585e73-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/video_02.png",
+        "height": "adapt",
+        "color_scheme": "background-1",
+        "layout": "text_first"
+      }
+    },
+    "163794756544dfb504": {
+      "type": "multicolumn",
+      "blocks": {
+        "1637947565b1017bcc-0": {
+          "type": "column",
+          "settings": {
+            "title": "Free Shipping",
+            "text": "<p>We offer free worldwide express shipping on all orders. You'll receive your order an estimated 1–4 days after shipment.<\/p>"
+          }
+        },
+        "1637947565b1017bcc-1": {
+          "type": "column",
+          "settings": {
+            "title": "Hassle-Free Exchanges",
+            "text": "<p>Exchanges are free. Try from the comfort of your home. We will collect from your home, work or an alternative address. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1637947565b1017bcc-0",
+        "1637947565b1017bcc-1"
+      ],
+      "settings": {
+        "title": "",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_vendor": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16379467327a8375bc",
+    "163794756544dfb504",
+    "product-recommendations"
+  ]
+}

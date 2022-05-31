@@ -1,0 +1,91 @@
+<section class="py-5 my-md-5 text-center great-examples">
+  <div class="container">
+    <div class="row">
+      {% if section.settings.title != blank %}
+      <div class="section-header">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+      {% endif %}
+      {% if section.blocks.size > 0 %}
+      <div class="owl-carousel owl-3 owl-theme">
+        {%- for block in section.blocks -%}
+        <div class="col item">
+          <div class="first-section-carousel">
+            {% if block.settings.author_image != blank or block.settings.title != blank %}
+            <div class="ge-head d-flex align-items-center">
+              {% if block.settings.author_image != blank %}
+              <img width="40" height="40" loading="lazy" src="{{ block.settings.author_image | img_url:'master' }}" alt="{{ block.settings.author_image.alt }}" /> 
+              {% endif %}
+              {% if block.settings.title != blank %}
+              <strong>{{ block.settings.title }}</strong>
+              {% endif %}
+            </div>
+            {% endif %}
+            {% if block.settings.image != blank %}
+            <div class="ge-img">
+              <img width="356" height="356" loading="lazy" src="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}" /> 
+            </div>
+            {% endif %}
+            {% if block.settings.text != blank %}
+            <div class="rte ge-text">
+              {{ block.settings.text }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Home reviews",
+    "settings": [
+	  
+	  {
+        "type": "text",
+        "id": "title",
+		"default": "Heading",
+        "label": "Title"
+      }
+    ],
+	"blocks": [
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+		  {
+            "type": "image_picker",
+            "id": "author_image",
+            "label": "Author image"
+          },
+		  {
+            "type": "text",
+            "id": "title",
+            "default": "Heading",
+            "label": "Title"
+          },
+		  {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+		  {
+            "type": "richtext",
+            "id": "text",
+            "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "label": "Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home reviews"
+      }
+    ]
+  }
+{% endschema %}

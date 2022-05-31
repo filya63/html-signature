@@ -1,0 +1,71 @@
+<section class="my-md-5 py-5 text-center handcraft-section">
+  <div class="container">
+    {% if section.settings.title != blank %}
+    <div class="section-header">
+      <h3>{{ section.settings.title }}</h3>
+    </div>
+    {% endif %}
+    
+    {% if section.blocks.size > 0 %}
+    <div class="owl-carousel owl-1 owl-theme">
+      {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'text' -%}
+        <div class="col item">
+          <div class="first-section-carousel">
+            <img width="265" height="200" class="owl-lazy" data-src="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}" /> 
+            {% if block.settings.title != blank %}
+            <h3>{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+            <div class="rte">
+              {{ block.settings.text }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+    {% endif %}
+    
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Home benefits",
+
+	"blocks": [
+    
+	  {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+		  {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+		  {
+            "type": "text",
+            "id": "title",
+            "default": "Heading",
+            "label": "Title"
+          },
+		  {
+            "type": "richtext",
+            "id": "text",
+            "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "label": "Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home benefits"
+      }
+    ]
+  }
+{% endschema %}

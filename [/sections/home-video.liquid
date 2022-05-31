@@ -1,0 +1,111 @@
+<section class="section-about-client py-5 grey-bg text-center">
+  <div class="py-md-5">
+    <div class="container">
+      <div class="row">
+        {% if section.settings.title != blank %}
+        <div class="section-header">
+          <h2>{{ section.settings.title }}</h2>
+        </div>
+        {% endif %}
+        
+        {% if section.blocks.size > 0 %}
+        <div class="owl-carousel owl-3 owl-theme">
+          {%- for block in section.blocks -%}
+          <div class="col item">
+            <div class="first-section-carousel">
+              <div class="about-item">
+                {% if block.settings.url != blank %}
+                <a class="popup-youtube" href="{{ block.settings.url }}"></a>
+                {% endif %}
+                {% if block.settings.image != blank %}
+                <div class="about-main-img">
+                  <img width="356" height="356" loading="lazy" src="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}" /> 
+                </div>
+                {% endif %}
+                {% if block.settings.signature_image != blank or block.settings.url != blank %}
+                <div class="about-head">
+                  {% if block.settings.signature_image != blank %}
+                  <img width="356" height="356" loading="lazy" class="signature" src="{{ block.settings.signature_image | img_url:'master' }}" alt="{{ block.settings.signature_image.alt }}" /> 
+                  {% endif %}
+                  <span class="play-icon">
+                    <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40ZM17.9412 28.0341L27.3529 21.9129C28.6601 21.0627 28.6601 18.9373 27.3529 18.0871L17.9412 11.9659C16.634 11.1157 15 12.1784 15 13.8788V26.1212C15 27.8216 16.634 28.8843 17.9412 28.0341Z" fill="white"></path></svg>
+                  </span>
+                </div>
+                {% endif %}
+                {% if block.settings.title != blank or block.settings.text != blank %}
+                <div class="about-text">
+                  {% if block.settings.title != blank %}
+                  <h3>{{ block.settings.title }}</h3>
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                  <div class="rte ge-text">
+                    {{ block.settings.text }}
+                  </div>
+                  {% endif %}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Home videos",
+    "settings": [
+	  
+	  {
+        "type": "text",
+        "id": "title",
+		"default": "Heading",
+        "label": "Title"
+      }
+    ],
+	"blocks": [
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+		  {
+            "type": "image_picker",
+            "id": "signature_image",
+            "label": "Signature image"
+          },
+		  {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+		  {
+            "type": "text",
+            "id": "title",
+            "default": "Heading",
+            "label": "Title"
+          },
+		  {
+            "type": "richtext",
+            "id": "text",
+            "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "label": "Text"
+          },
+		  {
+            "type": "url",
+            "id": "url",
+            "label": "Video link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home videos"
+      }
+    ]
+  }
+{% endschema %}

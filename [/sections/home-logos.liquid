@@ -1,0 +1,57 @@
+<section class="my-md-5 py-5 text-center handcraft-section">
+  <div class="container">
+    {% if section.settings.title != blank %}
+    <div class="section-header">
+      <h3>{{ section.settings.title }}</h3>
+    </div>
+    {% endif %}
+    {% if section.blocks.size > 0 %}
+    <div class="owl-carousel owl-2 owl-theme m-auto">
+      {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'logo' -%}
+        <div class="col item">
+          <div class="first-section-carousel">
+            <img class="owl-lazy" width="336" height="183" data-src="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}" /> 
+          </div>
+        </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+    {% endif %}
+    
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Home logos",
+    "settings": [
+	  
+	  {
+        "type": "text",
+        "id": "title",
+		"default": "Heading",
+        "label": "Title"
+      }
+    ],
+	"blocks": [
+      {
+        "type": "logo",
+        "name": "Logo",
+        "settings": [
+		  {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home logos"
+      }
+    ]
+  }
+{% endschema %}

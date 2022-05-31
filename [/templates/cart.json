@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "cart-items": {
+      "type": "main-cart-items",
+      "settings": {
+        "show_vendor": false
+      }
+    },
+    "cart-footer": {
+      "type": "main-cart-footer",
+      "blocks": {
+        "subtotal": {
+          "type": "subtotal",
+          "settings": {
+          }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "subtotal",
+        "buttons"
+      ],
+      "settings": {
+        "show_cart_note": false
+      }
+    },
+    "164057845534dc52e9": {
+      "type": "apps",
+      "blocks": {
+        "c00058fb-806b-49b1-bdef-6f5f26608bf3": {
+          "type": "shopify:\/\/apps\/mlv-auto-currency-switcher\/blocks\/mlveda-cart-note\/92ab730f-097e-4571-b27c-3f449e098ca3",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "c00058fb-806b-49b1-bdef-6f5f26608bf3"
+      ],
+      "settings": {
+        "include_margins": false
+      }
+    }
+  },
+  "order": [
+    "cart-items",
+    "cart-footer",
+    "164057845534dc52e9"
+  ]
+}

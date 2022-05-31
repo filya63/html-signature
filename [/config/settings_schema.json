@@ -1,0 +1,709 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Dawn",
+    "theme_version": "1.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https:\/\/shopify.dev\/themes\/tools\/dawn",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
+  },
+  {
+    "name": "t:settings_schema.colors.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.colors.settings.header__1.content"
+      },
+      {
+        "type": "color",
+        "id": "colors_solid_button_labels",
+        "default": "#FFFFFF",
+        "label": "t:settings_schema.colors.settings.colors_solid_button_labels.label",
+        "info": "t:settings_schema.colors.settings.colors_solid_button_labels.info"
+      },
+      {
+        "type": "color",
+        "id": "colors_accent_1",
+        "default": "#445958",
+        "label": "t:settings_schema.colors.settings.colors_accent_1.label",
+        "info": "t:settings_schema.colors.settings.colors_accent_1.info"
+      },
+      {
+        "type": "color",
+        "id": "colors_accent_2",
+        "default": "#9D572C",
+        "label": "t:settings_schema.colors.settings.colors_accent_2.label"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.colors.settings.header__2.content"
+      },
+      {
+        "type": "color",
+        "id": "colors_text",
+        "default": "#1A1B18",
+        "label": "t:settings_schema.colors.settings.colors_text.label",
+        "info": "t:settings_schema.colors.settings.colors_text.info"
+      },
+      {
+        "type": "color",
+        "id": "colors_outline_button_labels",
+        "default": "#445958",
+        "label": "t:settings_schema.colors.settings.colors_outline_button_labels.label",
+        "info": "t:settings_schema.colors.settings.colors_outline_button_labels.info"
+      },
+      {
+        "type": "color",
+        "id": "colors_background_1",
+        "default": "#FFFFFF",
+        "label": "t:settings_schema.colors.settings.colors_background_1.label"
+      },
+      {
+        "type": "color",
+        "id": "colors_background_2",
+        "default": "#FAF1E9",
+        "label": "t:settings_schema.colors.settings.colors_background_2.label"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.typography.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.header__1.content"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "default": "sans-serif",
+        "label": "t:settings_schema.typography.settings.type_header_font.label",
+        "info": "t:settings_schema.typography.settings.type_header_font.info"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.header__2.content"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "default": "sans-serif",
+        "label": "t:settings_schema.typography.settings.type_body_font.label",
+        "info": "t:settings_schema.typography.settings.type_body_font.info"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.styles.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.styles.settings.header__1.content"
+      },
+      {
+        "type": "select",
+        "id": "sale_badge_color_scheme",
+        "options": [
+          {
+            "value": "accent-1",
+            "label": "t:settings_schema.styles.settings.sale_badge_color_scheme.options__2.label"
+          },
+          {
+            "value": "accent-2",
+            "label": "t:settings_schema.styles.settings.sale_badge_color_scheme.options__3.label"
+          },
+          {
+            "value": "background-2",
+            "label": "t:settings_schema.styles.settings.sale_badge_color_scheme.options__1.label"
+          }
+        ],
+        "default": "accent-2",
+        "label": "t:settings_schema.styles.settings.sale_badge_color_scheme.label"
+      },
+      {
+        "type": "select",
+        "id": "sold_out_badge_color_scheme",
+        "options": [
+          {
+            "value": "background-1",
+            "label": "t:settings_schema.styles.settings.sold_out_badge_color_scheme.options__1.label"
+          },
+          {
+            "value": "inverse",
+            "label": "t:settings_schema.styles.settings.sold_out_badge_color_scheme.options__2.label"
+          }
+        ],
+        "default": "inverse",
+        "label": "t:settings_schema.styles.settings.sold_out_badge_color_scheme.label"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.styles.settings.header__2.content"
+      },
+      {
+        "type": "select",
+        "id": "accent_icons",
+        "options": [
+          {
+            "value": "accent-1",
+            "label": "t:settings_schema.styles.settings.accent_icons.options__1.label"
+          },
+          {
+            "value": "accent-2",
+            "label": "t:settings_schema.styles.settings.accent_icons.options__2.label"
+          },
+          {
+            "value": "outline-button",
+            "label": "t:settings_schema.styles.settings.accent_icons.options__3.label"
+          },
+          {
+            "value": "text",
+            "label": "t:settings_schema.styles.settings.accent_icons.options__4.label"
+          }
+        ],
+        "default": "text",
+        "label": "t:settings_schema.styles.settings.accent_icons.label"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.social-media.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.social-media.settings.header__1.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "default": true,
+        "label": "t:settings_schema.social-media.settings.share_facebook.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "default": true,
+        "label": "t:settings_schema.social-media.settings.share_twitter.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "default": true,
+        "label": "t:settings_schema.social-media.settings.share_pinterest.label"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.social-media.settings.header__2.content"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "t:settings_schema.social-media.settings.social_twitter_link.label",
+        "info": "t:settings_schema.social-media.settings.social_twitter_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "t:settings_schema.social-media.settings.social_facebook_link.label",
+        "info": "t:settings_schema.social-media.settings.social_facebook_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "t:settings_schema.social-media.settings.social_pinterest_link.label",
+        "info": "t:settings_schema.social-media.settings.social_pinterest_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "t:settings_schema.social-media.settings.social_instagram_link.label",
+        "info": "t:settings_schema.social-media.settings.social_instagram_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "t:settings_schema.social-media.settings.social_tiktok_link.label",
+        "info": "t:settings_schema.social-media.settings.social_tiktok_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "t:settings_schema.social-media.settings.social_tumblr_link.label",
+        "info": "t:settings_schema.social-media.settings.social_tumblr_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "t:settings_schema.social-media.settings.social_snapchat_link.label",
+        "info": "t:settings_schema.social-media.settings.social_snapchat_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "t:settings_schema.social-media.settings.social_youtube_link.label",
+        "info": "t:settings_schema.social-media.settings.social_youtube_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "t:settings_schema.social-media.settings.social_vimeo_link.label",
+        "info": "t:settings_schema.social-media.settings.social_vimeo_link.info"
+      }
+    ]
+  },
+  {
+    "name": {
+      "cs": "Favikona",
+      "da": "Favoritikon",
+      "de": "Favicon",
+      "en": "Favicon",
+      "es": "Favicon",
+      "fi": "Favicon",
+      "fr": "Favicon",
+      "it": "Favicon",
+      "ja": "ファビコン",
+      "ko": "Favicon",
+      "nb": "Favicon",
+      "nl": "Favicon",
+      "pl": "Ikona Favicon",
+      "pt-BR": "Favicon",
+      "pt-PT": "Favicon",
+      "sv": "Favicon",
+      "th": "Favicon",
+      "tr": "Favicon",
+      "vi": "Biểu tượng trang web",
+      "zh-CN": "网站图标",
+      "zh-TW": "Favicon"
+    },
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": {
+          "cs": "Obrázek favikony",
+          "da": "Billede for favoritikon",
+          "de": "Favicon-Foto",
+          "en": "Favicon image",
+          "es": "Imagen de favicon",
+          "fi": "Favicon-kuva",
+          "fr": "Image favicon",
+          "it": "Immagine favicon",
+          "ja": "ファビコン画像",
+          "ko": "파비콘 이미지",
+          "nb": "Favicon-bilde",
+          "nl": "Favicon-afbeelding",
+          "pl": "Obraz ikony Favicon",
+          "pt-BR": "Imagem favicon",
+          "pt-PT": "Imagem Favicon",
+          "sv": "Favicon-bild",
+          "th": "รูปภาพ Favicon",
+          "tr": "Favicon görseli",
+          "vi": "Hình ảnh biểu tượng trang web",
+          "zh-CN": "网站图标图片",
+          "zh-TW": "Favicon 圖片"
+        },
+        "info": {
+          "cs": "Dojde ke zmenšení na 32 × 32 px",
+          "da": "Skaleres ned til 32 x 32 px",
+          "de": "Wird in der Größe 32 x 32 px angezeigt",
+          "en": "Will be scaled down to 32 x 32px",
+          "es": "Se reducirá a 32 x 32px",
+          "fi": "Skaalataan 32 x 32 pikseliin",
+          "fr": "L'image sera réduite à 32 x 32 px",
+          "it": "Verrà ridimensionata a 32 x 32 pixel.",
+          "ja": "32×32ピクセルに縮小されます。",
+          "ko": "32x32 픽셀로 축소됩니다.",
+          "nb": "Vil skaleres ned til 32 x 32 px",
+          "nl": "Wordt verkleind tot 32x32 pixels",
+          "pl": "Zostanie zmniejszony do rozmiaru 32 x 32 px",
+          "pt-BR": "será reduzida para 32 x 32 pixels",
+          "pt-PT": "Será reduzida para 32 x 32 px",
+          "sv": "Kommer skalas ned till 32 x 32 px",
+          "th": "จะถูกลดขนาดลงเป็น 32 x 32 พิกเซล",
+          "tr": "Ölçeği 32 x 32 piksele düşürülür",
+          "vi": "Sẽ được thu nhỏ xuống 32 x 32px",
+          "zh-CN": "将缩小到 32 x 32px",
+          "zh-TW": "將會縮小為 32 x 32 像素"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Product Gallery",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Banner Details"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_img",
+        "label": "Banner Image"
+      },
+      {
+        "type": "text",
+        "id": "banner_title",
+        "label": "Banner Title"
+      },
+      {
+        "type": "richtext",
+        "id": "banner_desc",
+        "label": "Banner Description"
+      },
+      {
+        "type": "header",
+        "content": "Product Gallery"
+      },
+      {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Step Image 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "Step Image 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "image3",
+        "label": "Step Image 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "image4",
+        "label": "Step Image 4"
+      },
+      {
+        "type": "image_picker",
+        "id": "image5",
+        "label": "Step Image 5"
+      },
+      {
+        "type": "image_picker",
+        "id": "image6",
+        "label": "Step Image 6"
+      },
+      {
+        "type": "image_picker",
+        "id": "image7",
+        "label": "Step Image 7"
+      },
+      {
+        "type": "image_picker",
+        "id": "image8",
+        "label": "Step Image 8"
+      },
+      {
+        "type": "image_picker",
+        "id": "image9",
+        "label": "Step Image 9"
+      },
+      {
+        "type": "image_picker",
+        "id": "image10",
+        "label": "Step Image 10"
+      },
+      {
+        "type": "image_picker",
+        "id": "image11",
+        "label": "Step Image 11"
+      },
+      {
+        "type": "image_picker",
+        "id": "image12",
+        "label": "Step Image 12"
+      },
+      {
+        "type": "image_picker",
+        "id": "image13",
+        "label": "Step Image 13"
+      },
+      {
+        "type": "image_picker",
+        "id": "image14",
+        "label": "Step Image 14"
+      },
+      {
+        "type": "image_picker",
+        "id": "image15",
+        "label": "Step Image 15"
+      },
+      {
+        "type": "image_picker",
+        "id": "image16",
+        "label": "Step Image 16"
+      },
+      {
+        "type": "image_picker",
+        "id": "image17",
+        "label": "Step Image 17"
+      },
+      {
+        "type": "image_picker",
+        "id": "image18",
+        "label": "Step Image 18"
+      },
+      {
+        "type": "image_picker",
+        "id": "image19",
+        "label": "Step Image 19"
+      },
+      {
+        "type": "image_picker",
+        "id": "image20",
+        "label": "Step Image 20"
+      },
+      {
+        "type": "image_picker",
+        "id": "image21",
+        "label": "Step Image 21"
+      },
+      {
+        "type": "image_picker",
+        "id": "image22",
+        "label": "Step Image 22"
+      },
+      {
+        "type": "image_picker",
+        "id": "image23",
+        "label": "Step Image 23"
+      },
+      {
+        "type": "image_picker",
+        "id": "image24",
+        "label": "Step Image 24"
+      },
+      {
+        "type": "image_picker",
+        "id": "image25",
+        "label": "Step Image 25"
+      },
+      {
+        "type": "image_picker",
+        "id": "image26",
+        "label": "Step Image 26"
+      },
+      {
+        "type": "image_picker",
+        "id": "image27",
+        "label": "Step Image 27"
+      },
+      {
+        "type": "image_picker",
+        "id": "image28",
+        "label": "Step Image 28"
+      },
+      {
+        "type": "image_picker",
+        "id": "image29",
+        "label": "Step Image 29"
+      },
+      {
+        "type": "image_picker",
+        "id": "image30",
+        "label": "Step Image 30"
+      },
+      {
+        "type": "image_picker",
+        "id": "image31",
+        "label": "Step Image 31"
+      },
+      {
+        "type": "image_picker",
+        "id": "image32",
+        "label": "Step Image 32"
+      },
+      {
+        "type": "image_picker",
+        "id": "image33",
+        "label": "Step Image 33"
+      },
+      {
+        "type": "image_picker",
+        "id": "image34",
+        "label": "Step Image 34"
+      },
+      {
+        "type": "image_picker",
+        "id": "image35",
+        "label": "Step Image 35"
+      },
+      {
+        "type": "image_picker",
+        "id": "image36",
+        "label": "Step Image 36"
+      },
+      {
+        "type": "image_picker",
+        "id": "image37",
+        "label": "Step Image 37"
+      },
+      {
+        "type": "image_picker",
+        "id": "image38",
+        "label": "Step Image 38"
+      },
+      {
+        "type": "image_picker",
+        "id": "image39",
+        "label": "Step Image 39"
+      },
+      {
+        "type": "image_picker",
+        "id": "image40",
+        "label": "Step Image 40"
+      },
+      {
+        "type": "image_picker",
+        "id": "image41",
+        "label": "Step Image 41"
+      },
+      {
+        "type": "image_picker",
+        "id": "image42",
+        "label": "Step Image 42"
+      },
+      {
+        "type": "image_picker",
+        "id": "image43",
+        "label": "Step Image 43"
+      },
+      {
+        "type": "image_picker",
+        "id": "image44",
+        "label": "Step Image 44"
+      },
+      {
+        "type": "image_picker",
+        "id": "image45",
+        "label": "Step Image 45"
+      },
+      {
+        "type": "image_picker",
+        "id": "image46",
+        "label": "Step Image 46"
+      },
+      {
+        "type": "image_picker",
+        "id": "image47",
+        "label": "Step Image 47"
+      },
+      {
+        "type": "image_picker",
+        "id": "image48",
+        "label": "Step Image 48"
+      },
+      {
+        "type": "image_picker",
+        "id": "image49",
+        "label": "Step Image 49"
+      },
+      {
+        "type": "image_picker",
+        "id": "image50",
+        "label": "Step Image 50"
+      },
+      {
+        "type": "image_picker",
+        "id": "image51",
+        "label": "Step Image 51"
+      },
+      {
+        "type": "image_picker",
+        "id": "image52",
+        "label": "Step Image 52"
+      },
+      {
+        "type": "image_picker",
+        "id": "image53",
+        "label": "Step Image 53"
+      },
+      {
+        "type": "image_picker",
+        "id": "image54",
+        "label": "Step Image 54"
+      },
+      {
+        "type": "image_picker",
+        "id": "image55",
+        "label": "Step Image 55"
+      },
+      {
+        "type": "image_picker",
+        "id": "image56",
+        "label": "Step Image 56"
+      },
+      {
+        "type": "image_picker",
+        "id": "image57",
+        "label": "Step Image 57"
+      },
+      {
+        "type": "image_picker",
+        "id": "image58",
+        "label": "Step Image 58"
+      },
+      {
+        "type": "image_picker",
+        "id": "image59",
+        "label": "Step Image 59"
+      },
+      {
+        "type": "image_picker",
+        "id": "image60",
+        "label": "Step Image 60"
+      },
+      {
+        "type": "image_picker",
+        "id": "image61",
+        "label": "Step Image 61"
+      },
+      {
+        "type": "image_picker",
+        "id": "image62",
+        "label": "Step Image 62"
+      },
+      {
+        "type": "image_picker",
+        "id": "image63",
+        "label": "Step Image 63"
+      },
+      {
+        "type": "image_picker",
+        "id": "image64",
+        "label": "Step Image 64"
+      },
+      {
+        "type": "image_picker",
+        "id": "image65",
+        "label": "Step Image 65"
+      },
+      {
+        "type": "image_picker",
+        "id": "image66",
+        "label": "Step Image 66"
+      },
+      {
+        "type": "image_picker",
+        "id": "image67",
+        "label": "Step Image 67"
+      },
+      {
+        "type": "image_picker",
+        "id": "image68",
+        "label": "Step Image 68"
+      },
+      {
+        "type": "image_picker",
+        "id": "image69",
+        "label": "Step Image 69"
+      },
+      {
+        "type": "image_picker",
+        "id": "image70",
+        "label": "Step Image 70"
+      }
+    ]
+  }
+]

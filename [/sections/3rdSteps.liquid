@@ -1,0 +1,565 @@
+{% comment %}
+    <!-- Step 3 -->
+    <div class="step step-3 hide">
+      <!-- Input 1 -->
+      <div class="input-option form-row has-border row-small">
+        <div class="title-wrapper">
+          <h2>Where should we email your new custom <b>Uberlogo®‏‏‎ ‎</b> ?</h2>
+        </div>
+        <div class="input">
+          <input data-lpignore="true" class="input" id="input_email" type="email" placeholder="Type Your Email Address Here" required="" name="email" value="">
+          <div class="Input__error">
+            <div class="Error"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Input 2 -->
+      <div class="input-option form-row has-border pt-40 row-small">
+        <div class="title-wrapper">
+          <h2>What's your Phone number</h2>
+          <h4>(Optional, used for SMS updates on your signature)</h4>
+        </div>
+        <div class="input">
+          <input data-lpignore="true" class="input" id="input_phone" type="tel" placeholder="Type Your Phone Number Here" required="" name="phone" value="" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+          <div class="Input__error">
+            <div class="Error"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Membership plans -->
+      <div class="form-row pt-40 row-small">
+        <div class="title-wrapper">
+          <h2>Choose your <b>Artlogo®</b> Artist</h2>
+        </div>
+        <div class="membership-wrapper">
+          <div class="membership-item">
+            <div class="membership-block">
+              <input tabindex="0" type="radio" name="delivery" id="delivery-designer" data-price="$39.99" value="designer">
+              <label class="delivery-selector-option-label " for="delivery-designer">
+                <div class="delivery-selector-option-label-main">
+                  <div class="delivery-selector-option-label-main-title">
+                    <h2>DESIGNER</h2>
+                  </div>
+                  <div class="delivery-selector-option-label-main-price">$39.99</div>
+                </div>
+                <div class="delivery-selector-option-label-seprator"></div>
+                <div class="delivery-selector-option-label-features">
+                  <div class="delivery-selector-option-label-features-feature">
+                    <i class="fa fa-check icon"></i>
+                    <span class="text">Professional calligraphers that will get you a logo you love.</span>
+                  </div>
+                </div>
+                <div class="delivery-selector-label-stock">
+                  <div class="delivery-selector-label-stock-bar">
+                    <div class="delivery-selector-option-label-stock-bar-fill" style="width: 75%; background-color: rgb(233, 198, 109);"></div>
+                  </div>
+                  <div class="delivery-selector-stock-text">75 Logos Left</div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="membership-item">
+            <div class="membership-block">
+              <input tabindex="0" type="radio" name="delivery" id="delivery-experienced-designer" checked data-price="$49.99" value="experienced-designer">
+              <label class="delivery-selector-option-label" for="delivery-experienced-designer">
+                <div class="delivery-selector-option-label-badge delivery-selector-option-label-badge-green">MOST POPULAR</div>
+                <div class="delivery-selector-option-label-main">
+                  <div class="delivery-selector-option-label-main-title">EXPERIENCED DESIGNER</div>
+                  <div class="delivery-selector-option-label-main-price">$49.99</div>
+                </div>
+                <div class="delivery-selector-option-label-seprator"></div>
+                <div class="delivery-selector-option-label-features">
+                  <div class="delivery-selector-option-label-features-feature">
+                    <i class="fa fa-check icon"></i>
+                    <span class="text">Prized calligraphers who are among the best in the industry, skilled in a wide range of styles - and turn your dream logo into reality.</span>
+                  </div>
+                </div>
+                <div class="delivery-selector-label-stock">
+                  <div class="delivery-selector-label-stock-bar">
+                    <div class="delivery-selector-option-label-stock-bar-fill" style="width: 75%; background-color: rgb(233, 198, 109);"></div>
+                  </div>
+                  <div class="delivery-selector-stock-text">Logos Left</div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="membership-item">
+            <div class="membership-block">
+              <input tabindex="0" type="radio" name="delivery" id="delivery-head-designer" data-price="$79.99" value="head-designer">
+              <label class="delivery-selector-option-label" for="delivery-head-designer">
+                <div class="delivery-selector-option-label-main">
+                  <div class="delivery-selector-option-label-main-title ">HEAD DESIGNER</div>
+                  <div class="delivery-selector-option-label-main-price">$79.99</div>
+                </div>
+                <div class="delivery-selector-option-label-seprator"></div>
+                <div class="delivery-selector-option-label-features">
+                  <div class="delivery-selector-option-label-features-feature">
+                    <i class="fa fa-check icon"></i>
+                    <span class="text">Work with the best and most experienced artist in our studio, the master calligrapher who created brands for the world’s top professionals</span>
+                  </div>
+                </div>
+                <div class="delivery-selector-label-stock">
+                  <div class="delivery-selector-label-stock-bar">
+                    <div class="delivery-selector-option-label-stock-bar-fill" style="width: 75%; background-color: rgb(233, 198, 109);"></div>
+                  </div>
+                  <div class="delivery-selector-stock-text">86 Logos Left</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Radio with popup -->
+      <div class="has-border radio-popup row-small">
+        <label class="Label Label-small  ">
+          <div class="Label-sub">Popular:</div>
+          <div class="Label-text">
+            <span>Do you want to add a Branding Expert to advise your Designer?</span> 
+            <span>Recommended if you’re going to use your signature as logo</span>
+          </div>
+        </label>
+        <div class="radio-wrapper">
+          <div class="radio-options">
+            <div class="radio-options-option">
+              <input class="radio-options-option-input" type="radio" name="head" id="head_undefined" data-price="+$28.99" value="">
+              <label class="radio-options-option-label" for="head_undefined" id="label_head_undefined">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>Yes, Upgrade Me!</span>
+                  <span class="radio-options-option-label-text-price">(+$28.99)</span>
+                </div>
+              </label>
+            </div>
+            <div class="radio-options-option ">
+              <input class="radio-options-option-input" type="radio" name="head" id="head_false" data-price="+$0" value="false">
+              <label class="radio-options-option-label" for="head_false" id="label_head_false">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>No</span>
+                  <span class="radio-options-option-label-text-price">(+$0)</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="radio-help" type="button" data-bs-toggle="modal" data-bs-target="#whats-the-difference">What's the difference?</div>
+        </div>
+      </div>
+      <!-- Radio with popup -->
+      <div class="has-border radio-popup row-small">
+        <label class="Label Label-small  ">
+          <div class="Label-sub">EXTRA OPTION:</div>
+          <div class="Label-text">
+            <span>Would you like the .ai source file?</span> 
+            <span>Recommended if you’re going to use your signature as logo</span>
+          </div>
+        </label>
+        <div class="radio-wrapper">
+          <div class="radio-options">
+            <div class="radio-options-option">
+              <input class="radio-options-option-input" type="radio" name="source" id="source_true" data-price="+$22.99" value="true" checked>
+              <label class="radio-options-option-label" for="head_undefined" id="label_head_undefined">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>Yes</span>
+                  <span class="radio-options-option-label-text-price">(+$22.99)</span>
+                </div>
+              </label>
+            </div>
+            <div class="radio-options-option ">
+              <input class="radio-options-option-input" type="radio" name="source" id="source_false" data-price="+$0" value="false">
+              <label class="radio-options-option-label" for="source_false" id="label_source_false">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>No, delete it</span>
+                  <span class="radio-options-option-label-text-price">(+$0)</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="radio-help" type="button" data-bs-toggle="modal" data-bs-target="#What-is-source-file">What is a .ai source file?</div>
+        </div>
+      </div>
+      <!-- Radio with popup -->
+      <div class="has-border radio-popup row-small">
+        <label class="Label Label-small">
+          <div class="Label-text">
+            <span>Include a customizable Photologo Email Signature in your order?</span> 
+          </div>
+        </label>
+        <div class="radio-wrapper">
+          <div class="radio-options">
+            <div class="radio-options-option">
+              <input class="radio-options-option-input" type="radio" name="club" id="club_true" data-price="+$39.99" value="true" checked>
+              <label class="radio-options-option-label" for="club_true" id="label_club_true">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>Yes</span>
+                  <span class="radio-options-option-label-text-price">(+$39.99)</span>
+                </div>
+              </label>
+            </div>
+            <div class="radio-options-option ">
+              <input class="radio-options-option-input" type="radio" name="club" id="club_false" data-price="+$0" value="false">
+              <label class="radio-options-option-label" for="club_false" id="label_club_false">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>No</span>
+                  <span class="radio-options-option-label-text-price">(+$0)</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="radio-help" type="button" data-bs-toggle="modal" data-bs-target="#What-is-the-Photologo-Smart-Email-Signature">What is the Photologo Smart Email Signature?</div>
+        </div>
+      </div>
+      <!-- Radio with popup -->
+      <div class="has-border radio-popup row-small">
+        <label class="Label Label-small">
+          <div class="Label-sub">NEW</div>
+          <div class="Label-text">
+            <span>Want a really cool stylish video intro made with your new logo?</span> 
+          </div>
+        </label>
+        <div class="radio-wrapper">
+          <div class="radio-options">
+            <div class="radio-options-option">
+              <input class="radio-options-option-input" type="radio" name="kinetic" id="kinetic_true" data-price="+$54.99" value="true" checked>
+              <label class="radio-options-option-label" for="kinetic_true" id="label_kinetic_true">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>Yes</span>
+                  <span class="radio-options-option-label-text-price">(+$54.99)</span>
+                </div>
+              </label>
+            </div>
+            <div class="radio-options-option ">
+              <input class="radio-options-option-input" type="radio" name="kinetic" id="kinetic_false" data-price="+$0" value="false">
+              <label class="radio-options-option-label" for="kinetic_false" id="label_kinetic_false">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>No</span>
+                  <span class="radio-options-option-label-text-price">(+$0)</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="radio-help" type="button" data-bs-toggle="modal" data-bs-target="#Click-here-and-watch-a-sample">Click here and watch a sample</div>
+        </div>
+      </div>
+      <!-- Radio with popup -->
+      <div class="has-border radio-popup row-small">
+        <label class="Label Label-small">
+          <div class="Label-sub">NEW</div>
+          <div class="Label-text">
+            <span>Want to level up your social media with a customizable Social Media Profile Kit?</span> 
+          </div>
+        </label>
+        <div class="radio-wrapper">
+          <div class="radio-options">
+            <div class="radio-options-option">
+              <input class="radio-options-option-input" type="radio" name="profile" id="profile_true" data-price="+$34.99" value="true" checked>
+              <label class="radio-options-option-label" for="profile_true" id="label_profile_true">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>Yes</span>
+                  <span class="radio-options-option-label-text-price">(+$34.99)</span>
+                </div>
+              </label>
+            </div>
+            <div class="radio-options-option ">
+              <input class="radio-options-option-input" type="radio" name="profile" id="profile_false" data-price="+$0" value="false">
+              <label class="radio-options-option-label" for="profile_false" id="label_profile_false">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>No</span>
+                  <span class="radio-options-option-label-text-price">(+$0)</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="radio-help" type="button" data-bs-toggle="modal" data-bs-target="#What-included-in-the-social-media-kit">What's included in the Social Media Kit?</div>
+        </div>
+      </div>
+      <!-- Radio with popup -->
+      <div class="has-border radio-popup row-small">
+        <label class="Label Label-small">
+          <div class="Label-sub">NEW</div>
+          <div class="Label-text">
+            <span>Want some high impact business card templates to go with your Photologo?</span> 
+          </div>
+        </label>
+        <div class="radio-wrapper">
+          <div class="radio-options">
+            <div class="radio-options-option">
+              <input class="radio-options-option-input" type="radio" name="business_template" id="business_template_true" data-price="+$29.99" value="true" checked>
+              <label class="radio-options-option-label" for="profile_true" id="label_profile_true">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>Yes</span>
+                  <span class="radio-options-option-label-text-price">(+$29.99)</span>
+                </div>
+              </label>
+            </div>
+            <div class="radio-options-option ">
+              <input class="radio-options-option-input" type="radio" name="business_template" id="business_template_false" data-price="+$0" value="false">
+              <label class="radio-options-option-label" for="profile_false" id="label_profile_false">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>No</span>
+                  <span class="radio-options-option-label-text-price">(+$0)</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="radio-help" type="button" data-bs-toggle="modal" data-bs-target="#what-are-the-phot-logo-business-card-templates">What are the Photologo Business Card Templates?</div>
+        </div>
+      </div>
+      <!-- Radio with popup -->
+      <div class="has-border radio-popup row-small">
+        <label class="Label Label-small">
+          <div class="Label-sub">NEW</div>
+          <div class="Label-text">
+            <span>Want to wow your clients with a virtual business card with QR code?</span>
+            <span>Recommended if you’re going to use your signature as logo</span> 
+          </div>
+        </label>
+        <div class="radio-wrapper">
+          <div class="radio-options">
+            <div class="radio-options-option">
+              <input class="radio-options-option-input" type="radio" name="qr_code_2" id="qr_code_2_true" data-price="+$39.99" value="true" checked>
+              <label class="radio-options-option-label" for="qr_code_2_true" id="label_qr_code_2_true">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>Yes, Upgrade Me!</span>
+                  <span class="radio-options-option-label-text-price">(+$39.99)</span>
+                </div>
+              </label>
+            </div>
+            <div class="radio-options-option ">
+              <input class="radio-options-option-input" type="radio" name="qr_code_2" id="qr_code_2_false" data-price="+$0" value="false">
+              <label class="radio-options-option-label" for="profile_false" id="label_profile_false">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>No</span>
+                  <span class="radio-options-option-label-text-price">(+$0)</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="radio-help" type="button" data-bs-toggle="modal" data-bs-target="#Check-out-the-business-card-with-QR-code">Check out the business card with QR code</div>
+        </div>
+      </div>
+      <!-- Radio with popup -->
+      <div class="has-border radio-popup row-small">
+        <label class="Label Label-small">
+          <div class="Label-sub">NEW</div>
+          <div class="Label-text">
+            <span>Want to get a copy of your logo in all the major file formats, ready for any use?</span>
+            <span>Recommended if you’re going to use your signature as logo</span> 
+          </div>
+        </label>
+        <div class="radio-wrapper">
+          <div class="radio-options">
+            <div class="radio-options-option">
+              <input class="radio-options-option-input" type="radio" name="purpose_logopack" id="purpose_logopack_true" data-price="+$39.99" value="true" checked>
+              <label class="radio-options-option-label" for="purpose_logopack_true" id="label_purpose_logopack_true">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>Yes</span>
+                  <span class="radio-options-option-label-text-price">(+$39.99)</span>
+                </div>
+              </label>
+            </div>
+            <div class="radio-options-option ">
+              <input class="radio-options-option-input" type="radio" name="purpose_logopack" id="purpose_logopack_false" data-price="+$0" value="false">
+              <label class="radio-options-option-label" for="purpose_logopack_false" id="label_purpose_logopack_false">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>No</span>
+                  <span class="radio-options-option-label-text-price">(+$0)</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="radio-help" type="button" data-bs-toggle="modal" data-bs-target="#More-about-the-All-Purpose-Logo-Pack">More about the All Purpose Logo Pack</div>
+        </div>
+      </div>
+      <!-- Radio with popup -->
+      <div class="has-border radio-popup row-small">
+        <label class="Label Label-small">
+          <div class="Label-text">
+            <span>How soon would you like to receive your logo?</span>
+          </div>
+        </label>
+        <div class="radio-wrapper">
+          <div class="radio-options">
+            <div class="radio-options-option">
+              <input class="radio-options-option-input" type="radio" name="delivery_days" id="delivery_days_photologo-slow" data-price="FREE" value="photologo-slow" checked>
+              <label class="radio-options-option-label" for="delivery_days_photologo-slow" id="label_delivery_days_photologo-slow">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>7 Days</span>
+                  <span class="radio-options-option-label-text-price">(FREE)</span>
+                </div>
+                <div class="radio-options-option-label-spots">(<span>Fri September 10</span>)</div>
+              </label>
+            </div>
+            <div class="radio-options-option ">
+              <input class="radio-options-option-input" type="radio" name="delivery_days" id="delivery_days_photologo-regular" data-price="+$5.99" value="photologo-regular">
+              <label class="radio-options-option-label" for="delivery_days_photologo-regular" id="label_delivery_days_photologo-regular">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>3 Days</span>
+                  <span class="radio-options-option-label-text-price">(+$5.99)</span>
+                </div>
+                <div class="radio-options-option-label-spots">(<span>Thu September 2</span>)</div>
+              </label>
+            </div>
+            <div class="radio-options-option ">
+              <input disabled class="radio-options-option-input" type="radio" name="delivery_days" id="delivery_days_photologo-express" data-price="+$11.99" value="photologo-express">
+              <label class="radio-options-option-label" for="delivery_days_photologo-express" id="label_delivery_days_photologo-express">
+                <div class="radio-options-option-label-radio"></div>
+                <div class="radio-options-option-label-text">
+                  <span>2 Days</span>
+                  <span class="radio-options-option-label-text-price">(+$11.99)</span>
+                </div>
+                <div class="radio-options-option-label-spots">(<span>Wed September 1</span>)</div>
+              </label>
+            </div>
+          </div>
+          <div class="radio-subtext">We deliver Monday to Friday</div>
+          <div class="radio-help" type="button" data-bs-toggle="modal" data-bs-target="#How-is-delivery-calculated">How is delivery calculated?</div>
+        </div>
+      </div>
+      <!-- Offer Section -->
+      <div class="uberlogo-offer-section" style="background-image: url(https://cdn.shopify.com/s/files/1/0594/4639/5086/files/offer-banner-section.png);">
+        <div class="container">
+          <div class="offer-wrapper">
+            <div class="left-part">
+              <div class="offer-heading-logo">
+                <h4>Uberlogo</h4>
+              </div>
+              <h2 class="offer-heading-title">CEO All-inclusive Pack</h2>
+              <p class="offer-heading-description">Be the most <b>important Photologo</b> in our design queue today with the <b>exclusive CEO All - inclusive pack.</b></p>
+              <h3 class="offer-heading-spots">Only 1 spots left today!</h3>
+              <div class="offer-heading-reviews">
+                <div class="offer-heading-reviews-stars">
+                  <svg width="124" height="21" viewBox="0 0 124 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.509 0l2.718 8.025h8.791l-7.114 4.95L18.623 21l-7.113-4.95L4.395 21l2.718-8.025L0 8.025h8.791L11.509 0zM36.755 0l2.718 8.025h8.79l-7.113 4.95L43.868 21l-7.113-4.95L29.64 21l2.718-8.025-7.113-4.95h8.79L36.756 0zM62 0l2.718 8.025h8.79l-7.112 4.95L69.112 21 62 16.05 54.886 21l2.718-8.025-7.113-4.95h8.791L62 0zM87.246 0l2.718 8.025h8.79l-7.113 4.95L94.359 21l-7.113-4.95L80.132 21l2.718-8.025-7.113-4.95h8.79L87.247 0zM112.491 0l2.718 8.025H124l-7.114 4.95L119.604 21l-7.113-4.95-7.114 4.95 2.718-8.025-7.113-4.95h8.791L112.491 0z" fill="#FDE9AA"></path></svg>
+                </div>
+                <div class="offer-heading-reviews-text">Over 2000+ Reviews</div>
+              </div>
+            </div>
+            <div class="right-part">
+              <ul class="offer-heading-list">
+                <li><i class="fa fa-check"></i> <span>3 Unique Photologo Designs</span> </li>
+                <li><i class="fa fa-check"></i> <span>Made by our Head Designer</span> </li>
+                <li><i class="fa fa-check"></i> <span>5 Revisions in your order included</span> </li>
+                <li><i class="fa fa-check"></i> <span>VIP Priority Support</span> </li>
+                <li><i class="fa fa-check"></i> <span>VIP 5 </span> <span>Business Days Delivery</span> </li>
+                <li><i class="fa fa-check"></i> <span>All the Source Files Included</span> </li>
+                <li><i class="fa fa-check"></i> <span>Unlimited Color Choices</span> </li>
+              </ul>
+              <div class="offer-heading-learn" type="button" data-bs-toggle="modal" data-bs-target="#pack-learn-more">Learn More</div>
+            </div>
+            <div class="bottom-part">
+              <div class="wrapper">
+                <div class="offer-content-price">
+                  <span class="offer-content-price-md">ALL INCLUSIVE FOR ONLY</span> 
+                  <span class="offer-content-price-sm">Only</span> 
+                  <span class="offer-content-price-price">$199.99</span> 
+                  <div class="offer-content-price-worth">(<span>Worth</span> <span>$299.99</span>)</div>
+                </div>
+                <div class="offer-content-delivery">
+                  <div class="offer-content-delivery-est">(EST Delivery: Mon September 6)</div>
+                  <div class="offer-content-delivery-message">We deliver Monday to Friday</div>
+                </div>
+                <div class="offer-content-radio">
+                  <div class="radio radio-gold">
+                    <div class="radio-options">
+                      <div class="radio-options-option ">
+                        <input class="radio-options-option-input" type="radio" name="vip-offer" id="vip-offer_true" data-price="$199.99" value="true">
+                        <label class="radio-options-option-label" for="vip-offer_true" id="label_vip-offer_true">
+                          <div class="radio-options-option-label-radio"></div>
+                          <div class="radio-options-option-label-text">
+                            <span>Yes</span>
+                            <span class="radio-options-option-label-text-price">($199.99)</span>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="radio-options-option">
+                        <input class="radio-options-option-input" type="radio" name="vip-offer" id="vip-offer_false" data-price="$0" value="false">
+                        <label class="radio-options-option-label" for="vip-offer_false" id="label_vip-offer_false">
+                          <div class="radio-options-option-label-radio"></div>
+                          <div class="radio-options-option-label-text">
+                            <span>No</span><span class="radio-options-option-label-text-price">($0)</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="offer-content-popup" type="button" data-bs-toggle="modal" data-bs-target="#How-is-delivery-calculated">How is delivery calculated?</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Accept Agreements -->
+      <div class="accept-agreements-option row-small">
+        <div class="checkbox">
+          <input required="" class="checkbox-input" type="checkbox" name="terms" id="terms">
+          <label class="checkbox-checkbox" for="terms">
+            <svg class="checkbox-checkbox-checked" viewBox="0 0 30 30"><polyline points="3.7,20 10.1,25.9 26,3.6 "></polyline></svg>
+          </label>
+          <div class="checkbox-text">
+            <span>I accept and agree to the</span> <a>Terms and Conditions</a></span>
+        </div>
+      </div>
+      <!-- gift section -->
+      <div class="gift-option form-row row-small">
+        <div class="payment-button">
+          <div class="payment-button-notification">
+            <div class="payment-button-notification-bar">
+              <div class="payment-button-notification-bar-fill-container">
+                <div class="payment-button-notification-bar-fill-container-fill"></div>
+                <div class="payment-button-notification-bar-fill-container-text">
+                  <span>Your exclusive gift from Uberlogo </span><img draggable="false" role="img" class="emoji" alt="🤩" src="https://s.w.org/images/core/emoji/13.1.0/svg/1f929.svg">
+                </div>
+              </div>
+              <div class="payment-button-notification-popup" type="button" data-bs-toggle="modal" data-bs-target="#What-is-the-Uberlogo-Branding-Workbook"> What is the Uberlogo Branding Workbook? </div>
+            </div>
+          </div>
+          <button tabindex="0" type="button" class="button-payment">
+            <div class="main">
+              <i class="fa fa-credit-card active"></i>
+              <div>
+                <span>Order Uberlogo® for</span> 
+                <span>$348.91</span>
+              </div>
+            </div>
+          </button>
+          <div class="payment-button-subtext">All Prices Are in USD</div>
+          <div class="payment-button-methods"></div>
+        </div>
+      </div>
+      <!-- Step Buttons -->
+      <div class="step-buttons-wrapper row-small">
+        <button tabindex="-1" type="button" class="step-btn-back">BACK</button>
+      </div>
+    </div>
+
+</div>
+    {% endcomment %}
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
