@@ -738,6 +738,7 @@
       handleCredentialResponse(response) {
         gapi.client.setApiKey( 'AIzaSyBR0osgIQVY4kT2-doTogOtMkjEY7tTNoE' );
         const token = gapi.client.getToken();
+        console.log('Token:', token)
         gapi.client.setToken( token );
 
         // API KEY AIzaSyBR0osgIQVY4kT2-doTogOtMkjEY7tTNoE
@@ -746,12 +747,12 @@
         console.log(user);
       	const signature = this.$refs.signature.innerHTML;
 
-      	fetch(`https://gmail.googleapis.com/gmail/v1/users/${user.sub}/settings/sendAs/${user.email}`, {
+      	fetch(`https://gmail.googleapis.com/gmail/v1/users/${user.sub}/settings/sendAs/${user.email}?access_token=${token}`, {
         	method: 'PUT',
             contentType: "application/json",
-            headers: {
-            	'Authorization': 'Bearer ' + token,
-            },
+            // headers: {
+            // 	'Authorization': 'Bearer ' + token,
+            // },
             body: JSON.stringify({
             	signature,
             }),
@@ -759,12 +760,17 @@
   	  },
 
       handleCredentialRequest() {
-      	google.accounts.id.initialize({
+      	gapi.auth.authorize({
         client_id:
             '841400562900-oo7irmg1v2hjhu6uhs3in3tfn59epbqr.apps.googleusercontent.com',
-            callback: this.handleCredentialResponse,
-        })
-        google.accounts.id.prompt();
+            'scope': 'https://www.googleapis.com/auth/gmail.settings.basic'
+        }, this.handleCredentialResponse)
+      	// google.accounts.id.initialize({
+        // client_id:
+        //     '841400562900-oo7irmg1v2hjhu6uhs3in3tfn59epbqr.apps.googleusercontent.com',
+        //     callback: this.handleCredentialResponse,
+        // })
+        // google.accounts.id.prompt();
       },
 
       parseJwt(token) {
