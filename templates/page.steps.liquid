@@ -662,9 +662,25 @@
             </button>
             <div class="preview-pane-buttons-config-install">
               <span class="preview-pane-buttons-config-install__title">Install:</span>
-              <img id="g_id_onload" @click="handleAuthClick" data-auto_prompt="false" src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/gmail.svg" alt="gmail-icon" class="preview-pane-buttons-config-install__item" />
-              <img src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/outlook.svg" alt="outlook-icon" class="preview-pane-buttons-config-install__item" />
-              <img src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/apple.svg" alt="apple-icon" class="preview-pane-buttons-config-install__item" />
+              <img
+                id="g_id_onload"
+                @click="handleCredentialRequest"
+                data-auto_prompt="false"
+                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/gmail.svg"
+                alt="gmail-icon"
+                class="preview-pane-buttons-config-install__item"
+              />
+              <img
+                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/outlook.svg"
+                alt="outlook-icon"
+                class="preview-pane-buttons-config-install__item"
+              />
+              <img
+                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/apple.svg"
+                alt="apple-icon"
+                class="preview-pane-buttons-config-install__item"
+              />
+            </div>
             </div>
           </div>
         </div>
@@ -675,10 +691,6 @@
 
 <script type="module">
   import { createApp } from 'vue';
-
-  let tokenClient;
-  let gapiInited = false;
-  let gisInited = false;
 
   const htmlSignature = {
     data() {
@@ -722,51 +734,43 @@
       };
     },
 
-    mounted () {
-      gapi.load('client', this.intializeGapiClient);
-      this.tokenClient = google.accounts.oauth2.initTokenClient({
-        client_id: '841400562900-oo7irmg1v2hjhu6uhs3in3tfn59epbqr.apps.googleusercontent.com',
-        scope: 'https://www.googleapis.com/auth/gmail.settings.basic',
-        callback: '', // defined later
-      });
-      this.gisInited = true;
-    },
-
     methods: {
-      async intializeGapiClient() {
-         await gapi.client.init({
-            apiKey: 'AIzaSyBR0osgIQVY4kT2-doTogOtMkjEY7tTNoE',
-            discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest'],
-         });
-         this.gapiInited = true;
-      },
+      handleCredentialResponse(response) {
+        gapi.client.setApiKey( 'AIzaSyBR0osgIQVY4kT2-doTogOtMkjEY7tTNoE' );
+        const token = gapi.client.getToken();
+        console.log('Token:', token)
+        gapi.client.setToken( token );
 
-      handleAuthClick() {
-        this.tokenClient.callback = async (resp) => {
-          if (resp.error !== undefined) {
-            throw (resp);
-          }
-          await this.setSignature();
-        };
+        // API KEY AIzaSyBR0osgIQVY4kT2-doTogOtMkjEY7tTNoE
 
-        if (gapi.client.getToken() === null) {
-          // Prompt the user to select a Google Account and ask for consent to share their data
-          // when establishing a new session.
-          this.tokenClient.requestAccessToken({prompt: 'consent'});
-        } else {
-          // Skip display of account chooser and consent dialog for an existing session.
-          this.tokenClient.requestAccessToken({prompt: ''});
-        }
-      },
+      	const user = this.parseJwt(response.credential);
+        console.log(user);
+      	const signature = this.$refs.signature.innerHTML;
 
-      async setSignature() {
-        let aliases = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
-        let firstAlias = aliases.result.sendAs[0].sendAsEmail; // returns the first user's alias
-        let response = await gapi.client.gmail.users.settings.sendAs.update({
-          'userId': 'me',
-          'sendAsEmail': firstAlias,
-          'signature': this.$refs.signature.innerHTML,
+      	fetch(`https://gmail.googleapis.com/gmail/v1/users/${user.sub}/settings/sendAs/${user.email}?access_token=${token}`, {
+        	method: 'PUT',
+            contentType: "application/json",
+            // headers: {
+            // 	'Authorization': 'Bearer ' + token,
+            // },
+            body: JSON.stringify({
+            	signature,
+            }),
         });
+  	  },
+
+      handleCredentialRequest() {
+      	gapi.auth.authorize({
+        client_id:
+            '841400562900-oo7irmg1v2hjhu6uhs3in3tfn59epbqr.apps.googleusercontent.com',
+            'scope': 'https://www.googleapis.com/auth/gmail.settings.basic'
+        }, this.handleCredentialResponse)
+      	// google.accounts.id.initialize({
+        // client_id:
+        //     '841400562900-oo7irmg1v2hjhu6uhs3in3tfn59epbqr.apps.googleusercontent.com',
+        //     callback: this.handleCredentialResponse,
+        // })
+        // google.accounts.id.prompt();
       },
 
       parseJwt(token) {
