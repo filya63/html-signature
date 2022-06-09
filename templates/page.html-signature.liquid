@@ -1,37 +1,1786 @@
-<script type="module">
-  import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
-</script>
-
 {% raw %}
   <div id="html-signature">
-    <div>
-      <h1>HTML-SIGNATURE</h1>
-      <span v-html="counter">{{ counter }} ${ counter } {% counter %} {{% counter %}}</span>
-      	${ message }
-    	{{ message }}
-      <button @click="add">Добавить один</button>
-    </div>
+    <main>
+      <div class="editor">
+        <div class="tabs">
+          <div
+              class="tabs__item"
+              v-for="( tab, index ) in tabs"
+              :class="{active: tab === activeTab}"
+              :key="index + tab"
+              @click="clickTab( index )"
+          >
+              <span>{{ tab }}</span>
+          </div>
+        </div>
+        <div class="editor-settings">
+          <div v-if="activeTab === 'Details'">
+            <h3>SIGNATURE DETAILS</h3>
+            <div class="details">
+              <div class="details-fields">
+                <div class="details-fields__item">
+                  <label class="details-fields__item-label">Name</label>
+                  <input class="details-fields__item-input" v-model="name" />
+                </div>
+                <div class="details-fields__item">
+                  <label class="details-fields__item-label">Title</label>
+                  <input class="details-fields__item-input" v-model="title"/>
+                </div>
+                <div class="details-fields__item">
+                  <label class="details-fields__item-label">Company</label>
+                  <input class="details-fields__item-input" v-model="company"/>
+                </div>
+                <div class="details-fields__item">
+                  <label class="details-fields__item-label">Phone</label>
+                  <input
+                    class="details-fields__item-input"
+                    v-model="phone"
+                  />
+                </div>
+                <div class="details-fields__item">
+                  <label class="details-fields__item-label">Website</label>
+                  <input class="details-fields__item-input" v-model="website"/>
+                </div>
+                <div class="details-fields__item">
+                  <label class="details-fields__item-label">Email</label>
+                  <input class="details-fields__item-input" v-model="email"/>
+                </div>
+              </div>
+              <div class="details-images">
+                <div class="details-images__box">
+                  <label class="details-images__box-label" for="file">Upload image</label>
+                  <input
+                    @change="saveFile"
+                    accept="image/jpeg, image/png"
+                    class="details-images__box-input"
+                    id="file"
+                    type="file"
+                  />
+                </div>
+                <button class="details-images__btn" v-if="isShowRemoveImage" @click="removeImage">Remove image</button>
+              </div>
+            </div>
+          </div>
+          <div v-if="activeTab === 'Social'">
+            <h3>SOCIAL PROFILES</h3>
+            <div class="socials">
+              <div class="socials__item">
+                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/facebook.jpeg?v=1654241332" class="socials__item-icon" />
+                <div class="socials__item-field">
+                  <label class="socials__item-field_label">facebook.com/&lt;username&gt;</label>
+                  <input type="text" class="socials__item-field_input" v-model="facebook">
+                </div>
+              </div>
+              <div class="socials__item">
+                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/instagram.jpeg?v=1654241524" class="socials__item-icon" />
+                <div class="socials__item-field">
+                  <label class="socials__item-field_label">instagram.com/&lt;username&gt;</label>
+                  <input type="text" class="socials__item-field_input" v-model="instagram">
+                </div>
+              </div>
+              <div class="socials__item">
+                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/linkedin.jpeg?v=1650184128" class="socials__item-icon" />
+                <div class="socials__item-field">
+                  <label class="socials__item-field_label">linkedin.com/in/&lt;username&gt;</label>
+                  <input type="text" class="socials__item-field_input" v-model="linkedin">
+                </div>
+              </div>
+              <div class="socials__item">
+                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/twitter.jpeg?v=1654241532" class="socials__item-icon" />
+                <div class="socials__item-field">
+                  <label class="socials__item-field_label">twitter.com/&lt;username&gt;</label>
+                  <input type="text" class="socials__item-field_input" v-model="twitter">
+                </div>
+              </div>
+              <div class="socials__item">
+                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/youtube.jpeg?v=1650184967" class="socials__item-icon" />
+                <div class="socials__item-field">
+                  <label class="socials__item-field_label">youtube.com/&lt;username&gt;</label>
+                  <input type="text" class="socials__item-field_input" v-model="youtube">
+                </div>
+              </div>
+              <div class="socials__item">
+                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/pinterest.jpeg?v=1650184886" class="socials__item-icon" />
+                <div class="socials__item-field">
+                  <label class="socials__item-field_label">pinterest.com/&lt;username&gt;</label>
+                  <input type="text" class="socials__item-field_input" v-model="pinterest">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-if="activeTab === 'Templates'">
+            <h4>FREE TEMPLATES</h4>
+            <div class="templates">
+              <button
+                @click="changeTemplates('classic')"
+                class="templates__item"
+                :class="{ activeTemplate: isClassicTemplate }"
+              >
+                <img class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/classic_v2.svg"/>
+                Classic
+              </button>
+              <button
+                @click="changeTemplates('horizontal')"
+                class="templates__item"
+                :class="{ activeTemplate: isHorizontalTemplate }"
+              >
+                <img class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/horizontal_v2.svg"/>
+                Horizontal
+              </button>
+              <button
+                @click="changeTemplates('wide')"
+                class="templates__item"
+                :class="{ activeTemplate: isWideTemplate }"
+              >
+                <img class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/wide_v2.svg"/>
+                Wide
+              </button>
+            </div>
+          </div>
+          <div v-if="activeTab === 'Design'">
+            <h4>FONT & COLOR</h4>
+            <div>
+              <div class="setup">
+                <div class="setup__item">
+                  <label class="setup__item_label">Font</label>
+                  <div class="setup__item-content">
+                    <select class="setup__item-content_select" v-model="fontFamily">
+                      <option>Arial</option>
+                      <option>Times new roman</option>
+                      <option>Monospace</option>
+                      <option>Arial black</option>
+                      <option>Arial narrow</option>
+                      <option>Comic sans ms</option>
+                      <option>Garamond</option>
+                      <option>Georgia</option>
+                      <option>Tahoma</option>
+                      <option>Trebuchet ms</option>
+                      <option>Verdana</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="setup__item">
+                  <label class="setup__item_label">Font size</label>
+                  <div class="setup__item-content">
+                    <input type="range" min="0.5" max="1.5" step="0.1" v-model="fontSize" class="setup__item-content_range">
+                  </div>
+                </div>
+
+                <div class="setup__item">
+                  <label class="setup__item_label">Line spacing</label>
+                  <div class="setup__item-content">
+                    <button
+                        class="setup__item-content_button"
+                        :class="{activelinespacing: lineHeight === '0.5'}"
+                        @click="changeLineHeight('0.5')"
+                    >
+                        0.5
+                    </button>
+                    <button
+                        class="setup__item-content_button btn-center-norm-border"
+                        :class="{activelinespacing: lineHeight === '1'}"
+                        @click="changeLineHeight('1')"
+                    >
+                        1.0
+                    </button>
+                    <button
+                        class="setup__item-content_button"
+                        :class="{activelinespacing: lineHeight === '1.5'}"
+                        @click="changeLineHeight('1.5')"
+                    >
+                        1.5
+                    </button>
+                  </div>
+                </div>
+
+                <div class="setup__item">
+                  <label class="setup__item_label">Space from content</label>
+                  <div class="setup__item-content">
+                    <button class="setup__item-content_button" :disabled="isDisabledBtnMarginTop" @click="decreaseMarginTop">-</button>
+                    <div class="setup__item-content_counter btn-center-norm-border">{{ marginTop }}</div>
+                    <button class="setup__item-content_button" @click="increaseMarginTop">+</button>
+                  </div>
+                </div>
+
+                <div class="setup__item">
+                  <label class="setup__item_label">Template color</label>
+                  <div class="setup__item-content">
+                    <div
+                        @click="changeColor('teal')"
+                        class="setup__item-content_circle teal"
+                        :class="{activeColor: color === 'teal'}"
+                    ></div>
+                    <div
+                        @click="changeColor('maroon')"
+                        class="setup__item-content_circle maroon"
+                        :class="{activeColor: color === 'maroon'}"
+                    ></div>
+                    <div
+                        @click="changeColor('darkgreen')"
+                        class="setup__item-content_circle darkgreen"
+                        :class="{activeColor: color === 'darkgreen'}"
+                    ></div>
+                    <div
+                        @click="changeColor('chartreuse')"
+                        class="setup__item-content_circle chartreuse"
+                        :class="{activeColor: color === 'chartreuse'}"
+                    ></div>
+                    <div
+                        @click="changeColor('turquoise')"
+                        class="setup__item-content_circle turquoise"
+                        :class="{activeColor: color === 'turquoise'}"
+                    ></div>
+                    <div
+                        @click="changeColor('brown')"
+                        class="setup__item-content_circle brown"
+                        :class="{activeColor: color === 'brown'}"
+                    ></div>
+                    <div
+                        @click="changeColor('purple')"
+                        class="setup__item-content_circle purple"
+                        :class="{activeColor: color === 'purple'}"
+                    ></div>
+                    <input
+                      type="color"
+                      class="setup__item-content_circle custom-color"
+                      v-model="color"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4>IMAGES</h4>
+            <div>
+              <div class="setup">
+                <div class="setup__item">
+                  <label class="setup__item_label">Shape</label>
+                  <div class="setup__item-content">
+                    <button
+                        class="setup__item-content_button"
+                        :class="{activeImageBtn: typeShape === 'square'}"
+                        @click="changeTypeShape('square')"
+                    >
+                      square
+                    </button>
+                    <button
+                        class="setup__item-content_button btn-center-norm-border"
+                        :class="{activeImageBtn: typeShape === 'rounded'}"
+                        @click="changeTypeShape('rounded')"
+                    >
+                      rounded
+                    </button>
+                    <button
+                        class="setup__item-content_button"
+                        :class="{activeImageBtn: typeShape === 'circle'}"
+                        @click="changeTypeShape('circle')"
+                    >
+                      circle
+                    </button>
+                  </div>
+                </div>
+                <div class="setup__item">
+                  <label class="setup__item_label">Size</label>
+                  <div class="setup__item-content">
+                    <input type="range" min="86" max="172" step="1" v-model="imageSize" class="setup__item-content_range">
+                  </div>
+                </div>
+                <div class="setup__item">
+                  <label class="setup__item_label">Image link</label>
+                  <div class="setup__item-content">
+                    <div class="setup__item-content-wrapper-for-input">
+                      <input :class="{invalibleLinkInput: isInvalibleImageLink === true}" v-model="imageLink" placeholder="www.mywebsite.com" class="setup__item-content_input" />
+                      <label class="invalibleLinkLabel" v-if="isInvalibleImageLink">Link is long</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4>BACKGROUND</h4>
+            <div>
+              <div class="setup">
+                <div class="setup__item">
+                  <label class="setup__item_label">Background Link</label>
+                  <div class="setup__item-content">
+                    <div class="setup__item-content-wrapper-for-input">
+                      <input :class="{invalibleLinkInput: isInvalibleBackgroundLink === true}" placeholder="https://imgur.com/i9er3Kl" v-model="backgroundLink" class="setup__item-content_input" />
+                      <label class="invalibleLinkLabel" v-if="isInvalibleBackgroundLink">Link is long</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="setup__item">
+                  <label class="setup__item_label">Background file</label>
+                  <div class="setup__item-content">
+                    <div class="setup__item-content-box">
+                      <label
+                        class="setup__item-content-box_label"
+                        for="fileBackground"
+                      >
+                        Upload background
+                      </label>
+                      <input
+                        @change="saveFileBackground"
+                        class="setup__item-content-box_file"
+                        type="file"
+                        id="fileBackground"
+                        accept="image/jpeg, image/png"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview">
+        <div class="preview-pane">
+          <header class="preview-pane-header">
+            <div class="preview-pane-header__dots"></div>
+            <div class="preview-pane-header__dots"></div>
+            <div class="preview-pane-header__dots"></div>
+          </header>
+          <div class="preview-pane-details">
+            <div class="preview-pane-details__item">
+              <span class="preview-pane-details__item-title">To: </span><span class="preview-pane-details__item-to">Troy McLaughlin</span>
+            </div>
+            <div class="preview-pane-details__item">
+              <span class="preview-pane-details__item-title">Subject: </span><span class="preview-pane-details__item-text">Check out my new email signature</span>
+            </div>
+          </div>
+          <div :class="`preview-pane-brending-${defineTemplateClass}`">
+            <table
+              ref="signature"
+              :style="{
+                background: isInvalibleBackgroundLink ? '' : `url(${backgroundLink || fileBackground}) center center / cover no-repeat`,
+                lineHeight: lineHeight + 'em',
+                marginTop: marginTop + 'px',
+                color: color,
+                wordBreak: 'break-all'
+              }"
+            >
+              <tbody>
+                <tr>
+                  <td>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td
+                            :style="{height: `${imageSize}px`, width: `${imageSize}px`, display: isShowImageBlock}"
+                            :class="`preview-pane-brending-${defineTemplateClass}-image`"
+                            ref="addImage"
+                          ></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td :class="`preview-pane-brending-${defineTemplateClass}-content`">
+                    <table>
+                      <tbody :style="{fontSize: `${fontSize}em`}" style="width: 100%">
+                        <tr>
+                          <tr>
+                            <td colspan="3">
+                              <table>
+                                <tbody :style="{fontSize: `${fontSize}em`}">
+                                  <tr>
+                                    <td :style="{fontFamily: fontFamily}">
+                                      <h4
+                                        :class="`preview-pane-brending-${defineTemplateClass}-content__field-name`"
+                                        :style="{color: color}"
+                                      >
+                                        {{ name }}
+                                      </h4>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td :style="{fontFamily: fontFamily}">
+                                      <span
+                                        :class="`preview-pane-brending-${defineTemplateClass}-content__field-title`"
+                                      >
+                                        {{ title }}
+                                      </span>
+                                      <span
+                                        v-if="isShowSeparatorForBasicInfo"
+                                        :class="`preview-pane-brending-${defineTemplateClass}-content__separator-text`"
+                                      >
+                                        {{ textForSeparator }}
+                                      </span>
+                                      <span
+                                        :class="`preview-pane-brending-${defineTemplateClass}-content__field-company`"
+                                      >
+                                        {{ company }}
+                                      </span>
+                                    </td>
+                                    <td
+                                      v-if="isWideTemplate"
+                                      :class="`socials-networks-${defineTemplateClass}`"
+                                      :style="{fontFamily: fontFamily, marginTop: '0px'}"
+                                    >
+                                      <a
+                                        v-if="facebook"
+                                        target="_blank"
+                                        :class="`socials-networks-${defineTemplateClass}__item`"
+                                        :href="`https://facebook.com/${facebook}`"
+                                        :style="{background: defineColor}"
+                                      >
+                                        <img
+                                          :src="linkImageFacebook"
+                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                        />
+                                      </a>
+                                      <a
+                                        v-if="instagram"
+                                        target="_blank"
+                                        :class="`socials-networks-${defineTemplateClass}__item`"
+                                        :href="`https://instagram.com/${instagram}`"
+                                        :style="{background: defineColor}"
+                                      >
+                                        <img
+                                          :src="linkImageInstagram"
+                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                        />
+                                      </a>
+                                      <a
+                                        v-if="linkedin"
+                                        target="_blank"
+                                        :class="`socials-networks-${defineTemplateClass}__item`"
+                                        :href="`https://linkedin.com/in/${linkedin}`"
+                                        :style="{background: defineColor}"
+                                      >
+                                        <img
+                                          :src="linkImageLinkedin"
+                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                        />
+                                      </a>
+                                      <a
+                                        v-if="twitter"
+                                        target="_blank"
+                                        :class="`socials-networks-${defineTemplateClass}__item`"
+                                        :href="`https://twitter.com/${twitter}`"
+                                        :style="{background: defineColor}"
+                                      >
+                                        <img
+                                          :src="linkImageTwitter"
+                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                        />
+                                      </a>
+                                      <a
+                                        v-if="youtube"
+                                        target="_blank"
+                                        :class="`socials-networks-${defineTemplateClass}__item`"
+                                        :href="`https://youtube.com/${youtube}`"
+                                        :style="{background: defineColor}"
+                                      >
+                                        <img
+                                          :src="linkImageYoutube"
+                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                        />
+                                      </a>
+                                      <a
+                                        v-if="pinterest"
+                                        target="_blank"
+                                        :class="`socials-networks-${defineTemplateClass}__item`"
+                                        :href="`https://pinterest.com/${pinterest}`"
+                                        :style="{background: defineColor}"
+                                      >
+                                        <img
+                                          :src="linkImagePinterest"
+                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                        />
+                                      </a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                          <tr v-if="( isHorizontalTemplate || isWideTemplate ) && hasImageLink">
+                            <td colspan="3">
+                              <hr
+                                :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
+                                :style="{background: defineColor}"
+                              />
+                            </td>
+                          </tr>
+                          <tr :class="`preview-pane-brending-${defineTemplateClass}-content-contact`">
+                            <td
+                              :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
+                              :style="{fontFamily: fontFamily}"
+                              v-if="phone"
+                              >
+                              <img
+                                v-if="phone && isHorizontalTemplate"
+                                src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
+                              />
+                              <span
+                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
+                                v-if="isWideTemplate"
+                                :style="{color: defineColor}"
+                              >
+                                N
+                              </span>
+                              <a :href="`tel:${phone}`">
+                                {{ phone }}
+                              </a>
+                            </td>
+                            <td
+                              :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
+                              :style="{fontFamily: fontFamily}"
+                              v-if="website"
+                              >
+                              <img
+                                v-if="website && isHorizontalTemplate"
+                                src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
+                              />
+                              <span
+                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
+                                v-if="isWideTemplate"
+                                :style="{color: defineColor}"
+                              >
+                                W
+                              </span>
+                              <a :href="website" target="_blank">{{ website }}</a>
+                            </td>
+                            <td
+                              :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
+                              :style="{fontFamily: fontFamily}"
+                              v-if="email"
+                              >
+                              <img
+                                v-if="email && isHorizontalTemplate"
+                                src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
+                              />
+                              <span
+                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
+                                v-if="isWideTemplate"
+                                :style="{color: defineColor}"
+                              >
+                                E
+                              </span>
+                              <a :href="`mailto:${email}`">{{ email }}</a>
+                            </td>
+                          </tr>
+                          <tr v-if="isWideTemplate && hasImageLink">
+                            <td colspan="3">
+                              <hr
+                                :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
+                                :style="{background: defineColor}"
+                              />
+                            </td>
+                          </tr>
+                          <tr
+                            v-if="!isWideTemplate"
+                            :class="`socials-networks-${defineTemplateClass}`"
+                          >
+                            <td :style="{fontFamily: fontFamily}">
+                              <a
+                                v-if="facebook"
+                                target="_blank"
+                                :class="`socials-networks-${defineTemplateClass}__item`"
+                                :href="`https://facebook.com/${facebook}`"
+                                :style="{background: defineColor}"
+                              >
+                                <img
+                                  :src="linkImageFacebook"
+                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                />
+                              </a>
+                              <a
+                                v-if="instagram"
+                                target="_blank"
+                                :class="`socials-networks-${defineTemplateClass}__item`"
+                                :href="`https://instagram.com/${instagram}`"
+                                :style="{background: defineColor}"
+                              >
+                                <img
+                                  :src="linkImageInstagram"
+                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                />
+                              </a>
+                              <a
+                                v-if="linkedin"
+                                target="_blank"
+                                :class="`socials-networks-${defineTemplateClass}__item`"
+                                :href="`https://linkedin.com/in/${linkedin}`"
+                                :style="{background: defineColor}"
+                              >
+                                <img
+                                  :src="linkImageLinkedin"
+                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                />
+                              </a>
+                              <a
+                                v-if="twitter"
+                                target="_blank"
+                                :class="`socials-networks-${defineTemplateClass}__item`"
+                                :href="`https://twitter.com/${twitter}`"
+                                :style="{background: defineColor}"
+                              >
+                                <img
+                                  :src="linkImageTwitter"
+                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                />
+                              </a>
+                              <a
+                                v-if="youtube"
+                                target="_blank"
+                                :class="`socials-networks-${defineTemplateClass}__item`"
+                                :href="`https://youtube.com/${youtube}`"
+                                :style="{background: defineColor}"
+                              >
+                                <img
+                                  :src="linkImageYoutube"
+                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                />
+                              </a>
+                              <a
+                                v-if="pinterest"
+                                target="_blank"
+                                :class="`socials-networks-${defineTemplateClass}__item`"
+                                :href="`https://pinterest.com/${pinterest}`"
+                                :style="{background: defineColor}"
+                              >
+                                <img
+                                  :src="linkImagePinterest"
+                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                />
+                              </a>
+                            </td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="preview-pane-buttons-config">
+            <button
+              class="preview-pane-buttons-config__save" @click="saveSignatureDTO"
+            >
+              Save signature
+            </button>
+            <div class="preview-pane-buttons-config-install">
+              <span class="preview-pane-buttons-config-install__title">Install:</span>
+              <img id="g_id_onload" @click="handleAuthClick" data-auto_prompt="false" src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/gmail.svg" alt="gmail-icon" class="preview-pane-buttons-config-install__item" />
+              <img src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/outlook.svg" alt="outlook-icon" class="preview-pane-buttons-config-install__item" />
+              <img src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/apple.svg" alt="apple-icon" class="preview-pane-buttons-config-install__item" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 {% endraw %}
 
-<script>
-debugger;
-  console.log('POPALI VO VUE');
-var htmlSignature = new App({
-  el: '#html-signature',
+<script type="module">
+  import { createApp } from 'vue';
+
+  let tokenClient;
+  let gapiInited = false;
+  let gisInited = false;
+
+  const htmlSignature = {
     data() {
-        return {
-            counter: 0,
-          message: 'hello, epta',
-        }
+      return {
+        name: '',
+        title: '',
+        company: '',
+        phone: null,
+        website: '',
+        file: null,
+        fileUrl: '',
+        email: '',
+
+        facebook: '',
+        instagram: '',
+        linkedin: '',
+        twitter: '',
+        youtube: '',
+        pinterest: '',
+
+        template: 'classic',
+
+        fontSize: '1',
+        lineHeight: '1',
+        marginTop: 0,
+        fontFamily: 'Arial',
+        color: '',
+        typeShape: '',
+        imageSize: '129', // px
+        imageLink: '',
+        isInvalibleImageLink: false,
+        backgroundLink: '',
+        isInvalibleBackgroundLink: false,
+        fileBackground: null,
+
+        activeTab: 'Details',
+
+        isShowRemoveImage: false,
+
+        tabs: ['Details', 'Social', 'Templates', 'Design'],
+      };
     },
-  	delimiters: ['{{%', '%}}'],
+
+    mounted () {
+      gapi.load('client', this.intializeGapiClient);
+      this.tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: '841400562900-oo7irmg1v2hjhu6uhs3in3tfn59epbqr.apps.googleusercontent.com',
+        scope: 'https://www.googleapis.com/auth/gmail.settings.basic',
+        callback: '', // defined later
+      });
+      this.gisInited = true;
+    },
+
     methods: {
-        add() {
-                 debugger;
-                 console.log('POPALI V ADD FUNCTION');
-            this.counter++;
-        },
+      async intializeGapiClient() {
+         await gapi.client.init({
+            apiKey: 'AIzaSyBR0osgIQVY4kT2-doTogOtMkjEY7tTNoE',
+            discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest'],
+         });
+         this.gapiInited = true;
+      },
+
+      handleAuthClick() {
+        this.tokenClient.callback = async (resp) => {
+          if (resp.error !== undefined) {
+            throw (resp);
+          }
+          await this.setSignature();
+        };
+
+        if (gapi.client.getToken() === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          this.tokenClient.requestAccessToken({prompt: 'consent'});
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          this.tokenClient.requestAccessToken({prompt: ''});
+        }
+      },
+
+      async setSignature() {
+        let aliases = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
+        let firstAlias = aliases.result.sendAs[0].sendAsEmail; // returns the first user's alias
+        let response = await gapi.client.gmail.users.settings.sendAs.update({
+          'userId': 'me',
+          'sendAsEmail': firstAlias,
+          'signature': this.$refs.signature.innerHTML,
+        });
+      },
+
+      parseJwt(token) {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        return JSON.parse(jsonPayload);
+	    },
+
+      clickTab( index ) {
+        this.activeTab = this.tabs[ index ];
+      },
+
+      saveFile( event ) {
+        this.isShowRemoveImage = true;
+        this.file = event;
+      },
+
+      removeImage() {
+        this.isShowRemoveImage = false;
+        this.file = null;
+        this.imageLink = '';
+      },
+
+      changeTemplates( template ) {
+        this.template = template;
+      },
+
+      increaseMarginTop() {
+        this.marginTop++;
+      },
+
+      decreaseMarginTop() {
+        this.marginTop--;
+      },
+
+      changeLineHeight( newLineHeight ) {
+        this.lineHeight = newLineHeight;
+      },
+
+      changeColor( newColor ) {
+        if( this.color === newColor ) {
+          this.color = '';
+
+          return;
+        }
+
+        this.color = newColor;
+      },
+
+      changeTypeShape( type ) {
+        if( this.typeShape === type ) {
+            this.typeShape = '';
+
+            return;
+        }
+
+        this.typeShape = type;
+      },
+
+      changeClassShapeForImage( img, type ) {
+        const classListTypeShapes = [
+            'typeshape__rounded',
+            'typeshape__square',
+            'typeshape__circle'
+        ];
+
+        classListTypeShapes.forEach( className => {
+            if( img.classList.contains( className ) ) {
+                img.classList.remove( className );
+            }
+        });
+
+        img.classList.add( `typeshape__${type}` );
+      },
+
+      saveFileBackground( event ) {
+        this.fileBackground = event;
+      },
+
+      getSignatureDAO() {
+        const userDate = JSON.parse(localStorage.getItem('htmlSignature'));
+
+        this.name = userDate.name;
+        this.title = userDate.title;
+        this.company = userDate.company;
+        this.phone = userDate.phone;
+        this.website = userDate.website;
+        this.fileUrl = userDate.fileUrl;
+        this.email = userDate.email;
+        this.facebook = userDate.facebook;
+        this.instagram = userDate.instagram;
+        this.linkedin = userDate.linkedin;
+        this.twitter = userDate.twitter;
+        this.youtube = userDate.youtube;
+        this.pinterest = userDate.pinterest;
+        this.template = userDate.template;
+        this.fontSize = userDate.fontSize;
+        this.lineHeight = userDate.lineHeight;
+        this.marginTop = userDate.marginTop;
+        this.fontFamily = userDate.fontFamily;
+        this.color = userDate.color;
+        this.typeShape = userDate.typeShape;
+        this.imageSize = userDate.imageSize;
+        this.imageLink = userDate.imageLink;
+        this.backgroundLink = userDate.backgroundLink;
+        this.fileBackground = userDate.fileBackground;
+      },
+
+      saveSignatureDTO() {
+        localStorage.setItem('htmlSignature', JSON.stringify({
+          name: this.name,
+          title: this.title,
+          company: this.company,
+          phone: this.phone,
+          website: this.website,
+          fileUrl: this.fileUrl,
+          email: this.email,
+          facebook: this.facebook,
+          instagram: this.instagram,
+          linkedin: this.linkedin,
+          twitter: this.twitter,
+          youtube: this.youtube,
+          pinterest: this.pinterest,
+          template: this.template,
+          fontSize: this.fontSize,
+          lineHeight: this.lineHeight,
+          marginTop: this.marginTop,
+          fontFamily: this.fontFamily,
+          color: this.color,
+          typeShape: this.typeShape,
+          imageSize: this.imageSize,
+          imageLink: this.imageLink,
+          backgroundLink: this.backgroundLink,
+          fileBackground: this.fileBackground,
+        }));
+      },
+
+      setAttributeForImage( attribute, value ) {
+        const img = this.$refs.addImage.querySelector('img');
+
+        if( img ) {
+          img.setAttribute( attribute, value );
+        }
+      },
+
+      createElementWithImage( imageLink ) {
+        this.$refs.addImage.innerHTML = "";
+        const imageElem = document.createElement("img");
+
+        imageElem.setAttribute( 'src', imageLink);
+        imageElem.setAttribute( 'class', `preview-pane-brending-${this.defineTemplateClass}-image__picture`);
+
+        this.$refs.addImage.append( imageElem );
+      },
+
+      validateFormatLink( link, field ) {
+        if( link.length > 255 ) {
+          this[field] = true; // isInvalibleBackgroundLink || isInvalibleImageLink
+
+          return false;
+        }
+
+        return true;
+      },
     },
-  });
+
+    created() {
+      if( localStorage['htmlSignature'] ) {
+        this.getSignatureDAO();
+      }
+    },
+
+    watch: {
+      fontSize( newSize ) {
+        this.fontSize = newSize;
+      },
+
+      fontFamily( newFontFamily ) {
+        this.fontFamily = newFontFamily;
+      },
+
+      backgroundLink( link ) {
+        if ( !this.validateFormatLink( link, 'isInvalibleBackgroundLink' ) ) return;
+
+        this.isInvalibleBackgroundLink = false;
+        this.backgroundLink = link;
+      },
+
+      template( template ) {
+        this.setAttributeForImage( 'class', `preview-pane-brending-${template}-image__picture` );
+      },
+
+      imageSize( newSize ) {
+        this.imageSize = newSize;
+      },
+
+      typeShape( type ) {
+        const img = this.$refs.addImage.querySelector('img');
+        if( !img ) return;
+
+        this.changeClassShapeForImage( img, type );
+      },
+
+      file( event ) {
+        if ( !event ) {
+          if( this.imageLink ) {
+            this.setAttributeForImage( 'src', this.imageLink );
+
+            return;
+          }
+
+          this.$refs.addImage.innerHTML = "";
+
+          return;
+        }
+
+        if ( event.target.files && event.target.files[0] ) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            this.fileUrl = e.target.result;
+
+            this.createElementWithImage( this.fileUrl );
+          };
+          reader.readAsDataURL( event.target.files[0] );
+        }
+      },
+
+      imageLink( link ) {
+        if ( !this.validateFormatLink( link, 'isInvalibleImageLink' ) ) return;
+        this.isInvalibleImageLink = false;
+
+        const img = this.$refs.addImage.querySelector('img');
+        if( link && img ) {
+          this.isShowRemoveImage = true;
+          this.setAttributeForImage( 'src', link );
+
+          return;
+        } else {
+          if( this.file ) {
+            this.setAttributeForImage( 'src', this.fileUrl );
+
+            return;
+          }
+        }
+
+        this.createElementWithImage( link );
+      },
+
+      fileBackground() {
+        if ( event.target.files && event.target.files[0] ) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            this.fileBackground = e.target.result;
+          };
+          reader.readAsDataURL( event.target.files[0] );
+        }
+      }
+    },
+
+    computed: {
+      isClassicTemplate() {
+        return this.template === 'classic';
+      },
+
+      isHorizontalTemplate() {
+        return this.template === 'horizontal';
+      },
+
+      isWideTemplate() {
+        return this.template === 'wide';
+      },
+
+      isDisabledBtnMarginTop() {
+        return this.marginTop <= 0;
+      },
+
+      defineTemplateClass() {
+        return this.template || 'classic';
+      },
+
+      linkImageTwitter() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/twitter.svg?v=1654242023'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/twitter.jpeg?v=1654241532'
+      },
+
+      linkImageYoutube() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/youtube.svg?v=1654242402'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/youtube.jpeg?v=1650184967'
+      },
+
+      linkImagePinterest() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/pinterest.svg?v=1654242555'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/pinterest.jpeg?v=1650184886'
+      },
+
+      linkImageLinkedin() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/linkedin.svg?v=1654242740'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/linkedin.jpeg?v=1650184128'
+      },
+
+      linkImageInstagram() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/instagram.svg?v=1654242984'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/instagram.jpeg?v=1654241524'
+      },
+
+      linkImageFacebook() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/facebook.svg?v=1654243139'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/facebook.jpeg?v=1654241332'
+      },
+
+      isShowImageBlock() {
+        return !!( this.file || ( this.imageLink && !this.isInvalibleImageLink ) ) ? 'block' : 'none';
+      },
+
+      isShowSeparatorForBasicInfo() {
+        return this.title && this.company;
+      },
+
+      textForSeparator() {
+        return this.template === 'classic'
+          ? ', '
+          : this.template === 'horizontal'
+            ? ' at '
+            : ', ';
+      },
+
+      hasImageLink() {
+        return this.file || this.imageLink && !this.isInvalibleImageLink;
+      },
+
+      defineColor() {
+        return this.color ? this.color : '';
+      },
+    }
+  };
+
+  createApp(htmlSignature).mount('#html-signature');
 </script>
+
+<style>
+  #html-signature {
+    width: 100vw;
+  }
+  main {
+    display: flex;
+    font-family: 'Arial';
+  }
+  .invalibleLinkInput {
+    border-bottom: 1px solid red !important;
+  }
+  .invalibleLinkLabel {
+    color: red !important;
+    display: flex;
+    justify-content: end;
+    font-size: 11px;
+  }
+  table:not([class]) td, table:not([class]) th {
+    padding: inherit;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  .editor {
+    width: 35%;
+    min-height: 70vh;
+    box-shadow: 0 0 2px rgb(25 28 43 / 4%), 0 4px 8px hsl(237deg 8% 46% / 16%);
+  }
+  .editor-settings {
+    padding: 16px;
+  }
+  .tabs {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f9fb;
+    height: 70px;
+    padding: 16px;
+  }
+  .tabs__item {
+    cursor: pointer;
+    width: 20%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .active {
+    background: #f8dc74;
+  }
+  .preview-pane-buttons-config {
+    display: flex;
+  }
+  .preview-pane-buttons-config-install {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
+  .preview-pane-buttons-config-install__item {
+    margin-left: 12px;
+    cursor: pointer;
+  }
+  .preview-pane-buttons-config__save {
+    width: 50%;
+    border: 0;
+    background: #d9dce5;
+    border-radius: 0 0 0 8px;
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+  }
+  .details-fields {
+    width: 70%;
+  }
+  .details-fields__item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .details-fields__item-input {
+    outline: none;
+    border: none;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+  .details-fields__item-label {
+    color: #888;
+    font-size: 13px;
+  }
+  .details-images {
+    display: flex;
+    flex-direction: column;
+    width: 27%;
+    align-items: center;
+  }
+  .details-images__btn {
+    cursor: pointer;
+    color: #1cb4e7;
+    background: none;
+    border: none;
+    width: 100%;
+    margin-top: 6px;
+  }
+  .details-images__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    height: 20%;
+    background-color: #f8f9fb;
+    border: 1px dashed rgba(0,0,0,.3);
+    border-radius: 4px;
+  }
+  .details-images__box-input {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .details-images__box-label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .socials {
+    display: flex;
+    flex-direction: column;
+  }
+  .socials__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .socials__item:last-child {
+    margin-bottom: 0;
+  }
+  .socials__item-icon {
+    width: 32px;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  .socials__item-field {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+  .socials__item-field_label {
+    color: #888;
+    font-size: 13px;
+  }
+  .socials__item-field_input {
+    outline: none;
+    border: none;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .templates {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .templates__item {
+    min-height: 140px;
+    background: none;
+    margin-top: 16px;
+    border: none;
+    cursor: pointer;
+    width: 48%;
+    margin-right: 6px;
+    border: 2px solid #e8e8e8;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .templates__item_img {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  .activeTemplate {
+    border: 2px solid #1cb4e7;
+  }
+
+  .setup {
+    display: flex;
+    flex-direction: column;
+  }
+  .setup__item {
+    display: flex;
+    margin-bottom: 24px;
+  }
+  .setup__item-content-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    background-color: #f8f9fb;
+    border: 1px dashed rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+  .setup__item-content-box_label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .setup__item-content-box_file {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .setup__item_label {
+    width: 40%;
+    color: #6b6c7e;
+    font-size: 14px;
+  }
+  .setup__item-content {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .setup__item-content-wrapper-for-input {
+    width: 100%;
+  }
+  .setup__item-content .teal {
+    background: teal;
+  }
+  .setup__item-content .maroon {
+    background: maroon;
+  }
+  .setup__item-content .chartreuse {
+    background: chartreuse;
+  }
+  .setup__item-content .darkgreen {
+    background: darkgreen;
+  }
+  .setup__item-content .turquoise {
+    background: turquoise;
+  }
+  .setup__item-content .brown {
+    background: brown;
+  }
+  .setup__item-content .purple {
+    background: purple;
+  }
+  .custom-color {
+    padding: 0;
+    border: 0;
+  }
+
+  .setup__item-content .activeColor {
+    opacity: 1;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #1cb4e7;
+  }
+  .setup__item-content_circle {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    opacity: .5;
+  }
+  .setup__item-content_select {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #eaedf1;
+    padding: 0 4px 4px 0;
+    cursor: pointer;
+    outline: none;
+  }
+  .setup__item-content_range {
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+  }
+  .setup__item-content_range::-webkit-slider-runnable-track {
+    border-radius: 4px;
+    height: 7px;
+    background-color: #eaedf1;
+  }
+  .setup__item-content_range::-webkit-slider-thumb {
+    background: #1cb4e7;
+    border-radius: 50%;
+    width:15px;
+    height: 15px;
+    -webkit-appearance: none;
+    margin-top: -4px;
+  }
+  .setup__item-content_range::-moz-range-track {
+    border-radius: 50%;
+    height: 5px;
+    border: 1px solid #1cb4e7;
+    background-color: #eaedf1;
+  }
+  .setup__item-content_range::-moz-range-thumb {
+    background: #eaedf1;
+    border: 1px solid #1cb4e7;
+    border-radius: 50%;
+  }
+  .setup__item-content_counter {
+    width: 33.33%;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    padding: 4px 0 4px 0;
+    background-color: #ffffff;
+    border: 1px solid #eaedf1;
+    font-size: 14px;
+  }
+  .setup__item-content_button {
+    padding: 4px 0 4px 0;
+    color: #6b6c7e;
+    background-color: #ffffff;
+    border: none;
+    border: 1px solid #eaedf1;
+    cursor: pointer;
+    font-weight: 700;
+    width: 33.3%;
+  }
+  .setup__item-content_button:disabled {
+    background: #eaedf1;
+  }
+  .setup__item-content_button:first-child {
+    border-radius: 4px 0 0 4px;
+  }
+  .setup__item-content_button:last-child {
+    border-radius: 0 4px 4px 0;
+  }
+  .btn-center-norm-border {
+    border-left: none;
+    border-right: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .activelinespacing {
+    color: #1cb4e7;
+    background: #eaedf1;
+  }
+
+  .setup__item-content_input {
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #eaedf1;
+    padding: 0 4px 4px 0;
+  }
+  .activeImageBtn {
+    color: #1cb4e7;
+    background: #eaedf1;
+  }
+
+  .preview {
+    width: 65%;
+    display: flex;
+    margin-top: 16px;
+    justify-content: center;
+  }
+  .preview-pane {
+    width: 80%;
+    height: max-content;
+    border-radius: 8px;
+    box-shadow: 0 0 2px RGB(25 28 43 / 4%), 0 4px 8px HSL(237deg 8% 46% / 16%);
+    border-radius: 8px;
+  }
+  .preview-pane-brending-classic,
+  .preview-pane-brending-horizontal,
+  .preview-pane-brending-wide {
+    padding: 5px 18px 10px;
+    min-height: 150px;
+    width: 100%;
+  }
+  .preview-pane-brending-classic-content,
+  .preview-pane-brending-horizontal-content,
+  .preview-pane-brending-wide-content {
+    display: flex;
+    margin-left: 14px;
+  }
+  .preview-pane-brending-horizontal__separator-line {
+    border: none;
+    border-bottom: 5px solid #45668E;
+    width: 20vw;
+  }
+
+  .preview-pane-header {
+    background: #d9dce5;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+  }
+  .preview-pane-header__dots {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    margin-left: 7px;
+    background-color: #eceef4;
+  }
+  .preview-pane-details {
+    padding: 5px 18px 10px;
+    color: #8f8f8f;
+  }
+  .preview-pane-details__item {
+    padding: 4px;
+    border-bottom: 1px solid #d9dce5;
+  }
+  .preview-pane-details__item-text {
+    font-weight: 700;
+  }
+  .preview-pane-details__item-to {
+    font-weight: 700;
+    padding: 1px 10px;
+    border-radius: 20px;
+    border: 1px solid #d9dce5;
+  }
+
+  .preview-pane-brending-classic-image,
+  .preview-pane-brending-horizontal-image,
+  .preview-pane-brending-wide-image {
+    width: 86px;
+    height: 86px;
+  }
+  .preview-pane-brending-classic-image__picture,
+  .preview-pane-brending-horizontal-image__picture,
+  .preview-pane-brending-wide-image__picture {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border: 2px solid #d9dce5;
+  }
+  .typeshape__circle {
+      border-radius: 50%;
+  }
+  .typeshape__square {
+      border-radius: 0;
+  }
+  .typeshape__rounded {
+      border-radius: 25%;
+  }
+
+  .preview-pane-brending-classic-content__field-title {
+    color: #45668E;
+    font-weight: 600;
+    font-size: 0.8em;
+  }
+  .preview-pane-brending-classic-content__field-company {
+    color: #45668E;
+    font-weight: 600;
+    font-size: 0.8em;
+  }
+  .preview-pane-brending-classic-content__separator-text {
+    color: #45668E;
+    font-weight: 600;
+    font-size: 0.8em;
+  }
+  .preview-pane-brending-classic-content__field-name {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 1.5em;
+  }
+  .preview-pane-brending-horizontal-content__field-name {
+    margin-top: 0;
+    color: #45668E;
+    margin-bottom: 0;
+    font-size: 1em;
+    font-weight: 600;
+  }
+  .preview-pane-brending-wide-content__field-name {
+    color: #45668E;
+    font-size: 0.7em;
+    margin-bottom: 0;
+  }
+  .preview-pane-brending-horizontal-content__separator-text {
+    color: #45668E;
+    font-size: 0.7em;
+  }
+  .preview-pane-brending-wide-content__separator-text {
+    font-size: 0.7em;
+    color: #444;
+  }
+  .preview-pane-brending-horizontal-content__field-title {
+    color: #45668E;
+    font-size: 0.7em;
+  }
+  .preview-pane-brending-wide-content__field-title {
+    font-size: 0.7em;
+    color: #444;
+  }
+  .preview-pane-brending-horizontal-content__field-company {
+    color: #45668E;
+    font-size: 0.7em;
+  }
+  .preview-pane-brending-wide-content__field-company {
+    font-size: 0.7em;
+    color: #444;
+  }
+  .preview-pane-brending-wide-content__field-company:last-child {
+    margin-right: 12px;
+  }
+  .preview-pane-brending-horizontal-content__separator-line,
+  .preview-pane-brending-wide-content__separator-line {
+    margin: 6px 0 !important;
+    width: 100%;
+    height: 3px !important;
+    background: #45668E;
+    border: 0;
+    opacity: 1;
+  }
+
+  .preview-pane-brending-classic-content-contact {
+    display: flex;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .preview-pane-brending-classic-content-contact__field {
+    display: flex;
+    align-items: center;
+    margin-right: 6px;
+    margin-top: 6px;
+  }
+  /* .preview-pane-brending-classic-content-contact__field img {
+    width: 25px;
+    height: 25px;
+    margin-right: 6px;
+  } */
+  .preview-pane-brending-classic-content-contact__field a {
+    color: #45668E;
+    font-size: 0.7em;
+  }
+
+  .preview-pane-brending-horizontal-content-contact {
+    display: flex;
+    margin-top: 13px;
+    flex-wrap: wrap;
+  }
+  .preview-pane-brending-horizontal-content-contact__field {
+    display: flex;
+    align-items: center;
+    font-size: 0.7em;
+    margin-right: 6px;
+  }
+  .preview-pane-brending-wide-content-contact__field a {
+    color: #212121;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 0.6em;
+    margin-right: 12px;
+  }
+  .preview-pane-brending-horizontal-content-contact__field img {
+    width: 25px;
+    height: 25px;
+    margin-right: 6px;
+  }
+
+  .preview-pane-brending-wide-content-contact__field_item {
+    font-weight: bold;
+    font-size: 0.6em;
+    color: #45668E;
+  }
+
+  .socials-networks-classic,
+  .socials-networks-horizontal,
+  .socials-networks-wide {
+    display: flex;
+    margin-top: 12px;
+  }
+  .socials-networks-classic__item,
+  .socials-networks-horizontal__item,
+  .socials-networks-wide__item {
+    margin-right: 6px;
+    padding: 3px;
+  }
+  .socials-networks-classic__item:last-child,
+  .socials-networks-horizontal__item:last-child,
+  .socials-networks-wide__item:last-child {
+    margin-right: 0;
+  }
+  .socials-networks-classic__item_image,
+  .socials-networks-horizontal__item_image,
+  .socials-networks-wide__item_image {
+    width: 25px;
+    height: 25px;
+  }
+
+  @media (max-width: 1300px) {
+
+  }
+
+  @media (max-width: 1199px) {
+    .tabs {
+      justify-content: normal;
+    }
+    .tabs__item {
+      width: 25%;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .details {
+      flex-direction: column;
+    }
+    .details-fields {
+      width: 100%;
+    }
+    .details-images {
+      width: 100%;
+    }
+    .details-images__box {
+      height: 50px;
+    }
+    .editor {
+      width: 50%;
+    }
+    .preview-pane {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    main {
+      flex-direction: column;
+    }
+    .editor {
+      width: 100%;
+    }
+    .preview {
+      width: 100%;
+    }
+    .socials__item-field {
+      width: 100%;
+    }
+    .setup__item-content {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .setup__item-content {
+      width: 80%;
+    }
+    .preview-pane-brending-horizontal-content {
+      width: 100%;
+    }
+    .preview-pane-brending-horizontal-content-contact {
+      flex-direction: column;
+    }
+    .preview-pane-brending-horizontal-content-contact__field {
+      margin-top: 6px;
+    }
+    .preview-pane-brending-horizontal-content-contact__field:first-child {
+      margin-top: 0;
+    }
+  }
+</style>
