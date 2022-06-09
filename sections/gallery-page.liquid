@@ -34,7 +34,7 @@
                   <label class="details-fields__item-label">Phone</label>
                   <input
                     class="details-fields__item-input"
-                    v-model="phone.number"
+                    v-model="phone"
                   />
                 </div>
                 <div class="details-fields__item">
@@ -65,14 +65,14 @@
             <h3>SOCIAL PROFILES</h3>
             <div class="socials">
               <div class="socials__item">
-                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/facebook.jpeg?v=1650183997" class="socials__item-icon" />
+                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/facebook.jpeg?v=1654241332" class="socials__item-icon" />
                 <div class="socials__item-field">
                   <label class="socials__item-field_label">facebook.com/&lt;username&gt;</label>
                   <input type="text" class="socials__item-field_input" v-model="facebook">
                 </div>
               </div>
               <div class="socials__item">
-                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/instagram.jpeg?v=1650184044" class="socials__item-icon" />
+                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/instagram.jpeg?v=1654241524" class="socials__item-icon" />
                 <div class="socials__item-field">
                   <label class="socials__item-field_label">instagram.com/&lt;username&gt;</label>
                   <input type="text" class="socials__item-field_input" v-model="instagram">
@@ -86,7 +86,7 @@
                 </div>
               </div>
               <div class="socials__item">
-                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/twitter.jpeg?v=1650184932" class="socials__item-icon" />
+                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/twitter.jpeg?v=1654241532" class="socials__item-icon" />
                 <div class="socials__item-field">
                   <label class="socials__item-field_label">twitter.com/&lt;username&gt;</label>
                   <input type="text" class="socials__item-field_input" v-model="twitter">
@@ -114,7 +114,7 @@
               <button
                 @click="changeTemplates('classic')"
                 class="templates__item"
-                :class="{ activeTemplate: isActiveClassicTemplate }"
+                :class="{ activeTemplate: isClassicTemplate }"
               >
                 <img class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/classic_v2.svg"/>
                 Classic
@@ -122,7 +122,7 @@
               <button
                 @click="changeTemplates('horizontal')"
                 class="templates__item"
-                :class="{ activeTemplate: isActiveHorizontalTemplate }"
+                :class="{ activeTemplate: isHorizontalTemplate }"
               >
                 <img class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/horizontal_v2.svg"/>
                 Horizontal
@@ -130,7 +130,7 @@
               <button
                 @click="changeTemplates('wide')"
                 class="templates__item"
-                :class="{ activeTemplate: isActiveWideTemplate }"
+                :class="{ activeTemplate: isWideTemplate }"
               >
                 <img class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/wide_v2.svg"/>
                 Wide
@@ -142,106 +142,111 @@
             <div>
               <div class="setup">
                 <div class="setup__item">
-                    <label class="setup__item_label">Font</label>
-                    <div class="setup__item-content">
-                        <select class="setup__item-content_select" v-model="fontFamily">
-                          <option>Arial</option>
-                          <option>Times new roman</option>
-                          <option>Monospace</option>
-                          <option>Arial black</option>
-                          <option>Arial narrow</option>
-                          <option>Comic sans ms</option>
-                          <option>Garamond</option>
-                          <option>Georgia</option>
-                          <option>Tahoma</option>
-                          <option>Trebuchet ms</option>
-                          <option>Verdana</option>
-                        </select>
-                    </div>
+                  <label class="setup__item_label">Font</label>
+                  <div class="setup__item-content">
+                    <select class="setup__item-content_select" v-model="fontFamily">
+                      <option>Arial</option>
+                      <option>Times new roman</option>
+                      <option>Monospace</option>
+                      <option>Arial black</option>
+                      <option>Arial narrow</option>
+                      <option>Comic sans ms</option>
+                      <option>Garamond</option>
+                      <option>Georgia</option>
+                      <option>Tahoma</option>
+                      <option>Trebuchet ms</option>
+                      <option>Verdana</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div class="setup__item">
-                    <label class="setup__item_label">Font size</label>
-                    <div class="setup__item-content">
-                        <input type="range" min="0.5" max="1.5" step="0.1" v-model="fontSize" class="setup__item-content_range">
-                    </div>
+                  <label class="setup__item_label">Font size</label>
+                  <div class="setup__item-content">
+                    <input type="range" min="0.5" max="1.5" step="0.1" v-model="fontSize" class="setup__item-content_range">
+                  </div>
                 </div>
 
                 <div class="setup__item">
-                    <label class="setup__item_label">Line spacing</label>
-                    <div class="setup__item-content">
-                        <button
-                            class="setup__item-content_button"
-                            :class="{activelinespacing: lineHeight === '0.5'}"
-                            @click="changeLineHeight('0.5')"
-                        >
-                            0.5
-                        </button>
-                        <button
-                            class="setup__item-content_button btn-center-norm-border"
-                            :class="{activelinespacing: lineHeight === '1'}"
-                            @click="changeLineHeight('1')"
-                        >
-                            1.0
-                        </button>
-                        <button
-                            class="setup__item-content_button"
-                            :class="{activelinespacing: lineHeight === '1.5'}"
-                            @click="changeLineHeight('1.5')"
-                        >
-                            1.5
-                        </button>
-                    </div>
+                  <label class="setup__item_label">Line spacing</label>
+                  <div class="setup__item-content">
+                    <button
+                        class="setup__item-content_button"
+                        :class="{activelinespacing: lineHeight === '0.5'}"
+                        @click="changeLineHeight('0.5')"
+                    >
+                        0.5
+                    </button>
+                    <button
+                        class="setup__item-content_button btn-center-norm-border"
+                        :class="{activelinespacing: lineHeight === '1'}"
+                        @click="changeLineHeight('1')"
+                    >
+                        1.0
+                    </button>
+                    <button
+                        class="setup__item-content_button"
+                        :class="{activelinespacing: lineHeight === '1.5'}"
+                        @click="changeLineHeight('1.5')"
+                    >
+                        1.5
+                    </button>
+                  </div>
                 </div>
 
                 <div class="setup__item">
-                    <label class="setup__item_label">Space from content</label>
-                    <div class="setup__item-content">
-                        <button class="setup__item-content_button" :disabled="isDisabledBtnMarginTop" @click="decreaseMarginTop">-</button>
-                        <div class="setup__item-content_counter btn-center-norm-border">{{ marginTop }}</div>
-                        <button class="setup__item-content_button" @click="increaseMarginTop">+</button>
-                    </div>
+                  <label class="setup__item_label">Space from content</label>
+                  <div class="setup__item-content">
+                    <button class="setup__item-content_button" :disabled="isDisabledBtnMarginTop" @click="decreaseMarginTop">-</button>
+                    <div class="setup__item-content_counter btn-center-norm-border">{{ marginTop }}</div>
+                    <button class="setup__item-content_button" @click="increaseMarginTop">+</button>
+                  </div>
                 </div>
 
                 <div class="setup__item">
-                    <label class="setup__item_label">Template color</label>
-                    <div class="setup__item-content">
-                        <div
-                            @click="changeColor('navy')"
-                            class="setup__item-content_circle navy"
-                            :class="{activeColor: color === 'navy'}"
-                        ></div>
-                        <div
-                            @click="changeColor('maroon')"
-                            class="setup__item-content_circle maroon"
-                            :class="{activeColor: color === 'maroon'}"
-                        ></div>
-                        <div
-                            @click="changeColor('darkgreen')"
-                            class="setup__item-content_circle darkgreen"
-                            :class="{activeColor: color === 'darkgreen'}"
-                        ></div>
-                        <div
-                            @click="changeColor('chartreuse')"
-                            class="setup__item-content_circle chartreuse"
-                            :class="{activeColor: color === 'chartreuse'}"
-                        ></div>
-                        <div
-                            @click="changeColor('turquoise')"
-                            class="setup__item-content_circle turquoise"
-                            :class="{activeColor: color === 'turquoise'}"
-                        ></div>
-                        <div
-                            @click="changeColor('black')"
-                            class="setup__item-content_circle black"
-                            :class="{activeColor: color === 'black'}"
-                        ></div>
-                        <div
-                            @click="changeColor('purple')"
-                            class="setup__item-content_circle purple"
-                            :class="{activeColor: color === 'purple'}"
-                        ></div>
-                    </div>
+                  <label class="setup__item_label">Template color</label>
+                  <div class="setup__item-content">
+                    <div
+                        @click="changeColor('teal')"
+                        class="setup__item-content_circle teal"
+                        :class="{activeColor: color === 'teal'}"
+                    ></div>
+                    <div
+                        @click="changeColor('maroon')"
+                        class="setup__item-content_circle maroon"
+                        :class="{activeColor: color === 'maroon'}"
+                    ></div>
+                    <div
+                        @click="changeColor('darkgreen')"
+                        class="setup__item-content_circle darkgreen"
+                        :class="{activeColor: color === 'darkgreen'}"
+                    ></div>
+                    <div
+                        @click="changeColor('chartreuse')"
+                        class="setup__item-content_circle chartreuse"
+                        :class="{activeColor: color === 'chartreuse'}"
+                    ></div>
+                    <div
+                        @click="changeColor('turquoise')"
+                        class="setup__item-content_circle turquoise"
+                        :class="{activeColor: color === 'turquoise'}"
+                    ></div>
+                    <div
+                        @click="changeColor('brown')"
+                        class="setup__item-content_circle brown"
+                        :class="{activeColor: color === 'brown'}"
+                    ></div>
+                    <div
+                        @click="changeColor('purple')"
+                        class="setup__item-content_circle purple"
+                        :class="{activeColor: color === 'purple'}"
+                    ></div>
+                    <input
+                      type="color"
+                      class="setup__item-content_circle custom-color"
+                      v-model="color"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -249,45 +254,45 @@
             <div>
               <div class="setup">
                 <div class="setup__item">
-                    <label class="setup__item_label">Shape</label>
-                    <div class="setup__item-content">
-                        <button
-                            class="setup__item-content_button"
-                            :class="{activeImageBtn: typeShape === 'square'}"
-                            @click="changeTypeShape('square')"
-                        >
-                            square
-                        </button>
-                        <button
-                            class="setup__item-content_button btn-center-norm-border"
-                            :class="{activeImageBtn: typeShape === 'rounded'}"
-                            @click="changeTypeShape('rounded')"
-                        >
-                        rounded
-                        </button>
-                        <button
-                            class="setup__item-content_button"
-                            :class="{activeImageBtn: typeShape === 'circle'}"
-                            @click="changeTypeShape('circle')"
-                        >
-                            circle
-                        </button>
-                    </div>
+                  <label class="setup__item_label">Shape</label>
+                  <div class="setup__item-content">
+                    <button
+                        class="setup__item-content_button"
+                        :class="{activeImageBtn: typeShape === 'square'}"
+                        @click="changeTypeShape('square')"
+                    >
+                      square
+                    </button>
+                    <button
+                        class="setup__item-content_button btn-center-norm-border"
+                        :class="{activeImageBtn: typeShape === 'rounded'}"
+                        @click="changeTypeShape('rounded')"
+                    >
+                      rounded
+                    </button>
+                    <button
+                        class="setup__item-content_button"
+                        :class="{activeImageBtn: typeShape === 'circle'}"
+                        @click="changeTypeShape('circle')"
+                    >
+                      circle
+                    </button>
+                  </div>
                 </div>
                 <div class="setup__item">
-                    <label class="setup__item_label">Size</label>
-                    <div class="setup__item-content">
-                        <input type="range" min="86" max="172" step="1" v-model="imageSize" class="setup__item-content_range">
-                    </div>
+                  <label class="setup__item_label">Size</label>
+                  <div class="setup__item-content">
+                    <input type="range" min="86" max="172" step="1" v-model="imageSize" class="setup__item-content_range">
+                  </div>
                 </div>
                 <div class="setup__item">
-                    <label class="setup__item_label">Image link</label>
-                    <div class="setup__item-content">
-                      <div class="setup__item-content-wrapper-for-input">
-                        <input :class="{invalibleLinkInput: isInvalibleImageLink === true}" v-model="imageLink" placeholder="www.mywebsite.com" class="setup__item-content_input" />
-                        <label class="invalibleLinkLabel" v-if="isInvalibleImageLink">Link is long</label>
-                      </div>
+                  <label class="setup__item_label">Image link</label>
+                  <div class="setup__item-content">
+                    <div class="setup__item-content-wrapper-for-input">
+                      <input :class="{invalibleLinkInput: isInvalibleImageLink === true}" v-model="imageLink" placeholder="www.mywebsite.com" class="setup__item-content_input" />
+                      <label class="invalibleLinkLabel" v-if="isInvalibleImageLink">Link is long</label>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -295,13 +300,13 @@
             <div>
               <div class="setup">
                 <div class="setup__item">
-                    <label class="setup__item_label">Background Link</label>
-                    <div class="setup__item-content">
-                      <div class="setup__item-content-wrapper-for-input">
-                        <input :class="{invalibleLinkInput: isInvalibleBackgroundLink === true}" placeholder="https://imgur.com/i9er3Kl" v-model="backgroundLink" class="setup__item-content_input" />
-                        <label class="invalibleLinkLabel" v-if="isInvalibleBackgroundLink">Link is long</label>
-                      </div>
+                  <label class="setup__item_label">Background Link</label>
+                  <div class="setup__item-content">
+                    <div class="setup__item-content-wrapper-for-input">
+                      <input :class="{invalibleLinkInput: isInvalibleBackgroundLink === true}" placeholder="https://imgur.com/i9er3Kl" v-model="backgroundLink" class="setup__item-content_input" />
+                      <label class="invalibleLinkLabel" v-if="isInvalibleBackgroundLink">Link is long</label>
                     </div>
+                  </div>
                 </div>
                 <div class="setup__item">
                   <label class="setup__item_label">Background file</label>
@@ -344,7 +349,16 @@
             </div>
           </div>
           <div :class="`preview-pane-brending-${defineTemplateClass}`">
-            <table ref="signature" :style="{background: isInvalibleBackgroundLink ? '' : `url(${backgroundLink || fileBackground}) center center / cover no-repeat`, lineHeight: lineHeight + 'em', marginTop: marginTop + 'px', color: color, wordBreak: 'break-all'}">
+            <table
+              ref="signature"
+              :style="{
+                background: isInvalibleBackgroundLink ? '' : `url(${backgroundLink || fileBackground}) center center / cover no-repeat`,
+                lineHeight: lineHeight + 'em',
+                marginTop: marginTop + 'px',
+                color: color,
+                wordBreak: 'break-all'
+              }"
+            >
               <tbody>
                 <tr>
                   <td>
@@ -362,12 +376,12 @@
                   </td>
                   <td :class="`preview-pane-brending-${defineTemplateClass}-content`">
                     <table>
-                      <tbody :style="{fontSize: fontSize + 'em'}" style="width: 100%">
+                      <tbody :style="{fontSize: `${fontSize}em`}" style="width: 100%">
                         <tr>
                           <tr>
                             <td colspan="3">
                               <table>
-                                <tbody :style="{fontSize: fontSize + 'em'}">
+                                <tbody :style="{fontSize: `${fontSize}em`}">
                                   <tr>
                                     <td :style="{fontFamily: fontFamily}">
                                       <h4
@@ -382,33 +396,35 @@
                                     <td :style="{fontFamily: fontFamily}">
                                       <span
                                         :class="`preview-pane-brending-${defineTemplateClass}-content__field-title`"
-                                        :style="{color: color}"
                                       >
                                         {{ title }}
                                       </span>
                                       <span
                                         v-if="isShowSeparatorForBasicInfo"
                                         :class="`preview-pane-brending-${defineTemplateClass}-content__separator-text`"
-                                        :style="{color: color}"
                                       >
                                         {{ textForSeparator }}
                                       </span>
                                       <span
                                         :class="`preview-pane-brending-${defineTemplateClass}-content__field-company`"
-                                        :style="{color: color}"
                                       >
                                         {{ company }}
                                       </span>
                                     </td>
-                                    <td v-if="isWideTemplate" :class="`socials-networks-${defineTemplateClass}`" :style="{fontFamily: fontFamily, marginTop: '0px'}">
+                                    <td
+                                      v-if="isWideTemplate"
+                                      :class="`socials-networks-${defineTemplateClass}`"
+                                      :style="{fontFamily: fontFamily, marginTop: '0px'}"
+                                    >
                                       <a
                                         v-if="facebook"
                                         target="_blank"
                                         :class="`socials-networks-${defineTemplateClass}__item`"
                                         :href="`https://facebook.com/${facebook}`"
+                                        :style="{background: defineColor}"
                                       >
                                         <img
-                                          src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/facebook.jpeg?v=1650183997"
+                                          :src="linkImageFacebook"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
                                       </a>
@@ -417,9 +433,10 @@
                                         target="_blank"
                                         :class="`socials-networks-${defineTemplateClass}__item`"
                                         :href="`https://instagram.com/${instagram}`"
+                                        :style="{background: defineColor}"
                                       >
                                         <img
-                                          src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/instagram.jpeg?v=1650184044"
+                                          :src="linkImageInstagram"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
                                       </a>
@@ -428,9 +445,10 @@
                                         target="_blank"
                                         :class="`socials-networks-${defineTemplateClass}__item`"
                                         :href="`https://linkedin.com/in/${linkedin}`"
+                                        :style="{background: defineColor}"
                                       >
                                         <img
-                                          src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/linkedin.jpeg?v=1650184128"
+                                          :src="linkImageLinkedin"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
                                       </a>
@@ -439,9 +457,10 @@
                                         target="_blank"
                                         :class="`socials-networks-${defineTemplateClass}__item`"
                                         :href="`https://twitter.com/${twitter}`"
+                                        :style="{background: defineColor}"
                                       >
                                         <img
-                                          src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/twitter.jpeg?v=1650184932"
+                                          :src="linkImageTwitter"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
                                       </a>
@@ -450,9 +469,10 @@
                                         target="_blank"
                                         :class="`socials-networks-${defineTemplateClass}__item`"
                                         :href="`https://youtube.com/${youtube}`"
+                                        :style="{background: defineColor}"
                                       >
                                         <img
-                                          src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/youtube.jpeg?v=1650184967"
+                                          :src="linkImageYoutube"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
                                       </a>
@@ -461,9 +481,10 @@
                                         target="_blank"
                                         :class="`socials-networks-${defineTemplateClass}__item`"
                                         :href="`https://pinterest.com/${pinterest}`"
+                                        :style="{background: defineColor}"
                                       >
                                         <img
-                                          src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/pinterest.jpeg?v=1650184886"
+                                          :src="linkImagePinterest"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
                                       </a>
@@ -473,10 +494,11 @@
                               </table>
                             </td>
                           </tr>
-                          <tr v-if="isHorizontalTemplate || isWideTemplate && ( file || imageLink && !isInvalibleImageLink )">
+                          <tr v-if="( isHorizontalTemplate || isWideTemplate ) && hasImageLink">
                             <td colspan="3">
                               <hr
                                 :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
+                                :style="{background: defineColor}"
                               />
                             </td>
                           </tr>
@@ -484,29 +506,36 @@
                             <td
                               :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
                               :style="{fontFamily: fontFamily}"
+                              v-if="phone"
                               >
                               <img
-                                v-if="phone.number && isHorizontalTemplate"
+                                v-if="phone && isHorizontalTemplate"
                                 src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
                               />
                               <span
                                 :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
                                 v-if="isWideTemplate"
+                                :style="{color: defineColor}"
                               >
                                 N
                               </span>
-                              <a :href="`tel:${showNumber}`">
-                                {{ showNumber }}
+                              <a :href="`tel:${phone}`">
+                                {{ phone }}
                               </a>
                             </td>
                             <td
                               :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
                               :style="{fontFamily: fontFamily}"
+                              v-if="website"
                               >
-                              <img v-if="website && isHorizontalTemplate" src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415" />
+                              <img
+                                v-if="website && isHorizontalTemplate"
+                                src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
+                              />
                               <span
                                 :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
                                 v-if="isWideTemplate"
+                                :style="{color: defineColor}"
                               >
                                 W
                               </span>
@@ -515,34 +544,44 @@
                             <td
                               :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
                               :style="{fontFamily: fontFamily}"
+                              v-if="email"
                               >
-                              <img v-if="email && isHorizontalTemplate" src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399" />
+                              <img
+                                v-if="email && isHorizontalTemplate"
+                                src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
+                              />
                               <span
                                 :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
                                 v-if="isWideTemplate"
+                                :style="{color: defineColor}"
                               >
                                 E
                               </span>
                               <a :href="`mailto:${email}`">{{ email }}</a>
                             </td>
                           </tr>
-                          <tr v-if="isWideTemplate && ( file || imageLink && !isInvalibleImageLink )">
+                          <tr v-if="isWideTemplate && hasImageLink">
                             <td colspan="3">
                               <hr
                                 :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
+                                :style="{background: defineColor}"
                               />
                             </td>
                           </tr>
-                          <tr v-if="!isWideTemplate" :class="`socials-networks-${defineTemplateClass}`">
+                          <tr
+                            v-if="!isWideTemplate"
+                            :class="`socials-networks-${defineTemplateClass}`"
+                          >
                             <td :style="{fontFamily: fontFamily}">
                               <a
                                 v-if="facebook"
                                 target="_blank"
                                 :class="`socials-networks-${defineTemplateClass}__item`"
                                 :href="`https://facebook.com/${facebook}`"
+                                :style="{background: defineColor}"
                               >
                                 <img
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/facebook.jpeg?v=1650183997"
+                                  :src="linkImageFacebook"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
                               </a>
@@ -551,9 +590,10 @@
                                 target="_blank"
                                 :class="`socials-networks-${defineTemplateClass}__item`"
                                 :href="`https://instagram.com/${instagram}`"
+                                :style="{background: defineColor}"
                               >
                                 <img
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/instagram.jpeg?v=1650184044"
+                                  :src="linkImageInstagram"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
                               </a>
@@ -562,9 +602,10 @@
                                 target="_blank"
                                 :class="`socials-networks-${defineTemplateClass}__item`"
                                 :href="`https://linkedin.com/in/${linkedin}`"
+                                :style="{background: defineColor}"
                               >
                                 <img
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/linkedin.jpeg?v=1650184128"
+                                  :src="linkImageLinkedin"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
                               </a>
@@ -573,9 +614,10 @@
                                 target="_blank"
                                 :class="`socials-networks-${defineTemplateClass}__item`"
                                 :href="`https://twitter.com/${twitter}`"
+                                :style="{background: defineColor}"
                               >
                                 <img
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/twitter.jpeg?v=1650184932"
+                                  :src="linkImageTwitter"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
                               </a>
@@ -584,9 +626,10 @@
                                 target="_blank"
                                 :class="`socials-networks-${defineTemplateClass}__item`"
                                 :href="`https://youtube.com/${youtube}`"
+                                :style="{background: defineColor}"
                               >
                                 <img
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/youtube.jpeg?v=1650184967"
+                                  :src="linkImageYoutube"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
                               </a>
@@ -595,9 +638,10 @@
                                 target="_blank"
                                 :class="`socials-networks-${defineTemplateClass}__item`"
                                 :href="`https://pinterest.com/${pinterest}`"
+                                :style="{background: defineColor}"
                               >
                                 <img
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/pinterest.jpeg?v=1650184886"
+                                  :src="linkImagePinterest"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
                               </a>
@@ -618,10 +662,24 @@
             </button>
             <div class="preview-pane-buttons-config-install">
               <span class="preview-pane-buttons-config-install__title">Install:</span>
-              <img id="g_id_onload" @click="handleCredentialRequest" data-auto_prompt="false" src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/gmail.svg" alt="gmail-icon" class="preview-pane-buttons-config-install__item" />
-<!--               <div class="g_id_signin" data-type="standard" data-size="small"></div> -->
-              <img src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/outlook.svg" alt="outlook-icon" class="preview-pane-buttons-config-install__item" />
-              <img src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/apple.svg" alt="apple-icon" class="preview-pane-buttons-config-install__item" />
+              <img
+                id="g_id_onload"
+                @click="handleCredentialRequest"
+                data-auto_prompt="false"
+                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/gmail.svg"
+                alt="gmail-icon"
+                class="preview-pane-buttons-config-install__item"
+              />
+              <img
+                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/outlook.svg"
+                alt="outlook-icon"
+                class="preview-pane-buttons-config-install__item"
+              />
+              <img
+                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/apple.svg"
+                alt="apple-icon"
+                class="preview-pane-buttons-config-install__item"
+              />
             </div>
             </div>
           </div>
@@ -640,9 +698,7 @@
         name: '',
         title: '',
         company: '',
-        phone: {
-          number: null,
-        },
+        phone: null,
         website: '',
         file: null,
         fileUrl: '',
@@ -710,6 +766,7 @@
         })
         google.accounts.id.prompt();
       },
+
       parseJwt(token) {
         const base64Url = token.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -718,7 +775,8 @@
         }).join(''));
 
         return JSON.parse(jsonPayload);
-	  },
+	    },
+
       clickTab( index ) {
         this.activeTab = this.tabs[ index ];
       },
@@ -731,6 +789,7 @@
       removeImage() {
         this.isShowRemoveImage = false;
         this.file = null;
+        this.imageLink = '';
       },
 
       changeTemplates( template ) {
@@ -750,7 +809,7 @@
       },
 
       changeColor( newColor ) {
-        if(this.color === newColor) {
+        if( this.color === newColor ) {
           this.color = '';
 
           return;
@@ -769,7 +828,7 @@
         this.typeShape = type;
       },
 
-      addNeededClassShape( img, type ) {
+      changeClassShapeForImage( img, type ) {
         const classListTypeShapes = [
             'typeshape__rounded',
             'typeshape__square',
@@ -782,7 +841,7 @@
             }
         });
 
-        if( type ) img.classList.add( `typeshape__${type}` );
+        img.classList.add( `typeshape__${type}` );
       },
 
       saveFileBackground( event ) {
@@ -795,7 +854,7 @@
         this.name = userDate.name;
         this.title = userDate.title;
         this.company = userDate.company;
-        this.phone.number = userDate.phone.number;
+        this.phone = userDate.phone;
         this.website = userDate.website;
         this.fileUrl = userDate.fileUrl;
         this.email = userDate.email;
@@ -823,9 +882,7 @@
           name: this.name,
           title: this.title,
           company: this.company,
-          phone: {
-            number: this.phone.number,
-          },
+          phone: this.phone,
           website: this.website,
           fileUrl: this.fileUrl,
           email: this.email,
@@ -848,6 +905,34 @@
           fileBackground: this.fileBackground,
         }));
       },
+
+      setAttributeForImage( attribute, value ) {
+        const img = this.$refs.addImage.querySelector('img');
+
+        if( img ) {
+          img.setAttribute( attribute, value );
+        }
+      },
+
+      createElementWithImage( imageLink ) {
+        this.$refs.addImage.innerHTML = "";
+        const imageElem = document.createElement("img");
+
+        imageElem.setAttribute( 'src', imageLink);
+        imageElem.setAttribute( 'class', `preview-pane-brending-${this.defineTemplateClass}-image__picture`);
+
+        this.$refs.addImage.append( imageElem );
+      },
+
+      validateFormatLink( link, field ) {
+        if( link.length > 255 ) {
+          this[field] = true; // isInvalibleBackgroundLink || isInvalibleImageLink
+
+          return false;
+        }
+
+        return true;
+      },
     },
 
     created() {
@@ -865,23 +950,15 @@
         this.fontFamily = newFontFamily;
       },
 
-      backgroundLink( newLink ) {
-        if( (/data:image/).test( newLink ) ) {
-          this.isInvalibleBackgroundLink = true;
-          return;
-        }
+      backgroundLink( link ) {
+        if ( !this.validateFormatLink( link, 'isInvalibleBackgroundLink' ) ) return;
 
         this.isInvalibleBackgroundLink = false;
-        this.backgroundLink = newLink;
+        this.backgroundLink = link;
       },
 
       template( template ) {
-        if( !this.file ) return
-
-        const img = this.$refs?.addImage.querySelector('img');
-        if( img ) {
-          img.setAttribute( "class", `preview-pane-brending-${template}-image__picture`, );
-        }
+        this.setAttributeForImage( 'class', `preview-pane-brending-${template}-image__picture` );
       },
 
       imageSize( newSize ) {
@@ -892,92 +969,75 @@
         const img = this.$refs.addImage.querySelector('img');
         if( !img ) return;
 
-        this.addNeededClassShape( img, type );
+        this.changeClassShapeForImage( img, type );
       },
 
       file( event ) {
-        if (!event) {
+        if ( !event ) {
           if( this.imageLink ) {
-            const img = this.$refs.addImage.querySelector('img');
-            img.setAttribute("src", this.imageLink);
+            this.setAttributeForImage( 'src', this.imageLink );
+
             return;
           }
 
           this.$refs.addImage.innerHTML = "";
+
           return;
         }
-        if (event.target.files && event.target.files[0]) {
+
+        if ( event.target.files && event.target.files[0] ) {
           const reader = new FileReader();
           reader.onload = (e) => {
             this.fileUrl = e.target.result;
 
-            this.$refs.addImage.innerHTML = "";
-            const img = document.createElement("img");
-
-            img.setAttribute("src", e.target.result);
-            img.setAttribute("class", `preview-pane-brending-${this.defineTemplateClass}-image__picture`);
-
-            this.$refs.addImage.append(img);
+            this.createElementWithImage( this.fileUrl );
           };
-          reader.readAsDataURL(event.target.files[0]);
+          reader.readAsDataURL( event.target.files[0] );
         }
       },
 
       imageLink( link ) {
-        if( (/data:image/).test( link ) ) {
-          this.isInvalibleImageLink = true;
-          return;
-        }
-
+        if ( !this.validateFormatLink( link, 'isInvalibleImageLink' ) ) return;
         this.isInvalibleImageLink = false;
 
-        if( !link ) {
+        const img = this.$refs.addImage.querySelector('img');
+        if( link && img ) {
+          this.isShowRemoveImage = true;
+          this.setAttributeForImage( 'src', link );
+
+          return;
+        } else {
           if( this.file ) {
-            const img = this.$refs.addImage.querySelector('img');
-            if( img ) {
-              img.setAttribute("src", this.fileUrl);
-            }
+            this.setAttributeForImage( 'src', this.fileUrl );
+
             return;
           }
         }
 
-        const img = this.$refs.addImage.querySelector('img');
-
-        if( img ) {
-          img.setAttribute( "src", link );
-          return;
-        }
-
-        this.$refs.addImage.innerHTML = "";
-        const newImage = document.createElement("img");
-
-        newImage.setAttribute("src", link);
-        newImage.setAttribute("class", `preview-pane-brending-${this.defineTemplateClass}-image__picture`);
-
-        this.$refs.addImage.append( newImage );
+        this.createElementWithImage( link );
       },
 
       fileBackground() {
-        if (event.target.files && event.target.files[0]) {
+        if ( event.target.files && event.target.files[0] ) {
           const reader = new FileReader();
           reader.onload = (e) => {
             this.fileBackground = e.target.result;
           };
-          reader.readAsDataURL(event.target.files[0]);
+          reader.readAsDataURL( event.target.files[0] );
         }
       }
     },
 
     computed: {
-      isActiveClassicTemplate() {
+      isClassicTemplate() {
         return this.template === 'classic';
       },
 
-      isActiveHorizontalTemplate() {
+      isHorizontalTemplate() {
         return this.template === 'horizontal';
       },
 
-      isActiveWideTemplate() {
+      isWideTemplate() {
         return this.template === 'wide';
       },
 
@@ -989,8 +1049,44 @@
         return this.template || 'classic';
       },
 
+      linkImageTwitter() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/twitter.svg?v=1654242023'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/twitter.jpeg?v=1654241532'
+      },
+
+      linkImageYoutube() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/youtube.svg?v=1654242402'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/youtube.jpeg?v=1650184967'
+      },
+
+      linkImagePinterest() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/pinterest.svg?v=1654242555'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/pinterest.jpeg?v=1650184886'
+      },
+
+      linkImageLinkedin() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/linkedin.svg?v=1654242740'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/linkedin.jpeg?v=1650184128'
+      },
+
+      linkImageInstagram() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/instagram.svg?v=1654242984'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/instagram.jpeg?v=1654241524'
+      },
+
+      linkImageFacebook() {
+        return this.color
+          ? 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/facebook.svg?v=1654243139'
+          : 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/facebook.jpeg?v=1654241332'
+      },
+
       isShowImageBlock() {
-        return !!(this.file || this.imageLink && !this.isInvalibleImageLink) ? 'block' : 'none';
+        return !!( this.file || ( this.imageLink && !this.isInvalibleImageLink ) ) ? 'block' : 'none';
       },
 
       isShowSeparatorForBasicInfo() {
@@ -998,24 +1094,20 @@
       },
 
       textForSeparator() {
-        return this.template === 'classic' ? ', ' : this.template === 'horizontal' ? ' at ' : ', ';
+        return this.template === 'classic'
+          ? ', '
+          : this.template === 'horizontal'
+            ? ' at '
+            : ', ';
       },
 
-      showNumber() {
-        if( !this.phone.number ) {
-          return;
-        }
-
-        return this.phone.number;
+      hasImageLink() {
+        return this.file || this.imageLink && !this.isInvalibleImageLink;
       },
 
-      isWideTemplate() {
-        return this.template == 'wide';
+      defineColor() {
+        return this.color ? this.color : '';
       },
-
-      isHorizontalTemplate() {
-        return this.template === 'horizontal';
-      }
     }
   };
 
@@ -1045,11 +1137,6 @@
   body {
     margin: 0;
     padding: 0;
-  }
-  .vue-tel-input {
-    border: none !important;
-    border-bottom: 1px solid #ccc !important;
-    box-shadow: none !important;
   }
   button:disabled {
     cursor: not-allowed;
@@ -1162,14 +1249,10 @@
     text-align: center;
     cursor: pointer;
   }
-  .vue-tel-input {
-    border: none;
-    border-bottom: 1px solid #ccc;
-  }
 
   .socials {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
   .socials__item {
     display: flex;
@@ -1268,8 +1351,8 @@
   .setup__item-content-wrapper-for-input {
     width: 100%;
   }
-  .setup__item-content .navy {
-    background: navy;
+  .setup__item-content .teal {
+    background: teal;
   }
   .setup__item-content .maroon {
     background: maroon;
@@ -1283,12 +1366,17 @@
   .setup__item-content .turquoise {
     background: turquoise;
   }
-  .setup__item-content .black {
-    background: black;
+  .setup__item-content .brown {
+    background: brown;
   }
   .setup__item-content .purple {
     background: purple;
   }
+  .custom-color {
+    padding: 0;
+    border: 0;
+  }
+
   .setup__item-content .activeColor {
     opacity: 1;
     width: 16px;
@@ -1298,7 +1386,6 @@
   .setup__item-content_circle {
     width: 18px;
     height: 18px;
-    border-radius: 50%;
     cursor: pointer;
     opacity: .5;
   }
@@ -1482,14 +1569,17 @@
   }
 
   .preview-pane-brending-classic-content__field-title {
+    color: #45668E;
     font-weight: 600;
     font-size: 0.8em;
   }
   .preview-pane-brending-classic-content__field-company {
+    color: #45668E;
     font-weight: 600;
     font-size: 0.8em;
   }
   .preview-pane-brending-classic-content__separator-text {
+    color: #45668E;
     font-weight: 600;
     font-size: 0.8em;
   }
@@ -1540,7 +1630,10 @@
   .preview-pane-brending-horizontal-content__separator-line,
   .preview-pane-brending-wide-content__separator-line {
     margin: 6px 0 !important;
-    border: 3px solid #45668E;
+    width: 100%;
+    height: 3px !important;
+    background: #45668E;
+    border: 0;
     opacity: 1;
   }
 
@@ -1555,10 +1648,14 @@
     margin-right: 6px;
     margin-top: 6px;
   }
-  .preview-pane-brending-classic-content-contact__field img {
+  /* .preview-pane-brending-classic-content-contact__field img {
     width: 25px;
     height: 25px;
     margin-right: 6px;
+  } */
+  .preview-pane-brending-classic-content-contact__field a {
+    color: #45668E;
+    font-size: 0.7em;
   }
 
   .preview-pane-brending-horizontal-content-contact {
@@ -1601,6 +1698,7 @@
   .socials-networks-horizontal__item,
   .socials-networks-wide__item {
     margin-right: 6px;
+    padding: 3px;
   }
   .socials-networks-classic__item:last-child,
   .socials-networks-horizontal__item:last-child,
