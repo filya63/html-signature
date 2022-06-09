@@ -325,6 +325,13 @@
                         id="fileBackground"
                         accept="image/jpeg, image/png"
                       />
+                      <span
+                        v-if="fileBackground"
+                        class="setup__item-content-box_spec_symbol"
+                        @click="clearBackground"
+                      >
+                        &#215;
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -950,6 +957,10 @@
 
         return true;
       },
+
+      clearBackground() {
+        this.fileBackground = null;
+      },
     },
 
     created() {
@@ -1333,6 +1344,7 @@
     margin-bottom: 24px;
   }
   .setup__item-content-box {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1341,6 +1353,10 @@
     background-color: #f8f9fb;
     border: 1px dashed rgba(0, 0, 0, 0.3);
     border-radius: 4px;
+  }
+  .setup__item-content-box_spec_symbol {
+    position: absolute;
+    right: -14px;
   }
   .setup__item-content-box_label {
     width: 100%;
