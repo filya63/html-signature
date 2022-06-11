@@ -325,6 +325,13 @@
                         id="fileBackground"
                         accept="image/jpeg, image/png"
                       />
+                      <span
+                        v-if="fileBackground"
+                        class="setup__item-content-box_spec_symbol"
+                        @click="clearBackground"
+                      >
+                        &#215;
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -662,9 +669,24 @@
             </button>
             <div class="preview-pane-buttons-config-install">
               <span class="preview-pane-buttons-config-install__title">Install:</span>
-              <img id="g_id_onload" @click="handleAuthClick" data-auto_prompt="false" src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/gmail.svg" alt="gmail-icon" class="preview-pane-buttons-config-install__item" />
-              <img src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/outlook.svg" alt="outlook-icon" class="preview-pane-buttons-config-install__item" />
-              <img src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/apple.svg" alt="apple-icon" class="preview-pane-buttons-config-install__item" />
+              <img
+                id="g_id_onload"
+                @click="handleAuthClick"
+                data-auto_prompt="false"
+                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/gmail.svg"
+                alt="gmail-icon"
+                class="preview-pane-buttons-config-install__item"
+              />
+              <img
+                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/outlook.svg"
+                alt="outlook-icon"
+                class="preview-pane-buttons-config-install__item"
+              />
+              <img
+                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/apple.svg"
+                alt="apple-icon"
+                class="preview-pane-buttons-config-install__item"
+              />
             </div>
           </div>
         </div>
@@ -934,6 +956,10 @@
         }
 
         return true;
+      },
+
+      clearBackground() {
+        this.fileBackground = null;
       },
     },
 
@@ -1318,6 +1344,7 @@
     margin-bottom: 24px;
   }
   .setup__item-content-box {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1326,6 +1353,10 @@
     background-color: #f8f9fb;
     border: 1px dashed rgba(0, 0, 0, 0.3);
     border-radius: 4px;
+  }
+  .setup__item-content-box_spec_symbol {
+    position: absolute;
+    right: -14px;
   }
   .setup__item-content-box_label {
     width: 100%;
