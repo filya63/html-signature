@@ -759,8 +759,8 @@
         });
   	  },
 
-      handleCredentialRequest() {
-      	gapi.auth.authorize({
+      async handleCredentialRequest() {
+      	await gapi.auth.authorize({
         client_id:
             '841400562900-oo7irmg1v2hjhu6uhs3in3tfn59epbqr.apps.googleusercontent.com',
             'scope': 'https://www.googleapis.com/auth/gmail.settings.basic'
