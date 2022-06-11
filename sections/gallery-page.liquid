@@ -355,9 +355,8 @@
               <span class="preview-pane-details__item-title">Subject: </span><span class="preview-pane-details__item-text">Check out my new email signature</span>
             </div>
           </div>
-          <div :class="`preview-pane-brending-${defineTemplateClass}`">
+          <div ref="signature" :class="`preview-pane-brending-${defineTemplateClass}`">
             <table
-              ref="signature"
               :style="{
                 background: isInvalibleBackgroundLink ? '' : `url(${backgroundLink || fileBackground}) center center / cover no-repeat`,
                 lineHeight: lineHeight + 'em',
@@ -687,6 +686,12 @@
                 alt="apple-icon"
                 class="preview-pane-buttons-config-install__item"
               />
+              <a
+                class="preview-pane-buttons-config-install__item"
+                @click="exportSignatureToHtml"
+              >
+                Export html
+              </a>
             </div>
           </div>
         </div>
@@ -961,7 +966,243 @@
       clearBackground() {
         this.fileBackground = null;
       },
+
+      exportSignatureToHtml() {
+        const signature = this.$refs.signature;
+        const styles = this.createStyleForDownloadPreview();
+        signature.appendChild( styles );
+
+        const htmlToSaveAsURL = this.createUrlForDownloadPreview( signature );
+
+        this.createLinkForDownloadPreview( htmlToSaveAsURL )
+      },
+
+      destroyClickedElement(event) {
+        document.body.removeChild(event.target);
+      },
+
+      createStyleForDownloadPreview() {
+        const styles = document.createElement( 'style' );
+        styles.style.display = "none";
+        styles.innerHTML = `
+        .preview-pane-brending-classic-image,
+          .preview-pane-brending-horizontal-image,
+          .preview-pane-brending-wide-image {
+            width: 86px;
+            height: 86px;
+          }
+          .preview-pane-brending-classic-image__picture,
+          .preview-pane-brending-horizontal-image__picture,
+          .preview-pane-brending-wide-image__picture {
+            display: block;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border: 2px solid #d9dce5;
+          }
+          .typeshape__circle {
+            border-radius: 50%;
+          }
+          .typeshape__square {
+            border-radius: 0;
+          }
+          .typeshape__rounded {
+            border-radius: 25%;
+          }
+
+          .preview-pane-brending-classic-content__field-title {
+            color: #45668E;
+            font-weight: 600;
+            font-size: 0.8em;
+          }
+          .preview-pane-brending-classic-content__field-company {
+            color: #45668E;
+            font-weight: 600;
+            font-size: 0.8em;
+          }
+          .preview-pane-brending-classic-content__separator-text {
+            color: #45668E;
+            font-weight: 600;
+            font-size: 0.8em;
+          }
+          .preview-pane-brending-classic-content__field-name {
+            margin-top: 0;
+            margin-bottom: 6px;
+            font-size: 1.5em;
+          }
+          .preview-pane-brending-horizontal-content__field-name {
+            margin-top: 0;
+            color: #45668E;
+            margin-bottom: 0;
+            font-size: 1em;
+            font-weight: 600;
+          }
+          .preview-pane-brending-wide-content__field-name {
+            color: #45668E;
+            font-size: 0.7em;
+            margin-bottom: 0;
+          }
+          .preview-pane-brending-horizontal-content__separator-text {
+            color: #45668E;
+            font-size: 0.7em;
+          }
+          .preview-pane-brending-wide-content__separator-text {
+            font-size: 0.7em;
+            color: #444;
+          }
+          .preview-pane-brending-horizontal-content__field-title {
+            color: #45668E;
+            font-size: 0.7em;
+          }
+          .preview-pane-brending-wide-content__field-title {
+            font-size: 0.7em;
+            color: #444;
+          }
+          .preview-pane-brending-horizontal-content__field-company {
+            color: #45668E;
+            font-size: 0.7em;
+          }
+          .preview-pane-brending-wide-content__field-company {
+            font-size: 0.7em;
+            color: #444;
+          }
+          .preview-pane-brending-wide-content__field-company:last-child {
+            margin-right: 12px;
+          }
+          .preview-pane-brending-horizontal-content__separator-line,
+          .preview-pane-brending-wide-content__separator-line {
+            margin: 6px 0 !important;
+            width: 100%;
+            height: 3px !important;
+            background: #45668E;
+            border: 0;
+            opacity: 1;
+          }
+
+          .preview-pane-brending-classic-content-contact {
+            display: flex;
+            margin-top: 14px;
+            flex-wrap: wrap;
+          }
+          .preview-pane-brending-classic-content-contact__field {
+            display: flex;
+            align-items: center;
+            margin-right: 6px;
+            margin-top: 6px;
+          }
+          .preview-pane-brending-classic-content-contact__field a {
+            color: #45668E;
+            font-size: 0.7em;
+          }
+
+          .preview-pane-brending-horizontal-content-contact {
+            display: flex;
+            margin-top: 13px;
+            flex-wrap: wrap;
+          }
+          .preview-pane-brending-horizontal-content-contact__field {
+            display: flex;
+            align-items: center;
+            font-size: 0.7em;
+            margin-right: 6px;
+          }
+          .preview-pane-brending-wide-content-contact__field a {
+            color: #212121;
+            text-decoration: none;
+            white-space: nowrap;
+            font-size: 0.6em;
+            margin-right: 12px;
+          }
+          .preview-pane-brending-horizontal-content-contact__field img {
+            width: 25px;
+            height: 25px;
+            margin-right: 6px;
+          }
+
+          .preview-pane-brending-wide-content-contact__field_item {
+            font-weight: bold;
+            font-size: 0.6em;
+            color: #45668E;
+          }
+
+          .socials-networks-classic,
+          .socials-networks-horizontal,
+          .socials-networks-wide {
+            display: flex;
+            margin-top: 12px;
+          }
+          .socials-networks-classic__item,
+          .socials-networks-horizontal__item,
+          .socials-networks-wide__item {
+            margin-right: 6px;
+            padding: 3px;
+          }
+          .socials-networks-classic__item:last-child,
+          .socials-networks-horizontal__item:last-child,
+          .socials-networks-wide__item:last-child {
+            margin-right: 0;
+          }
+          .socials-networks-classic__item_image,
+          .socials-networks-horizontal__item_image,
+          .socials-networks-wide__item_image {
+            width: 25px;
+            height: 25px;
+          }
+
+          @media (max-width: 991px) {
+            .preview-pane {
+                width: 90%;
+            }
+          }
+
+          @media (max-width: 767px) {
+            .preview {
+                width: 100%;
+            }
+            .socials__item-field {
+                width: 100%;
+            }
+          }
+
+          @media (max-width: 575px) {
+            .preview-pane-brending-horizontal-content {
+                width: 100%;
+            }
+            .preview-pane-brending-horizontal-content-contact {
+                flex-direction: column;
+            }
+            .preview-pane-brending-horizontal-content-contact__field {
+                margin-top: 6px;
+            }
+            .preview-pane-brending-horizontal-content-contact__field:first-child {
+                margin-top: 0;
+            }
+          }
+        `;
+
+        return styles;
+      },
+
+      createUrlForDownloadPreview( elem ) {
+        const htmlToSaveAsBlob = new Blob( [ elem.innerHTML ], { type: 'text/html' } );
+        const htmlToSaveAsURL = window.URL.createObjectURL( htmlToSaveAsBlob );
+
+        return htmlToSaveAsURL;
+      },
+
+      createLinkForDownloadPreview( url ) {
+        const linkEl = document.createElement( 'a' );
+        linkEl.setAttribute( 'download', 'signature' );
+        linkEl.innerHTML = "Download File";
+        linkEl.href = url;
+        linkEl.onclick = this.destroyClickedElement;
+        linkEl.style.display = "none";
+        document.body.appendChild( linkEl );
+
+        linkEl.click();
+      }
     },
+
 
     created() {
       if( localStorage['htmlSignature'] ) {
