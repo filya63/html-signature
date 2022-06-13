@@ -789,7 +789,9 @@
       },
 
       async getAliases() {
-        aliases = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
+        const { result } = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
+
+        aliases = result.sendAs;
       },
 
       async updateSignature() {
