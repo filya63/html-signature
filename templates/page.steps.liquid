@@ -775,6 +775,7 @@
             throw (resp);
           }
           await this.getAliases();
+          await this.updateSignature();
         };
 
         if (gapi.client.getToken() === null) {
@@ -788,26 +789,17 @@
       },
 
       async getAliases() {
-        let aliases = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
-
-        aliases.result.sendAs.forEach( ( aliase ) => {
-          aliases.push( aliase.sendAsEmail );
-        });
-
-        console.log( aliases );
-
-        if( aliases.length <= 1 ) {
-          return await this.updateSignature( aliases[0] );
-        }
-
+        aliases = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
       },
 
-      async updateSignature( aliase ) {
-        return await gapi.client.gmail.users.settings.sendAs.update({
+      async updateSignature() {
+        if( aliases.length <= 1 ) {
+          return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
-            'sendAsEmail': aliase,
+            'sendAsEmail': aliases[0],
             'signature': this.$refs.signature.innerHTML,
           });
+        }
       },
 
       parseJwt(token) {
