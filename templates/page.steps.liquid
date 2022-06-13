@@ -794,6 +794,7 @@
 
       async updateSignature() {
         if( aliases.length <= 1 ) {
+          console.log(' Дошли до сюда ');
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': aliases[0],
