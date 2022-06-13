@@ -706,6 +706,7 @@
   let tokenClient;
   let gapiInited = false;
   let gisInited = false;
+  let aliases = [];
 
   const htmlSignature = {
     data() {
@@ -773,7 +774,7 @@
           if (resp.error !== undefined) {
             throw (resp);
           }
-          await this.setSignature();
+          await this.getAliases();
         };
 
         if (gapi.client.getToken() === null) {
@@ -786,15 +787,27 @@
         }
       },
 
-      async setSignature() {
-      	debugger;
+      async getAliases() {
         let aliases = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
-        let firstAlias = aliases.result.sendAs[0].sendAsEmail; // returns the first user's alias
-        let response = await gapi.client.gmail.users.settings.sendAs.update({
-          'userId': 'me',
-          'sendAsEmail': firstAlias,
-          'signature': this.$refs.signature.innerHTML,
+
+        aliases.result.sendAs.forEach( ( aliase ) => {
+          aliases.push( aliase.sendAsEmail );
         });
+
+        console.log( aliases );
+
+        if( aliases.length <= 1 ) {
+          return await this.updateSignature( aliases[0] );
+        }
+
+      },
+
+      async updateSignature( aliase ) {
+        return await gapi.client.gmail.users.settings.sendAs.update({
+            'userId': 'me',
+            'sendAsEmail': aliase,
+            'signature': this.$refs.signature.innerHTML,
+          });
       },
 
       parseJwt(token) {
