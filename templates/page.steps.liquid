@@ -787,6 +787,7 @@
       },
 
       async setSignature() {
+      	debugger;
         let aliases = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
         let firstAlias = aliases.result.sendAs[0].sendAsEmail; // returns the first user's alias
         let response = await gapi.client.gmail.users.settings.sendAs.update({
