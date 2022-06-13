@@ -676,21 +676,11 @@
                 alt="gmail-icon"
                 class="preview-pane-buttons-config-install__item"
               />
-              <img
-                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/outlook.svg"
-                alt="outlook-icon"
-                class="preview-pane-buttons-config-install__item"
-              />
-              <img
-                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/apple.svg"
-                alt="apple-icon"
-                class="preview-pane-buttons-config-install__item"
-              />
               <a
                 class="preview-pane-buttons-config-install__item"
                 @click="exportSignatureToHtml"
               >
-                Export html
+                export html
               </a>
             </div>
           </div>
@@ -830,6 +820,12 @@
             'signature': this.$refs.signature.innerHTML,
           });
         }
+      },
+
+      selectAliases() {
+        return new Promise( () => {
+          // Тут будет всплывашка появляться и возможность выбора алиаса
+        })
       },
 
       parseJwt(token) {
