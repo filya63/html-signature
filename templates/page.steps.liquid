@@ -998,14 +998,12 @@
 
       async updateSignature() {
         if( aliases.length <= 1 ) {
-          debugger;
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': aliases[0].sendAsEmail,
             'signature': this.$refs.signature.innerHTML,
           });
         } else {
-          debugger;
           const aliase = await this.selectAliases();
 
           return await gapi.client.gmail.users.settings.sendAs.update({
