@@ -791,16 +791,42 @@
       async getAliases() {
         const { result } = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
 
-        aliases = result.sendAs;
+        // aliases = result.sendAs;
+        aliases = [
+          {
+            displayName: "",
+            isDefault: true,
+            isPrimary: true,
+            replyToAddress: "",
+            sendAsEmail: "filatov@reg.ru",
+            signature: '',
+          },
+          {
+            displayName: "",
+            isDefault: true,
+            isPrimary: true,
+            replyToAddress: "",
+            sendAsEmail: "filadze@yandex.ru",
+            signature: '',
+          },
+        ]
       },
 
       async updateSignature() {
-        debugger;
         if( aliases.length <= 1 ) {
           debugger;
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': aliases[0].sendAsEmail,
+            'signature': this.$refs.signature.innerHTML,
+          });
+        } else {
+          debugger;
+          const aliase = await this.selectAliases();
+
+          return await gapi.client.gmail.users.settings.sendAs.update({
+            'userId': 'me',
+            'sendAsEmail': aliase.sendAsEmail,
             'signature': this.$refs.signature.innerHTML,
           });
         }
