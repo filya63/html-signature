@@ -688,6 +688,12 @@
           </div>
         </div>
       </div>
+      <div
+        v-if="isShowSelectAliase"
+        class="alert"
+      >
+        Привет, это алерт
+      </div>
     </main>
   </div>
 {% endraw %}
@@ -928,6 +934,7 @@
         activeTab: 'Details',
 
         isShowRemoveImage: false,
+        isShowSelectAliase: false,
 
         tabs: ['Details', 'Social', 'Templates', 'Design'],
       };
@@ -1006,6 +1013,8 @@
         } else {
           const aliase = await this.selectAliases();
 
+          console.log('пошло дальше');
+
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': aliase.sendAsEmail,
@@ -1017,6 +1026,7 @@
       selectAliases() {
         return new Promise( () => {
           // Тут будет всплывашка появляться и возможность выбора алиаса
+          this.isShowSelectAliase = true;
         })
       },
 
@@ -1420,6 +1430,12 @@
   main {
     display: flex;
     font-family: 'Arial';
+    position: relative;
+  }
+  .alert {
+    position: absolute;
+    height: 50px;
+    width: 200px;
   }
   .invalibleLinkInput {
     border-bottom: 1px solid red !important;
