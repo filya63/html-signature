@@ -963,7 +963,7 @@
       this.tokenClient = google.accounts.oauth2.initTokenClient({
         client_id: '841400562900-oo7irmg1v2hjhu6uhs3in3tfn59epbqr.apps.googleusercontent.com',
         scope: 'https://www.googleapis.com/auth/gmail.settings.basic',
-        callback: '', // defined later
+        callback: '',
       });
       this.gisInited = true;
     },
@@ -987,11 +987,8 @@
         };
 
         if (gapi.client.getToken() === null) {
-          // Prompt the user to select a Google Account and ask for consent to share their data
-          // when establishing a new session.
           this.tokenClient.requestAccessToken({prompt: 'consent'});
         } else {
-          // Skip display of account chooser and consent dialog for an existing session.
           this.tokenClient.requestAccessToken({prompt: ''});
         }
       },
@@ -999,26 +996,7 @@
       async getAliases() {
         const { result } = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
 
-        // this.aliases = result.sendAs;
-        // пока фикстуры:
-        this.aliases = [
-          {
-            displayName: "",
-            isDefault: true,
-            isPrimary: true,
-            replyToAddress: "",
-            sendAsEmail: "filatov@reg.ru",
-            signature: '',
-          },
-          {
-            displayName: "",
-            isDefault: true,
-            isPrimary: true,
-            replyToAddress: "",
-            sendAsEmail: "filadze@reg.ge",
-            signature: '',
-          },
-        ]
+        this.aliases = result.sendAs;
       },
 
       async updateSignature() {
