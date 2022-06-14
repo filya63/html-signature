@@ -1031,11 +1031,8 @@
             'signature': this.$refs.signature.innerHTML,
           });
         } else {
-          debugger;
+          console.log('Сейчас вызовется попап с выбором алиасов')
           await this.selectAliases();
-
-          debugger;
-          console.log( 'пошло дальше', this.selectedAliases );
 
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
@@ -1047,19 +1044,19 @@
 
       selectAliases( isResolve ) {
         return new Promise( ( resolve ) => {
-          debugger;
           // Тут будет всплывашка появляться и возможность выбора алиаса
           this.isShowSelectAliase = true;
+          console.log('попал показан');
 
           if ( isResolve ) {
-            debugger;
+            console.log('зарезолвился попап, алиас уже выбран');
             resolve();
           }
         })
       },
 
       selectAliase( event ) {
-        debugger;
+        console.log('Алиас только что выбран');
         event.preventDefault();
 
         this.selectAliases( 'resolve' );
