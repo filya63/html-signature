@@ -1031,8 +1031,10 @@
             'signature': this.$refs.signature.innerHTML,
           });
         } else {
+          debugger;
           await this.selectAliases();
 
+          debugger;
           console.log( 'пошло дальше', this.selectedAliases );
 
           return await gapi.client.gmail.users.settings.sendAs.update({
@@ -1045,16 +1047,19 @@
 
       selectAliases( isResolve ) {
         return new Promise( ( resolve ) => {
+          debugger;
           // Тут будет всплывашка появляться и возможность выбора алиаса
           this.isShowSelectAliase = true;
 
           if ( isResolve ) {
+            debugger;
             resolve();
           }
         })
       },
 
       selectAliase( event ) {
+        debugger;
         event.preventDefault();
 
         this.selectAliases( 'resolve' );
