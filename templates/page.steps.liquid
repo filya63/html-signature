@@ -693,7 +693,19 @@
         class="alert-wrapper"
       >
         <div class="alert-content">
-          Привет, это алерт
+          Сhoose a aliase for changing:
+          <form
+            @submit="selectAliase"
+            v-for="( aliase, index ) in aliases"
+            :key="index + aliase"
+          >
+            <input
+              :value="aliase"
+              type="radio"
+              v-model="selectedAliase"
+            />
+            <button>Выбрать</button>
+          </form>
         </div>
       </div>
     </main>
@@ -706,7 +718,6 @@
   let tokenClient;
   let gapiInited = false;
   let gisInited = false;
-  let aliases = [];
   const stylesForPreview = `
     .preview-pane-brending-classic-image,
     .preview-pane-brending-horizontal-image,
@@ -939,6 +950,9 @@
         isShowSelectAliase: false,
 
         tabs: ['Details', 'Social', 'Templates', 'Design'],
+
+        aliases: [],
+        selectedAliase: null,
       };
     },
 
@@ -983,9 +997,9 @@
       async getAliases() {
         const { result } = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
 
-        // aliases = result.sendAs;
+        // this.aliases = result.sendAs;
         // пока фикстуры:
-        aliases = [
+        this.aliases = [
           {
             displayName: "",
             isDefault: true,
@@ -1006,20 +1020,20 @@
       },
 
       async updateSignature() {
-        if( aliases.length <= 1 ) {
+        if( this.aliases.length <= 1 ) {
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
-            'sendAsEmail': aliases[0].sendAsEmail,
+            'sendAsEmail': this.aliases[0].sendAsEmail,
             'signature': this.$refs.signature.innerHTML,
           });
         } else {
-          const aliase = await this.selectAliases();
+          await this.selectAliases();
 
-          console.log('пошло дальше');
+          // console.log('пошло дальше');
 
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
-            'sendAsEmail': aliase.sendAsEmail,
+            'sendAsEmail': this.selectedAliase.sendAsEmail,
             'signature': this.$refs.signature.innerHTML,
           });
         }
@@ -1030,6 +1044,11 @@
           // Тут будет всплывашка появляться и возможность выбора алиаса
           this.isShowSelectAliase = true;
         })
+      },
+
+      selectAliase( event ) {
+        event.preventDefault();
+        debugger;
       },
 
       parseJwt(token) {
