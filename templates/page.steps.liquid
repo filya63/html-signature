@@ -693,7 +693,7 @@
         class="alert-wrapper"
       >
         <div class="alert-content">
-          Сhoose a aliase for changing:
+          <h5>Сhoose a aliase for changing:</h5>
           <form>
             <label
               v-for="( aliase, index ) in aliases"
@@ -1031,6 +1031,7 @@
           await this.selectAliases();
 
           this.isShowSelectAliase = false;
+          console.log('То, что нужно: ', this.selectedAliase.sendAsEmail);
 
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
@@ -1466,7 +1467,7 @@
     background: rgba(221, 220, 229, 0.2);
   }
   .alert-content {
-    height: 50px;
+    height: auto;
     width: 200px;
     background: #f8dc74;
     padding: 6px;
