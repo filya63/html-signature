@@ -1034,6 +1034,8 @@
           console.log('Сейчас вызовется попап с выбором алиасов')
           await this.selectAliases();
 
+          console.log('Идем дальше, сейчас будем отправлять запрос на апдейт подписи с алисом: ', this.selectedAliase.sendAsEmail );
+
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': this.selectedAliase.sendAsEmail,
