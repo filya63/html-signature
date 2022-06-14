@@ -690,9 +690,11 @@
       </div>
       <div
         v-if="isShowSelectAliase"
-        class="alert"
+        class="alert-wrapper"
       >
-        Привет, это алерт
+        <div class="alert-content">
+          Привет, это алерт
+        </div>
       </div>
     </main>
   </div>
@@ -1432,10 +1434,17 @@
     font-family: 'Arial';
     position: relative;
   }
-  .alert {
+  .alert-wrapper {
     position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+  }
+  .alert-content {
     height: 50px;
     width: 200px;
+    left: calc(50% - 200px);
+    top: calc(50% - 50px);
   }
   .invalibleLinkInput {
     border-bottom: 1px solid red !important;
