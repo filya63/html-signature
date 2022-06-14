@@ -696,6 +696,7 @@
           <h5>Сhoose a aliase for changing:</h5>
           <form>
             <label
+              class="alert-content__label"
               v-for="( aliase, index ) in aliases"
               :key="index + aliase"
             >
@@ -1473,6 +1474,9 @@
     padding: 6px;
     border-radius: 5px;
     box-shadow: 0 0 2px RGB(25 28 43 / 4%), 0 4px 8px HSL(237deg 8% 46% / 16%);
+  }
+  .alert-content__label {
+    cursor: pointer;
   }
   .invalibleLinkInput {
     border-bottom: 1px solid red !important;
