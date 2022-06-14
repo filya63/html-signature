@@ -696,14 +696,18 @@
           Сhoose a aliase for changing:
           <form
             @submit="selectAliase"
-            v-for="( aliase, index ) in aliases"
-            :key="index + aliase"
           >
-            <input
-              :value="aliase"
-              type="radio"
-              v-model="selectedAliase"
-            />
+            <label
+              v-for="( aliase, index ) in aliases"
+              :key="index + aliase"
+            >
+              <input
+                :value="aliase"
+                type="radio"
+                v-model="selectedAliase"
+              />
+              {{ aliase.sendAsEmail }}
+            </label>
             <button>Выбрать</button>
           </form>
         </div>
@@ -1029,7 +1033,7 @@
         } else {
           await this.selectAliases();
 
-          // console.log('пошло дальше');
+          console.log( 'пошло дальше', this.selectedAliases );
 
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
@@ -1039,16 +1043,21 @@
         }
       },
 
-      selectAliases() {
+      selectAliases( isResolve ) {
         return new Promise( () => {
           // Тут будет всплывашка появляться и возможность выбора алиаса
           this.isShowSelectAliase = true;
+
+          if ( isResolve ) {
+            resolve();
+          }
         })
       },
 
       selectAliase( event ) {
         event.preventDefault();
-        debugger;
+
+        this.selectAliases( 'resolve' );
       },
 
       parseJwt(token) {
