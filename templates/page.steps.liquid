@@ -999,26 +999,26 @@
       async getAliases() {
         const { result } = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
 
-        // this.aliases = result.sendAs;
+        this.aliases = result.sendAs;
         // пока фикстуры:
-        this.aliases = [
-          {
-            displayName: "",
-            isDefault: true,
-            isPrimary: true,
-            replyToAddress: "",
-            sendAsEmail: "filatov@reg.ru",
-            signature: '',
-          },
-          {
-            displayName: "",
-            isDefault: true,
-            isPrimary: true,
-            replyToAddress: "",
-            sendAsEmail: "filatov@reg.ru",
-            signature: '',
-          },
-        ]
+        // this.aliases = [
+        //   {
+        //     displayName: "",
+        //     isDefault: true,
+        //     isPrimary: true,
+        //     replyToAddress: "",
+        //     sendAsEmail: "filatov@reg.ru",
+        //     signature: '',
+        //   },
+        //   {
+        //     displayName: "",
+        //     isDefault: true,
+        //     isPrimary: true,
+        //     replyToAddress: "",
+        //     sendAsEmail: "filatov@reg.ru",
+        //     signature: '',
+        //   },
+        // ]
       },
 
       async updateSignature() {
@@ -1032,7 +1032,6 @@
           await this.selectAliases();
 
           this.isShowSelectAliase = false;
-          console.log('То, что нужно: ', this.selectedAliase.sendAsEmail);
 
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
@@ -1267,7 +1266,6 @@
         linkEl.click();
       }
     },
-
 
     created() {
       if( localStorage['htmlSignature'] ) {
