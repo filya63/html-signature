@@ -1014,7 +1014,7 @@
             isDefault: true,
             isPrimary: true,
             replyToAddress: "",
-            sendAsEmail: "filadze@yandex.ru",
+            sendAsEmail: "filatov@reg.ru",
             signature: '',
           },
         ]
@@ -1028,12 +1028,9 @@
             'signature': this.$refs.signature.innerHTML,
           });
         } else {
-          console.log('Сейчас вызовется попап с выбором алиасов')
           await this.selectAliases();
 
           this.isShowSelectAliase = false;
-
-          console.log('Идем дальше, сейчас будем отправлять запрос на апдейт подписи с алисом: ', this.selectedAliase.sendAsEmail );
 
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
@@ -1045,13 +1042,10 @@
 
       selectAliases() {
         return new Promise( ( resolve ) => {
-          // Тут будет всплывашка появляться и возможность выбора алиаса
           this.isShowSelectAliase = true;
-          console.log('попал показан');
 
           const interval = setInterval( () => {
             if ( this.selectedAliase ) {
-              console.log('Алиас выбран');
               resolve();
               clearInterval( interval );
             }
