@@ -694,9 +694,7 @@
       >
         <div class="alert-content">
           Сhoose a aliase for changing:
-          <form
-            @submit="selectAliase"
-          >
+          <form>
             <label
               v-for="( aliase, index ) in aliases"
               :key="index + aliase"
@@ -708,7 +706,6 @@
               />
               {{ aliase.sendAsEmail }}
             </label>
-            <button>Выбрать</button>
           </form>
         </div>
       </div>
@@ -1034,6 +1031,8 @@
           console.log('Сейчас вызовется попап с выбором алиасов')
           await this.selectAliases();
 
+          this.isShowSelectAliase = false;
+
           console.log('Идем дальше, сейчас будем отправлять запрос на апдейт подписи с алисом: ', this.selectedAliase.sendAsEmail );
 
           return await gapi.client.gmail.users.settings.sendAs.update({
@@ -1044,24 +1043,20 @@
         }
       },
 
-      selectAliases( isResolve ) {
+      selectAliases() {
         return new Promise( ( resolve ) => {
           // Тут будет всплывашка появляться и возможность выбора алиаса
           this.isShowSelectAliase = true;
           console.log('попал показан');
 
-          if ( isResolve ) {
-            console.log('зарезолвился попап, алиас уже выбран');
-            resolve();
-          }
-        })
-      },
-
-      selectAliase( event ) {
-        console.log('Алиас только что выбран');
-        event.preventDefault();
-
-        this.selectAliases( 'resolve' );
+          const interval = setInterval( () => {
+            if ( this.selectedAliase ) {
+              console.log('Алиас выбран');
+              resolve();
+              clearInterval( interval );
+            }
+          }, 500 );
+        });
       },
 
       parseJwt(token) {
