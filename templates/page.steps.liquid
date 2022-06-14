@@ -325,6 +325,13 @@
                         id="fileBackground"
                         accept="image/jpeg, image/png"
                       />
+                      <span
+                        v-if="fileBackground"
+                        class="setup__item-content-box_spec_symbol"
+                        @click="clearBackground"
+                      >
+                        &#215;
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -348,9 +355,8 @@
               <span class="preview-pane-details__item-title">Subject: </span><span class="preview-pane-details__item-text">Check out my new email signature</span>
             </div>
           </div>
-          <div :class="`preview-pane-brending-${defineTemplateClass}`">
+          <div ref="signature" :class="`preview-pane-brending-${defineTemplateClass}`">
             <table
-              ref="signature"
               :style="{
                 background: isInvalibleBackgroundLink ? '' : `url(${backgroundLink || fileBackground}) center center / cover no-repeat`,
                 lineHeight: lineHeight + 'em',
@@ -664,25 +670,44 @@
               <span class="preview-pane-buttons-config-install__title">Install:</span>
               <img
                 id="g_id_onload"
-                @click="handleCredentialRequest"
+                @click="handleAuthClick"
                 data-auto_prompt="false"
                 src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/gmail.svg"
                 alt="gmail-icon"
                 class="preview-pane-buttons-config-install__item"
               />
-              <img
-                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/outlook.svg"
-                alt="outlook-icon"
+              <a
                 class="preview-pane-buttons-config-install__item"
-              />
-              <img
-                src="https://d1n2mpfyq0bf3x.cloudfront.net/25fd1656f988fc225b58d51011c76026/apple.svg"
-                alt="apple-icon"
-                class="preview-pane-buttons-config-install__item"
-              />
-            </div>
+                @click="exportSignatureToHtml"
+              >
+                <img
+                  alt="export-file"
+                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/55/assets/file-export-solid.svg?v=1655141909" />
+              </a>
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        v-if="isShowSelectAliase"
+        class="alert-wrapper"
+      >
+        <div class="alert-content">
+          <h5>Сhoose a aliase for changing:</h5>
+          <form>
+            <label
+              class="alert-content__label"
+              v-for="( aliase, index ) in aliases"
+              :key="index + aliase"
+            >
+              <input
+                :value="aliase"
+                type="radio"
+                v-model="selectedAliase"
+              />
+              {{ aliase.sendAsEmail }}
+            </label>
+          </form>
         </div>
       </div>
     </main>
@@ -691,6 +716,201 @@
 
 <script type="module">
   import { createApp } from 'vue';
+
+  let tokenClient;
+  let gapiInited = false;
+  let gisInited = false;
+  const stylesForPreview = `
+    .preview-pane-brending-classic-image,
+    .preview-pane-brending-horizontal-image,
+    .preview-pane-brending-wide-image {
+      width: 86px;
+      height: 86px;
+    }
+    .preview-pane-brending-classic-image__picture,
+    .preview-pane-brending-horizontal-image__picture,
+    .preview-pane-brending-wide-image__picture {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border: 2px solid #d9dce5;
+    }
+    .typeshape__circle {
+      border-radius: 50%;
+    }
+    .typeshape__square {
+      border-radius: 0;
+    }
+    .typeshape__rounded {
+      border-radius: 25%;
+    }
+    .preview-pane-brending-classic-content__field-title {
+      color: #45668E;
+      font-weight: 600;
+      font-size: 0.8em;
+    }
+    .preview-pane-brending-classic-content__field-company {
+      color: #45668E;
+      font-weight: 600;
+      font-size: 0.8em;
+    }
+    .preview-pane-brending-classic-content__separator-text {
+      color: #45668E;
+      font-weight: 600;
+      font-size: 0.8em;
+    }
+    .preview-pane-brending-classic-content__field-name {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 1.5em;
+    }
+    .preview-pane-brending-horizontal-content__field-name {
+      margin-top: 0;
+      color: #45668E;
+      margin-bottom: 0;
+      font-size: 1em;
+      font-weight: 600;
+    }
+    .preview-pane-brending-wide-content__field-name {
+      color: #45668E;
+      font-size: 0.7em;
+      margin-bottom: 0;
+    }
+    .preview-pane-brending-horizontal-content__separator-text {
+      color: #45668E;
+      font-size: 0.7em;
+    }
+    .preview-pane-brending-wide-content__separator-text {
+      font-size: 0.7em;
+      color: #444;
+    }
+    .preview-pane-brending-horizontal-content__field-title {
+      color: #45668E;
+      font-size: 0.7em;
+    }
+    .preview-pane-brending-wide-content__field-title {
+      font-size: 0.7em;
+      color: #444;
+    }
+    .preview-pane-brending-horizontal-content__field-company {
+      color: #45668E;
+      font-size: 0.7em;
+    }
+    .preview-pane-brending-wide-content__field-company {
+      font-size: 0.7em;
+      color: #444;
+    }
+    .preview-pane-brending-wide-content__field-company:last-child {
+      margin-right: 12px;
+    }
+    .preview-pane-brending-horizontal-content__separator-line,
+    .preview-pane-brending-wide-content__separator-line {
+      margin: 6px 0 !important;
+      width: 100%;
+      height: 3px !important;
+      background: #45668E;
+      border: 0;
+      opacity: 1;
+    }
+
+    .preview-pane-brending-classic-content-contact {
+      display: flex;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .preview-pane-brending-classic-content-contact__field {
+      display: flex;
+      align-items: center;
+      margin-right: 6px;
+      margin-top: 6px;
+    }
+    .preview-pane-brending-classic-content-contact__field a {
+      color: #45668E;
+      font-size: 0.7em;
+    }
+
+    .preview-pane-brending-horizontal-content-contact {
+      display: flex;
+      margin-top: 13px;
+      flex-wrap: wrap;
+    }
+    .preview-pane-brending-horizontal-content-contact__field {
+      display: flex;
+      align-items: center;
+      font-size: 0.7em;
+      margin-right: 6px;
+    }
+    .preview-pane-brending-wide-content-contact__field a {
+      color: #212121;
+      text-decoration: none;
+      white-space: nowrap;
+      font-size: 0.6em;
+      margin-right: 12px;
+    }
+    .preview-pane-brending-horizontal-content-contact__field img {
+      width: 25px;
+      height: 25px;
+      margin-right: 6px;
+    }
+
+    .preview-pane-brending-wide-content-contact__field_item {
+      font-weight: bold;
+      font-size: 0.6em;
+      color: #45668E;
+    }
+
+    .socials-networks-classic,
+    .socials-networks-horizontal,
+    .socials-networks-wide {
+      display: flex;
+      margin-top: 12px;
+    }
+    .socials-networks-classic__item,
+    .socials-networks-horizontal__item,
+    .socials-networks-wide__item {
+      margin-right: 6px;
+      padding: 3px;
+    }
+    .socials-networks-classic__item:last-child,
+    .socials-networks-horizontal__item:last-child,
+    .socials-networks-wide__item:last-child {
+      margin-right: 0;
+    }
+    .socials-networks-classic__item_image,
+    .socials-networks-horizontal__item_image,
+    .socials-networks-wide__item_image {
+      width: 25px;
+      height: 25px;
+    }
+    @media (max-width: 991px) {
+      .preview-pane {
+          width: 90%;
+      }
+    }
+    @media (max-width: 767px) {
+      .preview {
+          width: 100%;
+      }
+      .socials__item-field {
+          width: 100%;
+      }
+    }
+    @media (max-width: 575px) {
+      .preview-pane-brending-horizontal-content {
+          width: 100%;
+      }
+      .preview-pane-brending-horizontal-content-contact {
+          flex-direction: column;
+      }
+      .preview-pane-brending-horizontal-content-contact__field {
+          margin-top: 6px;
+      }
+      .preview-pane-brending-horizontal-content-contact__field:first-child {
+          margin-top: 0;
+      }
+    }
+  `;
 
   const htmlSignature = {
     data() {
@@ -729,48 +949,109 @@
         activeTab: 'Details',
 
         isShowRemoveImage: false,
+        isShowSelectAliase: false,
 
         tabs: ['Details', 'Social', 'Templates', 'Design'],
+
+        aliases: [],
+        selectedAliase: null,
       };
     },
 
+    mounted () {
+      gapi.load('client', this.intializeGapiClient);
+      this.tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: '841400562900-oo7irmg1v2hjhu6uhs3in3tfn59epbqr.apps.googleusercontent.com',
+        scope: 'https://www.googleapis.com/auth/gmail.settings.basic',
+        callback: '', // defined later
+      });
+      this.gisInited = true;
+    },
+
     methods: {
-      handleCredentialResponse(response) {
-        gapi.client.setApiKey( 'AIzaSyBR0osgIQVY4kT2-doTogOtMkjEY7tTNoE' );
-        const token = gapi.client.getToken();
-        console.log('Token:', token)
-        gapi.client.setToken( token );
+      async intializeGapiClient() {
+         await gapi.client.init({
+            apiKey: 'AIzaSyBR0osgIQVY4kT2-doTogOtMkjEY7tTNoE',
+            discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest'],
+         });
+         this.gapiInited = true;
+      },
 
-        // API KEY AIzaSyBR0osgIQVY4kT2-doTogOtMkjEY7tTNoE
+      handleAuthClick() {
+        this.tokenClient.callback = async (resp) => {
+          if (resp.error !== undefined) {
+            throw (resp);
+          }
+          await this.getAliases();
+          await this.updateSignature();
+        };
 
-      	const user = this.parseJwt(response.credential);
-        console.log(user);
-      	const signature = this.$refs.signature.innerHTML;
+        if (gapi.client.getToken() === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          this.tokenClient.requestAccessToken({prompt: 'consent'});
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          this.tokenClient.requestAccessToken({prompt: ''});
+        }
+      },
 
-      	fetch(`https://gmail.googleapis.com/gmail/v1/users/${user.sub}/settings/sendAs/${user.email}?access_token=${token}`, {
-        	method: 'PUT',
-            contentType: "application/json",
-            // headers: {
-            // 	'Authorization': 'Bearer ' + token,
-            // },
-            body: JSON.stringify({
-            	signature,
-            }),
+      async getAliases() {
+        const { result } = await gapi.client.gmail.users.settings.sendAs.list({'userId': 'me'});
+
+        // this.aliases = result.sendAs;
+        // пока фикстуры:
+        this.aliases = [
+          {
+            displayName: "",
+            isDefault: true,
+            isPrimary: true,
+            replyToAddress: "",
+            sendAsEmail: "filatov@reg.ru",
+            signature: '',
+          },
+          {
+            displayName: "",
+            isDefault: true,
+            isPrimary: true,
+            replyToAddress: "",
+            sendAsEmail: "filadze@reg.ge",
+            signature: '',
+          },
+        ]
+      },
+
+      async updateSignature() {
+        if( this.aliases.length <= 1 ) {
+          return await gapi.client.gmail.users.settings.sendAs.update({
+            'userId': 'me',
+            'sendAsEmail': this.aliases[0].sendAsEmail,
+            'signature': this.$refs.signature.innerHTML,
+          });
+        } else {
+          await this.selectAliases();
+
+          this.isShowSelectAliase = false;
+
+          return await gapi.client.gmail.users.settings.sendAs.update({
+            'userId': 'me',
+            'sendAsEmail': this.selectedAliase.sendAsEmail,
+            'signature': this.$refs.signature.innerHTML,
+          });
+        }
+      },
+
+      selectAliases() {
+        return new Promise( ( resolve ) => {
+          this.isShowSelectAliase = true;
+
+          const interval = setInterval( () => {
+            if ( this.selectedAliase ) {
+              resolve();
+              clearInterval( interval );
+            }
+          }, 500 );
         });
-  	  },
-
-      handleCredentialRequest() {
-      	gapi.auth.authorize({
-        client_id:
-            '841400562900-oo7irmg1v2hjhu6uhs3in3tfn59epbqr.apps.googleusercontent.com',
-            'scope': 'https://www.googleapis.com/auth/gmail.settings.basic'
-        }, this.handleCredentialResponse)
-      	// google.accounts.id.initialize({
-        // client_id:
-        //     '841400562900-oo7irmg1v2hjhu6uhs3in3tfn59epbqr.apps.googleusercontent.com',
-        //     callback: this.handleCredentialResponse,
-        // })
-        // google.accounts.id.prompt();
       },
 
       parseJwt(token) {
@@ -939,6 +1220,51 @@
 
         return true;
       },
+
+      clearBackground() {
+        this.fileBackground = null;
+      },
+
+      exportSignatureToHtml() {
+        const signature = this.$refs.signature;
+        const styles = this.createStyleForDownloadPreview();
+        signature.appendChild( styles );
+
+        const htmlToSaveAsURL = this.createUrlForDownloadPreview( signature );
+
+        this.createLinkForDownloadPreview( htmlToSaveAsURL )
+      },
+
+      destroyClickedElement(event) {
+        document.body.removeChild(event.target);
+      },
+
+      createStyleForDownloadPreview() {
+        const styles = document.createElement( 'style' );
+        styles.style.display = "none";
+        styles.innerHTML = stylesForPreview;
+
+        return styles;
+      },
+
+      createUrlForDownloadPreview( elem ) {
+        const htmlToSaveAsBlob = new Blob( [ elem.innerHTML ], { type: 'text/html' } );
+        const htmlToSaveAsURL = window.URL.createObjectURL( htmlToSaveAsBlob );
+
+        return htmlToSaveAsURL;
+      },
+
+      createLinkForDownloadPreview( url ) {
+        const linkEl = document.createElement( 'a' );
+        linkEl.setAttribute( 'download', 'signature' );
+        linkEl.innerHTML = "Download File";
+        linkEl.href = url;
+        linkEl.onclick = this.destroyClickedElement;
+        linkEl.style.display = "none";
+        document.body.appendChild( linkEl );
+
+        linkEl.click();
+      }
     },
 
     created() {
@@ -1127,6 +1453,31 @@
   main {
     display: flex;
     font-family: 'Arial';
+    position: relative;
+  }
+  .alert-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(221, 220, 229, 0.2);
+  }
+  .alert-content {
+    height: auto;
+    width: 200px;
+    background: #f8dc74;
+    padding: 6px;
+    border-radius: 5px;
+    box-shadow: 0 0 2px RGB(25 28 43 / 4%), 0 4px 8px HSL(237deg 8% 46% / 16%);
+  }
+  .alert-content__label {
+    cursor: pointer;
+  }
+  .alert-content__label > input {
+    cursor: pointer;
   }
   .invalibleLinkInput {
     border-bottom: 1px solid red !important;
@@ -1186,6 +1537,12 @@
   .preview-pane-buttons-config-install__item {
     margin-left: 12px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  .preview-pane-buttons-config-install__item > img {
+    width: 15px;
+    height: 15px;
   }
   .preview-pane-buttons-config__save {
     width: 50%;
@@ -1322,6 +1679,7 @@
     margin-bottom: 24px;
   }
   .setup__item-content-box {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1330,6 +1688,10 @@
     background-color: #f8f9fb;
     border: 1px dashed rgba(0, 0, 0, 0.3);
     border-radius: 4px;
+  }
+  .setup__item-content-box_spec_symbol {
+    position: absolute;
+    right: -14px;
   }
   .setup__item-content-box_label {
     width: 100%;
