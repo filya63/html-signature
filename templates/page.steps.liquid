@@ -1031,6 +1031,8 @@
       exportSignatureToHtml() {
         const signature = this.createSignaturePage();
 
+        console.log( signature );
+
         const htmlToSaveAsURL = this.createUrlForDownloadPreview( signature );
 
         this.createLinkForDownloadPreview( htmlToSaveAsURL )
