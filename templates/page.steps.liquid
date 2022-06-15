@@ -1011,10 +1011,12 @@
 
           this.isShowSelectAliase = false;
 
+          const signature = this.addStylesInSignature();
+
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': this.selectedAliase.sendAsEmail,
-            'signature': this.$refs.signature.innerHTML,
+            'signature': signature,
           });
         }
       },
@@ -1203,10 +1205,16 @@
         this.fileBackground = null;
       },
 
-      exportSignatureToHtml() {
+      addStylesInSignature() {
         const signature = this.$refs.signature;
         const styles = this.createStyleForDownloadPreview();
         signature.appendChild( styles );
+
+        return signature;
+      },
+
+      exportSignatureToHtml() {
+        const signature = this.addStylesInSignature();
 
         const htmlToSaveAsURL = this.createUrlForDownloadPreview( signature );
 
