@@ -1013,6 +1013,8 @@
 
           const signature = this.addStylesInSignature();
 
+          console.log( signature );
+
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': this.selectedAliase.sendAsEmail,
