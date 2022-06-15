@@ -1001,8 +1001,12 @@
 
       async updateSignature() {
         const signature = this.addStylesInSignature();
-        const signatureWrapper = document.createElement('div');
-        signatureWrapper.appendChild( signature );
+        const styles = this.createStylesForPreview();
+        const html = document.createElement('html');
+        const head = document.createElement('head');
+        head.appendChild( styles.innerHTML );
+        html.appendChild( head );
+        html.appendChild( signature );
 
         console.log( signatureWrapper.innerHTML );
 
@@ -1010,7 +1014,7 @@
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': this.aliases[0].sendAsEmail,
-            'signature': signatureWrapper.innerHTML,
+            'signature': html.innerHTML,
           });
         } else {
           await this.selectAliases();
@@ -1018,7 +1022,7 @@
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': this.selectedAliase.sendAsEmail,
-            'signature': signatureWrapper.innerHTML,
+            'signature': html.innerHTML,
           });
         }
       },
