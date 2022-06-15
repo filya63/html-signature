@@ -1008,6 +1008,8 @@
         html.appendChild( head );
         html.appendChild( signature );
 
+        console.log( html.innerHTML );
+
         if( this.aliases.length <= 1 ) {
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
