@@ -1000,20 +1000,18 @@
       },
 
       async updateSignature() {
+      	const signature = this.addStylesInSignature();
+        
         if( this.aliases.length <= 1 ) {
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': this.aliases[0].sendAsEmail,
-            'signature': this.$refs.signature.innerHTML,
+            'signature': signature,
           });
         } else {
           await this.selectAliases();
 
           this.isShowSelectAliase = false;
-
-          const signature = this.addStylesInSignature();
-
-          console.log( signature );
 
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
