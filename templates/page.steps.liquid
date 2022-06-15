@@ -1004,6 +1004,8 @@
         const signatureWrapper = document.createElement('div');
         signatureWrapper.appendChild( signature );
 
+        console.log( signatureWrapper.innerHTML );
+
         if( this.aliases.length <= 1 ) {
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
@@ -1207,7 +1209,7 @@
 
       addStylesInSignature() {
         const signature = this.$refs.signature;
-        const styles = this.createStyleForDownloadPreview();
+        const styles = this.createStylesForPreview();
         signature.appendChild( styles );
 
         return signature;
@@ -1225,9 +1227,9 @@
         document.body.removeChild(event.target);
       },
 
-      createStyleForDownloadPreview() {
-        const styles = document.createElement( 'link' );
-        styles.style.display = "none";
+      createStylesForPreview() {
+        const styles = document.createElement( 'style' );
+        // styles.style.display = "none";
         styles.innerHTML = stylesForPreview;
 
         return styles;
