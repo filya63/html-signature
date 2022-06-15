@@ -1001,6 +1001,7 @@
 
       async updateSignature() {
         const signature = this.addStylesInSignature();
+        console.log( signature.innerHTML );
 
         if( this.aliases.length <= 1 ) {
           return await gapi.client.gmail.users.settings.sendAs.update({
