@@ -810,17 +810,7 @@
       },
 
       async updateSignature() {
-        const signature = this.addStylesInSignature();
-        // const styles = this.createStylesForPreview();
-        // const html = document.createElement('html');
-        // const head = document.createElement('head');
-        // const body = document.createElement('body');
-        // head.appendChild( styles );
-        // html.appendChild( head );
-        // body.appendChild( signature );
-        // html.appendChild( body );
-
-        // console.log( html.innerHTML );
+        const signature = this.createSignaturePage();
 
         if( this.aliases.length <= 1 ) {
           return await gapi.client.gmail.users.settings.sendAs.update({
@@ -1023,16 +1013,23 @@
         this.fileBackground = null;
       },
 
-      addStylesInSignature() {
-        const signature = this.$refs.signature;
-        const styles = this.createStylesForPreview();
-        signature.appendChild( styles );
+      createSignaturePage() {
+        const html = document.createElement('html');
+        const head = document.createElement('head');
+        const body = document.createElement('body');
 
-        return signature;
+        const styles = this.createStylesForPreview();
+        head.appendChild( styles );
+        body.innerHTML = this.$refs.signature;
+
+        html.appendChild( head );
+        html.appendChild( body );
+
+        return html;
       },
 
       exportSignatureToHtml() {
-        const signature = this.addStylesInSignature();
+        const signature = this.createSignaturePage();
 
         const htmlToSaveAsURL = this.createUrlForDownloadPreview( signature );
 
@@ -1045,7 +1042,6 @@
 
       createStylesForPreview() {
         const styles = document.createElement( 'style' );
-        // styles.style.display = "none";
         styles.innerHTML = stylesForPreview;
 
         return styles;
