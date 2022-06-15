@@ -1026,7 +1026,7 @@
 
         body.innerHTML = this.$refs.signature.innerHTML;
 
-        html.lang = 'en';
+        document.documentElement.setAttribute( 'lang', 'en' );
 
         html.appendChild( head );
         html.appendChild( body );
