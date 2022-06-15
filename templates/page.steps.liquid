@@ -1015,12 +1015,18 @@
 
       createSignaturePage() {
         const html = document.createElement('html');
+        const title = document.createElement('title');
         const head = document.createElement('head');
         const body = document.createElement('body');
 
+        title.innerHTML = 'Custom Signature';
+        head.appendChild( title );
         const styles = this.createStylesForPreview();
         head.appendChild( styles );
+
         body.innerHTML = this.$refs.signature.innerHTML;
+
+        html.setAttribute( 'lang', 'en' );
 
         html.appendChild( head );
         html.appendChild( body );
