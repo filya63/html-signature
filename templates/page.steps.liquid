@@ -1001,24 +1001,22 @@
 
       async updateSignature() {
         const signature = this.addStylesInSignature();
-        console.log( signature.innerHTML );
+        const signatureWrapper = document.createElement('div');
+        signatureWrapper.appendChild( signature );
 
         if( this.aliases.length <= 1 ) {
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': this.aliases[0].sendAsEmail,
-            'signature': signature.innerHTML,
+            'signature': signatureWrapper.innerHTML,
           });
         } else {
           await this.selectAliases();
 
-          this.isShowSelectAliase = false;
-
-
           return await gapi.client.gmail.users.settings.sendAs.update({
             'userId': 'me',
             'sendAsEmail': this.selectedAliase.sendAsEmail,
-            'signature': signature.innerHTML,
+            'signature': signatureWrapper.innerHTML,
           });
         }
       },
@@ -1033,7 +1031,7 @@
               clearInterval( interval );
             }
           }, 500 );
-        });
+        }).finally(() => this.isShowSelectAliase = false );
       },
 
       parseJwt(token) {
