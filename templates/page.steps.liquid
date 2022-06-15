@@ -1020,7 +1020,7 @@
 
         const styles = this.createStylesForPreview();
         head.appendChild( styles );
-        body.innerHTML = this.$refs.signature;
+        body.innerHTML = this.$refs.signature.innerHTML;
 
         html.appendChild( head );
         html.appendChild( body );
