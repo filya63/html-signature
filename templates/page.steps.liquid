@@ -1153,6 +1153,7 @@
         this.isInvalibleImageLink = false;
 
         const img = this.$refs.addImage.querySelector('img');
+        img.setAttribute( 'alt', 'user-image' );
         if( link && img ) {
           this.isShowRemoveImage = true;
           this.setAttributeForImage( 'src', link );
