@@ -1153,15 +1153,16 @@
         this.isInvalibleImageLink = false;
 
         const img = this.$refs.addImage.querySelector('img');
-        img.setAttribute( 'alt', 'user-image' );
         if( link && img ) {
           this.isShowRemoveImage = true;
           this.setAttributeForImage( 'src', link );
+          img.setAttribute( 'alt', 'user-image' );
 
           return;
         } else {
           if( this.file ) {
             this.setAttributeForImage( 'src', this.fileUrl );
+            img.setAttribute( 'alt', 'user-image' );
 
             return;
           }
