@@ -1048,7 +1048,9 @@
         html.appendChild( body );
 
         let newHTMLDocument = document.implementation.createHTMLDocument();
-        newHTMLDocument.innerHTML = html;
+        const doctype = `<!DOCTYPE html>`;
+        newHTMLDocument.innerHTML = doctype;
+        newHTMLDocument.appendChild( html );
 
         return newHTMLDocument.innerHTML;
       },
