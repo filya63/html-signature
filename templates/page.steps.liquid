@@ -1050,7 +1050,7 @@
         let newHTMLDocument = document.implementation.createHTMLDocument();
         newHTMLDocument.innerHTML = html;
 
-        return newHTMLDocument;
+        return newHTMLDocument.innerHTML;
       },
 
       exportSignatureToHtml() {
