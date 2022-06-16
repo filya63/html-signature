@@ -370,7 +370,7 @@
                   <td>
                     <table>
                       <tbody>
-                        <tr>
+                        <tr v-if="this.file || ( this.imageLink && !this.isInvalibleImageLink )">
                           <td
                             :style="{height: `${imageSize}px`, width: `${imageSize}px`, display: isShowImageBlock}"
                             :class="`preview-pane-brending-${defineTemplateClass}-image`"
