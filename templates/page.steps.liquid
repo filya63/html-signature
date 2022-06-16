@@ -1026,8 +1026,6 @@
 
         body.innerHTML = this.$refs.signature.innerHTML;
 
-        html.setAttribute( 'lang', 'en' );
-
         html.appendChild( head );
         html.appendChild( body );
 
@@ -1036,8 +1034,6 @@
 
       exportSignatureToHtml() {
         const signature = this.createSignaturePage();
-
-        console.log( signature );
 
         const htmlToSaveAsURL = this.createUrlForDownloadPreview( signature );
 
@@ -1050,6 +1046,7 @@
 
       createStylesForPreview() {
         const styles = document.createElement( 'style' );
+        styles.setAttribute( 'type', 'text/css' );
         styles.innerHTML = stylesForPreview;
 
         return styles;
