@@ -384,290 +384,293 @@
                     <table>
                       <tbody :style="{fontSize: `${fontSize}em`}" style="width: 100%">
                         <tr>
-                          <tr>
-                            <td colspan="3">
-                              <table>
-                                <tbody :style="{fontSize: `${fontSize}em`}">
-                                  <tr>
-                                    <td :style="{fontFamily: fontFamily}">
-                                      <h4
-                                        :class="`preview-pane-brending-${defineTemplateClass}-content__field-name`"
-                                        :style="{color: color}"
+                          <tbody>
+                            <tr>
+                              <td colspan="3">
+                                <table>
+                                  <tbody :style="{fontSize: `${fontSize}em`}">
+                                    <tr>
+                                      <td :style="{fontFamily: fontFamily}">
+                                        <h4
+                                          :class="`preview-pane-brending-${defineTemplateClass}-content__field-name`"
+                                          :style="{color: color}"
+                                        >
+                                          {{ name }}
+                                        </h4>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td :style="{fontFamily: fontFamily}">
+                                        <span
+                                          :class="`preview-pane-brending-${defineTemplateClass}-content__field-title`"
+                                        >
+                                          {{ title }}
+                                        </span>
+                                        <span
+                                          v-if="isShowSeparatorForBasicInfo"
+                                          :class="`preview-pane-brending-${defineTemplateClass}-content__separator-text`"
+                                        >
+                                          {{ textForSeparator }}
+                                        </span>
+                                        <span
+                                          :class="`preview-pane-brending-${defineTemplateClass}-content__field-company`"
+                                        >
+                                          {{ company }}
+                                        </span>
+                                      </td>
+                                      <td
+                                        v-if="isWideTemplate"
+                                        :class="`socials-networks-${defineTemplateClass}`"
+                                        :style="{fontFamily: fontFamily, marginTop: '0px'}"
                                       >
-                                        {{ name }}
-                                      </h4>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td :style="{fontFamily: fontFamily}">
-                                      <span
-                                        :class="`preview-pane-brending-${defineTemplateClass}-content__field-title`"
-                                      >
-                                        {{ title }}
-                                      </span>
-                                      <span
-                                        v-if="isShowSeparatorForBasicInfo"
-                                        :class="`preview-pane-brending-${defineTemplateClass}-content__separator-text`"
-                                      >
-                                        {{ textForSeparator }}
-                                      </span>
-                                      <span
-                                        :class="`preview-pane-brending-${defineTemplateClass}-content__field-company`"
-                                      >
-                                        {{ company }}
-                                      </span>
-                                    </td>
-                                    <td
-                                      v-if="isWideTemplate"
-                                      :class="`socials-networks-${defineTemplateClass}`"
-                                      :style="{fontFamily: fontFamily, marginTop: '0px'}"
-                                    >
-                                      <a
-                                        v-if="facebook"
-                                        target="_blank"
-                                        :class="`socials-networks-${defineTemplateClass}__item`"
-                                        :href="`https://facebook.com/${facebook}`"
-                                        :style="{background: defineColor}"
-                                      >
-                                        <img
-                                          alt="facebook-icon"
-                                          :src="linkImageFacebook"
-                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
-                                        />
-                                      </a>
-                                      <a
-                                        v-if="instagram"
-                                        target="_blank"
-                                        :class="`socials-networks-${defineTemplateClass}__item`"
-                                        :href="`https://instagram.com/${instagram}`"
-                                        :style="{background: defineColor}"
-                                      >
-                                        <img
-                                          alt="instagram-icon"
-                                          :src="linkImageInstagram"
-                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
-                                        />
-                                      </a>
-                                      <a
-                                        v-if="linkedin"
-                                        target="_blank"
-                                        :class="`socials-networks-${defineTemplateClass}__item`"
-                                        :href="`https://linkedin.com/in/${linkedin}`"
-                                        :style="{background: defineColor}"
-                                      >
-                                        <img
-                                          alt="linkedin-icon"
-                                          :src="linkImageLinkedin"
-                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
-                                        />
-                                      </a>
-                                      <a
-                                        v-if="twitter"
-                                        target="_blank"
-                                        :class="`socials-networks-${defineTemplateClass}__item`"
-                                        :href="`https://twitter.com/${twitter}`"
-                                        :style="{background: defineColor}"
-                                      >
-                                        <img
-                                          alt="twitter-icon"
-                                          :src="linkImageTwitter"
-                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
-                                        />
-                                      </a>
-                                      <a
-                                        v-if="youtube"
-                                        target="_blank"
-                                        :class="`socials-networks-${defineTemplateClass}__item`"
-                                        :href="`https://youtube.com/${youtube}`"
-                                        :style="{background: defineColor}"
-                                      >
-                                        <img
-                                          alt="youtube-icon"
-                                          :src="linkImageYoutube"
-                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
-                                        />
-                                      </a>
-                                      <a
-                                        v-if="pinterest"
-                                        target="_blank"
-                                        :class="`socials-networks-${defineTemplateClass}__item`"
-                                        :href="`https://pinterest.com/${pinterest}`"
-                                        :style="{background: defineColor}"
-                                      >
-                                        <img
-                                          alt="pinterest-icon"
-                                          :src="linkImagePinterest"
-                                          :class="`socials-networks-${defineTemplateClass}__item_image`"
-                                        />
-                                      </a>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                          </tr>
-                          <tr v-if="( isHorizontalTemplate || isWideTemplate ) && hasImageLink">
-                            <td colspan="3">
-                              <hr
-                                :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
-                                :style="{background: defineColor}"
-                              />
-                            </td>
-                          </tr>
-                          <tr :class="`preview-pane-brending-${defineTemplateClass}-content-contact`">
-                            <td
-                              :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
-                              :style="{fontFamily: fontFamily}"
-                              v-if="phone"
-                              >
-                              <img
-                                alt="phone-icon"
-                                v-if="phone && isHorizontalTemplate"
-                                src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
-                              />
-                              <span
-                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
-                                v-if="isWideTemplate"
-                                :style="{color: defineColor}"
-                              >
-                                N
-                              </span>
-                              <a :href="`tel:${phone}`">
-                                {{ phone }}
-                              </a>
-                            </td>
-                            <td
-                              :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
-                              :style="{fontFamily: fontFamily}"
-                              v-if="website"
-                              >
-                              <img
-                                alt="website-icon"
-                                v-if="website && isHorizontalTemplate"
-                                src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
-                              />
-                              <span
-                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
-                                v-if="isWideTemplate"
-                                :style="{color: defineColor}"
-                              >
-                                W
-                              </span>
-                              <a :href="website" target="_blank">{{ website }}</a>
-                            </td>
-                            <td
-                              :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
-                              :style="{fontFamily: fontFamily}"
-                              v-if="email"
-                              >
-                              <img
-                                alt="email-icon"
-                                v-if="email && isHorizontalTemplate"
-                                src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
-                              />
-                              <span
-                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
-                                v-if="isWideTemplate"
-                                :style="{color: defineColor}"
-                              >
-                                E
-                              </span>
-                              <a :href="`mailto:${email}`">{{ email }}</a>
-                            </td>
-                          </tr>
-                          <tr v-if="isWideTemplate && hasImageLink">
-                            <td colspan="3">
-                              <hr
-                                :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
-                                :style="{background: defineColor}"
-                              />
-                            </td>
-                          </tr>
-                          <tr
-                            v-if="!isWideTemplate"
-                            :class="`socials-networks-${defineTemplateClass}`"
-                          >
-                            <td :style="{fontFamily: fontFamily}">
-                              <a
-                                v-if="facebook"
-                                target="_blank"
-                                :class="`socials-networks-${defineTemplateClass}__item`"
-                                :href="`https://facebook.com/${facebook}`"
-                                :style="{background: defineColor}"
-                              >
-                                <img
-                                  alt="facebook-icon"
-                                  :src="linkImageFacebook"
-                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                        <a
+                                          v-if="facebook"
+                                          target="_blank"
+                                          :class="`socials-networks-${defineTemplateClass}__item`"
+                                          :href="`https://facebook.com/${facebook}`"
+                                          :style="{background: defineColor}"
+                                        >
+                                          <img
+                                            alt="facebook-icon"
+                                            :src="linkImageFacebook"
+                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                          />
+                                        </a>
+                                        <a
+                                          v-if="instagram"
+                                          target="_blank"
+                                          :class="`socials-networks-${defineTemplateClass}__item`"
+                                          :href="`https://instagram.com/${instagram}`"
+                                          :style="{background: defineColor}"
+                                        >
+                                          <img
+                                            alt="instagram-icon"
+                                            :src="linkImageInstagram"
+                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                          />
+                                        </a>
+                                        <a
+                                          v-if="linkedin"
+                                          target="_blank"
+                                          :class="`socials-networks-${defineTemplateClass}__item`"
+                                          :href="`https://linkedin.com/in/${linkedin}`"
+                                          :style="{background: defineColor}"
+                                        >
+                                          <img
+                                            alt="linkedin-icon"
+                                            :src="linkImageLinkedin"
+                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                          />
+                                        </a>
+                                        <a
+                                          v-if="twitter"
+                                          target="_blank"
+                                          :class="`socials-networks-${defineTemplateClass}__item`"
+                                          :href="`https://twitter.com/${twitter}`"
+                                          :style="{background: defineColor}"
+                                        >
+                                          <img
+                                            alt="twitter-icon"
+                                            :src="linkImageTwitter"
+                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                          />
+                                        </a>
+                                        <a
+                                          v-if="youtube"
+                                          target="_blank"
+                                          :class="`socials-networks-${defineTemplateClass}__item`"
+                                          :href="`https://youtube.com/${youtube}`"
+                                          :style="{background: defineColor}"
+                                        >
+                                          <img
+                                            alt="youtube-icon"
+                                            :src="linkImageYoutube"
+                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                          />
+                                        </a>
+                                        <a
+                                          v-if="pinterest"
+                                          target="_blank"
+                                          :class="`socials-networks-${defineTemplateClass}__item`"
+                                          :href="`https://pinterest.com/${pinterest}`"
+                                          :style="{background: defineColor}"
+                                        >
+                                          <img
+                                            alt="pinterest-icon"
+                                            :src="linkImagePinterest"
+                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                          />
+                                        </a>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr v-if="( isHorizontalTemplate || isWideTemplate ) && hasImageLink">
+                              <td colspan="3">
+                                <hr
+                                  :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
+                                  :style="{background: defineColor}"
                                 />
-                              </a>
-                              <a
-                                v-if="instagram"
-                                target="_blank"
-                                :class="`socials-networks-${defineTemplateClass}__item`"
-                                :href="`https://instagram.com/${instagram}`"
-                                :style="{background: defineColor}"
-                              >
+                              </td>
+                            </tr>
+                            <tr :class="`preview-pane-brending-${defineTemplateClass}-content-contact`">
+                              <td
+                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
+                                :style="{fontFamily: fontFamily}"
+                                v-if="phone"
+                                >
                                 <img
-                                  alt="instagram-icon"
-                                  :src="linkImageInstagram"
-                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                  alt="phone-icon"
+                                  v-if="phone && isHorizontalTemplate"
+                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
                                 />
-                              </a>
-                              <a
-                                v-if="linkedin"
-                                target="_blank"
-                                :class="`socials-networks-${defineTemplateClass}__item`"
-                                :href="`https://linkedin.com/in/${linkedin}`"
-                                :style="{background: defineColor}"
-                              >
+                                <span
+                                  :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
+                                  v-if="isWideTemplate"
+                                  :style="{color: defineColor}"
+                                >
+                                  N
+                                </span>
+                                <a :href="`tel:${phone}`">
+                                  {{ phone }}
+                                </a>
+                              </td>
+                              <td
+                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
+                                :style="{fontFamily: fontFamily}"
+                                v-if="website"
+                                >
                                 <img
-                                  alt="linkedin-icon"
-                                  :src="linkImageLinkedin"
-                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                  alt="website-icon"
+                                  v-if="website && isHorizontalTemplate"
+                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
                                 />
-                              </a>
-                              <a
-                                v-if="twitter"
-                                target="_blank"
-                                :class="`socials-networks-${defineTemplateClass}__item`"
-                                :href="`https://twitter.com/${twitter}`"
-                                :style="{background: defineColor}"
-                              >
+                                <span
+                                  :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
+                                  v-if="isWideTemplate"
+                                  :style="{color: defineColor}"
+                                >
+                                  W
+                                </span>
+                                <a :href="website" target="_blank">{{ website }}</a>
+                              </td>
+                              <td
+                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
+                                :style="{fontFamily: fontFamily}"
+                                v-if="email"
+                                >
                                 <img
-                                  alt="twitter-icon"
-                                  :src="linkImageTwitter"
-                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                  alt="email-icon"
+                                  v-if="email && isHorizontalTemplate"
+                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
                                 />
-                              </a>
-                              <a
-                                v-if="youtube"
-                                target="_blank"
-                                :class="`socials-networks-${defineTemplateClass}__item`"
-                                :href="`https://youtube.com/${youtube}`"
-                                :style="{background: defineColor}"
-                              >
-                                <img
-                                  alt="youtube-icon"
-                                  :src="linkImageYoutube"
-                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                <span
+                                  :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
+                                  v-if="isWideTemplate"
+                                  :style="{color: defineColor}"
+                                >
+                                  E
+                                </span>
+                                <a :href="`mailto:${email}`">{{ email }}</a>
+                              </td>
+                            </tr>
+                            <tr v-if="isWideTemplate && hasImageLink">
+                              <td colspan="3">
+                                <hr
+                                  :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
+                                  :style="{background: defineColor}"
                                 />
-                              </a>
-                              <a
-                                v-if="pinterest"
-                                target="_blank"
-                                :class="`socials-networks-${defineTemplateClass}__item`"
-                                :href="`https://pinterest.com/${pinterest}`"
-                                :style="{background: defineColor}"
-                              >
-                                <img
-                                  alt="pinterest-icon"
-                                  :src="linkImagePinterest"
-                                  :class="`socials-networks-${defineTemplateClass}__item_image`"
-                                />
-                              </a>
-                            </td>
-                          </tr>
+                              </td>
+                            </tr>
+                            <tr
+                              v-if="!isWideTemplate"
+                              :class="`socials-networks-${defineTemplateClass}`"
+                            >
+                              <td :style="{fontFamily: fontFamily}">
+                                <a
+                                  v-if="facebook"
+                                  target="_blank"
+                                  :class="`socials-networks-${defineTemplateClass}__item`"
+                                  :href="`https://facebook.com/${facebook}`"
+                                  :style="{background: defineColor}"
+                                >
+                                  <img
+                                    alt="facebook-icon"
+                                    :src="linkImageFacebook"
+                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                  />
+                                </a>
+                                <a
+                                  v-if="instagram"
+                                  target="_blank"
+                                  :class="`socials-networks-${defineTemplateClass}__item`"
+                                  :href="`https://instagram.com/${instagram}`"
+                                  :style="{background: defineColor}"
+                                >
+                                  <img
+                                    alt="instagram-icon"
+                                    :src="linkImageInstagram"
+                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                  />
+                                </a>
+                                <a
+                                  v-if="linkedin"
+                                  target="_blank"
+                                  :class="`socials-networks-${defineTemplateClass}__item`"
+                                  :href="`https://linkedin.com/in/${linkedin}`"
+                                  :style="{background: defineColor}"
+                                >
+                                  <img
+                                    alt="linkedin-icon"
+                                    :src="linkImageLinkedin"
+                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                  />
+                                </a>
+                                <a
+                                  v-if="twitter"
+                                  target="_blank"
+                                  :class="`socials-networks-${defineTemplateClass}__item`"
+                                  :href="`https://twitter.com/${twitter}`"
+                                  :style="{background: defineColor}"
+                                >
+                                  <img
+                                    alt="twitter-icon"
+                                    :src="linkImageTwitter"
+                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                  />
+                                </a>
+                                <a
+                                  v-if="youtube"
+                                  target="_blank"
+                                  :class="`socials-networks-${defineTemplateClass}__item`"
+                                  :href="`https://youtube.com/${youtube}`"
+                                  :style="{background: defineColor}"
+                                >
+                                  <img
+                                    alt="youtube-icon"
+                                    :src="linkImageYoutube"
+                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                  />
+                                </a>
+                                <a
+                                  v-if="pinterest"
+                                  target="_blank"
+                                  :class="`socials-networks-${defineTemplateClass}__item`"
+                                  :href="`https://pinterest.com/${pinterest}`"
+                                  :style="{background: defineColor}"
+                                >
+                                  <img
+                                    alt="pinterest-icon"
+                                    :src="linkImagePinterest"
+                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                  />
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </tr>
                       </tbody>
                     </table>
                   </td>
