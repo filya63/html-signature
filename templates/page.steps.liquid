@@ -1049,8 +1049,7 @@
 
         let newHTMLDocument = document.implementation.createHTMLDocument();
         const doctype = `<!DOCTYPE html>`;
-        newHTMLDocument.innerHTML = doctype;
-        newHTMLDocument.appendChild( html );
+        newHTMLDocument.innerHTML = doctype + html.innerHTML;
 
         return newHTMLDocument.innerHTML;
       },
