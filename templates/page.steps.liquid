@@ -370,7 +370,7 @@
                   <td>
                     <table>
                       <tbody>
-                        <tr v-if="this.file || ( this.imageLink && !this.isInvalibleImageLink )">
+                        <tr>
                           <td
                             :style="{height: `${imageSize}px`, width: `${imageSize}px`, display: isShowImageBlock}"
                             :class="`preview-pane-brending-${defineTemplateClass}-image`"
@@ -1030,13 +1030,16 @@
 
       createSignaturePage() {
         const html = document.createElement('html');
+        const meta = document.createElement('meta');
         const title = document.createElement('title');
         const head = document.createElement('head');
         const body = document.createElement('body');
 
         title.innerHTML = 'Custom Signature';
         head.appendChild( title );
+        meta.setAttribute( 'charset', 'UTF-8' );
         const styles = this.createStylesForPreview();
+        head.appendChild( meta );
         head.appendChild( styles );
 
         body.innerHTML = this.$refs.signature.innerHTML;
