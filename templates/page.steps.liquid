@@ -1047,7 +1047,10 @@
         html.appendChild( head );
         html.appendChild( body );
 
-        return html;
+        let newHTMLDocument = document.implementation.createHTMLDocument();
+        newHTMLDocument.innerHTML = html;
+
+        return newHTMLDocument;
       },
 
       exportSignatureToHtml() {
