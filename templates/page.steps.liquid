@@ -65,42 +65,42 @@
             <h3>SOCIAL PROFILES</h3>
             <div class="socials">
               <div class="socials__item">
-                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/facebook.jpeg?v=1654241332" class="socials__item-icon" />
+                <img alt="facebook-icon" src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/facebook.jpeg?v=1654241332" class="socials__item-icon" />
                 <div class="socials__item-field">
                   <label class="socials__item-field_label">facebook.com/&lt;username&gt;</label>
                   <input type="text" class="socials__item-field_input" v-model="facebook">
                 </div>
               </div>
               <div class="socials__item">
-                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/instagram.jpeg?v=1654241524" class="socials__item-icon" />
+                <img alt="instagram-icon" src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/instagram.jpeg?v=1654241524" class="socials__item-icon" />
                 <div class="socials__item-field">
                   <label class="socials__item-field_label">instagram.com/&lt;username&gt;</label>
                   <input type="text" class="socials__item-field_input" v-model="instagram">
                 </div>
               </div>
               <div class="socials__item">
-                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/linkedin.jpeg?v=1650184128" class="socials__item-icon" />
+                <img alt="linkedin-icon" src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/linkedin.jpeg?v=1650184128" class="socials__item-icon" />
                 <div class="socials__item-field">
                   <label class="socials__item-field_label">linkedin.com/in/&lt;username&gt;</label>
                   <input type="text" class="socials__item-field_input" v-model="linkedin">
                 </div>
               </div>
               <div class="socials__item">
-                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/twitter.jpeg?v=1654241532" class="socials__item-icon" />
+                <img alt="twitter-icon" src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/twitter.jpeg?v=1654241532" class="socials__item-icon" />
                 <div class="socials__item-field">
                   <label class="socials__item-field_label">twitter.com/&lt;username&gt;</label>
                   <input type="text" class="socials__item-field_input" v-model="twitter">
                 </div>
               </div>
               <div class="socials__item">
-                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/youtube.jpeg?v=1650184967" class="socials__item-icon" />
+                <img alt="youtube-icon" src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/youtube.jpeg?v=1650184967" class="socials__item-icon" />
                 <div class="socials__item-field">
                   <label class="socials__item-field_label">youtube.com/&lt;username&gt;</label>
                   <input type="text" class="socials__item-field_input" v-model="youtube">
                 </div>
               </div>
               <div class="socials__item">
-                <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/pinterest.jpeg?v=1650184886" class="socials__item-icon" />
+                <img alt="pinterest-icon" src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/pinterest.jpeg?v=1650184886" class="socials__item-icon" />
                 <div class="socials__item-field">
                   <label class="socials__item-field_label">pinterest.com/&lt;username&gt;</label>
                   <input type="text" class="socials__item-field_input" v-model="pinterest">
@@ -116,7 +116,7 @@
                 class="templates__item"
                 :class="{ activeTemplate: isClassicTemplate }"
               >
-                <img class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/classic_v2.svg"/>
+                <img alt="classic-template" class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/classic_v2.svg"/>
                 Classic
               </button>
               <button
@@ -124,7 +124,7 @@
                 class="templates__item"
                 :class="{ activeTemplate: isHorizontalTemplate }"
               >
-                <img class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/horizontal_v2.svg"/>
+                <img alt="horizontal-template" class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/horizontal_v2.svg"/>
                 Horizontal
               </button>
               <button
@@ -132,7 +132,7 @@
                 class="templates__item"
                 :class="{ activeTemplate: isWideTemplate }"
               >
-                <img class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/wide_v2.svg"/>
+                <img alt="wide-template" class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/wide_v2.svg"/>
                 Wide
               </button>
             </div>
@@ -430,6 +430,7 @@
                                         :style="{background: defineColor}"
                                       >
                                         <img
+                                          alt="facebook-icon"
                                           :src="linkImageFacebook"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
@@ -442,6 +443,7 @@
                                         :style="{background: defineColor}"
                                       >
                                         <img
+                                          alt="instagram-icon"
                                           :src="linkImageInstagram"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
@@ -454,6 +456,7 @@
                                         :style="{background: defineColor}"
                                       >
                                         <img
+                                          alt="linkedin-icon"
                                           :src="linkImageLinkedin"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
@@ -466,6 +469,7 @@
                                         :style="{background: defineColor}"
                                       >
                                         <img
+                                          alt="twitter-icon"
                                           :src="linkImageTwitter"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
@@ -478,6 +482,7 @@
                                         :style="{background: defineColor}"
                                       >
                                         <img
+                                          alt="youtube-icon"
                                           :src="linkImageYoutube"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
@@ -490,6 +495,7 @@
                                         :style="{background: defineColor}"
                                       >
                                         <img
+                                          alt="pinterest-icon"
                                           :src="linkImagePinterest"
                                           :class="`socials-networks-${defineTemplateClass}__item_image`"
                                         />
@@ -515,6 +521,7 @@
                               v-if="phone"
                               >
                               <img
+                                alt="phone-icon"
                                 v-if="phone && isHorizontalTemplate"
                                 src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
                               />
@@ -535,6 +542,7 @@
                               v-if="website"
                               >
                               <img
+                                alt="website-icon"
                                 v-if="website && isHorizontalTemplate"
                                 src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
                               />
@@ -553,6 +561,7 @@
                               v-if="email"
                               >
                               <img
+                                alt="email-icon"
                                 v-if="email && isHorizontalTemplate"
                                 src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
                               />
@@ -587,6 +596,7 @@
                                 :style="{background: defineColor}"
                               >
                                 <img
+                                  alt="facebook-icon"
                                   :src="linkImageFacebook"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
@@ -599,6 +609,7 @@
                                 :style="{background: defineColor}"
                               >
                                 <img
+                                  alt="instagram-icon"
                                   :src="linkImageInstagram"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
@@ -611,6 +622,7 @@
                                 :style="{background: defineColor}"
                               >
                                 <img
+                                  alt="linkedin-icon"
                                   :src="linkImageLinkedin"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
@@ -623,6 +635,7 @@
                                 :style="{background: defineColor}"
                               >
                                 <img
+                                  alt="twitter-icon"
                                   :src="linkImageTwitter"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
@@ -635,6 +648,7 @@
                                 :style="{background: defineColor}"
                               >
                                 <img
+                                  alt="youtube-icon"
                                   :src="linkImageYoutube"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
@@ -647,6 +661,7 @@
                                 :style="{background: defineColor}"
                               >
                                 <img
+                                  alt="pinterest-icon"
                                   :src="linkImagePinterest"
                                   :class="`socials-networks-${defineTemplateClass}__item_image`"
                                 />
