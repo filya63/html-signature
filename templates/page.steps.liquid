@@ -355,15 +355,9 @@
               <span class="preview-pane-details__item-title">Subject: </span><span class="preview-pane-details__item-text">Check out my new email signature</span>
             </div>
           </div>
-          <div ref="signature" :class="`preview-pane-brending-${defineTemplateClass}`">
+          <div ref="signature" :style="stylesPreviewTemplate">
             <table
-              :style="{
-                background: isInvalibleBackgroundLink ? '' : `url(${backgroundLink || fileBackground}) center center / cover no-repeat`,
-                lineHeight: lineHeight + 'em',
-                marginTop: marginTop + 'px',
-                color: color,
-                wordBreak: 'break-all'
-              }"
+              :style="stylesPreviewTable"
             >
               <tbody>
                 <tr>
@@ -372,17 +366,16 @@
                       <tbody>
                         <tr>
                           <td
-                            :style="{height: `${imageSize}px`, width: `${imageSize}px`, display: isShowImageBlock}"
-                            :class="`preview-pane-brending-${defineTemplateClass}-image`"
-                            ref="addImage"
+                            :style="stylesPreviewBlockImage"
+                            ref="userImage"
                           ></td>
                         </tr>
                       </tbody>
                     </table>
                   </td>
-                  <td :class="`preview-pane-brending-${defineTemplateClass}-content`">
+                  <td :style="stylesPreviewMainContent">
                     <table>
-                      <tbody :style="{fontSize: `${fontSize}em`}" style="width: 100%">
+                      <tbody :style="stylesPreviewMainContentBody">
                         <tr>
                           <td>
                             <tr>
@@ -733,6 +726,9 @@
 {% endraw %}
 
 <script type="module">
+  // TODO:
+  // Вычистить stylesForPreview и все, что с этим связано
+
   import { createApp } from 'vue';
 
   let tokenClient;
@@ -1000,7 +996,7 @@
       },
 
       setAttributeForImage( attribute, value ) {
-        const img = this.$refs.addImage.querySelector('img');
+        const img = this.$refs.userImage.querySelector('img');
 
         if( img ) {
           img.setAttribute( attribute, value );
@@ -1008,13 +1004,13 @@
       },
 
       createElementWithImage( imageLink ) {
-        this.$refs.addImage.innerHTML = "";
+        this.$refs.userImage.innerHTML = "";
         const imageElem = document.createElement("img");
 
         imageElem.setAttribute( 'src', imageLink);
-        imageElem.setAttribute( 'class', `preview-pane-brending-${this.defineTemplateClass}-image__picture`);
+        imageElem.setAttribute( 'style', this.stylesPreviewUserPicture );
 
-        this.$refs.addImage.append( imageElem );
+        this.$refs.userImage.append( imageElem );
       },
 
       validateFormatLink( link, field ) {
@@ -1120,7 +1116,7 @@
       },
 
       template( template ) {
-        this.setAttributeForImage( 'class', `preview-pane-brending-${template}-image__picture` );
+        this.setAttributeForImage( 'style', this.stylesPreviewUserPicture );
       },
 
       imageSize( newSize ) {
@@ -1128,7 +1124,7 @@
       },
 
       typeShape( type ) {
-        const img = this.$refs.addImage.querySelector('img');
+        const img = this.$refs.userImage.querySelector('img');
         if( !img ) return;
 
         this.changeClassShapeForImage( img, type );
@@ -1142,7 +1138,7 @@
             return;
           }
 
-          this.$refs.addImage.innerHTML = "";
+          this.$refs.userImage.innerHTML = "";
 
           return;
         }
@@ -1162,17 +1158,15 @@
         if ( !this.validateFormatLink( link, 'isInvalibleImageLink' ) ) return;
         this.isInvalibleImageLink = false;
 
-        const img = this.$refs.addImage.querySelector('img');
+        const img = this.$refs.userImage.querySelector('img');
         if( link && img ) {
           this.isShowRemoveImage = true;
           this.setAttributeForImage( 'src', link );
-          img.setAttribute( 'alt', 'user-image' );
 
           return;
         } else {
           if( this.file ) {
             this.setAttributeForImage( 'src', this.fileUrl );
-            img.setAttribute( 'alt', 'user-image' );
 
             return;
           }
@@ -1272,6 +1266,51 @@
       defineColor() {
         return this.color ? this.color : '';
       },
+
+      // for inline styles
+      stylesPreviewTemplate() {
+        return {
+          padding: '5px 18px 10px',
+          minHeight: '150px',
+          width: '100%',
+        }
+      },
+
+      stylesPreviewTable() {
+        return {
+          background: this.isInvalibleBackgroundLink ? '' : `url(${this.backgroundLink || this.fileBackground}) center center / cover no-repeat`,
+          lineHeight: this.lineHeight + 'em',
+          marginTop: this.marginTop + 'px',
+          color: this.color,
+          wordBreak: 'break-all'
+        }
+      },
+
+      stylesPreviewBlockImage() {
+        return {
+          height: `${this.imageSize}px`,
+          width: `${this.imageSize}px`,
+          display: this.isShowImageBlock,
+        }
+      },
+
+      stylesPreviewMainContent() {
+        return {
+          display: 'flex',
+          marginLeft: '14px',
+        }
+      },
+
+      stylesPreviewUserPicture() {
+        return `display: block; height: 100%; width: 100%; object-fit: cover; border: 2px solid #d9dce5;`;
+      },
+
+      stylesPreviewMainContentBody() {
+        return {
+          fontSize: `${this.fontSize}em`,
+          width: '100%',
+        }
+      }
     }
   };
 
@@ -1692,19 +1731,7 @@
     box-shadow: 0 0 2px RGB(25 28 43 / 4%), 0 4px 8px HSL(237deg 8% 46% / 16%);
     border-radius: 8px;
   }
-  .preview-pane-brending-classic,
-  .preview-pane-brending-horizontal,
-  .preview-pane-brending-wide {
-    padding: 5px 18px 10px;
-    min-height: 150px;
-    width: 100%;
-  }
-  .preview-pane-brending-classic-content,
-  .preview-pane-brending-horizontal-content,
-  .preview-pane-brending-wide-content {
-    display: flex;
-    margin-left: 14px;
-  }
+
   .preview-pane-brending-horizontal__separator-line {
     border: none;
     border-bottom: 5px solid #45668E;
@@ -1743,29 +1770,14 @@
     border: 1px solid #d9dce5;
   }
 
-  .preview-pane-brending-classic-image,
-  .preview-pane-brending-horizontal-image,
-  .preview-pane-brending-wide-image {
-    width: 86px;
-    height: 86px;
-  }
-  .preview-pane-brending-classic-image__picture,
-  .preview-pane-brending-horizontal-image__picture,
-  .preview-pane-brending-wide-image__picture {
-    display: block;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border: 2px solid #d9dce5;
-  }
   .typeshape__circle {
-      border-radius: 50%;
+    border-radius: 50%;
   }
   .typeshape__square {
-      border-radius: 0;
+    border-radius: 0;
   }
   .typeshape__rounded {
-      border-radius: 25%;
+    border-radius: 25%;
   }
 
   .preview-pane-brending-classic-content__field-title {
@@ -1848,11 +1860,6 @@
     margin-right: 6px;
     margin-top: 6px;
   }
-  /* .preview-pane-brending-classic-content-contact__field img {
-    width: 25px;
-    height: 25px;
-    margin-right: 6px;
-  } */
   .preview-pane-brending-classic-content-contact__field a {
     color: #45668E;
     font-size: 0.7em;
