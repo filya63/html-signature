@@ -385,8 +385,7 @@
                                     <tr>
                                       <td :style="{fontFamily: fontFamily}">
                                         <h4
-                                          :class="`preview-pane-brending-${defineTemplateClass}-content__field-name`"
-                                          :style="{color: color}"
+                                          :style="stylesPreviewContentFieldName"
                                         >
                                           {{ name }}
                                         </h4>
@@ -395,33 +394,31 @@
                                     <tr>
                                       <td :style="{fontFamily: fontFamily}">
                                         <span
-                                          :class="`preview-pane-brending-${defineTemplateClass}-content__field-title`"
+                                          :style="stylesPreviewContentFieldTitle"
                                         >
                                           {{ title }}
                                         </span>
                                         <span
                                           v-if="isShowSeparatorForBasicInfo"
-                                          :class="`preview-pane-brending-${defineTemplateClass}-content__separator-text`"
+                                          :style="stylesPreviewContentSeparatorText"
                                         >
                                           {{ textForSeparator }}
                                         </span>
                                         <span
-                                          :class="`preview-pane-brending-${defineTemplateClass}-content__field-company`"
+                                          :style="stylesPreviewContentFieldCompany"
                                         >
                                           {{ company }}
                                         </span>
                                       </td>
                                       <td
                                         v-if="isWideTemplate"
-                                        :class="`socials-networks-${defineTemplateClass}`"
-                                        :style="{fontFamily: fontFamily, marginTop: '0px'}"
+                                        :style="{...stylesPreviewSocialsNetworks, fontFamily: fontFamily, marginTop: '0px', marginLeft: '12px'}"
                                       >
                                         <a
                                           v-if="facebook"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://facebook.com/${facebook}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="facebook-icon"
@@ -432,9 +429,8 @@
                                         <a
                                           v-if="instagram"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://instagram.com/${instagram}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="instagram-icon"
@@ -445,9 +441,8 @@
                                         <a
                                           v-if="linkedin"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://linkedin.com/in/${linkedin}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="linkedin-icon"
@@ -458,9 +453,8 @@
                                         <a
                                           v-if="twitter"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://twitter.com/${twitter}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="twitter-icon"
@@ -471,9 +465,8 @@
                                         <a
                                           v-if="youtube"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://youtube.com/${youtube}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="youtube-icon"
@@ -484,9 +477,8 @@
                                         <a
                                           v-if="pinterest"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://pinterest.com/${pinterest}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="pinterest-icon"
@@ -579,15 +571,14 @@
                             </tr>
                             <tr
                               v-if="!isWideTemplate"
-                              :class="`socials-networks-${defineTemplateClass}`"
+                              :style="stylesPreviewSocialsNetworks"
                             >
                               <td :style="{fontFamily: fontFamily}">
                                 <a
                                   v-if="facebook"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://facebook.com/${facebook}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="facebook-icon"
@@ -598,9 +589,8 @@
                                 <a
                                   v-if="instagram"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://instagram.com/${instagram}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="instagram-icon"
@@ -611,9 +601,8 @@
                                 <a
                                   v-if="linkedin"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://linkedin.com/in/${linkedin}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="linkedin-icon"
@@ -624,9 +613,8 @@
                                 <a
                                   v-if="twitter"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://twitter.com/${twitter}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="twitter-icon"
@@ -637,9 +625,8 @@
                                 <a
                                   v-if="youtube"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://youtube.com/${youtube}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="youtube-icon"
@@ -650,9 +637,8 @@
                                 <a
                                   v-if="pinterest"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://pinterest.com/${pinterest}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="pinterest-icon"
@@ -1310,7 +1296,121 @@
           fontSize: `${this.fontSize}em`,
           width: '100%',
         }
-      }
+      },
+
+      stylesPreviewContentFieldName() {
+        if( this.isClassicTemplate ) {
+          return {
+            marginTop: '0',
+            marginBottom: '6px',
+            fontSize: '1.5em',
+          }
+        }
+
+        if( this.isHorizontalTemplate ) {
+          return {
+            marginTop: '0',
+            color: this.color || '#45668E',
+            marginBottom: '0',
+            fontSize: '1em',
+            fontWeight: '600',
+          }
+        }
+
+        if( this.isWideTemplate ) {
+          return {
+            color: this.color || '#45668E',
+            fontSize: '0.7em',
+            marginBottom: '0',
+          }
+        }
+      },
+
+      stylesPreviewContentFieldTitle() {
+        if( this.isClassicTemplate ) {
+          return {
+            color: '#45668E',
+            fontWeight: '600',
+            fontSize: '0.8em',
+          }
+        }
+
+        if( this.isHorizontalTemplate ) {
+          return {
+            color: '#45668E',
+            fontSize: '0.7em',
+          }
+        }
+
+        if( this.isWideTemplate ) {
+          return {
+            fontSize: '0.7em',
+            color: '#444',
+          }
+        }
+      },
+
+      stylesPreviewContentSeparatorText() {
+        if( this.isClassicTemplate ) {
+          return {
+            color: '#45668E',
+            fontWeight: '600',
+            fontSize: '0.8em',
+          }
+        }
+
+        if( this.isHorizontalTemplate ) {
+          return {
+            color: '#45668E',
+            fontSize: '0.7em',
+          }
+        }
+
+        if( this.isWideTemplate ) {
+          return {
+            fontSize: '0.7em',
+            color: '#444',
+          }
+        }
+      },
+
+      stylesPreviewContentFieldCompany() {
+        if( this.isClassicTemplate ) {
+          return {
+            color: '#45668E',
+            fontWeight: '600',
+            fontSize: '0.8em',
+          }
+        }
+
+        if( this.isHorizontalTemplate ) {
+          return {
+            color: '#45668E',
+            fontSize: '0.7em',
+          }
+        }
+
+        if( this.isWideTemplate ) {
+          return {
+            fontSize: '0.7em',
+            color: '#444',
+          }
+        }
+      },
+
+      stylesPreviewSocialsNetworks() {
+        return {
+          display: 'flex',
+          marginTop: '12px',
+        }
+      },
+
+      stylesPreviewSocialsNetworksItem() {
+        return {
+          marginRight: '6px',
+          padding: '3px',
+        }
+      },
     }
   };
 
@@ -1780,65 +1880,6 @@
     border-radius: 25%;
   }
 
-  .preview-pane-brending-classic-content__field-title {
-    color: #45668E;
-    font-weight: 600;
-    font-size: 0.8em;
-  }
-  .preview-pane-brending-classic-content__field-company {
-    color: #45668E;
-    font-weight: 600;
-    font-size: 0.8em;
-  }
-  .preview-pane-brending-classic-content__separator-text {
-    color: #45668E;
-    font-weight: 600;
-    font-size: 0.8em;
-  }
-  .preview-pane-brending-classic-content__field-name {
-    margin-top: 0;
-    margin-bottom: 6px;
-    font-size: 1.5em;
-  }
-  .preview-pane-brending-horizontal-content__field-name {
-    margin-top: 0;
-    color: #45668E;
-    margin-bottom: 0;
-    font-size: 1em;
-    font-weight: 600;
-  }
-  .preview-pane-brending-wide-content__field-name {
-    color: #45668E;
-    font-size: 0.7em;
-    margin-bottom: 0;
-  }
-  .preview-pane-brending-horizontal-content__separator-text {
-    color: #45668E;
-    font-size: 0.7em;
-  }
-  .preview-pane-brending-wide-content__separator-text {
-    font-size: 0.7em;
-    color: #444;
-  }
-  .preview-pane-brending-horizontal-content__field-title {
-    color: #45668E;
-    font-size: 0.7em;
-  }
-  .preview-pane-brending-wide-content__field-title {
-    font-size: 0.7em;
-    color: #444;
-  }
-  .preview-pane-brending-horizontal-content__field-company {
-    color: #45668E;
-    font-size: 0.7em;
-  }
-  .preview-pane-brending-wide-content__field-company {
-    font-size: 0.7em;
-    color: #444;
-  }
-  .preview-pane-brending-wide-content__field-company:last-child {
-    margin-right: 12px;
-  }
   .preview-pane-brending-horizontal-content__separator-line,
   .preview-pane-brending-wide-content__separator-line {
     margin: 6px 0 !important;
@@ -1895,23 +1936,6 @@
     color: #45668E;
   }
 
-  .socials-networks-classic,
-  .socials-networks-horizontal,
-  .socials-networks-wide {
-    display: flex;
-    margin-top: 12px;
-  }
-  .socials-networks-classic__item,
-  .socials-networks-horizontal__item,
-  .socials-networks-wide__item {
-    margin-right: 6px;
-    padding: 3px;
-  }
-  .socials-networks-classic__item:last-child,
-  .socials-networks-horizontal__item:last-child,
-  .socials-networks-wide__item:last-child {
-    margin-right: 0;
-  }
   .socials-networks-classic__item_image,
   .socials-networks-horizontal__item_image,
   .socials-networks-wide__item_image {
