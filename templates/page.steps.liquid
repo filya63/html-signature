@@ -423,7 +423,7 @@
                                           <img
                                             alt="facebook-icon"
                                             :src="linkImageFacebook"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                         <a
@@ -435,7 +435,7 @@
                                           <img
                                             alt="instagram-icon"
                                             :src="linkImageInstagram"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                         <a
@@ -447,7 +447,7 @@
                                           <img
                                             alt="linkedin-icon"
                                             :src="linkImageLinkedin"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                         <a
@@ -459,7 +459,7 @@
                                           <img
                                             alt="twitter-icon"
                                             :src="linkImageTwitter"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                         <a
@@ -471,7 +471,7 @@
                                           <img
                                             alt="youtube-icon"
                                             :src="linkImageYoutube"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                         <a
@@ -483,7 +483,7 @@
                                           <img
                                             alt="pinterest-icon"
                                             :src="linkImagePinterest"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                       </td>
@@ -495,77 +495,72 @@
                             <tr v-if="( isHorizontalTemplate || isWideTemplate ) && hasImageLink">
                               <td colspan="3">
                                 <hr
-                                  :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewContentSeparatorLine}"
                                 />
                               </td>
                             </tr>
-                            <tr :class="`preview-pane-brending-${defineTemplateClass}-content-contact`">
+                            <tr :style="stylesPreviewContactContent">
                               <td
-                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
-                                :style="{fontFamily: fontFamily}"
+                                :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                 v-if="phone"
                                 >
                                 <img
                                   alt="phone-icon"
                                   v-if="phone && isHorizontalTemplate"
+                                  :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
                                 />
                                 <span
-                                  :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
                                   v-if="isWideTemplate"
-                                  :style="{color: defineColor}"
+                                  :style="{...stylesPreviewContactContentItemSpan}"
                                 >
                                   N
                                 </span>
-                                <a :href="`tel:${phone}`">
+                                <a :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink" >
                                   {{ phone }}
                                 </a>
                               </td>
                               <td
-                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
-                                :style="{fontFamily: fontFamily}"
+                                :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                 v-if="website"
                                 >
                                 <img
                                   alt="website-icon"
                                   v-if="website && isHorizontalTemplate"
+                                  :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
                                 />
                                 <span
-                                  :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
                                   v-if="isWideTemplate"
-                                  :style="{color: defineColor}"
+                                  :style="{...stylesPreviewContactContentItemSpan}"
                                 >
                                   W
                                 </span>
-                                <a :href="website" target="_blank">{{ website }}</a>
+                                <a :href="website" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
                               </td>
                               <td
-                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
-                                :style="{fontFamily: fontFamily}"
+                                :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                 v-if="email"
                                 >
                                 <img
                                   alt="email-icon"
                                   v-if="email && isHorizontalTemplate"
+                                  :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
                                 />
                                 <span
-                                  :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
                                   v-if="isWideTemplate"
-                                  :style="{color: defineColor}"
+                                  :style="{...stylesPreviewContactContentItemSpan}"
                                 >
                                   E
                                 </span>
-                                <a :href="`mailto:${email}`">{{ email }}</a>
+                                <a :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
                               </td>
                             </tr>
                             <tr v-if="isWideTemplate && hasImageLink">
                               <td colspan="3">
                                 <hr
-                                  :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewContentSeparatorLine}"
                                 />
                               </td>
                             </tr>
@@ -583,7 +578,7 @@
                                   <img
                                     alt="facebook-icon"
                                     :src="linkImageFacebook"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                                 <a
@@ -595,7 +590,7 @@
                                   <img
                                     alt="instagram-icon"
                                     :src="linkImageInstagram"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                                 <a
@@ -607,7 +602,7 @@
                                   <img
                                     alt="linkedin-icon"
                                     :src="linkImageLinkedin"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                                 <a
@@ -619,7 +614,7 @@
                                   <img
                                     alt="twitter-icon"
                                     :src="linkImageTwitter"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                                 <a
@@ -631,7 +626,7 @@
                                   <img
                                     alt="youtube-icon"
                                     :src="linkImageYoutube"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                                 <a
@@ -643,7 +638,7 @@
                                   <img
                                     alt="pinterest-icon"
                                     :src="linkImagePinterest"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                               </td>
@@ -1287,6 +1282,73 @@
         }
       },
 
+      stylesPreviewContactContent() {
+        return {
+          display: 'flex',
+          marginTop: '14px',
+          flexWrap: 'wrap',
+        }
+      },
+
+      stylesPreviewContactContentItem() {
+        if( this.isClassicTemplate ) {
+          return {
+            display: 'flex',
+            alignTtems: 'center',
+            marginRight: '6px',
+            marginTop: '6px',
+          }
+        }
+
+        if( this.isHorizontalTemplate ) {
+          return {
+            display: 'flex',
+            alignItems: 'center',
+            fontSize: '0.7em',
+            marginRight: '6px',
+          }
+        }
+      },
+
+      stylesPreviewContactContentItemLink() {
+        if( this.isClassicTemplate ) {
+          return {
+            color: '#45668E',
+            fontSize: '0.7em',
+          }
+        }
+
+        if( this.isWideTemplate ) {
+          return {
+            color: '#212121',
+            textDecoration: 'none',
+            whiteSpace: 'nowrap',
+            fontSize: '0.6em',
+            marginRight: '12px',
+          }
+        }
+      },
+
+      stylesPreviewContactContentItemIcon() {
+        if ( this.isHorizontalTemplate ) {
+          return {
+            width: '25px',
+            height: '25px',
+            marginRight: '6px',
+          }
+        }
+      },
+
+      stylesPreviewContactContentItemSpan() {
+        if( this.isWideTemplate ) {
+          return {
+            fontWeight: 'bold',
+            fontSize: '0.6em',
+            color: this.defineColor || '#45668E',
+          }
+        }
+      },
+
       stylesPreviewUserPicture() {
         return `display: block; height: 100%; width: 100%; object-fit: cover; border: 2px solid #d9dce5;`;
       },
@@ -1374,6 +1436,17 @@
         }
       },
 
+      stylesPreviewContentSeparatorLine() {
+        return {
+          margin: '6px 0 !important',
+          width: '100%',
+          height: '3px !important',
+          background: this.defineColor || '#45668E',
+          border: 'none',
+          opacity: '1',
+        };
+      },
+
       stylesPreviewContentFieldCompany() {
         if( this.isClassicTemplate ) {
           return {
@@ -1411,6 +1484,15 @@
           padding: '3px',
         }
       },
+
+      stylesPreviewSocialsNetworksItemImage() {
+        return {
+          width: '25px',
+          height: '25px',
+        }
+      },
+
+
     }
   };
 
@@ -1477,6 +1559,7 @@
   .editor-settings {
     padding: 16px;
   }
+
   .tabs {
     display: flex;
     justify-content: space-between;
@@ -1493,6 +1576,7 @@
     flex-direction: column;
     align-items: center;
   }
+
   .active {
     background: #f8dc74;
   }
@@ -1832,12 +1916,6 @@
     border-radius: 8px;
   }
 
-  .preview-pane-brending-horizontal__separator-line {
-    border: none;
-    border-bottom: 5px solid #45668E;
-    width: 20vw;
-  }
-
   .preview-pane-header {
     background: #d9dce5;
     height: 32px;
@@ -1878,69 +1956,6 @@
   }
   .typeshape__rounded {
     border-radius: 25%;
-  }
-
-  .preview-pane-brending-horizontal-content__separator-line,
-  .preview-pane-brending-wide-content__separator-line {
-    margin: 6px 0 !important;
-    width: 100%;
-    height: 3px !important;
-    background: #45668E;
-    border: 0;
-    opacity: 1;
-  }
-
-  .preview-pane-brending-classic-content-contact {
-    display: flex;
-    margin-top: 14px;
-    flex-wrap: wrap;
-  }
-  .preview-pane-brending-classic-content-contact__field {
-    display: flex;
-    align-items: center;
-    margin-right: 6px;
-    margin-top: 6px;
-  }
-  .preview-pane-brending-classic-content-contact__field a {
-    color: #45668E;
-    font-size: 0.7em;
-  }
-
-  .preview-pane-brending-horizontal-content-contact {
-    display: flex;
-    margin-top: 13px;
-    flex-wrap: wrap;
-  }
-  .preview-pane-brending-horizontal-content-contact__field {
-    display: flex;
-    align-items: center;
-    font-size: 0.7em;
-    margin-right: 6px;
-  }
-  .preview-pane-brending-wide-content-contact__field a {
-    color: #212121;
-    text-decoration: none;
-    white-space: nowrap;
-    font-size: 0.6em;
-    margin-right: 12px;
-  }
-  .preview-pane-brending-horizontal-content-contact__field img {
-    width: 25px;
-    height: 25px;
-    margin-right: 6px;
-  }
-
-  .preview-pane-brending-wide-content-contact__field_item {
-    font-weight: bold;
-    font-size: 0.6em;
-    color: #45668E;
-  }
-
-  .socials-networks-classic__item_image,
-  .socials-networks-horizontal__item_image,
-  .socials-networks-wide__item_image {
-    width: 25px;
-    height: 25px;
   }
 
   @media (max-width: 1300px) {
