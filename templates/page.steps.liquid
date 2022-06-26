@@ -1270,10 +1270,18 @@
       },
 
       stylesPreviewContactContent() {
-        return {
-          display: 'flex',
-          marginTop: '14px',
-          flexWrap: 'wrap',
+        if( this.isClassicTemplate ) {
+          return {
+            display: 'flex',
+            marginTop: '14px',
+            flexWrap: 'wrap',
+          }
+        } else {
+          return {
+            display: 'flex',
+            marginTop: '6px',
+            flexWrap: 'wrap',
+          }
         }
       },
 
