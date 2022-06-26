@@ -982,10 +982,10 @@
       },
 
       createElementWithImage( imageLink ) {
-        this.$refs.userImage.innerHTML = "";
-        const imageElem = document.createElement("img");
+        this.$refs.userImage.innerHTML = '';
+        const imageElem = document.createElement( 'img' );
 
-        imageElem.setAttribute( 'src', imageLink);
+        imageElem.setAttribute( 'src', imageLink );
         imageElem.setAttribute( 'style', this.stylesPreviewUserPicture );
 
         this.$refs.userImage.append( imageElem );
@@ -1250,7 +1250,8 @@
           lineHeight: this.lineHeight + 'em',
           marginTop: this.marginTop + 'px',
           color: this.color,
-          wordBreak: 'break-all'
+          wordBreak: 'break-all',
+          fontSize: '12px',
         }
       },
 
