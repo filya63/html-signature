@@ -355,15 +355,9 @@
               <span class="preview-pane-details__item-title">Subject: </span><span class="preview-pane-details__item-text">Check out my new email signature</span>
             </div>
           </div>
-          <div ref="signature" :class="`preview-pane-brending-${defineTemplateClass}`">
+          <div ref="signature" :style="stylesPreviewTemplate">
             <table
-              :style="{
-                background: isInvalibleBackgroundLink ? '' : `url(${backgroundLink || fileBackground}) center center / cover no-repeat`,
-                lineHeight: lineHeight + 'em',
-                marginTop: marginTop + 'px',
-                color: color,
-                wordBreak: 'break-all'
-              }"
+              :style="stylesPreviewTable"
             >
               <tbody>
                 <tr>
@@ -372,17 +366,16 @@
                       <tbody>
                         <tr>
                           <td
-                            :style="{height: `${imageSize}px`, width: `${imageSize}px`, display: isShowImageBlock}"
-                            :class="`preview-pane-brending-${defineTemplateClass}-image`"
-                            ref="addImage"
+                            :style="stylesPreviewBlockImage"
+                            ref="userImage"
                           ></td>
                         </tr>
                       </tbody>
                     </table>
                   </td>
-                  <td :class="`preview-pane-brending-${defineTemplateClass}-content`">
+                  <td :style="stylesPreviewMainContent">
                     <table>
-                      <tbody :style="{fontSize: `${fontSize}em`}" style="width: 100%">
+                      <tbody :style="stylesPreviewMainContentBody">
                         <tr>
                           <td>
                             <tr>
@@ -392,8 +385,7 @@
                                     <tr>
                                       <td :style="{fontFamily: fontFamily}">
                                         <h4
-                                          :class="`preview-pane-brending-${defineTemplateClass}-content__field-name`"
-                                          :style="{color: color}"
+                                          :style="stylesPreviewContentFieldName"
                                         >
                                           {{ name }}
                                         </h4>
@@ -402,103 +394,96 @@
                                     <tr>
                                       <td :style="{fontFamily: fontFamily}">
                                         <span
-                                          :class="`preview-pane-brending-${defineTemplateClass}-content__field-title`"
+                                          :style="stylesPreviewContentFieldTitle"
                                         >
                                           {{ title }}
                                         </span>
                                         <span
                                           v-if="isShowSeparatorForBasicInfo"
-                                          :class="`preview-pane-brending-${defineTemplateClass}-content__separator-text`"
+                                          :style="stylesPreviewContentSeparatorText"
                                         >
                                           {{ textForSeparator }}
                                         </span>
                                         <span
-                                          :class="`preview-pane-brending-${defineTemplateClass}-content__field-company`"
+                                          :style="stylesPreviewContentFieldCompany"
                                         >
                                           {{ company }}
                                         </span>
                                       </td>
                                       <td
                                         v-if="isWideTemplate"
-                                        :class="`socials-networks-${defineTemplateClass}`"
-                                        :style="{fontFamily: fontFamily, marginTop: '0px'}"
+                                        :style="{...stylesPreviewSocialsNetworks, fontFamily: fontFamily, marginTop: '0px', marginLeft: '12px'}"
                                       >
                                         <a
                                           v-if="facebook"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://facebook.com/${facebook}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="facebook-icon"
                                             :src="linkImageFacebook"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                         <a
                                           v-if="instagram"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://instagram.com/${instagram}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="instagram-icon"
                                             :src="linkImageInstagram"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                         <a
                                           v-if="linkedin"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://linkedin.com/in/${linkedin}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="linkedin-icon"
                                             :src="linkImageLinkedin"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                         <a
                                           v-if="twitter"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://twitter.com/${twitter}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="twitter-icon"
                                             :src="linkImageTwitter"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                         <a
                                           v-if="youtube"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://youtube.com/${youtube}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="youtube-icon"
                                             :src="linkImageYoutube"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                         <a
                                           v-if="pinterest"
                                           target="_blank"
-                                          :class="`socials-networks-${defineTemplateClass}__item`"
                                           :href="`https://pinterest.com/${pinterest}`"
-                                          :style="{background: defineColor}"
+                                          :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                         >
                                           <img
                                             alt="pinterest-icon"
                                             :src="linkImagePinterest"
-                                            :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                            :style="stylesPreviewSocialsNetworksItemImage"
                                           />
                                         </a>
                                       </td>
@@ -510,161 +495,150 @@
                             <tr v-if="( isHorizontalTemplate || isWideTemplate ) && hasImageLink">
                               <td colspan="3">
                                 <hr
-                                  :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewContentSeparatorLine}"
                                 />
                               </td>
                             </tr>
-                            <tr :class="`preview-pane-brending-${defineTemplateClass}-content-contact`">
+                            <tr :style="stylesPreviewContactContent">
                               <td
-                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
-                                :style="{fontFamily: fontFamily}"
+                                :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                 v-if="phone"
                                 >
                                 <img
                                   alt="phone-icon"
                                   v-if="phone && isHorizontalTemplate"
+                                  :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
                                 />
                                 <span
-                                  :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
                                   v-if="isWideTemplate"
-                                  :style="{color: defineColor}"
+                                  :style="{...stylesPreviewContactContentItemSpan}"
                                 >
                                   N
                                 </span>
-                                <a :href="`tel:${phone}`">
+                                <a :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink" >
                                   {{ phone }}
                                 </a>
                               </td>
                               <td
-                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
-                                :style="{fontFamily: fontFamily}"
+                                :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                 v-if="website"
                                 >
                                 <img
                                   alt="website-icon"
                                   v-if="website && isHorizontalTemplate"
+                                  :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
                                 />
                                 <span
-                                  :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
                                   v-if="isWideTemplate"
-                                  :style="{color: defineColor}"
+                                  :style="{...stylesPreviewContactContentItemSpan}"
                                 >
                                   W
                                 </span>
-                                <a :href="website" target="_blank">{{ website }}</a>
+                                <a :href="website" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
                               </td>
                               <td
-                                :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field`"
-                                :style="{fontFamily: fontFamily}"
+                                :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                 v-if="email"
                                 >
                                 <img
                                   alt="email-icon"
                                   v-if="email && isHorizontalTemplate"
+                                  :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
                                 />
                                 <span
-                                  :class="`preview-pane-brending-${defineTemplateClass}-content-contact__field_item`"
                                   v-if="isWideTemplate"
-                                  :style="{color: defineColor}"
+                                  :style="{...stylesPreviewContactContentItemSpan}"
                                 >
                                   E
                                 </span>
-                                <a :href="`mailto:${email}`">{{ email }}</a>
+                                <a :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
                               </td>
                             </tr>
                             <tr v-if="isWideTemplate && hasImageLink">
                               <td colspan="3">
                                 <hr
-                                  :class="`preview-pane-brending-${defineTemplateClass}-content__separator-line`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewContentSeparatorLine}"
                                 />
                               </td>
                             </tr>
                             <tr
                               v-if="!isWideTemplate"
-                              :class="`socials-networks-${defineTemplateClass}`"
+                              :style="stylesPreviewSocialsNetworks"
                             >
                               <td :style="{fontFamily: fontFamily}">
                                 <a
                                   v-if="facebook"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://facebook.com/${facebook}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="facebook-icon"
                                     :src="linkImageFacebook"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                                 <a
                                   v-if="instagram"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://instagram.com/${instagram}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="instagram-icon"
                                     :src="linkImageInstagram"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                                 <a
                                   v-if="linkedin"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://linkedin.com/in/${linkedin}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="linkedin-icon"
                                     :src="linkImageLinkedin"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                                 <a
                                   v-if="twitter"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://twitter.com/${twitter}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="twitter-icon"
                                     :src="linkImageTwitter"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                                 <a
                                   v-if="youtube"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://youtube.com/${youtube}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="youtube-icon"
                                     :src="linkImageYoutube"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                                 <a
                                   v-if="pinterest"
                                   target="_blank"
-                                  :class="`socials-networks-${defineTemplateClass}__item`"
                                   :href="`https://pinterest.com/${pinterest}`"
-                                  :style="{background: defineColor}"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
                                 >
                                   <img
                                     alt="pinterest-icon"
                                     :src="linkImagePinterest"
-                                    :class="`socials-networks-${defineTemplateClass}__item_image`"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
                                   />
                                 </a>
                               </td>
@@ -733,12 +707,12 @@
 {% endraw %}
 
 <script type="module">
+
   import { createApp } from 'vue';
 
   let tokenClient;
   let gapiInited = false;
   let gisInited = false;
-  const stylesForPreview = `.preview-pane-brending-classic-image,.preview-pane-brending-horizontal-image,.preview-pane-brending-wide-image{width:86px;height:86px}.preview-pane-brending-classic-image__picture,.preview-pane-brending-horizontal-image__picture,.preview-pane-brending-wide-image__picture{display:block;height:100%;width:100%;object-fit:cover;border:2px solid #d9dce5}.typeshape__circle{border-radius:50%}.typeshape__square{border-radius:0}.typeshape__rounded{border-radius:25%}.preview-pane-brending-classic-content__field-title{color:#45668e;font-weight:600;font-size:.8em}.preview-pane-brending-classic-content__field-company{color:#45668e;font-weight:600;font-size:.8em}.preview-pane-brending-classic-content__separator-text{color:#45668e;font-weight:600;font-size:.8em}.preview-pane-brending-classic-content__field-name{margin-top:0;margin-bottom:6px;font-size:1.5em}.preview-pane-brending-horizontal-content__field-name{margin-top:0;color:#45668e;margin-bottom:0;font-size:1em;font-weight:600}.preview-pane-brending-wide-content__field-name{color:#45668e;font-size:.7em;margin-bottom:0}.preview-pane-brending-horizontal-content__separator-text{color:#45668e;font-size:.7em}.preview-pane-brending-wide-content__separator-text{font-size:.7em;color:#444}.preview-pane-brending-horizontal-content__field-title{color:#45668e;font-size:.7em}.preview-pane-brending-wide-content__field-title{font-size:.7em;color:#444}.preview-pane-brending-horizontal-content__field-company{color:#45668e;font-size:.7em}.preview-pane-brending-wide-content__field-company{font-size:.7em;color:#444}.preview-pane-brending-wide-content__field-company:last-child{margin-right:12px}.preview-pane-brending-horizontal-content__separator-line,.preview-pane-brending-wide-content__separator-line{margin:6px 0!important;width:100%;height:3px!important;background:#45668e;border:0;opacity:1}.preview-pane-brending-classic-content-contact{display:flex;margin-top:14px;flex-wrap:wrap}.preview-pane-brending-classic-content-contact__field{display:flex;align-items:center;margin-right:6px;margin-top:6px}.preview-pane-brending-classic-content-contact__field a{color:#45668e;font-size:.7em}.preview-pane-brending-horizontal-content-contact{display:flex;margin-top:13px;flex-wrap:wrap}.preview-pane-brending-horizontal-content-contact__field{display:flex;align-items:center;font-size:.7em;margin-right:6px}.preview-pane-brending-wide-content-contact__field a{color:#212121;text-decoration:none;white-space:nowrap;font-size:.6em;margin-right:12px}.preview-pane-brending-horizontal-content-contact__field img{width:25px;height:25px;margin-right:6px}.preview-pane-brending-wide-content-contact__field_item{font-weight:700;font-size:.6em;color:#45668e}.socials-networks-classic,.socials-networks-horizontal,.socials-networks-wide{display:flex;margin-top:12px}.socials-networks-classic__item,.socials-networks-horizontal__item,.socials-networks-wide__item{margin-right:6px;padding:3px}.socials-networks-classic__item:last-child,.socials-networks-horizontal__item:last-child,.socials-networks-wide__item:last-child{margin-right:0}.socials-networks-classic__item_image,.socials-networks-horizontal__item_image,.socials-networks-wide__item_image{width:25px;height:25px}@media (max-width:991px){.preview-pane{width:90%}}@media (max-width:767px){.preview{width:100%}.socials__item-field{width:100%}}@media (max-width:575px){.preview-pane-brending-horizontal-content{width:100%}.preview-pane-brending-horizontal-content-contact{flex-direction:column}.preview-pane-brending-horizontal-content-contact__field{margin-top:6px}.preview-pane-brending-horizontal-content-contact__field:first-child{margin-top:0}}`;
 
   const htmlSignature = {
     data() {
@@ -1000,7 +974,7 @@
       },
 
       setAttributeForImage( attribute, value ) {
-        const img = this.$refs.addImage.querySelector('img');
+        const img = this.$refs.userImage.querySelector('img');
 
         if( img ) {
           img.setAttribute( attribute, value );
@@ -1008,13 +982,13 @@
       },
 
       createElementWithImage( imageLink ) {
-        this.$refs.addImage.innerHTML = "";
-        const imageElem = document.createElement("img");
+        this.$refs.userImage.innerHTML = '';
+        const imageElem = document.createElement( 'img' );
 
-        imageElem.setAttribute( 'src', imageLink);
-        imageElem.setAttribute( 'class', `preview-pane-brending-${this.defineTemplateClass}-image__picture`);
+        imageElem.setAttribute( 'src', imageLink );
+        imageElem.setAttribute( 'style', this.stylesPreviewUserPicture );
 
-        this.$refs.addImage.append( imageElem );
+        this.$refs.userImage.append( imageElem );
       },
 
       validateFormatLink( link, field ) {
@@ -1041,9 +1015,7 @@
         title.innerHTML = 'Custom Signature';
         head.appendChild( title );
         meta.setAttribute( 'charset', 'UTF-8' );
-        const styles = this.createStylesForPreview();
         head.appendChild( meta );
-        head.appendChild( styles );
 
         body.innerHTML = this.$refs.signature.innerHTML;
 
@@ -1067,14 +1039,6 @@
 
       destroyClickedElement(event) {
         document.body.removeChild( event.target );
-      },
-
-      createStylesForPreview() {
-        const styles = document.createElement( 'style' );
-        styles.setAttribute( 'type', 'text/css' );
-        styles.innerHTML = stylesForPreview;
-
-        return styles;
       },
 
       createUrlForDownloadPreview( elem ) {
@@ -1120,7 +1084,7 @@
       },
 
       template( template ) {
-        this.setAttributeForImage( 'class', `preview-pane-brending-${template}-image__picture` );
+        this.setAttributeForImage( 'style', this.stylesPreviewUserPicture );
       },
 
       imageSize( newSize ) {
@@ -1128,7 +1092,7 @@
       },
 
       typeShape( type ) {
-        const img = this.$refs.addImage.querySelector('img');
+        const img = this.$refs.userImage.querySelector('img');
         if( !img ) return;
 
         this.changeClassShapeForImage( img, type );
@@ -1142,7 +1106,7 @@
             return;
           }
 
-          this.$refs.addImage.innerHTML = "";
+          this.$refs.userImage.innerHTML = "";
 
           return;
         }
@@ -1162,17 +1126,15 @@
         if ( !this.validateFormatLink( link, 'isInvalibleImageLink' ) ) return;
         this.isInvalibleImageLink = false;
 
-        const img = this.$refs.addImage.querySelector('img');
+        const img = this.$refs.userImage.querySelector('img');
         if( link && img ) {
           this.isShowRemoveImage = true;
           this.setAttributeForImage( 'src', link );
-          img.setAttribute( 'alt', 'user-image' );
 
           return;
         } else {
           if( this.file ) {
             this.setAttributeForImage( 'src', this.fileUrl );
-            img.setAttribute( 'alt', 'user-image' );
 
             return;
           }
@@ -1272,6 +1234,258 @@
       defineColor() {
         return this.color ? this.color : '';
       },
+
+      // for inline styles
+      stylesPreviewTemplate() {
+        return {
+          padding: '5px 18px 10px',
+          minHeight: '150px',
+          width: '100%',
+        }
+      },
+
+      stylesPreviewTable() {
+        return {
+          background: this.isInvalibleBackgroundLink ? '' : `url(${this.backgroundLink || this.fileBackground}) center center / cover no-repeat`,
+          lineHeight: this.lineHeight + 'em',
+          marginTop: this.marginTop + 'px',
+          color: this.color,
+          wordBreak: 'break-all',
+        }
+      },
+
+      stylesPreviewBlockImage() {
+        return {
+          height: `${this.imageSize}px`,
+          width: `${this.imageSize}px`,
+          display: this.isShowImageBlock,
+        }
+      },
+
+      stylesPreviewMainContent() {
+        return {
+          display: 'flex',
+          marginLeft: '14px',
+        }
+      },
+
+      stylesPreviewContactContent() {
+        if( this.isClassicTemplate ) {
+          return {
+            display: 'flex',
+            marginTop: '14px',
+            flexWrap: 'wrap',
+          }
+        } else {
+          return {
+            display: 'flex',
+            marginTop: '6px',
+            flexWrap: 'wrap',
+          }
+        }
+      },
+
+      stylesPreviewContactContentItem() {
+        if( this.isClassicTemplate ) {
+          return {
+            display: 'flex',
+            alignTtems: 'center',
+            marginRight: '6px',
+            marginTop: '6px',
+          }
+        }
+
+        if( this.isHorizontalTemplate ) {
+          return {
+            display: 'flex',
+            alignItems: 'center',
+            fontSize: '0.7em',
+            marginRight: '6px',
+          }
+        }
+      },
+
+      stylesPreviewContactContentItemLink() {
+        if( this.isClassicTemplate ) {
+          return {
+            color: '#45668E',
+            fontSize: '0.7em',
+          }
+        }
+
+        if( this.isWideTemplate ) {
+          return {
+            color: '#212121',
+            textDecoration: 'none',
+            whiteSpace: 'nowrap',
+            fontSize: '0.6em',
+            marginRight: '12px',
+          }
+        }
+      },
+
+      stylesPreviewContactContentItemIcon() {
+        if ( this.isHorizontalTemplate ) {
+          return {
+            width: '25px',
+            height: '25px',
+            marginRight: '6px',
+          }
+        }
+      },
+
+      stylesPreviewContactContentItemSpan() {
+        if( this.isWideTemplate ) {
+          return {
+            fontWeight: 'bold',
+            fontSize: '0.6em',
+            color: this.defineColor || '#45668E',
+          }
+        }
+      },
+
+      stylesPreviewUserPicture() {
+        return `display: block; height: 100%; width: 100%; object-fit: cover; border: 2px solid #d9dce5;`;
+      },
+
+      stylesPreviewMainContentBody() {
+        return {
+          fontSize: `${this.fontSize}em`,
+          width: '100%',
+        }
+      },
+
+      stylesPreviewContentFieldName() {
+        if( this.isClassicTemplate ) {
+          return {
+            marginTop: '0',
+            marginBottom: '6px',
+            fontSize: '1.5em',
+          }
+        }
+
+        if( this.isHorizontalTemplate ) {
+          return {
+            marginTop: '0',
+            color: this.color || '#45668E',
+            marginBottom: '0',
+            fontSize: '1em',
+            fontWeight: '600',
+          }
+        }
+
+        if( this.isWideTemplate ) {
+          return {
+            color: this.color || '#45668E',
+            fontSize: '0.7em',
+            marginBottom: '0',
+          }
+        }
+      },
+
+      stylesPreviewContentFieldTitle() {
+        if( this.isClassicTemplate ) {
+          return {
+            color: '#45668E',
+            fontWeight: '600',
+            fontSize: '0.8em',
+          }
+        }
+
+        if( this.isHorizontalTemplate ) {
+          return {
+            color: '#45668E',
+            fontSize: '0.7em',
+          }
+        }
+
+        if( this.isWideTemplate ) {
+          return {
+            fontSize: '0.7em',
+            color: '#444',
+          }
+        }
+      },
+
+      stylesPreviewContentSeparatorText() {
+        if( this.isClassicTemplate ) {
+          return {
+            color: '#45668E',
+            fontWeight: '600',
+            fontSize: '0.8em',
+          }
+        }
+
+        if( this.isHorizontalTemplate ) {
+          return {
+            color: '#45668E',
+            fontSize: '0.7em',
+          }
+        }
+
+        if( this.isWideTemplate ) {
+          return {
+            fontSize: '0.7em',
+            color: '#444',
+          }
+        }
+      },
+
+      stylesPreviewContentSeparatorLine() {
+        return {
+          margin: '6px 0 !important',
+          width: '100%',
+          height: '3px !important',
+          background: this.defineColor || '#45668E',
+          border: 'none',
+          opacity: '1',
+        };
+      },
+
+      stylesPreviewContentFieldCompany() {
+        if( this.isClassicTemplate ) {
+          return {
+            color: '#45668E',
+            fontWeight: '600',
+            fontSize: '0.8em',
+          }
+        }
+
+        if( this.isHorizontalTemplate ) {
+          return {
+            color: '#45668E',
+            fontSize: '0.7em',
+          }
+        }
+
+        if( this.isWideTemplate ) {
+          return {
+            fontSize: '0.7em',
+            color: '#444',
+          }
+        }
+      },
+
+      stylesPreviewSocialsNetworks() {
+        return {
+          display: 'flex',
+          marginTop: '12px',
+        }
+      },
+
+      stylesPreviewSocialsNetworksItem() {
+        return {
+          marginRight: '6px',
+          padding: '3px',
+        }
+      },
+
+      stylesPreviewSocialsNetworksItemImage() {
+        return {
+          width: '25px',
+          height: '25px',
+        }
+      },
     }
   };
 
@@ -1338,6 +1552,7 @@
   .editor-settings {
     padding: 16px;
   }
+
   .tabs {
     display: flex;
     justify-content: space-between;
@@ -1354,6 +1569,7 @@
     flex-direction: column;
     align-items: center;
   }
+
   .active {
     background: #f8dc74;
   }
@@ -1692,24 +1908,6 @@
     box-shadow: 0 0 2px RGB(25 28 43 / 4%), 0 4px 8px HSL(237deg 8% 46% / 16%);
     border-radius: 8px;
   }
-  .preview-pane-brending-classic,
-  .preview-pane-brending-horizontal,
-  .preview-pane-brending-wide {
-    padding: 5px 18px 10px;
-    min-height: 150px;
-    width: 100%;
-  }
-  .preview-pane-brending-classic-content,
-  .preview-pane-brending-horizontal-content,
-  .preview-pane-brending-wide-content {
-    display: flex;
-    margin-left: 14px;
-  }
-  .preview-pane-brending-horizontal__separator-line {
-    border: none;
-    border-bottom: 5px solid #45668E;
-    width: 20vw;
-  }
 
   .preview-pane-header {
     background: #d9dce5;
@@ -1743,173 +1941,14 @@
     border: 1px solid #d9dce5;
   }
 
-  .preview-pane-brending-classic-image,
-  .preview-pane-brending-horizontal-image,
-  .preview-pane-brending-wide-image {
-    width: 86px;
-    height: 86px;
-  }
-  .preview-pane-brending-classic-image__picture,
-  .preview-pane-brending-horizontal-image__picture,
-  .preview-pane-brending-wide-image__picture {
-    display: block;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border: 2px solid #d9dce5;
-  }
   .typeshape__circle {
-      border-radius: 50%;
+    border-radius: 50%;
   }
   .typeshape__square {
-      border-radius: 0;
+    border-radius: 0;
   }
   .typeshape__rounded {
-      border-radius: 25%;
-  }
-
-  .preview-pane-brending-classic-content__field-title {
-    color: #45668E;
-    font-weight: 600;
-    font-size: 0.8em;
-  }
-  .preview-pane-brending-classic-content__field-company {
-    color: #45668E;
-    font-weight: 600;
-    font-size: 0.8em;
-  }
-  .preview-pane-brending-classic-content__separator-text {
-    color: #45668E;
-    font-weight: 600;
-    font-size: 0.8em;
-  }
-  .preview-pane-brending-classic-content__field-name {
-    margin-top: 0;
-    margin-bottom: 6px;
-    font-size: 1.5em;
-  }
-  .preview-pane-brending-horizontal-content__field-name {
-    margin-top: 0;
-    color: #45668E;
-    margin-bottom: 0;
-    font-size: 1em;
-    font-weight: 600;
-  }
-  .preview-pane-brending-wide-content__field-name {
-    color: #45668E;
-    font-size: 0.7em;
-    margin-bottom: 0;
-  }
-  .preview-pane-brending-horizontal-content__separator-text {
-    color: #45668E;
-    font-size: 0.7em;
-  }
-  .preview-pane-brending-wide-content__separator-text {
-    font-size: 0.7em;
-    color: #444;
-  }
-  .preview-pane-brending-horizontal-content__field-title {
-    color: #45668E;
-    font-size: 0.7em;
-  }
-  .preview-pane-brending-wide-content__field-title {
-    font-size: 0.7em;
-    color: #444;
-  }
-  .preview-pane-brending-horizontal-content__field-company {
-    color: #45668E;
-    font-size: 0.7em;
-  }
-  .preview-pane-brending-wide-content__field-company {
-    font-size: 0.7em;
-    color: #444;
-  }
-  .preview-pane-brending-wide-content__field-company:last-child {
-    margin-right: 12px;
-  }
-  .preview-pane-brending-horizontal-content__separator-line,
-  .preview-pane-brending-wide-content__separator-line {
-    margin: 6px 0 !important;
-    width: 100%;
-    height: 3px !important;
-    background: #45668E;
-    border: 0;
-    opacity: 1;
-  }
-
-  .preview-pane-brending-classic-content-contact {
-    display: flex;
-    margin-top: 14px;
-    flex-wrap: wrap;
-  }
-  .preview-pane-brending-classic-content-contact__field {
-    display: flex;
-    align-items: center;
-    margin-right: 6px;
-    margin-top: 6px;
-  }
-  /* .preview-pane-brending-classic-content-contact__field img {
-    width: 25px;
-    height: 25px;
-    margin-right: 6px;
-  } */
-  .preview-pane-brending-classic-content-contact__field a {
-    color: #45668E;
-    font-size: 0.7em;
-  }
-
-  .preview-pane-brending-horizontal-content-contact {
-    display: flex;
-    margin-top: 13px;
-    flex-wrap: wrap;
-  }
-  .preview-pane-brending-horizontal-content-contact__field {
-    display: flex;
-    align-items: center;
-    font-size: 0.7em;
-    margin-right: 6px;
-  }
-  .preview-pane-brending-wide-content-contact__field a {
-    color: #212121;
-    text-decoration: none;
-    white-space: nowrap;
-    font-size: 0.6em;
-    margin-right: 12px;
-  }
-  .preview-pane-brending-horizontal-content-contact__field img {
-    width: 25px;
-    height: 25px;
-    margin-right: 6px;
-  }
-
-  .preview-pane-brending-wide-content-contact__field_item {
-    font-weight: bold;
-    font-size: 0.6em;
-    color: #45668E;
-  }
-
-  .socials-networks-classic,
-  .socials-networks-horizontal,
-  .socials-networks-wide {
-    display: flex;
-    margin-top: 12px;
-  }
-  .socials-networks-classic__item,
-  .socials-networks-horizontal__item,
-  .socials-networks-wide__item {
-    margin-right: 6px;
-    padding: 3px;
-  }
-  .socials-networks-classic__item:last-child,
-  .socials-networks-horizontal__item:last-child,
-  .socials-networks-wide__item:last-child {
-    margin-right: 0;
-  }
-  .socials-networks-classic__item_image,
-  .socials-networks-horizontal__item_image,
-  .socials-networks-wide__item_image {
-    width: 25px;
-    height: 25px;
+    border-radius: 25%;
   }
 
   @media (max-width: 1300px) {
