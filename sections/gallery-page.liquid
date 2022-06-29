@@ -208,42 +208,42 @@
                   <div class="setup__item-content">
                     <div
                         @click="changeColor('teal')"
-                        class="setup__item-content_circle teal"
+                        class="setup__item-content_picker-color teal"
                         :class="{activeColor: color === 'teal'}"
                     ></div>
                     <div
                         @click="changeColor('maroon')"
-                        class="setup__item-content_circle maroon"
+                        class="setup__item-content_picker-color maroon"
                         :class="{activeColor: color === 'maroon'}"
                     ></div>
                     <div
                         @click="changeColor('darkgreen')"
-                        class="setup__item-content_circle darkgreen"
+                        class="setup__item-content_picker-color darkgreen"
                         :class="{activeColor: color === 'darkgreen'}"
                     ></div>
                     <div
                         @click="changeColor('chartreuse')"
-                        class="setup__item-content_circle chartreuse"
+                        class="setup__item-content_picker-color chartreuse"
                         :class="{activeColor: color === 'chartreuse'}"
                     ></div>
                     <div
                         @click="changeColor('turquoise')"
-                        class="setup__item-content_circle turquoise"
+                        class="setup__item-content_picker-color turquoise"
                         :class="{activeColor: color === 'turquoise'}"
                     ></div>
                     <div
                         @click="changeColor('brown')"
-                        class="setup__item-content_circle brown"
+                        class="setup__item-content_picker-color brown"
                         :class="{activeColor: color === 'brown'}"
                     ></div>
                     <div
                         @click="changeColor('purple')"
-                        class="setup__item-content_circle purple"
+                        class="setup__item-content_picker-color purple"
                         :class="{activeColor: color === 'purple'}"
                     ></div>
                     <input
                       type="color"
-                      class="setup__item-content_circle custom-color"
+                      class="setup__item-content_picker-color custom-color"
                       v-model="color"
                     />
                   </div>
@@ -381,9 +381,9 @@
                             <tr>
                               <td colspan="3">
                                 <table>
-                                  <tbody :style="{fontSize: `${fontSize}em`}">
+                                  <tbody>
                                     <tr>
-                                      <td :style="{fontFamily: fontFamily}">
+                                      <td :style="{fontFamily: fontFamily, fontSize: `${fontSize}em`}">
                                         <h4
                                           :style="stylesPreviewContentFieldName"
                                         >
@@ -392,7 +392,7 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td :style="{fontFamily: fontFamily}">
+                                      <td :style="{fontFamily: fontFamily, fontSize: `${fontSize}em`}">
                                         <span
                                           :style="stylesPreviewContentFieldTitle"
                                         >
@@ -499,7 +499,7 @@
                                 />
                               </td>
                             </tr>
-                            <tr :style="stylesPreviewContactContent">
+                            <tr :style="{...stylesPreviewContactContent, fontSize: `${fontSize}em`}">
                               <td
                                 :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                 v-if="phone"
@@ -989,6 +989,8 @@
         imageElem.setAttribute( 'style', this.stylesPreviewUserPicture );
 
         this.$refs.userImage.append( imageElem );
+
+        this.changeClassShapeForImage( imageElem, this.typeShape );
       },
 
       validateFormatLink( link, field ) {
@@ -1348,7 +1350,6 @@
 
       stylesPreviewMainContentBody() {
         return {
-          fontSize: `${this.fontSize}em`,
           width: '100%',
         }
       },
@@ -1797,7 +1798,7 @@
     height: 16px;
     border: 2px solid #1cb4e7;
   }
-  .setup__item-content_circle {
+  .setup__item-content_picker-color {
     width: 18px;
     height: 18px;
     cursor: pointer;
