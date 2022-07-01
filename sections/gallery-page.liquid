@@ -45,19 +45,38 @@
                   <label class="details-fields__item-label">Email</label>
                   <input class="details-fields__item-input" v-model="email"/>
                 </div>
-              </div>
-              <div class="details-images">
-                <div class="details-images__box">
-                  <label class="details-images__box-label" for="file">Upload image</label>
-                  <input
-                    @change="saveFile"
-                    accept="image/jpeg, image/png"
-                    class="details-images__box-input"
-                    id="file"
-                    type="file"
-                  />
+                <div class="details-fields__item">
+                  <label class="details-fields__item-label">Address</label>
+                  <input class="details-fields__item-input" v-model="address"/>
                 </div>
-                <button class="details-images__btn" v-if="isShowRemoveImage" @click="removeImage">Remove image</button>
+              </div>
+              <div class="details-media">
+                <div v-if="isTemplateWithImage" class="details-images">
+                  <div class="details-images__box">
+                    <label class="details-images__box-label" for="file">Upload image</label>
+                    <input
+                      @change="saveFile"
+                      accept="image/jpeg, image/png"
+                      class="details-images__box-input"
+                      id="file"
+                      type="file"
+                    />
+                  </div>
+                  <button class="details-images__btn" v-if="isShowRemoveImage" @click="removeImage">Remove image</button>
+                </div>
+                <div v-if="isTemplateWithSignature" class="details-signature">
+                  <div class="details-signature__box">
+                    <label class="details-signature__box-label" for="signatureFile">Upload signature</label>
+                    <input
+                      @change="saveSignatureFile"
+                      accept="image/jpeg, image/png"
+                      class="details-signature__box-input"
+                      id="signatureFile"
+                      type="file"
+                    />
+                  </div>
+                  <button class="details-signature__btn" v-if="isShowRemoveSignature" @click="removeSignature">Remove signature</button>
+                </div>
               </div>
             </div>
           </div>
@@ -134,6 +153,27 @@
               >
                 <img alt="wide-template" class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/wide_v2.svg"/>
                 Wide
+              </button>
+            </div>
+            <h4>PRO TEMPLATES</h4>
+            <div class="templates">
+              <button
+                @click="changeTemplates('pro')"
+                class="templates__item"
+                :class="{ activeTemplate: isProTemplate }"
+              >
+                <!-- @todo поменять данные на более адекватные, как будет ясна судьба названий темплейтов -->
+                <img alt="pro-template" class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/horizontal_v2.svg"/>
+                Pro
+              </button>
+              <button
+                @click="changeTemplates('pro2')"
+                class="templates__item"
+                :class="{ activeTemplate: isPro2Template }"
+              >
+                <!-- @todo поменять данные на более адекватные, как будет ясна судьба названий темплейтов -->
+                <img alt="pro2-template" class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/horizontal_v2.svg"/>
+                Pro 2
               </button>
             </div>
           </div>
@@ -280,7 +320,7 @@
                   </div>
                 </div>
                 <div class="setup__item">
-                  <label class="setup__item_label">Size</label>
+                  <label class="setup__item_label">Image size</label>
                   <div class="setup__item-content">
                     <input type="range" min="86" max="172" step="1" v-model="imageSize" class="setup__item-content_range">
                   </div>
@@ -291,6 +331,21 @@
                     <div class="setup__item-content-wrapper-for-input">
                       <input :class="{invalibleLinkInput: isInvalibleImageLink === true}" v-model="imageLink" placeholder="www.mywebsite.com" class="setup__item-content_input" />
                       <label class="invalibleLinkLabel" v-if="isInvalibleImageLink">Link is long</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="setup__item">
+                  <label class="setup__item_label">Signature size</label>
+                  <div class="setup__item-content">
+                    <input type="range" min="86" max="172" step="1" v-model="signatureSize" class="setup__item-content_range">
+                  </div>
+                </div>
+                <div class="setup__item">
+                  <label class="setup__item_label">Signature link</label>
+                  <div class="setup__item-content">
+                    <div class="setup__item-content-wrapper-for-input">
+                      <input :class="{invalibleLinkInput: isInvalibleSignatureLink === true}" v-model="signatureLink" placeholder="www.mywebsite.com" class="setup__item-content_input" />
+                      <label class="invalibleLinkLabel" v-if="isInvalibleSignatureLink">Link is long</label>
                     </div>
                   </div>
                 </div>
@@ -357,6 +412,7 @@
           </div>
           <div ref="signature" :style="stylesPreviewTemplate">
             <table
+              v-show="!isProTemplate && !isPro2Template"
               :style="stylesPreviewTable"
             >
               <tbody>
@@ -651,6 +707,330 @@
                 </tr>
               </tbody>
             </table>
+
+            <table
+              v-show="isProTemplate"
+              :style="stylesPreviewTable"
+            >
+              <tbody :style="stylesPreviewMainContentBody">
+                <tr>
+                  <td
+                    :style="stylesPreviewBlockSignature"
+                    ref="proUserSignature"
+                  ></td>
+                </tr>
+                <tr>
+                  <td :style="{display: 'flex', justifyContent: 'center'}">
+                    <table :style="{fontSize: `${fontSize}em`,}">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div :style="{
+                              fontFamily: fontFamily,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              marginBottom: fontSize * 4 + 'px',
+                            }">
+                              <span
+                                :style="stylesPreviewContentFieldName"
+                              >
+                                {{ name }}
+                              </span>
+                              <span
+                                v-if="title || company"
+                                :style="{
+                                  backgroundColor: color || '#000000',
+                                  marginLeft: fontSize * 10 + 'px',
+                                  marginRight: fontSize * 10 + 'px',
+                                  width: fontSize * 2 + 'px',
+                                  height: Math.min(fontSize, 1.1) + 'em',
+                                }"
+                              >
+                              </span>
+                              <span
+                                :style="stylesPreviewContentFieldTitle"
+                              >
+                                {{ title }}
+                              </span>
+                              <span
+                                v-if="isShowSeparatorForBasicInfo"
+                                :style="{...stylesPreviewContentSeparatorText, whiteSpace: 'pre'}"
+                              >
+                                {{ textForSeparator }}
+                              </span>
+                              <span
+                                :style="stylesPreviewContentFieldCompany"
+                              >
+                                {{ company }}
+                              </span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr v-if="hasContacts">
+                  <td>
+                    <hr
+                      :style="{...stylesPreviewContentSeparatorLine}"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td :style="{...stylesPreviewContactContent, fontSize: `${fontSize}em`,}">
+                    <div
+                      :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
+                      v-if="phone"
+                    >
+                      <img
+                        alt="phone-icon"
+                        :style="stylesPreviewContactContentItemIcon"
+                        src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
+                      />
+                      <a :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink" >
+                        {{ phone }}
+                      </a>
+                    </div>
+                    <div
+                      :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
+                      v-if="website"
+                    >
+                      <img
+                        alt="website-icon"
+                        :style="stylesPreviewContactContentItemIcon"
+                        src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
+                      />
+                      <a :href="website" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
+                    </div>
+                    <div
+                      :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
+                      v-if="email"
+                    >
+                      <img
+                        alt="email-icon"
+                        :style="stylesPreviewContactContentItemIcon"
+                        src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
+                      />
+                      <a :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
+                    </div>
+                    <div
+                      :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
+                      v-if="address"
+                    >
+                      <img
+                        alt="address-icon"
+                        :style="stylesPreviewContactContentItemIcon"
+                        src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/63/assets/home-outlined.svg?v=1656496925"
+                      />
+                      <span :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table
+              v-show="isPro2Template"
+              :style="stylesPreviewTable"
+            >
+              <tbody>
+                <tr>
+                  <td>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td
+                            :style="stylesPreviewBlockSignature"
+                            ref="pro2UserSignature"
+                          ></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td :style="stylesPreviewMainContent">
+                    <table>
+                      <tbody :style="stylesPreviewMainContentBody">
+                        <tr>
+                          <td>
+                            <tr :style="{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              columnGap: fontSize * 80 + 'px',
+                              margin: (fontSize * 20 + 'px ') + (fontSize * 8 + 'px ') + (fontSize * 8 + 'px'),
+                              fontSize: `${fontSize}em`}"
+                            >
+                              <td :style="{fontFamily: fontFamily}">
+                                <h4
+                                  :style="stylesPreviewContentFieldName"
+                                >
+                                  {{ name }}
+                                </h4>
+                                <span
+                                  :style="stylesPreviewContentFieldTitle"
+                                >
+                                  {{ title }}
+                                </span>
+                                <span
+                                  v-if="isShowSeparatorForBasicInfo"
+                                  :style="stylesPreviewContentSeparatorText"
+                                >
+                                  {{ textForSeparator }}
+                                </span>
+                                <span
+                                  :style="stylesPreviewContentFieldCompany"
+                                >
+                                  {{ company }}
+                                </span>
+                              </td>
+                              <td :style="{fontFamily: fontFamily, marginTop: '0px'}">
+                                <ul :style="{listStyleType: 'none', padding: '0', margin: '0'}">
+                                  <li
+                                    :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
+                                    v-if="phone"
+                                  >
+                                    <img
+                                      alt="phone-icon"
+                                      v-if="phone"
+                                      :style="stylesPreviewContactContentItemIcon"
+                                      src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
+                                    />
+                                    <a :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink">
+                                      {{ phone }}
+                                    </a>
+                                  </li>
+                                  <li
+                                    :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
+                                    v-if="website"
+                                  >
+                                    <img
+                                      alt="website-icon"
+                                      v-if="website"
+                                      :style="stylesPreviewContactContentItemIcon"
+                                      src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
+                                    />
+                                    <a :href="website" target="_blank" :style="stylesPreviewContactContentItemLink">{{ website }}</a>
+                                  </li>
+                                  <li
+                                    :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
+                                    v-if="email"
+                                  >
+                                    <img
+                                      alt="email-icon"
+                                      v-if="email"
+                                      :style="stylesPreviewContactContentItemIcon"
+                                      src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
+                                    />
+                                    <a :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
+                                  </li>
+                                  <li
+                                    :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily, marginBottom: '0'}"
+                                    v-if="address"
+                                  >
+                                    <img
+                                      alt="address-icon"
+                                      v-if="address"
+                                      :style="stylesPreviewContactContentItemIcon"
+                                      src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/63/assets/home-outlined.svg?v=1656496925"
+                                    />
+                                    <span :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
+                                  </li>
+                                </ul>
+                              </td>
+                            </tr>
+                            <tr v-if="hasSocials">
+                              <td colspan="2">
+                                <hr
+                                  :style="{...stylesPreviewContentSeparatorLine}"
+                                />
+                              </td>
+                            </tr>
+                            <tr v-if="hasSocials" :style="stylesPreviewSocialsNetworks">
+                              <td colspan="2" :style="{fontFamily: fontFamily}">
+                                <a
+                                  v-if="facebook"
+                                  target="_blank"
+                                  :href="`https://facebook.com/${facebook}`"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                                >
+                                  <img
+                                    alt="facebook-icon"
+                                    :src="linkImageFacebook"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
+                                  />
+                                </a>
+                                <a
+                                  v-if="instagram"
+                                  target="_blank"
+                                  :href="`https://instagram.com/${instagram}`"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                                >
+                                  <img
+                                    alt="instagram-icon"
+                                    :src="linkImageInstagram"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
+                                  />
+                                </a>
+                                <a
+                                  v-if="linkedin"
+                                  target="_blank"
+                                  :href="`https://linkedin.com/in/${linkedin}`"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                                >
+                                  <img
+                                    alt="linkedin-icon"
+                                    :src="linkImageLinkedin"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
+                                  />
+                                </a>
+                                <a
+                                  v-if="twitter"
+                                  target="_blank"
+                                  :href="`https://twitter.com/${twitter}`"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                                >
+                                  <img
+                                    alt="twitter-icon"
+                                    :src="linkImageTwitter"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
+                                  />
+                                </a>
+                                <a
+                                  v-if="youtube"
+                                  target="_blank"
+                                  :href="`https://youtube.com/${youtube}`"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                                >
+                                  <img
+                                    alt="youtube-icon"
+                                    :src="linkImageYoutube"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
+                                  />
+                                </a>
+                                <a
+                                  v-if="pinterest"
+                                  target="_blank"
+                                  :href="`https://pinterest.com/${pinterest}`"
+                                  :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                                >
+                                  <img
+                                    alt="pinterest-icon"
+                                    :src="linkImagePinterest"
+                                    :style="stylesPreviewSocialsNetworksItemImage"
+                                  />
+                                </a>
+                              </td>
+                            </tr>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div class="preview-pane-buttons-config">
             <button
@@ -723,7 +1103,10 @@
         website: '',
         file: null,
         fileUrl: '',
+        signatureFile: null,
+        signatureFileUrl: '',
         email: '',
+        address: '',
 
         facebook: '',
         instagram: '',
@@ -743,6 +1126,9 @@
         imageSize: '129', // px
         imageLink: '',
         isInvalibleImageLink: false,
+        signatureSize: '129',
+        signatureLink: '',
+        isInvalibleSignatureLink: false,
         backgroundLink: '',
         isInvalibleBackgroundLink: false,
         fileBackground: null,
@@ -750,6 +1136,7 @@
         activeTab: 'Details',
 
         isShowRemoveImage: false,
+        isShowRemoveSignature: false,
         isShowSelectAliase: false,
 
         tabs: ['Details', 'Social', 'Templates', 'Design'],
@@ -852,10 +1239,21 @@
         this.file = event;
       },
 
+      saveSignatureFile( event ) {
+        this.isShowRemoveSignature = true;
+        this.signatureFile = event;
+      },
+
       removeImage() {
         this.isShowRemoveImage = false;
         this.file = null;
         this.imageLink = '';
+      },
+
+      removeSignature() {
+        this.isShowRemoveSignature = false;
+        this.signatureFile = null;
+        this.signatureLink = '';
       },
 
       changeTemplates( template ) {
@@ -923,7 +1321,9 @@
         this.phone = userDate.phone;
         this.website = userDate.website;
         this.fileUrl = userDate.fileUrl;
+        this.signatureFileUrl = userDate.signatureFileUrl;
         this.email = userDate.email;
+        this.address = userDate.address;
         this.facebook = userDate.facebook;
         this.instagram = userDate.instagram;
         this.linkedin = userDate.linkedin;
@@ -939,6 +1339,8 @@
         this.typeShape = userDate.typeShape;
         this.imageSize = userDate.imageSize;
         this.imageLink = userDate.imageLink;
+        this.signatureSize = userDate.signatureSize;
+        this.signatureLink = userDate.signatureLink;
         this.backgroundLink = userDate.backgroundLink;
         this.fileBackground = userDate.fileBackground;
       },
@@ -951,7 +1353,9 @@
           phone: this.phone,
           website: this.website,
           fileUrl: this.fileUrl,
+          signatureFileUrl: this.signatureFileUrl,
           email: this.email,
+          address: this.address,
           facebook: this.facebook,
           instagram: this.instagram,
           linkedin: this.linkedin,
@@ -967,34 +1371,60 @@
           typeShape: this.typeShape,
           imageSize: this.imageSize,
           imageLink: this.imageLink,
+          signatureSize: this.signatureSize,
+          signatureLink: this.signatureLink,
           backgroundLink: this.backgroundLink,
           fileBackground: this.fileBackground,
         }));
       },
 
-      setAttributeForImage( attribute, value ) {
-        const img = this.$refs.userImage.querySelector('img');
+      getUserSignatureRef() {
+        return this.$refs[`${this.template}UserSignature`];
+      },
 
-        if( img ) {
-          img.setAttribute( attribute, value );
-        }
+      setAttribute( element, attribute, value ) {
+        if( element ) {
+          element.setAttribute( attribute, value );
+         }
+      },
+
+      setAttributeForImage( attribute, value ) {
+        this.setAttribute(this.$refs.userImage.querySelector('img'), attribute, value);
+      },
+
+      setAttributeForSignature( attribute, value ) {
+        this.setAttribute(this.getUserSignatureRef().querySelector('img'), attribute, value);
+      },
+
+      isImageExists() {
+        return !!this.$refs.userImage?.querySelector('img');
+      },
+
+      isSignatureExists() {
+        return !!this.$refs.userSignature?.querySelector('img');
+      },
+
+      createImageElement( link, ref, styles ) {
+        ref.innerHTML = '';
+         const imageElem = document.createElement( 'img' );
+
+        imageElem.setAttribute( 'src', link );
+        imageElem.setAttribute( 'style', styles );
+
+        ref.append( imageElem );
       },
 
       createElementWithImage( imageLink ) {
-        this.$refs.userImage.innerHTML = '';
-        const imageElem = document.createElement( 'img' );
+        this.createImageElement( imageLink, this.$refs.userImage, this.stylesPreviewUserPicture );
+      },
 
-        imageElem.setAttribute( 'src', imageLink );
-        imageElem.setAttribute( 'style', this.stylesPreviewUserPicture );
-
-        this.$refs.userImage.append( imageElem );
-
-        this.changeClassShapeForImage( imageElem, this.typeShape );
+      createElementWithSignature( imageLink ) {
+        this.createImageElement( imageLink, this.getUserSignatureRef(), this.stylesPreviewUserSignature );
       },
 
       validateFormatLink( link, field ) {
         if( link.length > 255 ) {
-          this[field] = true; // isInvalibleBackgroundLink || isInvalibleImageLink
+          this[field] = true; // isInvalibleBackgroundLink || isInvalibleImageLink || isInvalibleSignatureLink
 
           return false;
         }
@@ -1085,11 +1515,26 @@
       },
 
       template( template ) {
-        this.setAttributeForImage( 'style', this.stylesPreviewUserPicture );
+        if( this.isTemplateWithImage ) {
+          this.setAttributeForImage( 'style', this.stylesPreviewUserPicture );
+          if( !this.isImageExists() && (this.imageLink || this.fileUrl) ) {
+            this.createElementWithImage(this.imageLink || this.fileUrl);
+          }
+        }
+        if( this.isTemplateWithSignature ) {
+          this.setAttributeForSignature( 'style', this.stylesPreviewUserSignature );
+          if( !this.isSignatureExists() && (this.signatureLink || this.signatureFileUrl) ) {
+            this.createElementWithSignature(this.signatureLink || this.signatureFileUrl);
+          }
+        }
       },
 
       imageSize( newSize ) {
         this.imageSize = newSize;
+      },
+
+      signatureSize( newSize ) {
+        this.signatureSize = newSize;
       },
 
       typeShape( type ) {
@@ -1123,6 +1568,30 @@
         }
       },
 
+      signatureFile( event ) {
+        if ( !event ) {
+          if( this.signatureLink ) {
+            this.setAttributeForSignature( 'src', this.signatureLink );
+
+            return;
+          }
+
+          this.getUserSignatureRef().innerHTML = "";
+
+          return;
+        }
+
+        if ( event.target.files && event.target.files[0] ) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            this.signatureFileUrl = e.target.result;
+
+            this.createElementWithSignature( this.signatureFileUrl );
+          };
+          reader.readAsDataURL( event.target.files[0] );
+        }
+      },
+
       imageLink( link ) {
         if ( !this.validateFormatLink( link, 'isInvalibleImageLink' ) ) return;
         this.isInvalibleImageLink = false;
@@ -1142,6 +1611,27 @@
         }
 
         this.createElementWithImage( link );
+      },
+
+      signatureLink( link ) {
+        if ( !this.validateFormatLink( link, 'isInvalibleSignatureLink' ) ) return;
+        this.isInvalibleSignatureLink = false;
+
+        const img = this.getUserSignatureRef().querySelector('img');
+        if( link && img ) {
+          this.isShowRemoveSignature = true;
+          this.setAttributeForSignature( 'src', link );
+
+          return;
+        } else {
+          if( this.signatureFile ) {
+            this.setAttributeForSignature( 'src', this.signatureFileUrl );
+
+            return;
+          }
+        }
+
+        this.createElementWithSignature( link );
       },
 
       fileBackground() {
@@ -1166,6 +1656,24 @@
 
       isWideTemplate() {
         return this.template === 'wide';
+      },
+
+      isProTemplate() {
+        return this.template === 'pro';
+      },
+
+      isPro2Template() {
+        return this.template === 'pro2';
+      },
+
+      isTemplateWithImage() {
+        return this.template === 'classic'    ||
+               this.template === 'horizontal' ||
+               this.template === 'wide';
+      },
+
+      isTemplateWithSignature() {
+        return this.template === 'pro' || this.template === 'pro2';
       },
 
       isDisabledBtnMarginTop() {
@@ -1216,6 +1724,10 @@
         return !!( this.file || ( this.imageLink && !this.isInvalibleImageLink ) ) ? 'block' : 'none';
       },
 
+      isShowSignatureBlock() {
+        return !!( this.signatureFile || ( this.signatureLink && !this.isInvalibleSignatureLink ) ) ? 'block' : 'none';
+      },
+
       isShowSeparatorForBasicInfo() {
         return this.title && this.company;
       },
@@ -1228,6 +1740,19 @@
 
       hasImageLink() {
         return this.file || this.imageLink && !this.isInvalibleImageLink;
+      },
+
+      hasSignatureLink() {
+        return this.signatureFile || this.signatureLink && !this.isInvalibleSignatureLink;
+      },
+
+      hasContacts() {
+        return this.phone || this.website || this.email || this.address;
+      },
+
+      hasSocials() {
+        return this.facebook || this.instagram || this.linkedin ||
+               this.twitter  || this.youtube   || this.pinterest;
       },
 
       defineColor() {
@@ -1261,7 +1786,32 @@
         }
       },
 
+      stylesPreviewBlockSignature() {
+        if( this.isProTemplate ) {
+          return {
+            height: `${this.signatureSize}px`,
+            width: `${this.signatureSize}px`,
+            display: this.isShowSignatureBlock,
+            margin: 'auto auto 12px auto',
+          }
+        }
+
+        if( this.isPro2Template ) {
+          return {
+            height: `${this.signatureSize}px`,
+            width: `${this.signatureSize}px`,
+            display: this.isShowSignatureBlock,
+          }
+        }
+      },
+
       stylesPreviewMainContent() {
+        if( this.isProTemplate ) {
+          return {
+            display: 'flex',
+          }
+        }
+
         return {
           display: 'flex',
           marginLeft: '14px',
@@ -1269,22 +1819,52 @@
       },
 
       stylesPreviewContactContent() {
+        if( this.isProTemplate ) {
+          return {
+            display: 'grid',
+            gridTemplateColumns: 'auto auto',
+            justifyContent: 'space-between',
+            columnGap: this.fontSize * 150 + 'px',
+            marginLeft: this.fontSize * 12 + 'px',
+            marginRight: this.fontSize * 12 + 'px',
+          }
+        }
+
         if( this.isClassicTemplate ) {
           return {
             display: 'flex',
             marginTop: '14px',
             flexWrap: 'wrap',
           }
-        } else {
-          return {
-            display: 'flex',
-            marginTop: '6px',
-            flexWrap: 'wrap',
-          }
+        }
+
+        return {
+          display: 'flex',
+          marginTop: '6px',
+          flexWrap: 'wrap',
         }
       },
 
       stylesPreviewContactContentItem() {
+        if( this.isPro2Template ) {
+          return {
+            display: 'flex',
+            alignItems: 'center',
+            fontSize: '0.7em',
+            marginBottom: (this.fontSize * 8) + 'px',
+            color: '#212121',
+          }
+        }
+
+        if( this.isProTemplate ) {
+          return {
+            display: 'flex',
+            alignItems: 'center',
+            fontSize: '0.7em',
+            margin: (this.fontSize * 4) + 'px 0',
+          }
+        }
+
         if( this.isClassicTemplate ) {
           return {
             display: 'flex',
@@ -1305,6 +1885,13 @@
       },
 
       stylesPreviewContactContentItemLink() {
+        if( this.isProTemplate || this.isPro2Template ) {
+          return {
+            color: '#688bb5',
+            textDecoration: 'none',
+          }
+        }
+
         if( this.isClassicTemplate ) {
           return {
             color: '#45668E',
@@ -1324,6 +1911,14 @@
       },
 
       stylesPreviewContactContentItemIcon() {
+        if( this.isProTemplate || this.isPro2Template ) {
+          return {
+            width: (this.fontSize * 16) + 'px',
+            height: (this.fontSize * 16) + 'px',
+            marginRight: (this.fontSize * 8) + 'px',
+          }
+        }
+
         if ( this.isHorizontalTemplate ) {
           return {
             width: '25px',
@@ -1347,6 +1942,10 @@
         return `display: block; height: 100%; width: 100%; object-fit: cover; border: 2px solid #d9dce5;`;
       },
 
+      stylesPreviewUserSignature() {
+        return `display: block; height: 100%; width: 100%; object-fit: contain; border: none; margin: auto;`;
+      },
+
       stylesPreviewMainContentBody() {
         return {
           width: '100%',
@@ -1354,6 +1953,23 @@
       },
 
       stylesPreviewContentFieldName() {
+        if( this.isPro2Template ) {
+          return {
+            textTransform: 'uppercase',
+            fontSize: '1.5em',
+            lineHeight: '1.1em',
+            marginBottom: '0',
+            color: this.defineColor || '#45668E',
+          }
+        }
+
+        if( this.isProTemplate ) {
+          return {
+            fontSize: '1em',
+            fontStyle: 'italic',
+          }
+        }
+
         if( this.isClassicTemplate ) {
           return {
             marginTop: '0',
@@ -1382,6 +1998,21 @@
       },
 
       stylesPreviewContentFieldTitle() {
+        if( this.isPro2Template ) {
+          return {
+            color: '#000000',
+            fontSize: '0.8em',
+            fontStyle: 'italic',
+          }
+        }
+
+        if( this.isProTemplate ) {
+          return {
+            fontSize: '1em',
+            fontStyle: 'italic',
+          }
+        }
+
         if( this.isClassicTemplate ) {
           return {
             color: '#45668E',
@@ -1406,6 +2037,21 @@
       },
 
       stylesPreviewContentSeparatorText() {
+        if( this.isPro2Template ) {
+          return {
+            color: '#000000',
+            fontSize: '0.8em',
+            fontStyle: 'italic',
+          }
+        }
+
+        if( this.isProTemplate ) {
+          return {
+            fontSize: '1em',
+            fontStyle: 'italic',
+          }
+        }
+
         if( this.isClassicTemplate ) {
           return {
             color: '#45668E',
@@ -1430,6 +2076,19 @@
       },
 
       stylesPreviewContentSeparatorLine() {
+        if( this.isProTemplate || this.isPro2Template ) {
+          return {
+            margin: this.fontSize * 6 + 'px 0 !important',
+            width: '100%',
+            border: 'none !important',
+            borderTopWidth: this.fontSize * 5 + 'px !important',
+            borderTopStyle: 'dotted !important',
+            borderColor: this.defineColor || 'rgb(69, 102, 142)',
+            background: 'none !important',
+            opacity: '1',
+          }
+        }
+
         return {
           margin: '6px 0 !important',
           width: '100%',
@@ -1441,6 +2100,21 @@
       },
 
       stylesPreviewContentFieldCompany() {
+        if( this.isPro2Template ) {
+          return {
+            color: '#000000',
+            fontSize: '0.8em',
+            fontStyle: 'italic',
+          }
+        }
+
+        if( this.isProTemplate ) {
+          return {
+            fontSize: '1em',
+            fontStyle: 'italic',
+          }
+        }
+
         if( this.isClassicTemplate ) {
           return {
             color: '#45668E',
@@ -1465,6 +2139,15 @@
       },
 
       stylesPreviewSocialsNetworks() {
+        if( this.isPro2Template ) {
+          return {
+            display: 'flex',
+            marginTop: '12px',
+            justifyContent: 'center',
+            margin: '20px 0',
+          }
+        }
+
         return {
           display: 'flex',
           marginTop: '12px',
@@ -1622,12 +2305,22 @@
     color: #888;
     font-size: 13px;
   }
-  .details-images {
+  .details-media {
     display: flex;
     flex-direction: column;
     width: 27%;
     align-items: center;
+    justify-content: flex-start;
+    gap: 5%;
   }
+  .details-signature,
+  .details-images {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+  }
+  .details-signature__btn,
   .details-images__btn {
     cursor: pointer;
     color: #1cb4e7;
@@ -1636,22 +2329,25 @@
     width: 100%;
     margin-top: 6px;
   }
+  .details-signature__box,
   .details-images__box {
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     width: 100%;
-    height: 20%;
+    height: 70%;
     background-color: #f8f9fb;
     border: 1px dashed rgba(0,0,0,.3);
     border-radius: 4px;
   }
+  .details-signature__box-input,
   .details-images__box-input {
     position: absolute;
     opacity: 0;
     visibility: hidden;
   }
+  .details-signature__box-label,
   .details-images__box-label {
     width: 100%;
     height: 100%;
@@ -1698,6 +2394,7 @@
   .templates {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 16px;
   }
   .templates__item {
     min-height: 140px;
