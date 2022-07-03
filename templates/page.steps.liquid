@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="editor-settings">
-          <div v-if="activeTab === 'Details'">
+          <div v-show="activeTab === 'Details'">
             <h3>SIGNATURE DETAILS</h3>
             <div class="details">
               <div class="details-fields">
@@ -61,7 +61,7 @@
               </div>
             </div>
           </div>
-          <div v-if="activeTab === 'Social'">
+          <div v-show="activeTab === 'Social'">
             <h3>SOCIAL PROFILES</h3>
             <div class="socials">
               <div class="socials__item">
@@ -108,7 +108,7 @@
               </div>
             </div>
           </div>
-          <div v-if="activeTab === 'Templates'">
+          <div v-show="activeTab === 'Templates'">
             <h4>FREE TEMPLATES</h4>
             <div class="templates">
               <button
@@ -137,7 +137,7 @@
               </button>
             </div>
           </div>
-          <div v-if="activeTab === 'Design'">
+          <div v-show="activeTab === 'Design'">
             <h4>FONT & COLOR</h4>
             <div>
               <div class="setup">
@@ -208,42 +208,42 @@
                   <div class="setup__item-content">
                     <div
                         @click="changeColor('teal')"
-                        class="setup__item-content_circle teal"
+                        class="setup__item-content_picker-color teal"
                         :class="{activeColor: color === 'teal'}"
                     ></div>
                     <div
                         @click="changeColor('maroon')"
-                        class="setup__item-content_circle maroon"
+                        class="setup__item-content_picker-color maroon"
                         :class="{activeColor: color === 'maroon'}"
                     ></div>
                     <div
                         @click="changeColor('darkgreen')"
-                        class="setup__item-content_circle darkgreen"
+                        class="setup__item-content_picker-color darkgreen"
                         :class="{activeColor: color === 'darkgreen'}"
                     ></div>
                     <div
                         @click="changeColor('chartreuse')"
-                        class="setup__item-content_circle chartreuse"
+                        class="setup__item-content_picker-color chartreuse"
                         :class="{activeColor: color === 'chartreuse'}"
                     ></div>
                     <div
                         @click="changeColor('turquoise')"
-                        class="setup__item-content_circle turquoise"
+                        class="setup__item-content_picker-color turquoise"
                         :class="{activeColor: color === 'turquoise'}"
                     ></div>
                     <div
                         @click="changeColor('brown')"
-                        class="setup__item-content_circle brown"
+                        class="setup__item-content_picker-color brown"
                         :class="{activeColor: color === 'brown'}"
                     ></div>
                     <div
                         @click="changeColor('purple')"
-                        class="setup__item-content_circle purple"
+                        class="setup__item-content_picker-color purple"
                         :class="{activeColor: color === 'purple'}"
                     ></div>
                     <input
                       type="color"
-                      class="setup__item-content_circle custom-color"
+                      class="setup__item-content_picker-color custom-color"
                       v-model="color"
                     />
                   </div>
@@ -381,9 +381,9 @@
                             <tr>
                               <td colspan="3">
                                 <table>
-                                  <tbody :style="{fontSize: `${fontSize}em`}">
+                                  <tbody>
                                     <tr>
-                                      <td :style="{fontFamily: fontFamily}">
+                                      <td :style="{fontFamily: fontFamily, fontSize: `${fontSize}em`}">
                                         <h4
                                           :style="stylesPreviewContentFieldName"
                                         >
@@ -392,7 +392,7 @@
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td :style="{fontFamily: fontFamily}">
+                                      <td :style="{fontFamily: fontFamily, fontSize: `${fontSize}em`}">
                                         <span
                                           :style="stylesPreviewContentFieldTitle"
                                         >
@@ -499,7 +499,7 @@
                                 />
                               </td>
                             </tr>
-                            <tr :style="stylesPreviewContactContent">
+                            <tr :style="{...stylesPreviewContactContent, fontSize: `${fontSize}em`}">
                               <td
                                 :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                 v-if="phone"
@@ -989,6 +989,8 @@
         imageElem.setAttribute( 'style', this.stylesPreviewUserPicture );
 
         this.$refs.userImage.append( imageElem );
+
+        this.changeClassShapeForImage( imageElem, this.typeShape );
       },
 
       validateFormatLink( link, field ) {
@@ -1220,9 +1222,7 @@
       },
 
       textForSeparator() {
-        return this.template === 'classic'
-          ? ', '
-          : this.template === 'horizontal'
+        return this.template === 'horizontal'
             ? ' at '
             : ', ';
       },
@@ -1350,7 +1350,6 @@
 
       stylesPreviewMainContentBody() {
         return {
-          fontSize: `${this.fontSize}em`,
           width: '100%',
         }
       },
@@ -1491,6 +1490,7 @@
 
   createApp(htmlSignature).mount('#html-signature');
 </script>
+
 
 <style>
   #html-signature {
