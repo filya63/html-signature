@@ -423,7 +423,7 @@
                         <tr>
                           <td
                             :style="stylesPreviewBlockImage"
-                            ref="userImage"
+                            :ref="`${template}UserImage`"
                           ></td>
                         </tr>
                       </tbody>
@@ -1370,6 +1370,10 @@
         }));
       },
 
+      getImageRef() {
+        return this.$refs[`${this.template}UserImage`];
+      },
+
       getUserSignatureRef() {
         return this.$refs[`${this.template}UserSignature`];
       },
@@ -1381,7 +1385,7 @@
       },
 
       setAttributeForImage( attribute, value ) {
-        this.setAttribute(this.$refs.userImage.querySelector('img'), attribute, value);
+        this.setAttribute(this.getImageRef().querySelector('img'), attribute, value);
       },
 
       setAttributeForSignature( attribute, value ) {
@@ -1389,11 +1393,11 @@
       },
 
       isImageExists() {
-        return !!this.$refs.userImage?.querySelector('img');
+        return !!this.getImageRef().querySelector('img');
       },
 
       isSignatureExists() {
-        return !!this.$refs.userSignature?.querySelector('img');
+        return !!this.getUserSignatureRef().querySelector('img');
       },
 
       createImageElement( link, ref, styles ) {
@@ -1407,7 +1411,7 @@
       },
 
       createElementWithImage( imageLink ) {
-        this.createImageElement( imageLink, this.$refs.userImage, this.stylesPreviewUserPicture );
+        this.createImageElement( imageLink, this.getImageRef(), this.stylesPreviewUserPicture );
       },
 
       createElementWithSignature( imageLink ) {
@@ -1565,7 +1569,7 @@
       typeShape( type ) {
         if( !this.isImageExists() ) return;
 
-        const img = this.$refs.userImage.querySelector('img');
+        const img = this.getImageRef().querySelector('img');
         if( !img ) return;
 
         this.changeClassShapeForImage( img, type );
@@ -1579,7 +1583,7 @@
             return;
           }
 
-          this.$refs.userImage.innerHTML = "";
+          this.getImageRef().innerHTML = "";
 
           return;
         }
@@ -1623,7 +1627,7 @@
         if ( !this.validateFormatLink( link, 'isInvalibleImageLink' ) ) return;
         this.isInvalibleImageLink = false;
 
-        const img = this.$refs.userImage.querySelector('img');
+        const img = this.getImageRef().querySelector('img');
         if( link && img ) {
           this.isShowRemoveImage = true;
           this.setAttributeForImage( 'src', link );
