@@ -774,7 +774,7 @@
                 <tr v-if="hasContacts">
                   <td>
                     <hr
-                      :style="{...stylesPreviewContentSeparatorLine}"
+                      :style="stylesPreviewContentSeparatorLine"
                     />
                   </td>
                 </tr>
@@ -886,7 +886,7 @@
                                 </span>
                               </td>
                               <td :style="{fontFamily: fontFamily, marginTop: '0px'}">
-                                <ul :style="{listStyleType: 'none', padding: '0', margin: '0'}">
+                                <ul style="list-style-type: none; padding: 0; margin: 0;">
                                   <li
                                     :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                     v-if="phone"
@@ -1889,6 +1889,7 @@
           return {
             color: '#688bb5',
             textDecoration: 'none',
+            lineHeight: this.lineHeight,
           }
         }
 
@@ -2142,9 +2143,9 @@
         if( this.isPro2Template ) {
           return {
             display: 'flex',
-            marginTop: '12px',
+            marginTop: this.fontSize * 12 + 'px',
             justifyContent: 'center',
-            margin: '20px 0',
+            margin: this.fontSize * 20 + 'px 0',
           }
         }
 
