@@ -730,7 +730,7 @@
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              marginBottom: fontSize * 4 + 'px',
+                              marginBottom: `${fontSize*4}px`,
                             }">
                               <span
                                 :style="stylesPreviewContentFieldName"
@@ -741,10 +741,10 @@
                                 v-if="title || company"
                                 :style="{
                                   backgroundColor: color || '#000000',
-                                  marginLeft: fontSize * 10 + 'px',
-                                  marginRight: fontSize * 10 + 'px',
-                                  width: fontSize * 2 + 'px',
-                                  height: Math.min(fontSize, 1.1) + 'em',
+                                  marginLeft: `${fontSize*10}px`,
+                                  marginRight: `${fontSize*10}px`,
+                                  width: `${fontSize*2}px`,
+                                  height: `${Math.min(fontSize, 1.1)}em`,
                                 }"
                               >
                               </span>
@@ -858,10 +858,10 @@
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              columnGap: fontSize * 80 + 'px',
-                              margin: (fontSize * 20 + 'px ') + (fontSize * 8 + 'px ') + (fontSize * 8 + 'px'),
-                              fontSize: `${fontSize}em`}"
-                            >
+                              columnGap: `${fontSize*80}px`,
+                              margin: `${fontSize*20}px ${fontSize*8}px ${fontSize*8}px`,
+                              fontSize: `${fontSize}em`
+                            }">
                               <td :style="{fontFamily: fontFamily}">
                                 <h4
                                   :style="stylesPreviewContentFieldName"
