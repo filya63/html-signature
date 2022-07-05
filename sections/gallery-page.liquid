@@ -175,6 +175,15 @@
                 <img alt="pro2-template" class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/horizontal_v2.svg"/>
                 Pro 2
               </button>
+              <button
+                @click="changeTemplates('pro3')"
+                class="templates__item"
+                :class="{ activeTemplate: isPro3Template }"
+              >
+                <!-- @todo поменять данные на более адекватные, как будет ясна судьба названий темплейтов -->
+                <img alt="pro3-template" class="templates__item_img" src="https://d1n2mpfyq0bf3x.cloudfront.net/847c74fd3c8f2c65d68f70bc032b4661/horizontal_v2.svg"/>
+                Pro 3
+              </button>
             </div>
           </div>
           <div v-show="activeTab === 'Design'">
@@ -1012,6 +1021,170 @@
                 </tr>
               </tbody>
             </table>
+
+            <table
+              v-show="isPro3Template"
+              :style="stylesPreviewTable"
+            >
+              <tbody>
+                <tr :style="{display: 'flex', gap: `${fontSize*30}px`}">
+                  <td style="align-self: center;">
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td
+                            :style="stylesPreviewBlockSignature"
+                            ref="pro3UserSignature"
+                          ></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td v-if="hasSignatureLink">
+                    <div :style="{...stylesPreviewContentSeparatorHLine}"></div>
+                  </td>
+                  <td :style="stylesPreviewMainContent">
+                    <table>
+                      <tbody :style="stylesPreviewMainContentBody">
+                        <tr>
+                          <td :style="{fontSize: `${fontSize}em`, display: 'flex', flexDirection: 'column', alignItems: 'center',}">
+                            <h4
+                              :style="stylesPreviewContentFieldName"
+                            >
+                              {{ name }}
+                            </h4>
+                            <div :style="{marginBottom: `${fontSize*4}px`}">
+                              <span
+                                :style="stylesPreviewContentFieldTitle"
+                              >
+                                {{ title }}
+                              </span>
+                              <span
+                                v-if="isShowSeparatorForBasicInfo"
+                                :style="stylesPreviewContentSeparatorText"
+                              >
+                                {{ textForSeparator }}
+                              </span>
+                              <span
+                                :style="stylesPreviewContentFieldCompany"
+                              >
+                                {{ company }}
+                              </span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr v-if="hasContacts || hasSocials" style="align-self: stretch;">
+                          <td :style="{display: 'block'}">
+                            <hr
+                              :style="{...stylesPreviewContentSeparatorLine, borderTopWidth: `${fontSize*8}px !important`, width: '50%', margin: 'auto', marginBottom: `${fontSize*16}px`}"
+                            />
+                          </td>
+                        </tr>
+                        <tr v-if="hasContacts">
+                          <td :style="{display: 'flex', flexDirection: 'column', alignItems: 'center', fontSize: `${fontSize}em`, gap: `${Math.max(fontSize, 1)*2}px`}">
+                            <a v-if="phone" :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink" >{{ phone }}</a>
+                            <a v-if="website" :href="website" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
+                            <a v-if="email" :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
+                            <span v-if="address" :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
+                          </td>
+                        </tr>
+                        <tr v-if="hasSocials" :style="{...stylesPreviewSocialsNetworks, alignSelf: 'center', marginTop: `${fontSize*20}px`}">
+                          <td :style="{fontFamily: fontFamily}">
+                            <a
+                              v-if="facebook"
+                              target="_blank"
+                              :href="`https://facebook.com/${facebook}`"
+                              :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                            >
+                              <img
+                                alt="facebook-icon"
+                                :src="linkImageFacebook"
+                                :style="stylesPreviewSocialsNetworksItemImage"
+                              />
+                            </a>
+                            <a
+                              v-if="instagram"
+                              target="_blank"
+                              :href="`https://instagram.com/${instagram}`"
+                              :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                            >
+                              <img
+                                alt="instagram-icon"
+                                :src="linkImageInstagram"
+                                :style="stylesPreviewSocialsNetworksItemImage"
+                              />
+                            </a>
+                            <a
+                              v-if="linkedin"
+                              target="_blank"
+                              :href="`https://linkedin.com/in/${linkedin}`"
+                              :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                            >
+                              <img
+                                alt="linkedin-icon"
+                                :src="linkImageLinkedin"
+                                :style="stylesPreviewSocialsNetworksItemImage"
+                              />
+                            </a>
+                            <a
+                              v-if="twitter"
+                              target="_blank"
+                              :href="`https://twitter.com/${twitter}`"
+                              :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                            >
+                              <img
+                                alt="twitter-icon"
+                                :src="linkImageTwitter"
+                                :style="stylesPreviewSocialsNetworksItemImage"
+                              />
+                            </a>
+                            <a
+                              v-if="youtube"
+                              target="_blank"
+                              :href="`https://youtube.com/${youtube}`"
+                              :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                            >
+                              <img
+                                alt="youtube-icon"
+                                :src="linkImageYoutube"
+                                :style="stylesPreviewSocialsNetworksItemImage"
+                              />
+                            </a>
+                            <a
+                              v-if="pinterest"
+                              target="_blank"
+                              :href="`https://pinterest.com/${pinterest}`"
+                              :style="{...stylesPreviewSocialsNetworksItem, background: defineColor}"
+                            >
+                              <img
+                                alt="pinterest-icon"
+                                :src="linkImagePinterest"
+                                :style="stylesPreviewSocialsNetworksItemImage"
+                              />
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td v-if="hasImageLink">
+                    <div :style="{...stylesPreviewContentSeparatorHLine}"></div>
+                  </td>
+                  <td style="align-self: center;">
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td
+                            :style="stylesPreviewBlockImage"
+                            ref="pro3UserImage"
+                          ></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div class="preview-pane-buttons-config">
             <button
@@ -1697,14 +1870,21 @@
         return this.template === 'pro2';
       },
 
+      isPro3Template() {
+        return this.template === 'pro3';
+      },
+
       isTemplateWithImage() {
         return this.template === 'classic'    ||
                this.template === 'horizontal' ||
-               this.template === 'wide';
+               this.template === 'wide' ||
+               this.template === 'pro3';
       },
 
       isTemplateWithSignature() {
-        return this.template === 'pro' || this.template === 'pro2';
+        return this.template === 'pro' ||
+               this.template === 'pro2' ||
+               this.template === 'pro3';
       },
 
       isDisabledBtnMarginTop() {
@@ -1831,17 +2011,15 @@
           }
         }
 
-        if( this.isPro2Template ) {
-          return {
-            height: `${this.signatureSize}px`,
-            width: `${this.signatureSize}px`,
-            display: this.isShowSignatureBlock,
-          }
+        return {
+          height: `${this.signatureSize}px`,
+          width: `${this.signatureSize}px`,
+          display: this.isShowSignatureBlock,
         }
       },
 
       stylesPreviewMainContent() {
-        if( this.isProTemplate ) {
+        if( this.isProTemplate || this.isPro3Template ) {
           return {
             display: 'flex',
           }
@@ -1935,6 +2113,15 @@
           }
         }
 
+        if( this.isPro3Template ) {
+          return {
+            color: '#688bb5',
+            textDecoration: 'none',
+            fontSize: '0.8em',
+            lineHeight: this.lineHeight,
+          }
+        }
+
         if( this.isClassicTemplate ) {
           return {
             color: '#45668E',
@@ -1993,6 +2180,17 @@
       },
 
       stylesPreviewMainContentBody() {
+        if( this.isPro3Template ) {
+          return {
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            marginTop: '4px',
+            marginBottom: '4px',
+          }
+        }
+
         return {
           width: '100%',
         }
@@ -2042,7 +2240,7 @@
       },
 
       stylesPreviewContentFieldName() {
-        if( this.isPro2Template ) {
+        if( this.isPro2Template || this.isPro3Template ) {
           return {
             textTransform: 'uppercase',
             fontSize: '1.5em',
@@ -2087,7 +2285,7 @@
       },
 
       stylesPreviewContentFieldTitle() {
-        if( this.isPro2Template ) {
+        if( this.isPro2Template || this.isPro3Template ) {
           return {
             color: '#000000',
             fontSize: '0.8em',
@@ -2126,7 +2324,7 @@
       },
 
       stylesPreviewContentSeparatorText() {
-        if( this.isPro2Template ) {
+        if( this.isPro2Template || this.isPro3Template ) {
           return {
             color: '#000000',
             fontSize: '0.8em',
@@ -2165,7 +2363,7 @@
       },
 
       stylesPreviewContentSeparatorLine() {
-        if( this.isProTemplate || this.isPro2Template ) {
+        if( this.isProTemplate || this.isPro2Template || this.isPro3Template ) {
           const verticalMargin = this.fontSize * 6;
           const borderWidth = this.fontSize * 5;
 
@@ -2191,8 +2389,20 @@
         };
       },
 
+      stylesPreviewContentSeparatorHLine() {
+        return {
+          height: '100%',
+          border: 'none !important',
+          borderRightWidth: this.fontSize * 4 + 'px !important',
+          borderRightStyle: 'dotted !important',
+          borderColor: this.defineColor || 'rgb(69, 102, 142)',
+          background: 'none !important',
+          opacity: '1',
+        }
+      },
+
       stylesPreviewContentFieldCompany() {
-        if( this.isPro2Template ) {
+        if( this.isPro2Template || this.isPro3Template ) {
           return {
             color: '#000000',
             fontSize: '0.8em',
