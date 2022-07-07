@@ -408,6 +408,51 @@
                     </div>
                   </div>
                 </div>
+                <div class="setup__item">
+                  <label class="setup__item_label">Background color</label>
+                  <div class="setup__item-content">
+                    <div
+                        @click="changeBackgroundColor('teal')"
+                        class="setup__item-content_picker-color teal"
+                        :class="{activeColor: backgroundColor === 'teal'}"
+                    ></div>
+                    <div
+                        @click="changeBackgroundColor('maroon')"
+                        class="setup__item-content_picker-color maroon"
+                        :class="{activeColor: backgroundColor === 'maroon'}"
+                    ></div>
+                    <div
+                        @click="changeBackgroundColor('darkgreen')"
+                        class="setup__item-content_picker-color darkgreen"
+                        :class="{activeColor: backgroundColor === 'darkgreen'}"
+                    ></div>
+                    <div
+                        @click="changeBackgroundColor('chartreuse')"
+                        class="setup__item-content_picker-color chartreuse"
+                        :class="{activeColor: backgroundColor === 'chartreuse'}"
+                    ></div>
+                    <div
+                        @click="changeBackgroundColor('turquoise')"
+                        class="setup__item-content_picker-color turquoise"
+                        :class="{activeColor: backgroundColor === 'turquoise'}"
+                    ></div>
+                    <div
+                        @click="changeBackgroundColor('brown')"
+                        class="setup__item-content_picker-color brown"
+                        :class="{activeColor: backgroundColor === 'brown'}"
+                    ></div>
+                    <div
+                        @click="changeBackgroundColor('purple')"
+                        class="setup__item-content_picker-color purple"
+                        :class="{activeColor: backgroundColor === 'purple'}"
+                    ></div>
+                    <input
+                      type="color"
+                      class="setup__item-content_picker-color custom-color"
+                      v-model="backgroundColor"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1507,6 +1552,7 @@
         marginTop: 0,
         fontFamily: 'Arial',
         color: '',
+        backgroundColor: '',
         typeShape: '',
         imageSize: '129', // px
         imageLink: '',
@@ -1670,6 +1716,16 @@
         this.color = newColor;
       },
 
+      changeBackgroundColor( newColor ) {
+        if( this.backgroundColor === newColor ) {
+          this.backgroundColor = '';
+
+          return;
+        }
+
+        this.backgroundColor = newColor;
+      },
+
       changeTypeShape( type ) {
         if( this.typeShape === type ) {
             this.typeShape = '';
@@ -1724,6 +1780,7 @@
         this.marginTop = userDate.marginTop;
         this.fontFamily = userDate.fontFamily;
         this.color = userDate.color;
+        this.backgroundColor = userDate.backgroundColor;
         this.typeShape = userDate.typeShape;
         this.imageSize = userDate.imageSize;
         this.imageLink = userDate.imageLink;
@@ -1756,6 +1813,7 @@
           marginTop: this.marginTop,
           fontFamily: this.fontFamily,
           color: this.color,
+          backgroundColor: this.backgroundColor,
           typeShape: this.typeShape,
           imageSize: this.imageSize,
           imageLink: this.imageLink,
@@ -2213,8 +2271,11 @@
       },
 
       stylesPreviewTable() {
+        const background = (this.backgroundLink || this.fileBackground) ? `url(${this.backgroundLink || this.fileBackground})`
+                                                                        : this.backgroundColor;
+
         return {
-          background: this.isInvalibleBackgroundLink ? '' : `url(${this.backgroundLink || this.fileBackground}) center center / cover no-repeat`,
+          background: this.isInvalibleBackgroundLink ? '' : `${background} center center / cover no-repeat`,
           lineHeight: this.lineHeight + 'em',
           marginTop: this.marginTop + 'px',
           color: this.color,
