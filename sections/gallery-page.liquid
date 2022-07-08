@@ -568,7 +568,7 @@
                               v-if="!isWideTemplate"
                               :style="stylesPreviewSocialsNetworks"
                             >
-                              <td :style="{fontFamily: fontFamily}">
+                              <td :style="{fontFamily: fontFamily, display: 'flex'}">
                                 <a
                                   v-if="facebook"
                                   target="_blank"
@@ -707,7 +707,6 @@
 {% endraw %}
 
 <script type="module">
-
   import { createApp } from 'vue';
 
   let tokenClient;
@@ -1495,10 +1494,13 @@
   #html-signature {
     width: 100vw;
   }
-  main {
+  #html-signature main {
     display: flex;
     font-family: 'Arial';
     position: relative;
+  }
+  table:not([class]) {
+    table-layout: inherit !important;
   }
   .alert-wrapper {
     position: absolute;
@@ -1569,7 +1571,7 @@
     align-items: center;
   }
 
-  .active {
+  .tabs__item.active {
     background: #f8dc74;
   }
   .preview-pane-buttons-config {
