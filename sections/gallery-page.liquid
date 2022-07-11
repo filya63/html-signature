@@ -45,7 +45,7 @@
                   <label class="details-fields__item-label">Email</label>
                   <input class="details-fields__item-input" v-model="email"/>
                 </div>
-                <div class="details-fields__item">
+                <div v-if="isTemplateWithSignature" class="details-fields__item">
                   <label class="details-fields__item-label">Address</label>
                   <input class="details-fields__item-input" v-model="address"/>
                 </div>
@@ -548,7 +548,7 @@
                                 </table>
                               </td>
                             </tr>
-                            <tr v-if="( isHorizontalTemplate || isWideTemplate ) && hasImageLink">
+                            <tr v-if="( isHorizontalTemplate || isWideTemplate ) && hasImage">
                               <td colspan="3">
                                 <hr
                                   :style="{...stylesPreviewContentSeparatorLine}"
@@ -613,7 +613,7 @@
                                 <a :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
                               </td>
                             </tr>
-                            <tr v-if="isWideTemplate && hasImageLink">
+                            <tr v-if="isWideTemplate && hasImage">
                               <td colspan="3">
                                 <hr
                                   :style="{...stylesPreviewContentSeparatorLine}"
@@ -725,13 +725,7 @@
                       <tbody>
                         <tr>
                           <td>
-                            <div :style="{
-                              fontFamily: fontFamily,
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              marginBottom: `${fontSize*4}px`,
-                            }">
+                            <div :style="stylesPreviewContentInfoFields">
                               <span
                                 :style="stylesPreviewContentFieldName"
                               >
@@ -739,13 +733,7 @@
                               </span>
                               <span
                                 v-if="title || company"
-                                :style="{
-                                  backgroundColor: color || '#000000',
-                                  marginLeft: `${fontSize*10}px`,
-                                  marginRight: `${fontSize*10}px`,
-                                  width: `${fontSize*2}px`,
-                                  height: `${Math.min(fontSize, 1.1)}em`,
-                                }"
+                                :style="stylesPreviewContentNameSeparator"
                               >
                               </span>
                               <span
@@ -854,14 +842,7 @@
                       <tbody :style="stylesPreviewMainContentBody">
                         <tr>
                           <td>
-                            <tr :style="{
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              columnGap: `${fontSize*80}px`,
-                              margin: `${fontSize*20}px ${fontSize*8}px ${fontSize*8}px`,
-                              fontSize: `${fontSize}em`
-                            }">
+                            <tr :style="stylesPreviewContentInfoFields">
                               <td :style="{fontFamily: fontFamily}">
                                 <h4
                                   :style="stylesPreviewContentFieldName"
@@ -1126,7 +1107,7 @@
         imageSize: '129', // px
         imageLink: '',
         isInvalibleImageLink: false,
-        signatureSize: '129',
+        signatureSize: '129', // px
         signatureLink: '',
         isInvalibleSignatureLink: false,
         backgroundLink: '',
@@ -1738,11 +1719,11 @@
             : ', ';
       },
 
-      hasImageLink() {
+      hasImage() {
         return this.file || this.imageLink && !this.isInvalibleImageLink;
       },
 
-      hasSignatureLink() {
+      hasSignature() {
         return this.signatureFile || this.signatureLink && !this.isInvalibleSignatureLink;
       },
 
@@ -1820,13 +1801,16 @@
 
       stylesPreviewContactContent() {
         if( this.isProTemplate ) {
+          const columnGap = this.fontSize * 150;
+          const horizontalMargin = this.fontSize * 12;
+
           return {
             display: 'grid',
             gridTemplateColumns: 'auto auto',
             justifyContent: 'space-between',
-            columnGap: this.fontSize * 150 + 'px',
-            marginLeft: this.fontSize * 12 + 'px',
-            marginRight: this.fontSize * 12 + 'px',
+            columnGap: `${columnGap}px`,
+            marginLeft: `${horizontalMargin}px`,
+            marginRight: `${horizontalMargin}px`,
           }
         }
 
@@ -1847,21 +1831,25 @@
 
       stylesPreviewContactContentItem() {
         if( this.isPro2Template ) {
+          const marginBottom = this.fontSize * 8;
+
           return {
             display: 'flex',
             alignItems: 'center',
             fontSize: '0.7em',
-            marginBottom: (this.fontSize * 8) + 'px',
+            marginBottom: `${marginBottom}px`,
             color: '#212121',
           }
         }
 
         if( this.isProTemplate ) {
+          const verticalMargin = this.fontSize * 4;
+
           return {
             display: 'flex',
             alignItems: 'center',
             fontSize: '0.7em',
-            margin: (this.fontSize * 4) + 'px 0',
+            margin: `${verticalMargin}px 0`,
           }
         }
 
@@ -1913,10 +1901,13 @@
 
       stylesPreviewContactContentItemIcon() {
         if( this.isProTemplate || this.isPro2Template ) {
+          const iconSize = this.fontSize * 16;
+          const marginRight = this.fontSize * 8;
+
           return {
-            width: (this.fontSize * 16) + 'px',
-            height: (this.fontSize * 16) + 'px',
-            marginRight: (this.fontSize * 8) + 'px',
+            width: `${iconSize}px`,
+            height: `${iconSize}px`,
+            marginRight: `${marginRight}px`,
           }
         }
 
@@ -1950,6 +1941,49 @@
       stylesPreviewMainContentBody() {
         return {
           width: '100%',
+        }
+      },
+
+      stylesPreviewContentInfoFields() {
+        if( this.isProTemplate ) {
+          const marginBottom = this.fontSize * 4;
+
+          return {
+            fontFamily: this.fontFamily,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: `${marginBottom}px`,
+          }
+        }
+
+        if( this.isPro2Template ) {
+          const columnGap = this.fontSize * 80;
+          const topMargin = this.fontSize * 20;
+          const mainMargin = this.fontSize * 8;
+
+          return {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            columnGap: `${columnGap}px`,
+            margin: `${topMargin}px ${mainMargin}px ${mainMargin}px`,
+            fontSize: `${this.fontSize}em`
+          }
+        }
+      },
+
+      stylesPreviewContentNameSeparator() {
+        const horizontalMargin = this.fontSize * 10;
+        const width = this.fontSize * 2;
+        const height = Math.min(this.fontSize, 1.1);
+
+        return {
+          backgroundColor: this.color || '#000000',
+          marginLeft: `${horizontalMargin}px`,
+          marginRight: `${horizontalMargin}px`,
+          width: `${width}px`,
+          height: `${height}em`,
         }
       },
 
@@ -2078,11 +2112,14 @@
 
       stylesPreviewContentSeparatorLine() {
         if( this.isProTemplate || this.isPro2Template ) {
+          const verticalMargin = this.fontSize * 6;
+          const borderWidth = this.fontSize * 5;
+
           return {
-            margin: this.fontSize * 6 + 'px 0 !important',
+            margin: `${verticalMargin}px 0 !important`,
             width: '100%',
             border: 'none !important',
-            borderTopWidth: this.fontSize * 5 + 'px !important',
+            borderTopWidth: `${borderWidth}px !important`,
             borderTopStyle: 'dotted !important',
             borderColor: this.defineColor || 'rgb(69, 102, 142)',
             background: 'none !important',
@@ -2141,11 +2178,12 @@
 
       stylesPreviewSocialsNetworks() {
         if( this.isPro2Template ) {
+          const verticalMargin = this.fontSize * 20;
+
           return {
             display: 'flex',
-            marginTop: this.fontSize * 12 + 'px',
             justifyContent: 'center',
-            margin: this.fontSize * 20 + 'px 0',
+            margin: `${verticalMargin}px 0`,
           }
         }
 
