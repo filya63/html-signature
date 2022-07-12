@@ -785,7 +785,7 @@
               :style="stylesPreviewTable"
             >
               <tbody :style="stylesPreviewMainContentBody">
-                <tr>
+                <tr v-if="hasSignature">
                   <td
                     :style="stylesPreviewBlockSignature"
                     ref="proUserSignature"
@@ -838,7 +838,7 @@
                     />
                   </td>
                 </tr>
-                <tr>
+                <tr v-if="hasContacts">
                   <td :style="{...stylesPreviewContactContent, fontSize: `${fontSize}em`,}">
                     <div
                       :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
@@ -897,7 +897,7 @@
             >
               <tbody>
                 <tr>
-                  <td>
+                  <td v-if="hasSignature">
                     <table>
                       <tbody>
                         <tr>
@@ -938,7 +938,7 @@
                                   {{ company }}
                                 </span>
                               </td>
-                              <td :style="{fontFamily: fontFamily, marginTop: '0px'}">
+                              <td v-if="hasContacts" :style="{fontFamily: fontFamily, marginTop: '0px'}">
                                 <ul style="list-style-type: none; padding: 0; margin: 0;">
                                   <li
                                     :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
@@ -1086,12 +1086,12 @@
             </table>
 
             <table
-              v-show="isPro3Template"
+              v-if="isPro3Template"
               :style="stylesPreviewTable"
             >
               <tbody>
                 <tr :style="{display: 'flex', gap: `${fontSize*30}px`}">
-                  <td style="align-self: center;">
+                  <td v-if="hasSignature" style="align-self: center;">
                     <table>
                       <tbody>
                         <tr>
@@ -1233,7 +1233,7 @@
                   <td v-if="hasImage">
                     <div :style="{...stylesPreviewContentSeparatorHLine}"></div>
                   </td>
-                  <td style="align-self: center;">
+                  <td v-if="hasImage" style="align-self: center;">
                     <table>
                       <tbody>
                         <tr>
@@ -1250,7 +1250,7 @@
             </table>
 
             <table
-              v-show="isPro4Template"
+              v-if="isPro4Template"
               :style="stylesPreviewTable"
             >
               <tbody>
@@ -1371,10 +1371,10 @@
                       </tbody>
                     </table>
                   </td>
-                  <td :style="{alignSelf: 'flex-end', marginLeft: `${fontSize*160}px`}">
+                  <td v-if="hasSocials || hasSignature" :style="{alignSelf: 'flex-end', marginLeft: `${fontSize*160}px`}">
                     <table>
                       <tbody>
-                        <tr>
+                        <tr v-if="hasSignature">
                           <td
                             :style="{...stylesPreviewBlockSignature, marginLeft: 'auto', marginRight: 'auto'}"
                             ref="pro4UserSignature"
@@ -1464,7 +1464,7 @@
             </table>
 
             <table
-              v-show="isPro5Template"
+              v-if="isPro5Template"
               :style="stylesPreviewTable"
             >
               <tbody>
