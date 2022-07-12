@@ -1103,7 +1103,7 @@
                       </tbody>
                     </table>
                   </td>
-                  <td v-if="hasSignatureLink">
+                  <td v-if="hasSignature">
                     <div :style="{...stylesPreviewContentSeparatorHLine}"></div>
                   </td>
                   <td :style="stylesPreviewMainContent">
@@ -1230,7 +1230,7 @@
                       </tbody>
                     </table>
                   </td>
-                  <td v-if="hasImageLink">
+                  <td v-if="hasImage">
                     <div :style="{...stylesPreviewContentSeparatorHLine}"></div>
                   </td>
                   <td style="align-self: center;">
@@ -1255,7 +1255,7 @@
             >
               <tbody>
                 <tr :style="{display: 'flex'}">
-                  <td v-if="hasImageLink" :style="{alignSelf: 'center'}">
+                  <td v-if="hasImage" :style="{alignSelf: 'center'}">
                     <table>
                       <tbody>
                         <tr>
@@ -1471,13 +1471,13 @@
                 <tr :style="{display: 'flex', padding: `${fontSize*6}px`}">
                   <td
                     ref="pro5UserImage"
-                    v-if="hasImageLink"
+                    v-if="hasImage"
                     :style="{...stylesPreviewBlockImage, alignSelf: 'center'}"
                   >
                   </td>
                   <td
                     ref="pro5UserSignature"
-                    v-if="hasSignatureLink"
+                    v-if="hasSignature"
                     :style="{...stylesPreviewBlockSignature, marginLeft: 'auto', marginRight: 'auto', alignSelf: 'center'}"
                   >
                   </td>
