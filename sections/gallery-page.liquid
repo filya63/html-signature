@@ -939,7 +939,7 @@
                                 </span>
                               </td>
                               <td v-if="hasContacts" :style="{fontFamily: fontFamily, marginTop: '0px'}">
-                                <ul style="list-style-type: none; padding: 0; margin: 0;">
+                                <ul :style="stylesPreviewContactContent">
                                   <li
                                     :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                     v-if="phone"
@@ -1090,7 +1090,7 @@
               :style="stylesPreviewTable"
             >
               <tbody>
-                <tr :style="{display: 'flex', gap: `${fontSize*30}px`}">
+                <tr :style="{display: 'flex', gap: `${getFontSizeBasedValue(30)}px`}">
                   <td v-if="hasSignature" style="align-self: center;">
                     <table>
                       <tbody>
@@ -1110,13 +1110,13 @@
                     <table>
                       <tbody :style="stylesPreviewMainContentBody">
                         <tr>
-                          <td :style="{fontSize: `${fontSize}em`, display: 'flex', flexDirection: 'column', alignItems: 'center',}">
+                          <td :style="stylesPreviewContentInfoFields">
                             <h4
                               :style="stylesPreviewContentFieldName"
                             >
                               {{ name }}
                             </h4>
-                            <div :style="{marginBottom: `${fontSize*4}px`}">
+                            <div :style="{marginBottom: `${getFontSizeBasedValue(4)}px`}">
                               <span
                                 :style="stylesPreviewContentFieldTitle"
                               >
@@ -1139,19 +1139,19 @@
                         <tr v-if="hasContacts || hasSocials" style="align-self: stretch;">
                           <td :style="{display: 'block'}">
                             <hr
-                              :style="{...stylesPreviewContentSeparatorLine, borderTopWidth: `${fontSize*8}px !important`, width: '50%', margin: 'auto', marginBottom: `${fontSize*16}px`}"
+                              :style="stylesPreviewContentSeparatorLine"
                             />
                           </td>
                         </tr>
                         <tr v-if="hasContacts">
-                          <td :style="{display: 'flex', flexDirection: 'column', alignItems: 'center', fontSize: `${fontSize}em`, gap: `${Math.max(fontSize, 1)*2}px`}">
+                          <td :style="stylesPreviewContactContent">
                             <a v-if="phone" :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink" >{{ phone }}</a>
                             <a v-if="website" :href="website" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
                             <a v-if="email" :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
                             <span v-if="address" :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
                           </td>
                         </tr>
-                        <tr v-if="hasSocials" :style="{...stylesPreviewSocialsNetworks, alignSelf: 'center', marginTop: `${fontSize*20}px`}">
+                        <tr v-if="hasSocials" :style="stylesPreviewSocialsNetworks">
                           <td :style="{fontFamily: fontFamily}">
                             <a
                               v-if="facebook"
@@ -1231,7 +1231,7 @@
                     </table>
                   </td>
                   <td v-if="hasImage">
-                    <div :style="{...stylesPreviewContentSeparatorHLine}"></div>
+                    <div :style="stylesPreviewContentSeparatorHLine"></div>
                   </td>
                   <td v-if="hasImage" style="align-self: center;">
                     <table>
@@ -1267,11 +1267,11 @@
                       </tbody>
                     </table>
                   </td>
-                  <td :style="{...stylesPreviewMainContent, alignSelf: 'flex-end', marginLeft: `${fontSize*28}px`}">
+                  <td :style="stylesPreviewMainContent">
                     <table>
                       <tbody :style="stylesPreviewMainContentBody">
                         <tr>
-                          <td :style="{fontSize: `${fontSize}em`, display: 'flex', flexDirection: 'column'}">
+                          <td :style="stylesPreviewContentInfoFields">
                             <h4
                               :style="stylesPreviewContentFieldName"
                             >
@@ -1306,15 +1306,7 @@
                         </tr>
                         <tr v-if="hasContacts">
                           <td>
-                            <ul :style="{
-                              listStyleType: 'none',
-                              padding: '0',
-                              margin: '0',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              fontSize: `${fontSize}em`,
-                              gap: `${Math.max(fontSize, 1)*2}px`
-                            }">
+                            <ul :style="stylesPreviewContactContent">
                               <li
                                 :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                 v-if="phone"
@@ -1371,16 +1363,16 @@
                       </tbody>
                     </table>
                   </td>
-                  <td v-if="hasSocials || hasSignature" :style="{alignSelf: 'flex-end', marginLeft: `${fontSize*160}px`}">
+                  <td v-if="hasSocials || hasSignature" :style="{alignSelf: 'flex-end', marginLeft: `${getFontSizeBasedValue(160)}px`}">
                     <table>
                       <tbody>
                         <tr v-if="hasSignature">
                           <td
-                            :style="{...stylesPreviewBlockSignature, marginLeft: 'auto', marginRight: 'auto'}"
+                            :style="stylesPreviewBlockSignature"
                             ref="pro4UserSignature"
                           ></td>
                         </tr>
-                        <tr v-if="hasSocials" :style="{...stylesPreviewSocialsNetworks, marginTop: `${fontSize*20}px`}">
+                        <tr v-if="hasSocials" :style="stylesPreviewSocialsNetworks">
                           <td :style="{fontFamily: fontFamily, marginLeft: 'auto'}">
                             <a
                               v-if="facebook"
@@ -1468,7 +1460,7 @@
               :style="stylesPreviewTable"
             >
               <tbody>
-                <tr :style="{display: 'flex', padding: `${fontSize*6}px`}">
+                <tr :style="{display: 'flex', padding: `${getFontSizeBasedValue(6)}px`}">
                   <td
                     ref="pro5UserImage"
                     v-if="hasImage"
@@ -1478,14 +1470,14 @@
                   <td
                     ref="pro5UserSignature"
                     v-if="hasSignature"
-                    :style="{...stylesPreviewBlockSignature, marginLeft: 'auto', marginRight: 'auto', alignSelf: 'center'}"
+                    :style="stylesPreviewBlockSignature"
                   >
                   </td>
                   <td :style="{...stylesPreviewMainContent, alignSelf: 'flex-end'}">
                     <table>
                       <tbody :style="stylesPreviewMainContentBody">
                         <tr>
-                          <td :style="{fontSize: `${fontSize}em`, display: 'flex', flexDirection: 'column'}">
+                          <td :style="stylesPreviewContentInfoFields">
                             <h4
                               :style="stylesPreviewContentFieldName"
                             >
@@ -1520,15 +1512,7 @@
                         </tr>
                         <tr v-if="hasContacts">
                           <td>
-                            <ul :style="{
-                              listStyleType: 'none',
-                              padding: '0',
-                              margin: '0',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              fontSize: `${fontSize}em`,
-                              gap: `${Math.max(fontSize, 1)*8}px`
-                            }">
+                            <ul :style="stylesPreviewContactContent">
                               <li
                                 :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
                                 v-if="phone"
@@ -2074,6 +2058,10 @@
         document.body.appendChild( linkEl );
 
         linkEl.click();
+      },
+
+      getFontSizeBasedValue( value ) {
+        return this.fontSize * value;
       }
     },
 
@@ -2442,11 +2430,24 @@
           }
         }
 
+        if( this.isPro4Template ) {
+          return {
+            height: `${this.signatureSize}px`,
+            width: `${this.signatureSize}px`,
+            display: this.isShowSignatureBlock,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+          }
+        }
+
         if( this.isPro5Template ) {
           return {
             height: `auto`,
             width: `${this.signatureSize}px`,
             display: this.isShowSignatureBlock,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            alignSelf: 'center',
           }
         }
 
@@ -2458,9 +2459,19 @@
       },
 
       stylesPreviewMainContent() {
-        if( this.isProTemplate || this.isPro3Template || this.isPro4Template || this.isPro5Template ) {
+        if( this.isProTemplate || this.isPro3Template || this.isPro5Template ) {
           return {
             display: 'flex',
+          }
+        }
+
+        if( this.isPro4Template ) {
+          const marginLeft = this.fontSize * 28;
+
+          return {
+            display: 'flex',
+            alignSelf: 'flex-end',
+            marginLeft: `${marginLeft}px`,
           }
         }
 
@@ -2482,6 +2493,41 @@
             columnGap: `${columnGap}px`,
             marginLeft: `${horizontalMargin}px`,
             marginRight: `${horizontalMargin}px`,
+          }
+        }
+
+        if( this.isPro2Template ) {
+          return {
+            listStyleType: 'none',
+            padding: '0',
+            margin: '0',
+          }
+        }
+
+        if( this.isPro3Template ) {
+          const gap = Math.max(this.fontSize, 1) * 2;
+
+          return {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            fontSize: `${this.fontSize}em`,
+            gap: `${gap}px`,
+          }
+        }
+
+        if( this.isPro4Template || this.isPro5Template ) {
+          const gapBaseSize = this.isPro4Template ? 2 : 8;
+          const gap = Math.max(this.fontSize, 1) * gapBaseSize;
+
+          return {
+            listStyleType: 'none',
+            padding: '0',
+            margin: '0',
+            display: 'flex',
+            flexDirection: 'column',
+            fontSize: `${this.fontSize}em`,
+            gap: `${gap}px`,
           }
         }
 
@@ -2678,6 +2724,23 @@
             fontSize: `${this.fontSize}em`
           }
         }
+
+        if( this.isPro3Template ) {
+          return {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            fontSize: `${this.fontSize}em`,
+          }
+        }
+
+        if( this.isPro4Template || this.isPro5Template ) {
+          return {
+            display: 'flex',
+            flexDirection: 'column',
+            fontSize: `${this.fontSize}em`,
+          }
+        }
       },
 
       stylesPreviewContentNameSeparator() {
@@ -2827,7 +2890,7 @@
       },
 
       stylesPreviewContentSeparatorLine() {
-        if( this.isProTemplate || this.isPro2Template || this.isPro3Template ) {
+        if( this.isProTemplate || this.isPro2Template) {
           const verticalMargin = this.fontSize * 6;
           const borderWidth = this.fontSize * 5;
 
@@ -2843,13 +2906,34 @@
           }
         }
 
-        if( this.isPro4Template ) {
+        if( this.isPro3Template ) {
+          const marginBottom = this.fontSize * 16;
+          const borderWidth = this.fontSize * 8;
+
           return {
-            marginTop: this.fontSize * 4 + 'px !important',
-            marginBottom: this.fontSize * 16 + 'px !important',
+            margin: 'auto',
+            marginBottom: `${marginBottom}px`,
+            width: '50%',
+            border: 'none !important',
+            borderTopWidth: `${borderWidth}px !important`,
+            borderTopStyle: 'dotted !important',
+            borderColor: this.defineColor || 'rgb(69, 102, 142)',
+            background: 'none !important',
+            opacity: '1',
+          }
+        }
+
+        if( this.isPro4Template ) {
+          const marginTop = this.fontSize * 4;
+          const marginBottom = this.fontSize * 16;
+          const borderTopWidth = this.fontSize * 4;
+
+          return {
+            marginTop: `${marginTop}px !important`,
+            marginBottom: `${marginBottom}px !important`,
             width: '100%',
             border: 'none !important',
-            borderTopWidth: this.fontSize * 4 + 'px !important',
+            borderTopWidth: `${borderTopWidth}px !important`,
             borderTopStyle: 'dotted !important',
             borderColor: this.defineColor || 'rgb(69, 102, 142)',
             background: 'none !important',
@@ -2858,10 +2942,13 @@
         }
 
         if( this.isPro5Template ) {
+          const margin = this.fontSize * 8;
+          const height = this.fontSize * 3;
+
           return {
-            margin: `${this.fontSize*8}px 0 !important`,
+            margin: `${margin}px 0 !important`,
             width: '100%',
-            height: `${this.fontSize*3}px !important`,
+            height: `${height}px !important`,
             background: this.defineColor || '#45668E',
             border: 'none',
             opacity: '1',
@@ -2879,10 +2966,12 @@
       },
 
       stylesPreviewContentSeparatorHLine() {
+        const borderRightWidth = this.fontSize * 4;
+
         return {
           height: '100%',
           border: 'none !important',
-          borderRightWidth: this.fontSize * 4 + 'px !important',
+          borderRightWidth: `${borderRightWidth}px !important`,
           borderRightStyle: 'dotted !important',
           borderColor: this.defineColor || 'rgb(69, 102, 142)',
           background: 'none !important',
@@ -2937,6 +3026,25 @@
             display: 'flex',
             justifyContent: 'center',
             margin: `${verticalMargin}px 0`,
+          }
+        }
+
+        if( this.isPro3Template ) {
+          const marginTop = this.fontSize * 20;
+
+          return {
+            display: 'flex',
+            marginTop: `${marginTop}px`,
+            alignSelf: 'center',
+          }
+        }
+
+        if( this.isPro4Template ) {
+          const marginTop = this.fontSize * 20;
+
+          return {
+            display: 'flex',
+            marginTop: `${marginTop}px`,
           }
         }
 
