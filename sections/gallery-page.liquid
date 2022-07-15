@@ -604,7 +604,7 @@
                                 >
                                   W
                                 </span>
-                                <a :href="website" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
+                                <a :href="getWebsiteHref(website)" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
                               </td>
                               <td
                                 :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
@@ -802,7 +802,7 @@
                         :style="stylesPreviewContactContentItemIcon"
                         src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
                       />
-                      <a :href="website" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
+                      <a :href="getWebsiteHref(website)" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
                     </div>
                     <div
                       :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
@@ -904,7 +904,7 @@
                                       :style="stylesPreviewContactContentItemIcon"
                                       src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
                                     />
-                                    <a :href="website" target="_blank" :style="stylesPreviewContactContentItemLink">{{ website }}</a>
+                                    <a :href="getWebsiteHref(website)" target="_blank" :style="stylesPreviewContactContentItemLink">{{ website }}</a>
                                   </li>
                                   <li
                                     :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
@@ -1092,7 +1092,7 @@
                             </a>
                             <a
                               v-if="website"
-                              :href="website"
+                              :href="getWebsiteHref(website)"
                               :style="stylesPreviewContactContentItemLink"
                               target="_blank"
                             >
@@ -1301,7 +1301,7 @@
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
                                 />
                                 <a
-                                  :href="website"
+                                  :href="getWebsiteHref(website)"
                                   target="_blank"
                                   :style="stylesPreviewContactContentItemLink"
                                 >
@@ -1522,7 +1522,7 @@
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
                                 />
                                 <a
-                                  :href="website"
+                                  :href="getWebsiteHref(website)"
                                   target="_blank"
                                   :style="stylesPreviewContactContentItemLink"
                                 >
@@ -2064,6 +2064,16 @@
 
       getFontSizeBasedValue( em ) {
         return this.fontSize * em;
+      },
+
+      getWebsiteHref( website ) {
+        const regExp = new RegExp("^(http|https)://", "i");
+
+        if( regExp.test(website) ) {
+          return website;
+        }
+
+        return `//${website}`;
       }
     },
 
