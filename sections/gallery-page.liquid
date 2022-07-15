@@ -322,7 +322,7 @@
                 <div class="setup__item">
                   <label class="setup__item_label">Image size</label>
                   <div class="setup__item-content">
-                    <input type="range" min="86" max="172" step="1" v-model="imageSize" class="setup__item-content_range">
+                    <input type="range" :min="minImageSize" :max="maxImageSize" step="1" v-model="imageSize" class="setup__item-content_range">
                   </div>
                 </div>
                 <div class="setup__item">
@@ -412,7 +412,7 @@
           </div>
           <div ref="signature" :style="stylesPreviewTemplate">
             <table
-              v-show="!isProTemplate && !isPro2Template"
+              v-if="isFreeTemplate"
               :style="stylesPreviewTable"
             >
               <tbody>
@@ -439,7 +439,7 @@
                                 <table>
                                   <tbody>
                                     <tr>
-                                      <td :style="{fontFamily: fontFamily, fontSize: `${fontSize}em`}">
+                                      <td colspan="3" :style="{fontFamily: fontFamily, fontSize: `${fontSize}em`}">
                                         <h4
                                           :style="stylesPreviewContentFieldName"
                                         >
@@ -447,7 +447,7 @@
                                         </h4>
                                       </td>
                                     </tr>
-                                    <tr>
+                                    <tr :style="stylesPreviewPadding">
                                       <td :style="{fontFamily: fontFamily, fontSize: `${fontSize}em`}">
                                         <span
                                           :style="stylesPreviewContentFieldTitle"
@@ -709,7 +709,7 @@
             </table>
 
             <table
-              v-show="isProTemplate"
+              v-if="isProTemplate"
               :style="stylesPreviewTable"
             >
               <tbody :style="stylesPreviewMainContentBody">
@@ -820,7 +820,7 @@
             </table>
 
             <table
-              v-show="isPro2Template"
+              v-if="isPro2Template"
               :style="stylesPreviewTable"
             >
               <tbody>
@@ -1074,6 +1074,14 @@
   let gapiInited = false;
   let gisInited = false;
 
+  const documentWidth = document.documentElement.clientWidth;
+  const documentSize = {
+    large: documentWidth < 1199 && documentWidth > 991,
+    medium: documentWidth < 991 && documentWidth > 767,
+    small: documentWidth < 767 && documentWidth > 575,
+    xSmall: documentWidth < 575,
+  };
+
   const htmlSignature = {
     data() {
       return {
@@ -1124,6 +1132,9 @@
 
         aliases: [],
         selectedAliase: null,
+
+        minImageSize: 76,
+        maxImageSize: 142,
       };
     },
 
@@ -1510,8 +1521,41 @@
         }
       },
 
-      imageSize( newSize ) {
-        this.imageSize = newSize;
+      imageSize: {
+        handler( newSize ) {
+          for ( const [key, value] of Object.entries( documentSize ) ) {
+            if( value ) {
+              switch( key ) {
+                case 'large':
+                  this.minImageSize = '76';
+                  this.maxImageSize = '142';
+                  this.imageSize = newSize;
+                  break;
+                case 'medium':
+                  this.minImageSize = '66';
+                  this.maxImageSize = '132';
+                  this.imageSize = newSize;
+                  break;
+                case 'small':
+                  this.minImageSize = '56';
+                  this.maxImageSize = '122';
+                  this.imageSize = newSize;
+                  break;
+                case 'xSmall':
+                  this.minImageSize = '46';
+                  this.maxImageSize = '112';
+                  this.imageSize = newSize;
+                  break;
+                default:
+                  this.minImageSize = '66';
+                  this.maxImageSize = '132';
+                  this.imageSize = '99';
+                  break;
+              }
+            }
+          }
+        },
+        immediate: true,
       },
 
       signatureSize( newSize ) {
@@ -1519,6 +1563,8 @@
       },
 
       typeShape( type ) {
+        if( !this.isImageExists() ) return;
+
         const img = this.$refs.userImage.querySelector('img');
         if( !img ) return;
 
@@ -1733,7 +1779,11 @@
 
       hasSocials() {
         return this.facebook || this.instagram || this.linkedin ||
-               this.twitter  || this.youtube   || this.pinterest;
+          this.twitter || this.youtube || this.pinterest;
+      },
+
+      isFreeTemplate() {
+        return this.template === 'classic' || this.template === 'horizontal' || this.template === 'wide';
       },
 
       defineColor() {
@@ -2194,9 +2244,16 @@
       },
 
       stylesPreviewSocialsNetworksItem() {
+        if( !this.color ) {
+          return {
+          marginRight: '2px',
+          padding: '0',
+        }
+        }
+
         return {
-          marginRight: '6px',
-          padding: '3px',
+          marginRight: '2px',
+          padding: '2px',
         }
       },
 
@@ -2206,6 +2263,12 @@
           height: '25px',
         }
       },
+
+      stylesPreviewPadding() {
+        return {
+          padding: '4px 0',
+        }
+      }
     }
   };
 
@@ -2708,7 +2771,12 @@
     .details-fields {
       width: 100%;
     }
+    .details-media {
+      width: 100%;
+    }
+    .details-signature,
     .details-images {
+      height: auto;
       width: 100%;
     }
     .details-images__box {
