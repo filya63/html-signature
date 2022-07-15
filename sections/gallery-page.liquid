@@ -208,17 +208,9 @@
                   <label class="setup__item_label">Font</label>
                   <div class="setup__item-content">
                     <select class="setup__item-content_select" v-model="fontFamily">
-                      <option>Arial</option>
-                      <option>Times new roman</option>
-                      <option>Monospace</option>
-                      <option>Arial black</option>
-                      <option>Arial narrow</option>
-                      <option>Comic sans ms</option>
-                      <option>Garamond</option>
-                      <option>Georgia</option>
-                      <option>Tahoma</option>
-                      <option>Trebuchet ms</option>
-                      <option>Verdana</option>
+                      <template v-for="templateFont in templateFonts">
+                        <option>{{templateFont}}</option>
+                      </template>
                     </select>
                   </div>
                 </div>
@@ -1685,6 +1677,19 @@
         isShowSelectAliase: false,
 
         tabs: ['Details', 'Social', 'Templates', 'Design'],
+        templateFonts: [
+                         'Arial',
+                         'Times new roman',
+                         'Monospace',
+                         'Arial black',
+                         'Arial narrow',
+                         'Comic sans ms',
+                         'Garamond',
+                         'Georgia',
+                         'Tahoma',
+                         'Trebuchet ms',
+                         'Verdana'
+                       ],
         templateColors: ['teal', 'maroon', 'darkgreen', 'chartreuse', 'turquoise', 'brown', 'purple'],
 
         websiteIcon: 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415',
