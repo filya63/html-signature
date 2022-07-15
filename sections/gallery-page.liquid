@@ -1969,22 +1969,26 @@
         return !!this.getUserSignatureRef().querySelector('img');
       },
 
-      createImageElement( link, ref, styles ) {
+      createImageElement( link, ref, styles, isImageLink ) {
         ref.innerHTML = '';
-         const imageElem = document.createElement( 'img' );
+        const imageElem = document.createElement( 'img' );
 
         imageElem.setAttribute( 'src', link );
         imageElem.setAttribute( 'style', styles );
 
         ref.append( imageElem );
+
+        if( isImageLink ) {
+          this.changeClassShapeForImage( imageElem, this.typeShape );
+        }
       },
 
       createElementWithImage( imageLink ) {
-        this.createImageElement( imageLink, this.getImageRef(), this.stylesPreviewUserPicture );
+        this.createImageElement( imageLink, this.getImageRef(), this.stylesPreviewUserPicture, true );
       },
 
       createElementWithSignature( imageLink ) {
-        this.createImageElement( imageLink, this.getUserSignatureRef(), this.stylesPreviewUserSignature );
+        this.createImageElement( imageLink, this.getUserSignatureRef(), this.stylesPreviewUserSignature, false );
       },
 
       validateFormatLink( link, field ) {
