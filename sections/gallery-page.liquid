@@ -576,7 +576,7 @@
                                   alt="phone-icon"
                                   v-if="phone && isHorizontalTemplate"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
+                                  :src="phoneIcon"
                                 />
                                 <span
                                   v-if="isWideTemplate"
@@ -596,7 +596,7 @@
                                   alt="website-icon"
                                   v-if="website && isHorizontalTemplate"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
+                                  :src="websiteIcon"
                                 />
                                 <span
                                   v-if="isWideTemplate"
@@ -614,7 +614,7 @@
                                   alt="email-icon"
                                   v-if="email && isHorizontalTemplate"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
+                                  :src="emailIcon"
                                 />
                                 <span
                                   v-if="isWideTemplate"
@@ -787,7 +787,7 @@
                       <img
                         alt="phone-icon"
                         :style="stylesPreviewContactContentItemIcon"
-                        src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
+                        :src="phoneIcon"
                       />
                       <a :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink" >
                         {{ phone }}
@@ -800,7 +800,7 @@
                       <img
                         alt="website-icon"
                         :style="stylesPreviewContactContentItemIcon"
-                        src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
+                        :src="websiteIcon"
                       />
                       <a :href="getWebsiteHref(website)" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
                     </div>
@@ -811,7 +811,7 @@
                       <img
                         alt="email-icon"
                         :style="stylesPreviewContactContentItemIcon"
-                        src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
+                        :src="emailIcon"
                       />
                       <a :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
                     </div>
@@ -822,7 +822,7 @@
                       <img
                         alt="address-icon"
                         :style="stylesPreviewContactContentItemIcon"
-                        src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/home-outlined.svg?v=1656661321"
+                        :src="addressIcon"
                       />
                       <span :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
                     </div>
@@ -888,7 +888,7 @@
                                       alt="phone-icon"
                                       v-if="phone"
                                       :style="stylesPreviewContactContentItemIcon"
-                                      src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
+                                      :src="phoneIcon"
                                     />
                                     <a :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink">
                                       {{ phone }}
@@ -902,7 +902,7 @@
                                       alt="website-icon"
                                       v-if="website"
                                       :style="stylesPreviewContactContentItemIcon"
-                                      src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
+                                      :src="websiteIcon"
                                     />
                                     <a :href="getWebsiteHref(website)" target="_blank" :style="stylesPreviewContactContentItemLink">{{ website }}</a>
                                   </li>
@@ -914,7 +914,7 @@
                                       alt="email-icon"
                                       v-if="email"
                                       :style="stylesPreviewContactContentItemIcon"
-                                      src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
+                                      :src="emailIcon"
                                     />
                                     <a :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
                                   </li>
@@ -926,7 +926,7 @@
                                       alt="address-icon"
                                       v-if="address"
                                       :style="stylesPreviewContactContentItemIcon"
-                                      src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/home-outlined.svg?v=1656661321"
+                                      :src="addressIcon"
                                     />
                                     <span :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
                                   </li>
@@ -1281,7 +1281,7 @@
                                   alt="phone-icon"
                                   v-if="phone"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
+                                  :src="phoneIcon"
                                 />
                                 <a
                                   :href="`tel:${phone}`"
@@ -1298,7 +1298,7 @@
                                   alt="website-icon"
                                   v-if="website"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
+                                  :src="websiteIcon"
                                 />
                                 <a
                                   :href="getWebsiteHref(website)"
@@ -1316,7 +1316,7 @@
                                   alt="email-icon"
                                   v-if="email"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
+                                  :src="emailIcon"
                                 />
                                 <a
                                   :href="`mailto:${email}`"
@@ -1333,7 +1333,7 @@
                                   alt="address-icon"
                                   v-if="address"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/home-outlined.svg?v=1656661321"
+                                  :src="addressIcon"
                                 />
                                 <span :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
                               </li>
@@ -1502,7 +1502,7 @@
                                   alt="phone-icon"
                                   v-if="phone"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
+                                  :src="phoneIcon"
                                 />
                                 <a
                                   :href="`tel:${phone}`"
@@ -1519,7 +1519,7 @@
                                   alt="website-icon"
                                   v-if="website"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
+                                  :src="websiteIcon"
                                 />
                                 <a
                                   :href="getWebsiteHref(website)"
@@ -1537,7 +1537,7 @@
                                   alt="email-icon"
                                   v-if="email"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
+                                  :src="emailIcon"
                                 />
                                 <a
                                   :href="`mailto:${email}`"
@@ -1554,7 +1554,7 @@
                                   alt="address-icon"
                                   v-if="address"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/home-outlined.svg?v=1656661321"
+                                  :src="addressIcon"
                                 />
                                 <span :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
                               </li>
@@ -1686,6 +1686,11 @@
 
         tabs: ['Details', 'Social', 'Templates', 'Design'],
         templateColors: ['teal', 'maroon', 'darkgreen', 'chartreuse', 'turquoise', 'brown', 'purple'],
+
+        websiteIcon: 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415',
+        phoneIcon: 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409',
+        emailIcon: 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399',
+        addressIcon: 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/home-outlined.svg?v=1656661321',
 
         aliases: [],
         selectedAliase: null,
