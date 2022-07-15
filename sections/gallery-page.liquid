@@ -269,41 +269,13 @@
                 <div class="setup__item">
                   <label class="setup__item_label">Template color</label>
                   <div class="setup__item-content">
-                    <div
-                        @click="changeColor('teal')"
-                        class="setup__item-content_picker-color teal"
-                        :class="{activeColor: color === 'teal'}"
-                    ></div>
-                    <div
-                        @click="changeColor('maroon')"
-                        class="setup__item-content_picker-color maroon"
-                        :class="{activeColor: color === 'maroon'}"
-                    ></div>
-                    <div
-                        @click="changeColor('darkgreen')"
-                        class="setup__item-content_picker-color darkgreen"
-                        :class="{activeColor: color === 'darkgreen'}"
-                    ></div>
-                    <div
-                        @click="changeColor('chartreuse')"
-                        class="setup__item-content_picker-color chartreuse"
-                        :class="{activeColor: color === 'chartreuse'}"
-                    ></div>
-                    <div
-                        @click="changeColor('turquoise')"
-                        class="setup__item-content_picker-color turquoise"
-                        :class="{activeColor: color === 'turquoise'}"
-                    ></div>
-                    <div
-                        @click="changeColor('brown')"
-                        class="setup__item-content_picker-color brown"
-                        :class="{activeColor: color === 'brown'}"
-                    ></div>
-                    <div
-                        @click="changeColor('purple')"
-                        class="setup__item-content_picker-color purple"
-                        :class="{activeColor: color === 'purple'}"
-                    ></div>
+                    <template v-for="templateColor in templateColors">
+                      <div
+                        @click="changeColor(templateColor)"
+                        class="setup__item-content_picker-color"
+                        :class="[{activeColor: color === templateColor}, templateColor]"
+                      ></div>
+                    </template>
                     <input
                       type="color"
                       class="setup__item-content_picker-color custom-color"
@@ -416,41 +388,13 @@
                 <div class="setup__item">
                   <label class="setup__item_label">Background color</label>
                   <div class="setup__item-content">
-                    <div
-                        @click="changeBackgroundColor('teal')"
-                        class="setup__item-content_picker-color teal"
-                        :class="{activeColor: backgroundColor === 'teal'}"
-                    ></div>
-                    <div
-                        @click="changeBackgroundColor('maroon')"
-                        class="setup__item-content_picker-color maroon"
-                        :class="{activeColor: backgroundColor === 'maroon'}"
-                    ></div>
-                    <div
-                        @click="changeBackgroundColor('darkgreen')"
-                        class="setup__item-content_picker-color darkgreen"
-                        :class="{activeColor: backgroundColor === 'darkgreen'}"
-                    ></div>
-                    <div
-                        @click="changeBackgroundColor('chartreuse')"
-                        class="setup__item-content_picker-color chartreuse"
-                        :class="{activeColor: backgroundColor === 'chartreuse'}"
-                    ></div>
-                    <div
-                        @click="changeBackgroundColor('turquoise')"
-                        class="setup__item-content_picker-color turquoise"
-                        :class="{activeColor: backgroundColor === 'turquoise'}"
-                    ></div>
-                    <div
-                        @click="changeBackgroundColor('brown')"
-                        class="setup__item-content_picker-color brown"
-                        :class="{activeColor: backgroundColor === 'brown'}"
-                    ></div>
-                    <div
-                        @click="changeBackgroundColor('purple')"
-                        class="setup__item-content_picker-color purple"
-                        :class="{activeColor: backgroundColor === 'purple'}"
-                    ></div>
+                    <template v-for="templateColor in templateColors">
+                      <div
+                        @click="changeBackgroundColor(templateColor)"
+                        class="setup__item-content_picker-color"
+                        :class="[{activeColor: backgroundColor === templateColor}, templateColor]"
+                      ></div>
+                    </template>
                     <input
                       type="color"
                       class="setup__item-content_picker-color custom-color"
@@ -1741,6 +1685,7 @@
         isShowSelectAliase: false,
 
         tabs: ['Details', 'Social', 'Templates', 'Design'],
+        templateColors: ['teal', 'maroon', 'darkgreen', 'chartreuse', 'turquoise', 'brown', 'purple'],
 
         aliases: [],
         selectedAliase: null,
