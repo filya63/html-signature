@@ -1109,7 +1109,7 @@
                     <table>
                       <tbody :style="stylesPreviewMainContentBody">
                         <tr>
-                          <td :style="stylesPreviewContentInfoFields">
+                          <td :style="{...stylesPreviewContentInfoFields, fontFamily: fontFamily}">
                             <h4 :style="stylesPreviewContentFieldName">
                               {{ name }}
                             </h4>
@@ -1138,7 +1138,7 @@
                           </td>
                         </tr>
                         <tr v-if="hasContacts">
-                          <td :style="stylesPreviewContactContent">
+                          <td :style="{...stylesPreviewContactContent, fontFamily: fontFamily}">
                             <a
                               v-if="phone"
                               :href="`tel:${phone}`"
@@ -1298,7 +1298,7 @@
                     <table>
                       <tbody :style="stylesPreviewMainContentBody">
                         <tr>
-                          <td :style="stylesPreviewContentInfoFields">
+                          <td :style="{...stylesPreviewContentInfoFields, fontFamily: fontFamily}">
                             <h4 :style="stylesPreviewContentFieldName">
                               {{ name }}
                             </h4>
@@ -1519,7 +1519,7 @@
                     <table>
                       <tbody :style="stylesPreviewMainContentBody">
                         <tr>
-                          <td :style="stylesPreviewContentInfoFields">
+                          <td :style="{...stylesPreviewContentInfoFields, fontFamily: fontFamily}">
                             <h4 :style="stylesPreviewContentFieldName">
                               {{ name }}
                             </h4>
