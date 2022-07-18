@@ -1087,7 +1087,10 @@
             >
               <tbody>
                 <tr :style="{display: 'flex', gap: `${getFontSizeBasedValue(30)}px`}">
-                  <td v-if="hasSignature" style="align-self: center;">
+                  <td
+                    v-if="hasSignature"
+                    style="align-self: center;"
+                  >
                     <table>
                       <tbody>
                         <tr>
@@ -1100,22 +1103,18 @@
                     </table>
                   </td>
                   <td v-if="hasSignature">
-                    <div :style="{...stylesPreviewContentSeparatorHLine}"></div>
+                    <div :style="stylesPreviewContentSeparatorHLine"></div>
                   </td>
                   <td :style="stylesPreviewMainContent">
                     <table>
                       <tbody :style="stylesPreviewMainContentBody">
                         <tr>
                           <td :style="stylesPreviewContentInfoFields">
-                            <h4
-                              :style="stylesPreviewContentFieldName"
-                            >
+                            <h4 :style="stylesPreviewContentFieldName">
                               {{ name }}
                             </h4>
                             <div :style="{marginBottom: `${getFontSizeBasedValue(4)}px`}">
-                              <span
-                                :style="stylesPreviewContentFieldTitle"
-                              >
+                              <span :style="stylesPreviewContentFieldTitle">
                                 {{ title }}
                               </span>
                               <span
@@ -1124,30 +1123,56 @@
                               >
                                 {{ textForSeparator }}
                               </span>
-                              <span
-                                :style="stylesPreviewContentFieldCompany"
-                              >
+                              <span :style="stylesPreviewContentFieldCompany">
                                 {{ company }}
                               </span>
                             </div>
                           </td>
                         </tr>
-                        <tr v-if="hasContacts || hasSocials" style="align-self: stretch;">
+                        <tr
+                          v-if="hasContacts || hasSocials"
+                          style="align-self: stretch;"
+                        >
                           <td :style="{display: 'block'}">
-                            <hr
-                              :style="stylesPreviewContentSeparatorLine"
-                            />
+                            <hr :style="stylesPreviewContentSeparatorLine"/>
                           </td>
                         </tr>
                         <tr v-if="hasContacts">
                           <td :style="stylesPreviewContactContent">
-                            <a v-if="phone" :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink" >{{ phone }}</a>
-                            <a v-if="website" :href="website" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
-                            <a v-if="email" :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
-                            <span v-if="address" :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
+                            <a
+                              v-if="phone"
+                              :href="`tel:${phone}`"
+                              :style="stylesPreviewContactContentItemLink"
+                            >
+                              {{ phone }}
+                            </a>
+                            <a
+                              v-if="website"
+                              :href="website"
+                              :style="stylesPreviewContactContentItemLink"
+                              target="_blank"
+                            >
+                              {{ website }}
+                            </a>
+                            <a
+                              v-if="email"
+                              :href="`mailto:${email}`"
+                              :style="stylesPreviewContactContentItemLink"
+                            >
+                              {{ email }}
+                            </a>
+                            <span
+                              v-if="address"
+                              :style="{...stylesPreviewContactContentItemLink, color: '#000000'}"
+                            >
+                              {{ address }}
+                            </span>
                           </td>
                         </tr>
-                        <tr v-if="hasSocials" :style="stylesPreviewSocialsNetworks">
+                        <tr
+                          v-if="hasSocials"
+                          :style="stylesPreviewSocialsNetworks"
+                        >
                           <td :style="{fontFamily: fontFamily}">
                             <a
                               v-if="facebook"
@@ -1229,7 +1254,10 @@
                   <td v-if="hasImage">
                     <div :style="stylesPreviewContentSeparatorHLine"></div>
                   </td>
-                  <td v-if="hasImage" style="align-self: center;">
+                  <td
+                    v-if="hasImage"
+                    style="align-self: center;"
+                  >
                     <table>
                       <tbody>
                         <tr>
@@ -1251,7 +1279,10 @@
             >
               <tbody>
                 <tr :style="{display: 'flex'}">
-                  <td v-if="hasImage" :style="{alignSelf: 'center'}">
+                  <td
+                    v-if="hasImage"
+                    :style="{alignSelf: 'center'}"
+                  >
                     <table>
                       <tbody>
                         <tr>
@@ -1268,15 +1299,11 @@
                       <tbody :style="stylesPreviewMainContentBody">
                         <tr>
                           <td :style="stylesPreviewContentInfoFields">
-                            <h4
-                              :style="stylesPreviewContentFieldName"
-                            >
+                            <h4 :style="stylesPreviewContentFieldName">
                               {{ name }}
                             </h4>
                             <div>
-                              <span
-                                :style="stylesPreviewContentFieldTitle"
-                              >
+                              <span :style="stylesPreviewContentFieldTitle">
                                 {{ title }}
                               </span>
                               <span
@@ -1285,19 +1312,18 @@
                               >
                                 {{ textForSeparator }}
                               </span>
-                              <span
-                                :style="stylesPreviewContentFieldCompany"
-                              >
+                              <span :style="stylesPreviewContentFieldCompany">
                                 {{ company }}
                               </span>
                             </div>
                           </td>
                         </tr>
-                        <tr v-if="hasContacts" style="align-self: stretch;">
+                        <tr
+                          v-if="hasContacts"
+                          style="align-self: stretch;"
+                        >
                           <td :style="{display: 'block'}">
-                            <hr
-                              :style="stylesPreviewContentSeparatorLine"
-                            />
+                            <hr :style="stylesPreviewContentSeparatorLine"/>
                           </td>
                         </tr>
                         <tr v-if="hasContacts">
@@ -1313,7 +1339,10 @@
                                   :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
                                 />
-                                <a :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink">
+                                <a
+                                  :href="`tel:${phone}`"
+                                  :style="stylesPreviewContactContentItemLink"
+                                >
                                   {{ phone }}
                                 </a>
                               </li>
@@ -1327,7 +1356,13 @@
                                   :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
                                 />
-                                <a :href="website" target="_blank" :style="stylesPreviewContactContentItemLink">{{ website }}</a>
+                                <a
+                                  :href="website"
+                                  target="_blank"
+                                  :style="stylesPreviewContactContentItemLink"
+                                >
+                                  {{ website }}
+                                </a>
                               </li>
                               <li
                                 :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
@@ -1339,7 +1374,12 @@
                                   :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
                                 />
-                                <a :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
+                                <a
+                                  :href="`mailto:${email}`"
+                                  :style="stylesPreviewContactContentItemLink"
+                                >
+                                  {{ email }}
+                                </a>
                               </li>
                               <li
                                 :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily, marginBottom: '0'}"
@@ -1359,7 +1399,10 @@
                       </tbody>
                     </table>
                   </td>
-                  <td v-if="hasSocials || hasSignature" :style="{alignSelf: 'flex-end', marginLeft: `${getFontSizeBasedValue(160)}px`}">
+                  <td
+                    v-if="hasSocials || hasSignature"
+                    :style="{alignSelf: 'flex-end', marginLeft: `${getFontSizeBasedValue(160)}px`}"
+                  >
                     <table>
                       <tbody>
                         <tr v-if="hasSignature">
@@ -1368,7 +1411,10 @@
                             ref="pro4UserSignature"
                           ></td>
                         </tr>
-                        <tr v-if="hasSocials" :style="stylesPreviewSocialsNetworks">
+                        <tr
+                          v-if="hasSocials"
+                          :style="stylesPreviewSocialsNetworks"
+                        >
                           <td :style="{fontFamily: fontFamily, marginLeft: 'auto'}">
                             <a
                               v-if="facebook"
@@ -1474,15 +1520,11 @@
                       <tbody :style="stylesPreviewMainContentBody">
                         <tr>
                           <td :style="stylesPreviewContentInfoFields">
-                            <h4
-                              :style="stylesPreviewContentFieldName"
-                            >
+                            <h4 :style="stylesPreviewContentFieldName">
                               {{ name }}
                             </h4>
                             <div>
-                              <span
-                                :style="stylesPreviewContentFieldTitle"
-                              >
+                              <span :style="stylesPreviewContentFieldTitle">
                                 {{ title }}
                               </span>
                               <span
@@ -1491,19 +1533,18 @@
                               >
                                 {{ textForSeparator }}
                               </span>
-                              <span
-                                :style="stylesPreviewContentFieldCompany"
-                              >
+                              <span :style="stylesPreviewContentFieldCompany">
                                 {{ company }}
                               </span>
                             </div>
                           </td>
                         </tr>
-                        <tr v-if="hasContacts && (name || company || title)" style="align-self: stretch;">
+                        <tr
+                          v-if="hasContacts && (name || company || title)"
+                          style="align-self: stretch;"
+                        >
                           <td :style="{display: 'block'}">
-                            <hr
-                              :style="stylesPreviewContentSeparatorLine"
-                            />
+                            <hr :style="stylesPreviewContentSeparatorLine"/>
                           </td>
                         </tr>
                         <tr v-if="hasContacts">
@@ -1519,7 +1560,10 @@
                                   :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409"
                                 />
-                                <a :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink">
+                                <a
+                                  :href="`tel:${phone}`"
+                                  :style="stylesPreviewContactContentItemLink"
+                                >
                                   {{ phone }}
                                 </a>
                               </li>
@@ -1533,7 +1577,13 @@
                                   :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415"
                                 />
-                                <a :href="website" target="_blank" :style="stylesPreviewContactContentItemLink">{{ website }}</a>
+                                <a
+                                  :href="website"
+                                  target="_blank"
+                                  :style="stylesPreviewContactContentItemLink"
+                                >
+                                  {{ website }}
+                                </a>
                               </li>
                               <li
                                 :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
@@ -1545,7 +1595,12 @@
                                   :style="stylesPreviewContactContentItemIcon"
                                   src="https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399"
                                 />
-                                <a :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
+                                <a
+                                  :href="`mailto:${email}`"
+                                  :style="stylesPreviewContactContentItemLink"
+                                >
+                                  {{ email }}
+                                </a>
                               </li>
                               <li
                                 :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily, marginBottom: '0'}"
