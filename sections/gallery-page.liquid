@@ -730,9 +730,7 @@
                         <tr>
                           <td>
                             <div :style="stylesPreviewContentInfoFields">
-                              <span
-                                :style="stylesPreviewContentFieldName"
-                              >
+                              <span :style="stylesPreviewContentFieldName">
                                 {{ name }}
                               </span>
                               <span
@@ -740,9 +738,7 @@
                                 :style="stylesPreviewContentNameSeparator"
                               >
                               </span>
-                              <span
-                                :style="stylesPreviewContentFieldTitle"
-                              >
+                              <span :style="stylesPreviewContentFieldTitle">
                                 {{ title }}
                               </span>
                               <span
@@ -751,9 +747,7 @@
                               >
                                 {{ textForSeparator }}
                               </span>
-                              <span
-                                :style="stylesPreviewContentFieldCompany"
-                              >
+                              <span :style="stylesPreviewContentFieldCompany">
                                 {{ company }}
                               </span>
                             </div>
@@ -765,9 +759,7 @@
                 </tr>
                 <tr v-if="hasContacts">
                   <td>
-                    <hr
-                      :style="stylesPreviewContentSeparatorLine"
-                    />
+                    <hr :style="stylesPreviewContentSeparatorLine"/>
                   </td>
                 </tr>
                 <tr v-if="hasContacts">
@@ -781,7 +773,10 @@
                         :style="stylesPreviewContactContentItemIcon"
                         :src="phoneIcon"
                       />
-                      <a :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink" >
+                      <a
+                        :href="`tel:${phone}`"
+                        :style="stylesPreviewContactContentItemLink"
+                      >
                         {{ phone }}
                       </a>
                     </div>
@@ -794,7 +789,13 @@
                         :style="stylesPreviewContactContentItemIcon"
                         :src="websiteIcon"
                       />
-                      <a :href="getWebsiteHref(website)" :style="stylesPreviewContactContentItemLink" target="_blank">{{ website }}</a>
+                      <a
+                        :href="getWebsiteHref(website)"
+                        :style="stylesPreviewContactContentItemLink"
+                        target="_blank"
+                      >
+                        {{ website }}
+                      </a>
                     </div>
                     <div
                       :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
@@ -805,7 +806,12 @@
                         :style="stylesPreviewContactContentItemIcon"
                         :src="emailIcon"
                       />
-                      <a :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
+                      <a
+                        :href="`mailto:${email}`"
+                        :style="stylesPreviewContactContentItemLink"
+                      >
+                        {{ email }}
+                      </a>
                     </div>
                     <div
                       :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
@@ -848,14 +854,10 @@
                           <td>
                             <tr :style="stylesPreviewContentInfoFields">
                               <td :style="{fontFamily: fontFamily}">
-                                <h4
-                                  :style="stylesPreviewContentFieldName"
-                                >
+                                <h4 :style="stylesPreviewContentFieldName">
                                   {{ name }}
                                 </h4>
-                                <span
-                                  :style="stylesPreviewContentFieldTitle"
-                                >
+                                <span :style="stylesPreviewContentFieldTitle">
                                   {{ title }}
                                 </span>
                                 <span
@@ -864,13 +866,14 @@
                                 >
                                   {{ textForSeparator }}
                                 </span>
-                                <span
-                                  :style="stylesPreviewContentFieldCompany"
-                                >
+                                <span :style="stylesPreviewContentFieldCompany">
                                   {{ company }}
                                 </span>
                               </td>
-                              <td v-if="hasContacts" :style="{fontFamily: fontFamily, marginTop: '0px'}">
+                              <td
+                                v-if="hasContacts"
+                                :style="{fontFamily: fontFamily, marginTop: '0px'}"
+                              >
                                 <ul :style="stylesPreviewContactContent">
                                   <li
                                     :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
@@ -882,7 +885,10 @@
                                       :style="stylesPreviewContactContentItemIcon"
                                       :src="phoneIcon"
                                     />
-                                    <a :href="`tel:${phone}`" :style="stylesPreviewContactContentItemLink">
+                                    <a
+                                      :href="`tel:${phone}`"
+                                      :style="stylesPreviewContactContentItemLink"
+                                    >
                                       {{ phone }}
                                     </a>
                                   </li>
@@ -896,7 +902,12 @@
                                       :style="stylesPreviewContactContentItemIcon"
                                       :src="websiteIcon"
                                     />
-                                    <a :href="getWebsiteHref(website)" target="_blank" :style="stylesPreviewContactContentItemLink">{{ website }}</a>
+                                    <a
+                                      :href="getWebsiteHref(website)" target="_blank"
+                                      :style="stylesPreviewContactContentItemLink"
+                                    >
+                                      {{ website }}
+                                    </a>
                                   </li>
                                   <li
                                     :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily}"
@@ -908,7 +919,12 @@
                                       :style="stylesPreviewContactContentItemIcon"
                                       :src="emailIcon"
                                     />
-                                    <a :href="`mailto:${email}`" :style="stylesPreviewContactContentItemLink">{{ email }}</a>
+                                    <a
+                                      :href="`mailto:${email}`"
+                                      :style="stylesPreviewContactContentItemLink"
+                                    >
+                                      {{ email }}
+                                    </a>
                                   </li>
                                   <li
                                     :style="{...stylesPreviewContactContentItem, fontFamily: fontFamily, marginBottom: '0'}"
@@ -927,12 +943,13 @@
                             </tr>
                             <tr v-if="hasSocials">
                               <td colspan="2">
-                                <hr
-                                  :style="{...stylesPreviewContentSeparatorLine}"
-                                />
+                                <hr :style="stylesPreviewContentSeparatorLine"/>
                               </td>
                             </tr>
-                            <tr v-if="hasSocials" :style="stylesPreviewSocialsNetworks">
+                            <tr
+                              v-if="hasSocials"
+                              :style="stylesPreviewSocialsNetworks"
+                            >
                               <td colspan="2" :style="{fontFamily: fontFamily}">
                                 <a
                                   v-if="facebook"
