@@ -2039,11 +2039,13 @@
       },
 
       createElementWithImage( imageLink ) {
-        this.createImageElement( imageLink, this.getImageRef(), this.stylesPreviewUserPicture, true );
+        const isImageLink = true;
+        this.createImageElement( imageLink, this.getImageRef(), this.stylesPreviewUserPicture, isImageLink );
       },
 
       createElementWithSignature( imageLink ) {
-        this.createImageElement( imageLink, this.getUserSignatureRef(), this.stylesPreviewUserSignature, false );
+        const isImageLink = false;
+        this.createImageElement( imageLink, this.getUserSignatureRef(), this.stylesPreviewUserSignature, isImageLink );
       },
 
       validateFormatLink( link, field ) {
@@ -2115,8 +2117,8 @@
         linkEl.click();
       },
 
-      getFontSizeBasedValue( value ) {
-        return this.fontSize * value;
+      getFontSizeBasedValue( em ) {
+        return this.fontSize * em;
       }
     },
 
