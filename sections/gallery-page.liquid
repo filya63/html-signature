@@ -208,7 +208,7 @@
                   <label class="setup__item_label">Font</label>
                   <div class="setup__item-content">
                     <select class="setup__item-content_select" v-model="fontFamily">
-                      <template v-for="templateFont in templateFonts">
+                      <template v-for="templateFont in $options.templateFonts">
                         <option>{{templateFont}}</option>
                       </template>
                     </select>
@@ -261,7 +261,7 @@
                 <div class="setup__item">
                   <label class="setup__item_label">Template color</label>
                   <div class="setup__item-content">
-                    <template v-for="templateColor in templateColors">
+                    <template v-for="templateColor in $options.templateColors">
                       <div
                         @click="changeColor(templateColor)"
                         class="setup__item-content_picker-color"
@@ -380,7 +380,7 @@
                 <div class="setup__item">
                   <label class="setup__item_label">Background color</label>
                   <div class="setup__item-content">
-                    <template v-for="templateColor in templateColors">
+                    <template v-for="templateColor in $options.templateColors">
                       <div
                         @click="changeBackgroundColor(templateColor)"
                         class="setup__item-content_picker-color"
@@ -568,7 +568,7 @@
                                   alt="phone-icon"
                                   v-if="phone && isHorizontalTemplate"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  :src="phoneIcon"
+                                  :src="$options.phoneIcon"
                                 />
                                 <span
                                   v-if="isWideTemplate"
@@ -588,7 +588,7 @@
                                   alt="website-icon"
                                   v-if="website && isHorizontalTemplate"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  :src="websiteIcon"
+                                  :src="$options.websiteIcon"
                                 />
                                 <span
                                   v-if="isWideTemplate"
@@ -606,7 +606,7 @@
                                   alt="email-icon"
                                   v-if="email && isHorizontalTemplate"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  :src="emailIcon"
+                                  :src="$options.emailIcon"
                                 />
                                 <span
                                   v-if="isWideTemplate"
@@ -771,7 +771,7 @@
                       <img
                         alt="phone-icon"
                         :style="stylesPreviewContactContentItemIcon"
-                        :src="phoneIcon"
+                        :src="$options.phoneIcon"
                       />
                       <a
                         :href="`tel:${phone}`"
@@ -787,7 +787,7 @@
                       <img
                         alt="website-icon"
                         :style="stylesPreviewContactContentItemIcon"
-                        :src="websiteIcon"
+                        :src="$options.websiteIcon"
                       />
                       <a
                         :href="getWebsiteHref(website)"
@@ -804,7 +804,7 @@
                       <img
                         alt="email-icon"
                         :style="stylesPreviewContactContentItemIcon"
-                        :src="emailIcon"
+                        :src="$options.emailIcon"
                       />
                       <a
                         :href="`mailto:${email}`"
@@ -820,7 +820,7 @@
                       <img
                         alt="address-icon"
                         :style="stylesPreviewContactContentItemIcon"
-                        :src="addressIcon"
+                        :src="$options.addressIcon"
                       />
                       <span :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
                     </div>
@@ -883,7 +883,7 @@
                                       alt="phone-icon"
                                       v-if="phone"
                                       :style="stylesPreviewContactContentItemIcon"
-                                      :src="phoneIcon"
+                                      :src="$options.phoneIcon"
                                     />
                                     <a
                                       :href="`tel:${phone}`"
@@ -900,7 +900,7 @@
                                       alt="website-icon"
                                       v-if="website"
                                       :style="stylesPreviewContactContentItemIcon"
-                                      :src="websiteIcon"
+                                      :src="$options.websiteIcon"
                                     />
                                     <a
                                       :href="getWebsiteHref(website)" target="_blank"
@@ -917,7 +917,7 @@
                                       alt="email-icon"
                                       v-if="email"
                                       :style="stylesPreviewContactContentItemIcon"
-                                      :src="emailIcon"
+                                      :src="$options.emailIcon"
                                     />
                                     <a
                                       :href="`mailto:${email}`"
@@ -934,7 +934,7 @@
                                       alt="address-icon"
                                       v-if="address"
                                       :style="stylesPreviewContactContentItemIcon"
-                                      :src="addressIcon"
+                                      :src="$options.addressIcon"
                                     />
                                     <span :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
                                   </li>
@@ -1290,7 +1290,7 @@
                                   alt="phone-icon"
                                   v-if="phone"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  :src="phoneIcon"
+                                  :src="$options.phoneIcon"
                                 />
                                 <a
                                   :href="`tel:${phone}`"
@@ -1307,7 +1307,7 @@
                                   alt="website-icon"
                                   v-if="website"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  :src="websiteIcon"
+                                  :src="$options.websiteIcon"
                                 />
                                 <a
                                   :href="getWebsiteHref(website)"
@@ -1325,7 +1325,7 @@
                                   alt="email-icon"
                                   v-if="email"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  :src="emailIcon"
+                                  :src="$options.emailIcon"
                                 />
                                 <a
                                   :href="`mailto:${email}`"
@@ -1342,7 +1342,7 @@
                                   alt="address-icon"
                                   v-if="address"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  :src="addressIcon"
+                                  :src="$options.addressIcon"
                                 />
                                 <span :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
                               </li>
@@ -1511,7 +1511,7 @@
                                   alt="phone-icon"
                                   v-if="phone"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  :src="phoneIcon"
+                                  :src="$options.phoneIcon"
                                 />
                                 <a
                                   :href="`tel:${phone}`"
@@ -1528,7 +1528,7 @@
                                   alt="website-icon"
                                   v-if="website"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  :src="websiteIcon"
+                                  :src="$options.websiteIcon"
                                 />
                                 <a
                                   :href="getWebsiteHref(website)"
@@ -1546,7 +1546,7 @@
                                   alt="email-icon"
                                   v-if="email"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  :src="emailIcon"
+                                  :src="$options.emailIcon"
                                 />
                                 <a
                                   :href="`mailto:${email}`"
@@ -1563,7 +1563,7 @@
                                   alt="address-icon"
                                   v-if="address"
                                   :style="stylesPreviewContactContentItemIcon"
-                                  :src="addressIcon"
+                                  :src="$options.addressIcon"
                                 />
                                 <span :style="{...stylesPreviewContactContentItemLink, color: '#000000'}">{{ address }}</span>
                               </li>
@@ -1646,7 +1646,34 @@
     xSmall: documentWidth < 575,
   };
 
+  const templateFonts = [
+                          'Arial',
+                          'Times new roman',
+                          'Monospace',
+                          'Arial black',
+                          'Arial narrow',
+                          'Comic sans ms',
+                          'Garamond',
+                          'Georgia',
+                          'Tahoma',
+                          'Trebuchet ms',
+                          'Verdana'
+                        ];
+  const templateColors = ['teal', 'maroon', 'darkgreen', 'chartreuse', 'turquoise', 'brown', 'purple'];
+  const websiteIcon = 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415';
+  const phoneIcon = 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409';
+  const emailIcon = 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399';
+  const addressIcon = 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/home-outlined.svg?v=1656661321';
+
   const htmlSignature = {
+
+    templateFonts: templateFonts,
+    templateColors: templateColors,
+    websiteIcon: websiteIcon,
+    phoneIcon: phoneIcon,
+    emailIcon: emailIcon,
+    addressIcon: addressIcon,
+
     data() {
       return {
         name: '',
@@ -1694,26 +1721,6 @@
         isShowSelectAliase: false,
 
         tabs: ['Details', 'Social', 'Templates', 'Design'],
-        templateFonts: [
-                         'Arial',
-                         'Times new roman',
-                         'Monospace',
-                         'Arial black',
-                         'Arial narrow',
-                         'Comic sans ms',
-                         'Garamond',
-                         'Georgia',
-                         'Tahoma',
-                         'Trebuchet ms',
-                         'Verdana'
-                       ],
-        templateColors: ['teal', 'maroon', 'darkgreen', 'chartreuse', 'turquoise', 'brown', 'purple'],
-
-        websiteIcon: 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/website.svg?v=1650658415',
-        phoneIcon: 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/phone.svg?v=1650658409',
-        emailIcon: 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/email.svg?v=1650658399',
-        addressIcon: 'https://cdn.shopify.com/s/files/1/0594/4639/5086/t/40/assets/home-outlined.svg?v=1656661321',
-
         aliases: [],
         selectedAliase: null,
 
