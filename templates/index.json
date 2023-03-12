@@ -204,7 +204,7 @@
           "type": "button",
           "settings": {
             "button_label": "Order My Artlogo",
-            "button_link": "shopify:\/\/products\/logo-signature",
+            "button_link": "shopify:\/\/products\/signature-logo",
             "button_style_secondary": false
           }
         }
@@ -455,7 +455,7 @@
           "settings": {
             "title": "Get a multipurpose logo to represent you",
             "button_label": "Only $39.95 - Order Now",
-            "button_link": "shopify:\/\/products\/logo-signature"
+            "button_link": "shopify:\/\/products\/signature-logo"
           }
         },
         "fd0ea297-d7c8-427f-8759-f9458c06f543": {
@@ -499,7 +499,7 @@
           "settings": {
             "title": "Order your Artlogo now to boost your brand awareness and identity",
             "button_label": "Get Yours Now",
-            "button_link": "shopify:\/\/products\/logo-signature"
+            "button_link": "shopify:\/\/products\/signature-logo"
           }
         }
       },
@@ -651,7 +651,7 @@
         "title": "Is Artlogo for you? Yes if",
         "text": "",
         "button_label": "Only $39.95 - Order Now",
-        "button_link": "shopify:\/\/products\/logo-signature"
+        "button_link": "shopify:\/\/products\/signature-logo"
       }
     },
     "1638090550d4214709": {
@@ -726,7 +726,7 @@
         "title": "Are you ready for a career changing experience?",
         "text": "<p>Take your logo to the next level now.<\/p>",
         "button_label": "Get Yours Now",
-        "button_link": "shopify:\/\/products\/logo-signature"
+        "button_link": "shopify:\/\/products\/signature-logo"
       }
     },
     "16388573083af6c8ea": {

@@ -166,7 +166,7 @@
             "type": "button",
             "settings": {
               "button_label": "Get My Artlogo",
-              "button_link": "shopify:\/\/products\/logo-signature",
+              "button_link": "shopify:\/\/products\/signature-logo",
               "button_style_secondary": false
             }
           }
@@ -186,14 +186,6 @@
     },
     "content_for_index": [
 
-    ],
-    "blocks": {
-      "3294164036280357830": {
-        "type": "shopify:\/\/apps\/mlv-auto-currency-switcher\/blocks\/mlveda-currencies-head\/92ab730f-097e-4571-b27c-3f449e098ca3",
-        "disabled": true,
-        "settings": {
-        }
-      }
-    }
+    ]
   }
 }
