@@ -95,7 +95,7 @@
         "title": "Create your own unique logo, signature and watermark. <br> Brand your content and name.",
         "text": "<p>Your exclusive logo signature will be handcrafted by an experienced calligrapher to reflect your style and professionalism.<\/p>",
         "button_label": "Order My Artlogo",
-        "button_link": "shopify:\/\/products\/signatur-logo"
+        "button_link": "shopify:\/\/products\/logo-signature"
       }
     },
     "1638197973b2d423c4": {
@@ -362,7 +362,7 @@
           "type": "button",
           "settings": {
             "button_label": "Get My Artlogo",
-            "button_link": "shopify:\/\/products\/signatur-logo",
+            "button_link": "shopify:\/\/products\/logo-signature",
             "button_style_secondary": false
           }
         }
