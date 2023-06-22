@@ -1490,20 +1490,10 @@
     },
     "filters": {
       "availability": {
-        "label": "Verfügbarkeit",
         "value": {
           "in_stock": "Auf Lager",
           "out_of_stock": "Ausverkauft"
         }
-      },
-      "vendor": {
-        "label": "Marke"
-      },
-      "price": {
-        "label": "Preis"
-      },
-      "product_type": {
-        "label": "Produktart"
       }
     },
     "search": {

@@ -1491,20 +1491,10 @@
     },
     "filters": {
       "availability": {
-        "label": "Доступность",
         "value": {
           "in_stock": "В наличии",
           "out_of_stock": "Распродано"
         }
-      },
-      "vendor": {
-        "label": "Марка"
-      },
-      "price": {
-        "label": "Цена"
-      },
-      "product_type": {
-        "label": "Тип продукта"
       }
     },
     "search": {

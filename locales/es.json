@@ -1272,20 +1272,10 @@
     },
     "filters": {
       "availability": {
-        "label": "Disponibilidad",
         "value": {
           "in_stock": "En stock",
           "out_of_stock": "Agotado"
         }
-      },
-      "vendor": {
-        "label": "Marca"
-      },
-      "price": {
-        "label": "Precio"
-      },
-      "product_type": {
-        "label": "Tipo de producto"
       }
     },
     "search": {

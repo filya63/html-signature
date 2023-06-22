@@ -1180,20 +1180,10 @@
     },
     "filters": {
       "availability": {
-        "label": "Disponibilità",
         "value": {
           "in_stock": "disponibile",
           "out_of_stock": "Esaurito"
         }
-      },
-      "vendor": {
-        "label": "Marca"
-      },
-      "price": {
-        "label": "Prezzo"
-      },
-      "product_type": {
-        "label": "Tipologia di prodotto"
       }
     },
     "search": {
