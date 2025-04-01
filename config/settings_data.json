@@ -1,63 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "type_header_font": "lato_n7",
     "type_body_font": "lato_n4",
-    "favicon": "shopify:\/\/shop_images\/logo.png",
-    "banner_img": "shopify:\/\/shop_images\/artlogo-banner-image_5a877959-d0d0-4336-bf5c-6da7660e0efb.jpg",
+    "favicon": "shopify://shop_images/logo.png",
+    "banner_img": "shopify://shop_images/artlogo-banner-image_5a877959-d0d0-4336-bf5c-6da7660e0efb.jpg",
     "banner_title": "The Signature<br> Collection",
-    "banner_desc": "<p>A handcrafted, uniquely tailored signature logo to suit your unique personality.<\/p>",
-    "image1": "shopify:\/\/shop_images\/55A_Will_Jones.jpg",
-    "image2": "shopify:\/\/shop_images\/02E_Tom_Lindt_Minimalist.jpg",
-    "image3": "shopify:\/\/shop_images\/02F_Tom_Lindt_Abstract.jpg",
-    "image4": "shopify:\/\/shop_images\/03.jpg",
-    "image5": "shopify:\/\/shop_images\/04_38ccaea3-3038-47aa-a476-df7b1533fffb.jpg",
-    "image6": "shopify:\/\/shop_images\/05A_Helena_Garcia_feminine.svg.jpg",
-    "image7": "shopify:\/\/shop_images\/06F_Cody_Henderson_Abstract.jpg",
-    "image8": "shopify:\/\/shop_images\/07A_Mike_West_minimalist_9a9cbaaa-3506-459f-85fa-23875e807334.jpg",
-    "image9": "shopify:\/\/shop_images\/07L_Mike_West_Minimalist.jpg",
-    "image10": "shopify:\/\/shop_images\/08K_Erika_Perry_471a358e-b1b3-4ca4-815b-9bfab691c494.jpg",
-    "image11": "shopify:\/\/shop_images\/45E_John_Wagner_Classic.jpg",
-    "image12": "shopify:\/\/shop_images\/10L_Clare_Pennet_Calligraphy.jpg",
-    "image13": "shopify:\/\/shop_images\/01Q_gregory_collins_d7f270b1-b8b9-4e2f-93f6-b538f442c6ba.jpg",
-    "image14": "shopify:\/\/shop_images\/012E_Madlen_Harrison_Bussiness.jpg",
-    "image15": "shopify:\/\/shop_images\/13L_John_Ewing_Minimalist_64e8c1cc-c72f-4fd5-b330-1e268f81c668.jpg",
-    "image16": "shopify:\/\/shop_images\/13L_John_Ewing_Minimalist_64e8c1cc-c72f-4fd5-b330-1e268f81c668.jpg",
-    "image17": "shopify:\/\/shop_images\/14A_Amelia_feminine_minimalist.jpg",
-    "image18": "shopify:\/\/shop_images\/15.jpg",
-    "image19": "shopify:\/\/shop_images\/62F_Randy.png",
-    "image20": "shopify:\/\/shop_images\/style-image-26.jpg",
-    "image21": "shopify:\/\/shop_images\/17L_Bill_Sanders_Abstract_1c7e7a33-e8f7-4b5e-8b38-307e839882e2.jpg",
-    "image22": "shopify:\/\/shop_images\/18L_Don_Gordon_ffb433b9-5434-4e45-a1a4-84d9517126a6.jpg",
-    "image23": "shopify:\/\/shop_images\/44.jpg",
-    "image24": "shopify:\/\/shop_images\/20.jpg",
-    "image25": "shopify:\/\/shop_images\/67Q_Bernardo_Alfano_922959bd-4717-4bd0-bacb-d7c75a41ac1d.jpg",
-    "image26": "shopify:\/\/shop_images\/21.jpg",
-    "image27": "shopify:\/\/shop_images\/20L_Tim_Hall_Minimalist.jpg",
-    "image28": "shopify:\/\/shop_images\/023E_Antonio_Bond_Abstract.jpg",
-    "image29": "shopify:\/\/shop_images\/24L_Kevin_Green_Business.jpg",
-    "image30": "shopify:\/\/shop_images\/25K_Amanda_Bailey.jpg",
-    "image31": "shopify:\/\/shop_images\/026E_Andrew_Miller_Minimalist.jpg",
-    "image32": "shopify:\/\/shop_images\/27_0ad59c4f-cd3b-4dfc-8bb9-a6ecb50a953e.jpg",
-    "image33": "shopify:\/\/shop_images\/28L_Matty_Hunt_Abstract.jpg",
-    "image34": "shopify:\/\/shop_images\/29L_John_abstract_7d41ed6a-ddd6-43cb-81d6-e742894f19c5.jpg",
-    "image35": "shopify:\/\/shop_images\/31A_Ron_Scott_Business_616ec488-4733-4932-9d5b-75319cf935a6.jpg",
-    "image36": "shopify:\/\/shop_images\/33L_Alexander_Wise.jpg",
-    "image37": "shopify:\/\/shop_images\/33Q_Alexander_Wise.jpg",
-    "image38": "shopify:\/\/shop_images\/35A_Anna_Vernon_abstract_real_signature.jpg",
-    "image39": "shopify:\/\/shop_images\/037E_Tom_Ward_Abstract_82a18679-1e36-4348-a367-100a4d5963a3.jpg",
-    "image40": "shopify:\/\/shop_images\/45F_John_Wagner_Abstract.jpg",
-    "image41": "shopify:\/\/shop_images\/47Q_Ann_Watson.jpg",
-    "image42": "shopify:\/\/shop_images\/48A_Jan_Hamilton_minimalist_creative.jpg",
-    "image43": "shopify:\/\/shop_images\/51Q_Rana_Edison.jpg",
-    "image44": "shopify:\/\/shop_images\/052E_Gabriel_Todd_Minimalist.jpg",
-    "image45": "shopify:\/\/shop_images\/56K_Kate_Zeller_82bb3593-f251-42c1-a79c-107b1d467d2f.jpg",
-    "image46": "shopify:\/\/shop_images\/58Q_Leonardo_Ferrari_02dc1980-41dc-4bd7-8479-3007a9e6d62e.jpg",
-    "image47": "shopify:\/\/shop_images\/59F_Anastasia.png",
-    "image48": "shopify:\/\/shop_images\/61F_Rathborne.png",
-    "image49": "shopify:\/\/shop_images\/65F_Lorenzo_Vitale_Abstract.jpg",
-    "image50": "shopify:\/\/shop_images\/62F_Randy_8e9c71eb-7684-4433-9abb-03ea73a1aa79.png",
-    "image51": "shopify:\/\/shop_images\/58F_David_Williams.png",
-    "checkout_logo_image": "shopify:\/\/shop_images\/artlogo-logo.png",
+    "banner_desc": "<p>A handcrafted, uniquely tailored signature logo to suit your unique personality.</p>",
+    "image1": "shopify://shop_images/55A_Will_Jones.jpg",
+    "image2": "shopify://shop_images/02E_Tom_Lindt_Minimalist.jpg",
+    "image3": "shopify://shop_images/02F_Tom_Lindt_Abstract.jpg",
+    "image4": "shopify://shop_images/03.jpg",
+    "image5": "shopify://shop_images/04_38ccaea3-3038-47aa-a476-df7b1533fffb.jpg",
+    "image6": "shopify://shop_images/05A_Helena_Garcia_feminine.svg.jpg",
+    "image7": "shopify://shop_images/06F_Cody_Henderson_Abstract.jpg",
+    "image8": "shopify://shop_images/07A_Mike_West_minimalist_9a9cbaaa-3506-459f-85fa-23875e807334.jpg",
+    "image9": "shopify://shop_images/07L_Mike_West_Minimalist.jpg",
+    "image10": "shopify://shop_images/08K_Erika_Perry_471a358e-b1b3-4ca4-815b-9bfab691c494.jpg",
+    "image11": "shopify://shop_images/45E_John_Wagner_Classic.jpg",
+    "image12": "shopify://shop_images/10L_Clare_Pennet_Calligraphy.jpg",
+    "image13": "shopify://shop_images/01Q_gregory_collins_d7f270b1-b8b9-4e2f-93f6-b538f442c6ba.jpg",
+    "image14": "shopify://shop_images/012E_Madlen_Harrison_Bussiness.jpg",
+    "image15": "shopify://shop_images/13L_John_Ewing_Minimalist_64e8c1cc-c72f-4fd5-b330-1e268f81c668.jpg",
+    "image16": "shopify://shop_images/13L_John_Ewing_Minimalist_64e8c1cc-c72f-4fd5-b330-1e268f81c668.jpg",
+    "image17": "shopify://shop_images/14A_Amelia_feminine_minimalist.jpg",
+    "image18": "shopify://shop_images/15.jpg",
+    "image19": "shopify://shop_images/62F_Randy.png",
+    "image20": "shopify://shop_images/style-image-26.jpg",
+    "image21": "shopify://shop_images/17L_Bill_Sanders_Abstract_1c7e7a33-e8f7-4b5e-8b38-307e839882e2.jpg",
+    "image22": "shopify://shop_images/18L_Don_Gordon_ffb433b9-5434-4e45-a1a4-84d9517126a6.jpg",
+    "image23": "shopify://shop_images/44.jpg",
+    "image24": "shopify://shop_images/20.jpg",
+    "image25": "shopify://shop_images/67Q_Bernardo_Alfano_922959bd-4717-4bd0-bacb-d7c75a41ac1d.jpg",
+    "image26": "shopify://shop_images/21.jpg",
+    "image27": "shopify://shop_images/20L_Tim_Hall_Minimalist.jpg",
+    "image28": "shopify://shop_images/023E_Antonio_Bond_Abstract.jpg",
+    "image29": "shopify://shop_images/24L_Kevin_Green_Business.jpg",
+    "image30": "shopify://shop_images/25K_Amanda_Bailey.jpg",
+    "image31": "shopify://shop_images/026E_Andrew_Miller_Minimalist.jpg",
+    "image32": "shopify://shop_images/27_0ad59c4f-cd3b-4dfc-8bb9-a6ecb50a953e.jpg",
+    "image33": "shopify://shop_images/28L_Matty_Hunt_Abstract.jpg",
+    "image34": "shopify://shop_images/29L_John_abstract_7d41ed6a-ddd6-43cb-81d6-e742894f19c5.jpg",
+    "image35": "shopify://shop_images/31A_Ron_Scott_Business_616ec488-4733-4932-9d5b-75319cf935a6.jpg",
+    "image36": "shopify://shop_images/33L_Alexander_Wise.jpg",
+    "image37": "shopify://shop_images/33Q_Alexander_Wise.jpg",
+    "image38": "shopify://shop_images/35A_Anna_Vernon_abstract_real_signature.jpg",
+    "image39": "shopify://shop_images/037E_Tom_Ward_Abstract_82a18679-1e36-4348-a367-100a4d5963a3.jpg",
+    "image40": "shopify://shop_images/45F_John_Wagner_Abstract.jpg",
+    "image41": "shopify://shop_images/47Q_Ann_Watson.jpg",
+    "image42": "shopify://shop_images/48A_Jan_Hamilton_minimalist_creative.jpg",
+    "image43": "shopify://shop_images/51Q_Rana_Edison.jpg",
+    "image44": "shopify://shop_images/052E_Gabriel_Todd_Minimalist.jpg",
+    "image45": "shopify://shop_images/56K_Kate_Zeller_82bb3593-f251-42c1-a79c-107b1d467d2f.jpg",
+    "image46": "shopify://shop_images/58Q_Leonardo_Ferrari_02dc1980-41dc-4bd7-8479-3007a9e6d62e.jpg",
+    "image47": "shopify://shop_images/59F_Anastasia.png",
+    "image48": "shopify://shop_images/61F_Rathborne.png",
+    "image49": "shopify://shop_images/65F_Lorenzo_Vitale_Abstract.jpg",
+    "image50": "shopify://shop_images/62F_Randy_8e9c71eb-7684-4433-9abb-03ea73a1aa79.png",
+    "image51": "shopify://shop_images/58F_David_Williams.png",
+    "checkout_logo_image": "shopify://shop_images/artlogo-logo.png",
     "checkout_logo_position": "center",
     "checkout_logo_size": "large",
     "checkout_accent_color": "#445958",
@@ -99,7 +108,7 @@
             "settings": {
               "text": "CYBER MONDAY SALE - LAST CHANCE 50% OFF",
               "color_scheme": "inverse",
-              "link": "shopify:\/\/products\/artlogo"
+              "link": "shopify://products/artlogo"
             }
           }
         },
@@ -125,21 +134,21 @@
             "type": "link_list",
             "settings": {
               "heading": "Product",
-              "menu": "footer-menu-2"
+              "menu": "footer-1"
             }
           },
           "6912a434-8013-47fe-8778-319ded21a1db": {
             "type": "link_list",
             "settings": {
               "heading": "Help",
-              "menu": "footer-menu-3"
+              "menu": "footer-menu-2"
             }
           },
           "6aad4526-f298-47d5-b00b-ef6d73d9aada": {
             "type": "text",
             "settings": {
               "heading": "Contacts",
-              "subtext": "<p>61 Bridge Street, Kington. Herefordshire HR5 3DJ, England<\/p><p>Сompany registration number: 13257340<\/p><p>Customer Support <\/p><p>Monday - Friday: 7.00 AM - 6.00 PM GMT<\/p>"
+              "subtext": "<p>61 Bridge Street, Kington. Herefordshire HR5 3DJ, England</p><p>Сompany registration number: 13257340</p><p>Customer Support </p><p>Monday - Friday: 7.00 AM - 6.00 PM GMT</p>"
             }
           }
         },
@@ -166,7 +175,7 @@
             "type": "button",
             "settings": {
               "button_label": "Get My Artlogo",
-              "button_link": "shopify:\/\/products\/signature-logo",
+              "button_link": "shopify://products/signature-logo",
               "button_style_secondary": false
             }
           }
@@ -175,7 +184,7 @@
           "0dd7ecac-ca23-4aa8-b8c2-85f4828c98b1"
         ],
         "settings": {
-          "logo": "shopify:\/\/shop_images\/logo_compressed.png",
+          "logo": "shopify://shop_images/logo_compressed.png",
           "logo_width": 120,
           "logo_position": "middle-left",
           "menu": "main-menu",
@@ -184,8 +193,6 @@
         }
       }
     },
-    "content_for_index": [
-
-    ]
+    "content_for_index": []
   }
 }
